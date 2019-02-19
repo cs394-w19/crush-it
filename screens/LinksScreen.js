@@ -1,8 +1,8 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, Text } from 'react-native';
+import { ScrollView, StyleSheet, Button, Text, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import ProgressBar from 'react-native-progress/Bar';
-
+import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
 
 export default class LinksScreen extends React.Component {
@@ -25,9 +25,40 @@ export default class LinksScreen extends React.Component {
     };
   }
 
+
+
   render() {
+
+    let answers = ['a','b','c','d'];
+    let buttons = answers.map((item) => {
+        return (
+          <CardView
+            style={{
+              backgroundColor: 'white',
+              width: '40%',
+
+            }}
+            cardElevation={10}
+            cornerRadius={10}
+            cornerOverlap={false}
+          >
+            <View style={styles.child}>
+              <View style={styles.titleView}>
+                <Text style={styles.title}>{item}</Text>
+              </View>            
+
+          </View>
+          </CardView>
+
+          );
+    });
     return (
-      <ScrollView style={styles.container}>
+      <ScrollView>
+
+        
+          
+          
+        
         <ProgressBar
           progress={this.state.quizProgress}
           borderRadius={0}
@@ -39,6 +70,9 @@ export default class LinksScreen extends React.Component {
         <Text style={{fontSize: 30}}>
           This is question number {Math.round(this.state.quizProgress*10)}. What is the answer?
         </Text>
+        <View style={styles.container}>
+        {buttons}
+        </View>
         <Button
           onPress={() => this.nextQuestion()}
           title="Option A"
@@ -71,7 +105,27 @@ export default class LinksScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 0,
-    backgroundColor: '#fff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+    flexWrap: 'wrap-reverse',
+    width: '90%',
+
+  },
+  child: {
+    width: 300
+  },
+  titleView: {
+    padding: 10,
+    borderBottomColor: '#e3e3e3',
+    borderBottomWidth: 1
+  },
+  title: {
+    fontSize: 16,
+    color: 'black'
+  },
+  sliderStyle: {
+    width: 300,
+    marginTop: 40
   },
 });

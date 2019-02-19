@@ -13,9 +13,12 @@
   "dependencies": {
     "@expo/samples": "2.1.1",
     "expo": "^32.0.0",
+    "prop-types": "^15.7.2",
     "react": "16.5.0",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native-cardview": "^2.0.2",
     "react-native-progress": "^3.5.0",
+    "react-native-simple-card-view": "^0.3.0",
     "react-navigation": "^3.0.9"
   },
   "devDependencies": {
