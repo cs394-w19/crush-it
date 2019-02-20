@@ -14,7 +14,7 @@ export default class LinksScreen extends React.Component {
   }
 
   static navigationOptions = {
-    title: 'Demo Quiz',
+    title: 'Quiz',
   };
 
   nextQuestion() {
@@ -29,103 +29,78 @@ export default class LinksScreen extends React.Component {
 
   render() {
 
-    let answers = ['a','b','c','d'];
+    let answers = ['option a','option b','option c','option d'];
     let buttons = answers.map((item) => {
-        return (
-          <CardView
-            style={{
-              backgroundColor: 'white',
-              width: '40%',
+      return (
+        <CardView
+          key={item}
+          style={styles.multipleChoiceOption}
+          cardElevation={10}
+          cornerRadius={10}
+          cornerOverlap={false}
+        >
+          <Button title={item} onPress={() => this.nextQuestion()}>
+            <Text style={styles.multipleChoiceButton}>{item}</Text>
+          </Button>
+        </CardView>
 
-            }}
-            cardElevation={10}
-            cornerRadius={10}
-            cornerOverlap={false}
-          >
-            <View style={styles.child}>
-              <View style={styles.titleView}>
-                <Text style={styles.title}>{item}</Text>
-              </View>            
-
-          </View>
-          </CardView>
-
-          );
+        );
     });
     return (
-      <ScrollView>
-
-        
-          
-          
-        
+      <View style={styles.quizContainer}>
         <ProgressBar
           progress={this.state.quizProgress}
           borderRadius={0}
           width={null}
-          height={8}
+          height={10}
           borderWidth={0}
           color={Colors.appPrimary}
         />
-        <Text style={{fontSize: 30}}>
-          This is question number {Math.round(this.state.quizProgress*10)}. What is the answer?
-        </Text>
-        <View style={styles.container}>
-        {buttons}
+        <CardView
+          style={styles.questionContainer}
+          cardElevation={10}
+          cornerRadius={10}
+          cornerOverlap={false}
+        >
+          <Text style={{fontSize: 30}}>
+            This is question number {Math.round(this.state.quizProgress*10)}. What is the answer?
+          </Text>
+        </CardView>
+        <View style={styles.buttonContainer}>
+          {buttons}
         </View>
-        <Button
-          onPress={() => this.nextQuestion()}
-          title="Option A"
-          color={Colors.appPrimary}
-          accessibilityLabel="Click here for option A"
-        />
-        <Button
-          onPress={() => this.nextQuestion()}
-          title="Option B"
-          color={Colors.appPrimary}
-          accessibilityLabel="Click here for option B"
-        />
-        <Button
-          onPress={() => this.nextQuestion()}
-          title="Option C"
-          color={Colors.appPrimary}
-          accessibilityLabel="Click here for option C"
-        />
-        <Button
-          onPress={() => this.nextQuestion()}
-          title="Option D"
-          color={Colors.appPrimary}
-          accessibilityLabel="Click here for option D"
-        />
-      </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  quizContainer: {
     flex: 1,
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: '15%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    flexWrap: 'wrap-reverse',
-    width: '90%',
-
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    width: '100%',
   },
-  child: {
-    width: 300
+  questionContainer: {
+    backgroundColor: 'white',
+    padding: 30,
+    margin: '3%',
+    marginTop: '5%',
+    height: '60%',
   },
-  titleView: {
+  multipleChoiceOption: {
+    backgroundColor: 'white',
+    width: '44%',
+    margin: '3%',
     padding: 10,
-    borderBottomColor: '#e3e3e3',
-    borderBottomWidth: 1
   },
-  title: {
-    fontSize: 16,
-    color: 'black'
-  },
-  sliderStyle: {
-    width: 300,
-    marginTop: 40
+  multipleChoiceButton: {
+    fontSize: 30,
   },
 });
