@@ -1,15 +1,18 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Button, TouchableOpacity, Text, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import ProgressBar from 'react-native-progress/Bar';
 import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
 
+
+
 export default class LinksScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quizProgress: 0.1
+      quiz: null,
+      quizProgress: 0,
     };
   }
 
@@ -27,115 +30,110 @@ export default class LinksScreen extends React.Component {
   };
 
 
-  nextQuestion() {
-    if (this.state.quizProgress < 0.99) {
+
+  componentDidMount() {
+    let quiz_data = require('../assets/quiz_data.json').quizzes;
+    let quiz = quiz_data.find(q => { return q.quizName  === "sample quiz"});
+    this.setState({
+      quiz: quiz,
+    });
+  }
+
+  nextQuestion(answerText) {
+    if (this.state.quizProgress+1 < this.state.quiz.questions.length) {
       this.setState({
-        quizProgress: this.state.quizProgress+0.1,
+        quizProgress: this.state.quizProgress+1,
       });
-    };
+    } else {
+      this.setState({
+        quizProgress: 0,
+      });
+    }
   }
 
 
 
   render() {
+    if (!this.state.quiz) return(<Text />);
 
-    let answers = ['a','b','c','d'];
-    let buttons = answers.map((item) => {
-        return (
-          <CardView
-            style={{
-              backgroundColor: 'white',
-              width: '40%',
+    let answers = this.state.quiz.questions[this.state.quizProgress].answerChoices.map(choice => { return choice.answerText });
+    let buttons = answers.map((answerText) => {
+      return (
+        <CardView
+          key={answerText}
+          style={styles.multipleChoiceOption}
+          cardElevation={5}
+          cornerRadius={10}
+          cornerOverlap={false}
+        >
+          <TouchableOpacity title={answerText} onPress={() => this.nextQuestion(answerText)}>
+            <Text style={styles.multipleChoiceButton}>{answerText}</Text>
+          </TouchableOpacity>
+        </CardView>
 
-            }}
-            cardElevation={10}
-            cornerRadius={10}
-            cornerOverlap={false}
-          >
-            <View style={styles.child}>
-              <View style={styles.titleView}>
-                <Text style={styles.title}>{item}</Text>
-              </View>            
-
-          </View>
-          </CardView>
-
-          );
+        );
     });
     return (
-      <ScrollView>
-
-        
-          
-          
-        
+      <View style={styles.quizContainer}>
         <ProgressBar
           progress={this.state.quizProgress}
           borderRadius={0}
           width={null}
-          height={8}
+          height={10}
           borderWidth={0}
           color={Colors.appPrimary}
         />
-        <Text style={{fontSize: 30}}>
-          This is question number {Math.round(this.state.quizProgress*10)}. What is the answer?
-        </Text>
-        <View style={styles.container}>
-        {buttons}
+        <CardView
+          style={styles.questionContainer}
+          cardElevation={5}
+          cornerRadius={10}
+          cornerOverlap={false}
+        >
+          <Text style={{fontSize: 30}}>
+            {this.state.quiz ? this.state.quiz.questions[this.state.quizProgress].questionText: ""}
+          </Text>
+        </CardView>
+        <View style={styles.buttonContainer}>
+          {buttons}
         </View>
-        <Button
-          onPress={() => this.nextQuestion()}
-          title="Option A"
-          color={Colors.appPrimary}
-          accessibilityLabel="Click here for option A"
-        />
-        <Button
-          onPress={() => this.nextQuestion()}
-          title="Option B"
-          color={Colors.appPrimary}
-          accessibilityLabel="Click here for option B"
-        />
-        <Button
-          onPress={() => this.nextQuestion()}
-          title="Option C"
-          color={Colors.appPrimary}
-          accessibilityLabel="Click here for option C"
-        />
-        <Button
-          onPress={() => this.nextQuestion()}
-          title="Option D"
-          color={Colors.appPrimary}
-          accessibilityLabel="Click here for option D"
-        />
-      </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
+  quizContainer: {
     flex: 1,
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: '0%',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    flexWrap: 'wrap-reverse',
-    width: '90%',
-
+    flexWrap: 'wrap',
+    flexDirection: 'row',
+    width: '100%',
+    height: '30%',
   },
-  child: {
-    width: 300
+  questionContainer: {
+    position: 'absolute',
+    bottom: '30%',
+    backgroundColor: 'white',
+    padding: 30,
+    margin: '3%',
+    width: '94%',
+    height: '60%',
   },
-  titleView: {
-    padding: 10,
-    borderBottomColor: '#e3e3e3',
-    borderBottomWidth: 1
+  multipleChoiceOption: {
+    backgroundColor: 'white',
+    width: '44%',
+    margin: '3%',
+    padding: 15,
   },
-  title: {
-    fontSize: 16,
-    color: 'black'
-  },
-  sliderStyle: {
-    width: 300,
-    marginTop: 40
+  multipleChoiceButton: {
+    fontSize: 24,
+    color: Colors.appPrimary,
+    textAlign: 'center',
+    //fontWeight: 'bold',
   },
 });
