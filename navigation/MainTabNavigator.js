@@ -44,6 +44,16 @@ const ResultsStack = createStackNavigator({
   Results: ResultsScreen
 });
 
+ResultsStack.navigationOptions = {
+  tabBarLabel: 'Results',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon
+      focused={focused}
+      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+    />
+  ),
+};
+
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 });
@@ -60,7 +70,7 @@ SettingsStack.navigationOptions = {
 
 export default createBottomTabNavigator({
   QuizStack,
-  HomeStack,
-  SettingsStack,
+  // HomeStack,
+  // SettingsStack,
   ResultsStack
 });

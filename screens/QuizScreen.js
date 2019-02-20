@@ -38,20 +38,22 @@ export default class QuizScreen extends React.Component {
   }
 
   nextQuestion(answerText) {
-    if (this.state.quizProgress+1 < this.state.quiz.questions.length) {
-      let currQuestion = this.state.quiz.questions[this.state.quizProgress];
-      let choice = currQuestion.answerChoices.find(choice => { return answerText === choice.answerText });
-      let answerCorrect = choice.isCorrect;
-      this.setState({
-        quizProgress: this.state.quizProgress + 1,
-        score: this.state.score + (answerCorrect ? 1 : 0),
-      });
-    } else {
+    console.log(this.state.quizProgress);
+    let currQuestion = this.state.quiz.questions[this.state.quizProgress];
+    let choice = currQuestion.answerChoices.find(choice => { return answerText === choice.answerText });
+    let answerCorrect = choice.isCorrect;
+    this.setState({
+      quizProgress: this.state.quizProgress + 1,
+      score: this.state.score + (answerCorrect ? 1 : 0),
+    });
+    
+    if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
       this.props.navigation.navigate('Results', {
         score: this.state.score,
         maxScore: this.state.quiz.questions.length,
       });
+      this.setState({quizProgress : 0, score : 0});
     }
   }
 
