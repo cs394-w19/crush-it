@@ -7,7 +7,7 @@ import Colors from '../constants/Colors';
 
 
 
-export default class LinksScreen extends React.Component {
+export default class QuizScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -22,7 +22,7 @@ export default class LinksScreen extends React.Component {
     title: 'Demo Quiz',
     headerRight: (
         <Button
-            onPress={() => navigation.navigate('Results')} // what should this be called/go back to 
+            onPress={() => navigation.navigate('Results')} // what should this be called/go back to
             title="Results"
             color={Colors.tintColor}
         />)
@@ -45,6 +45,7 @@ export default class LinksScreen extends React.Component {
         quizProgress: this.state.quizProgress+1,
       });
     } else {
+      this.props.navigation.navigate('Results');
       this.setState({
         quizProgress: 0,
       });
@@ -76,7 +77,7 @@ export default class LinksScreen extends React.Component {
     return (
       <View style={styles.quizContainer}>
         <ProgressBar
-          progress={this.state.quizProgress}
+          progress={this.state.quizProgress / this.state.quiz.questions.length}
           borderRadius={0}
           width={null}
           height={10}

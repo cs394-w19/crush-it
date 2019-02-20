@@ -10,11 +10,11 @@ let quizData = require("../assets/quiz_data.json");
 export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
-    
+
 
     // maybe move all of this into a componentDidMount()?
     // need some way to track whether they got it right or not, and what they need to work on
-    // maybe make a "you got 1 right!" as a header and then 
+    // maybe make a "you got 1 right!" as a header and then
     // a list of whether you can do better in each category
 
     // need something that tracks what they put, but for now, assume all right
@@ -27,7 +27,7 @@ export default class ResultsScreen extends React.Component {
     title: 'Results',
     headerLeft: (
         <Button
-            onPress={() => navigation.navigate('Links')} // what should this be called/go back to 
+            onPress={() => navigation.navigate('Quiz')} // what should this be called/go back to 
             title="Back"
             color={Colors.tintColor}
         />)
@@ -61,12 +61,12 @@ export default class ResultsScreen extends React.Component {
         return (
         <Text key={item[0]}>You got {item[1]} points in the {item[0]} category</Text>
         )
-    }) 
+    })
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
             <View style={styles.titleView}>
-                <Text style={styles.title}>You got 100 right!</Text>  
+                <Text style={styles.title}>You got 100 right!</Text>
             </View>
             {categories}
       </ScrollView>
