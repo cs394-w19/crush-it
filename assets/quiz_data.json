@@ -1,0 +1,92 @@
+{
+	"quizzes" : 
+		[
+			{
+				"quizName" : "sample quiz",
+				"quizCategory" : "sample",
+				"questions" :
+				[
+					{
+						"questionText" : "This is a sample question, please pick A",
+						"answerChoices" : 
+							[
+								{
+									"answerText" : "A",
+									"isCorrect" : true,
+									"explanation" : "You're right! We told you to pick A and you did!"
+								},
+								{
+									"answerText" : "B",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick A!"
+								},
+								{
+									"answerText" : "C",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick A!"
+								},
+								{
+									"answerText" : "D",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick A!"
+								}
+							]
+					}
+					,
+					{
+						"questionText" : "This is a sample question, please pick B",
+						"answerChoices" : 
+							[
+								{
+									"answerText" : "A",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick B!"
+								},
+								{
+									"answerText" : "B",
+									"isCorrect" : true,
+									"explanation" : "You're right! We told you to pick B and you did!"
+								},
+								{
+									"answerText" : "C",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick B!"
+								},
+								{
+									"answerText" : "D",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick B!"
+								}
+							]
+					}
+					,
+					{
+						"questionText" : "This is a sample question, please pick C",
+						"answerChoices" : 
+							[
+								{
+									"answerText" : "A",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick C!"
+								},
+								{
+									"answerText" : "B",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick C!"
+								},
+								{
+									"answerText" : "C",
+									"isCorrect" : true,
+									"explanation" : "You're right! We told you to pick C and you did!"
+								},
+								{
+									"answerText" : "D",
+									"isCorrect" : false,
+									"explanation" : "Wrong! We told you to pick C!"
+								}
+							]
+					}
+				]
+			}
+		]
+}
