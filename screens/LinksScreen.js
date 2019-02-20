@@ -13,9 +13,19 @@ export default class LinksScreen extends React.Component {
     };
   }
 
-  static navigationOptions = {
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
     title: 'Demo Quiz',
+    headerRight: (
+        <Button
+            onPress={() => navigation.navigate('Results')} // what should this be called/go back to 
+            title="Results"
+            color={Colors.tintColor}
+        />)
+    ,};
   };
+
 
   nextQuestion() {
     if (this.state.quizProgress < 0.99) {
