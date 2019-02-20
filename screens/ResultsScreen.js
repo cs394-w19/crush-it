@@ -4,6 +4,8 @@ import { ExpoLinksView } from '@expo/samples';
 import ProgressBar from 'react-native-progress/Bar';
 import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
+import Confetti from 'react-native-confetti';
+
 
 let quizData = require("../assets/quiz_data.json");
 
@@ -19,6 +21,12 @@ export default class ResultsScreen extends React.Component {
 
     // need something that tracks what they put, but for now, assume all right
    //Object.keys(learningProgress).map(key =>  { return {key : learningProgress[key]}});
+  }
+
+  componentDidMount() {
+    if(this._confettiView) {
+       this._confettiView.startConfetti();
+    }
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -65,10 +73,14 @@ export default class ResultsScreen extends React.Component {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-            <View style={styles.titleView}>
-                <Text style={styles.title}>You got 100 right!</Text>
-            </View>
-            {categories}
+        <Confetti 
+          confettiCount={200} 
+          ref={(node) => this._confettiView = node}
+        />
+        <View style={styles.titleView}>
+            <Text style={styles.title}>You got 100 right!</Text>
+        </View>
+        {categories}
       </ScrollView>
     );
   }
