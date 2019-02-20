@@ -4,10 +4,12 @@
 			{
 				"quizName" : "sample quiz",
 				"quizCategory" : "sample",
+				"learningCategories" : ["reading", "following directions"],
 				"questions" :
 				[
 					{
 						"questionText" : "This is a sample question, please pick A",
+						"learningCategory" : "reading",
 						"answerChoices" : 
 							[
 								{
@@ -35,6 +37,7 @@
 					,
 					{
 						"questionText" : "This is a sample question, please pick B",
+						"learningCategory" : "reading",
 						"answerChoices" : 
 							[
 								{
@@ -62,6 +65,7 @@
 					,
 					{
 						"questionText" : "This is a sample question, please pick C",
+						"learningCategory" : "following directions",
 						"answerChoices" : 
 							[
 								{

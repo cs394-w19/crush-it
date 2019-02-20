@@ -6,6 +6,7 @@ import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
 import LinksScreen from '../screens/LinksScreen';
 import SettingsScreen from '../screens/SettingsScreen';
+import ResultsScreen from "../screens/ResultsScreen";
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -39,6 +40,10 @@ LinksStack.navigationOptions = {
   ),
 };
 
+const ResultsStack = createStackNavigator({
+  Results: ResultsScreen
+});
+
 const SettingsStack = createStackNavigator({
   Settings: SettingsScreen,
 });
@@ -57,4 +62,5 @@ export default createBottomTabNavigator({
   LinksStack,
   HomeStack,
   SettingsStack,
+  ResultsStack
 });

@@ -16,9 +16,20 @@ export default class LinksScreen extends React.Component {
     };
   }
 
-  static navigationOptions = {
-    title: 'Quiz',
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
+    title: 'Demo Quiz',
+    headerRight: (
+        <Button
+            onPress={() => navigation.navigate('Results')} // what should this be called/go back to 
+            title="Results"
+            color={Colors.tintColor}
+        />)
+    ,};
   };
+
+
 
   componentDidMount() {
     let quiz_data = require('../assets/quiz_data.json').quizzes;
