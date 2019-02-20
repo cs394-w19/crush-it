@@ -1,15 +1,18 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, Text, View } from 'react-native';
+import { ScrollView, StyleSheet, Button, TouchableOpacity, Text, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import ProgressBar from 'react-native-progress/Bar';
 import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
 
+
+
 export default class LinksScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quizProgress: 0.1
+      quiz: null,
+      quizProgress: 0,
     };
   }
 
@@ -17,31 +20,44 @@ export default class LinksScreen extends React.Component {
     title: 'Quiz',
   };
 
-  nextQuestion() {
-    if (this.state.quizProgress < 0.99) {
+  componentDidMount() {
+    let quiz_data = require('../assets/quiz_data.json').quizzes;
+    let quiz = quiz_data.find(q => { return q.quizName  === "sample quiz"});
+    this.setState({
+      quiz: quiz,
+    });
+  }
+
+  nextQuestion(answerText) {
+    if (this.state.quizProgress+1 < this.state.quiz.questions.length) {
       this.setState({
-        quizProgress: this.state.quizProgress+0.1,
+        quizProgress: this.state.quizProgress+1,
       });
-    };
+    } else {
+      this.setState({
+        quizProgress: 0,
+      });
+    }
   }
 
 
 
   render() {
+    if (!this.state.quiz) return(<Text />);
 
-    let answers = ['option a','option b','option c','option d'];
-    let buttons = answers.map((item) => {
+    let answers = this.state.quiz.questions[this.state.quizProgress].answerChoices.map(choice => { return choice.answerText });
+    let buttons = answers.map((answerText) => {
       return (
         <CardView
-          key={item}
+          key={answerText}
           style={styles.multipleChoiceOption}
-          cardElevation={10}
+          cardElevation={5}
           cornerRadius={10}
           cornerOverlap={false}
         >
-          <Button title={item} onPress={() => this.nextQuestion()}>
-            <Text style={styles.multipleChoiceButton}>{item}</Text>
-          </Button>
+          <TouchableOpacity title={answerText} onPress={() => this.nextQuestion(answerText)}>
+            <Text style={styles.multipleChoiceButton}>{answerText}</Text>
+          </TouchableOpacity>
         </CardView>
 
         );
@@ -58,12 +74,12 @@ export default class LinksScreen extends React.Component {
         />
         <CardView
           style={styles.questionContainer}
-          cardElevation={10}
+          cardElevation={5}
           cornerRadius={10}
           cornerOverlap={false}
         >
           <Text style={{fontSize: 30}}>
-            This is question number {Math.round(this.state.quizProgress*10)}. What is the answer?
+            {this.state.quiz ? this.state.quiz.questions[this.state.quizProgress].questionText: ""}
           </Text>
         </CardView>
         <View style={styles.buttonContainer}>
@@ -80,27 +96,33 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     position: 'absolute',
-    bottom: '15%',
+    bottom: '0%',
     justifyContent: 'center',
     alignItems: 'center',
     flexWrap: 'wrap',
     flexDirection: 'row',
     width: '100%',
+    height: '30%',
   },
   questionContainer: {
+    position: 'absolute',
+    bottom: '30%',
     backgroundColor: 'white',
     padding: 30,
     margin: '3%',
-    marginTop: '5%',
+    width: '94%',
     height: '60%',
   },
   multipleChoiceOption: {
     backgroundColor: 'white',
     width: '44%',
     margin: '3%',
-    padding: 10,
+    padding: 15,
   },
   multipleChoiceButton: {
-    fontSize: 30,
+    fontSize: 24,
+    color: Colors.appPrimary,
+    textAlign: 'center',
+    //fontWeight: 'bold',
   },
 });
