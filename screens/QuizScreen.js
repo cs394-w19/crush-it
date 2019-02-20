@@ -13,22 +13,16 @@ export default class QuizScreen extends React.Component {
     this.state = {
       quiz: null,
       quizProgress: 0,
+      score: 0,
     };
   }
 
-  static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
-    return {
-    title: 'Demo Quiz',
-    headerRight: (
-        <Button
-            onPress={() => navigation.navigate('Results')} // what should this be called/go back to
-            title="Results"
-            color={Colors.tintColor}
-        />)
-    ,};
+  static navigationOptions = ( navigation ) => {
+    //const { params = {} } = navigation.state;
+    return ({
+      title: 'Quiz',
+    });
   };
-
 
 
   componentDidMount() {
@@ -37,17 +31,26 @@ export default class QuizScreen extends React.Component {
     this.setState({
       quiz: quiz,
     });
+
+    this.props.navigation.setParams({
+      quiz: this.state.quiz,
+    });
   }
 
   nextQuestion(answerText) {
     if (this.state.quizProgress+1 < this.state.quiz.questions.length) {
+      let currQuestion = this.state.quiz.questions[this.state.quizProgress];
+      let choice = currQuestion.answerChoices.find(choice => { return answerText === choice.answerText });
+      let answerCorrect = choice.isCorrect;
       this.setState({
-        quizProgress: this.state.quizProgress+1,
+        quizProgress: this.state.quizProgress + 1,
+        score: this.state.score + (answerCorrect ? 1 : 0),
       });
     } else {
-      this.props.navigation.navigate('Results');
-      this.setState({
-        quizProgress: 0,
+      // presumably also need metrics for each question
+      this.props.navigation.navigate('Results', {
+        score: this.state.score,
+        maxScore: this.state.quiz.questions.length,
       });
     }
   }
@@ -84,15 +87,13 @@ export default class QuizScreen extends React.Component {
           borderWidth={0}
           color={Colors.appPrimary}
         />
+        <Text>{this.state.score}</Text>
         <CardView
           style={styles.questionContainer}
           cardElevation={5}
           cornerRadius={10}
           cornerOverlap={false}
         >
-          <Text style={{fontSize: 30}}>
-            {this.state.quiz ? this.state.quiz.questions[this.state.quizProgress].questionText: ""}
-          </Text>
         </CardView>
         <View style={styles.buttonContainer}>
           {buttons}
