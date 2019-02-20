@@ -87,13 +87,15 @@ export default class QuizScreen extends React.Component {
           borderWidth={0}
           color={Colors.appPrimary}
         />
-        <Text>{this.state.score}</Text>
         <CardView
           style={styles.questionContainer}
           cardElevation={5}
           cornerRadius={10}
           cornerOverlap={false}
         >
+        <Text style={{fontSize: 30}}>
+          {this.state.quiz ? this.state.quiz.questions[this.state.quizProgress].questionText: ""}
+        </Text>
         </CardView>
         <View style={styles.buttonContainer}>
           {buttons}
