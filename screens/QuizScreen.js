@@ -46,7 +46,7 @@ export default class QuizScreen extends React.Component {
       quizProgress: this.state.quizProgress + 1,
       score: this.state.score + (answerCorrect ? 1 : 0),
     });
-    
+
     if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
       this.props.navigation.navigate('Results', {
@@ -95,7 +95,7 @@ export default class QuizScreen extends React.Component {
           cornerRadius={10}
           cornerOverlap={false}
         >
-        <Text style={{fontSize: 30}}>
+        <Text style={{fontSize: 24}}>
           {this.state.quiz ? this.state.quiz.questions[this.state.quizProgress].questionText: ""}
         </Text>
         </CardView>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     position: 'absolute',
     bottom: '30%',
     backgroundColor: 'white',
-    padding: 30,
+    padding: 20,
     margin: '3%',
     width: '94%',
     height: '60%',

@@ -1,5 +1,5 @@
 {
-	"quizzes" : 
+	"quizzes" :
 		[
 			{
 				"quizName" : "sample quiz",
@@ -8,86 +8,56 @@
 				"questions" :
 				[
 					{
-						"questionText" : "This is a sample question, please pick A",
+						"questionText" : "You’re looking for a new credit card and read something about interest. After comparing a few credit cards, you find out interest rates can be as high as 30%.",
 						"learningCategory" : "reading",
-						"answerChoices" : 
+						"answerChoices" :
 							[
 								{
-									"answerText" : "A",
+									"answerText" : "BELIEVE",
 									"isCorrect" : true,
 									"explanation" : "You're right! We told you to pick A and you did!"
 								},
 								{
-									"answerText" : "B",
+									"answerText" : "YEAH RIGHT",
 									"isCorrect" : false,
 									"explanation" : "Wrong! We told you to pick A!"
 								},
-								{
-									"answerText" : "C",
-									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick A!"
-								},
-								{
-									"answerText" : "D",
-									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick A!"
-								}
 							]
 					}
 					,
 					{
-						"questionText" : "This is a sample question, please pick B",
+						"questionText" : "Next thing you know, you’re at the taping of Oprah’s holiday special episode. And you remember something your Mom always said, 'To build good credit, you have to carry a balance.'",
 						"learningCategory" : "reading",
-						"answerChoices" : 
+						"answerChoices" :
 							[
 								{
-									"answerText" : "A",
+									"answerText" : "BELIEVE",
 									"isCorrect" : false,
 									"explanation" : "Wrong! We told you to pick B!"
 								},
 								{
-									"answerText" : "B",
+									"answerText" : "RIGHT",
 									"isCorrect" : true,
 									"explanation" : "You're right! We told you to pick B and you did!"
 								},
-								{
-									"answerText" : "C",
-									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick B!"
-								},
-								{
-									"answerText" : "D",
-									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick B!"
-								}
 							]
 					}
 					,
 					{
-						"questionText" : "This is a sample question, please pick C",
+						"questionText" : "You’re checking out at your favorite clothing store and they offered you 20% off your purchase by signing up for their credit card. 5 minutes later… your wallet is now overflowing with credit cards. 5 months later… you’ve maxed out every credit card in your wallet. You look at the interest rates of each card and begin paying off the lowest interest rate card first.",
 						"learningCategory" : "following directions",
-						"answerChoices" : 
+						"answerChoices" :
 							[
 								{
-									"answerText" : "A",
+									"answerText" : "BELIEVE",
 									"isCorrect" : false,
 									"explanation" : "Wrong! We told you to pick C!"
 								},
 								{
-									"answerText" : "B",
-									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick C!"
-								},
-								{
-									"answerText" : "C",
+									"answerText" : "RIGHT",
 									"isCorrect" : true,
-									"explanation" : "You're right! We told you to pick C and you did!"
+									"explanation" : "You're right!"
 								},
-								{
-									"answerText" : "D",
-									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick C!"
-								}
 							]
 					}
 				]
