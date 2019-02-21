@@ -13,6 +13,10 @@ export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      score : this.props.navigation.getParam("score"),
+      maxScore : this.props.navigation.getParam("maxScore")
+    };
 
     // maybe move all of this into a componentDidMount()?
     // need some way to track whether they got it right or not, and what they need to work on
@@ -71,6 +75,8 @@ export default class ResultsScreen extends React.Component {
         )
     })
 
+
+
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Confetti 
@@ -78,7 +84,7 @@ export default class ResultsScreen extends React.Component {
           ref={(node) => this._confettiView = node}
         />
         <View style={styles.titleView}>
-            <Text style={styles.title}>You got 100 right!</Text>
+            <Text style={styles.title}>You got {this.state.score} {this.state.score === 1 ? "point" :  "points"}!</Text>
         </View>
         {categories}
       </ScrollView>
