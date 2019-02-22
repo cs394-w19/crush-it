@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Image,
   Platform,
@@ -7,119 +7,121 @@ import {
   Text,
   TouchableOpacity,
   AppRegistry,
-  View,
-} from 'react-native';
-import { WebBrowser } from 'expo';
-import Confetti from 'react-native-confetti';
-import { MonoText } from '../components/StyledText';
-import Emoji from 'react-native-emoji';
+  View
+} from "react-native";
+import { WebBrowser } from "expo";
+import Confetti from "react-native-confetti";
+import { MonoText } from "../components/StyledText";
+import Emoji from "react-native-emoji";
 
 export default class HomeScreen extends React.Component {
   componentDidMount() {
-    if(this._confettiView) {
-       this._confettiView.startConfetti();
+    if (this._confettiView) {
+      this._confettiView.startConfetti();
     }
   }
 
   render() {
-    return <View style={styles.container}>
-      <Confetti 
-        confettiCount={200} 
-        ref={(node) => this._confettiView = node}/>
+    return (
+      <View style={styles.container}>
+        <Confetti
+          confettiCount={200}
+          ref={node => (this._confettiView = node)}
+        />
         <View style={styles.welcomeContainer}>
           <Text style={styles.congratsText}>Congratulations!</Text>
-          <Emoji name="smile-cat" style={{fontSize: 50}} />
+          <Emoji name="smile-cat" style={{ fontSize: 50 }} />
         </View>
-    </View>
+      </View>
+    );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff"
   },
   developmentModeText: {
     marginBottom: 20,
-    color: 'rgba(0,0,0,0.4)',
+    color: "rgba(0,0,0,0.4)",
     fontSize: 14,
     lineHeight: 19,
-    textAlign: 'center',
+    textAlign: "center"
   },
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: 30
   },
   welcomeContainer: {
-    alignItems: 'center',
+    alignItems: "center",
     marginTop: 80,
-    marginBottom: 20,
+    marginBottom: 20
   },
   welcomeImage: {
     width: 100,
     height: 80,
-    resizeMode: 'contain',
+    resizeMode: "contain",
     marginTop: 3,
-    marginLeft: -10,
+    marginLeft: -10
   },
   getStartedContainer: {
-    alignItems: 'center',
-    marginHorizontal: 50,
+    alignItems: "center",
+    marginHorizontal: 50
   },
   homeScreenFilename: {
-    marginVertical: 7,
+    marginVertical: 7
   },
   codeHighlightText: {
-    color: 'rgba(96,100,109, 0.8)',
+    color: "rgba(96,100,109, 0.8)"
   },
   codeHighlightContainer: {
-    backgroundColor: 'rgba(0,0,0,0.05)',
+    backgroundColor: "rgba(0,0,0,0.05)",
     borderRadius: 3,
-    paddingHorizontal: 4,
+    paddingHorizontal: 4
   },
   congratsText: {
     fontSize: 30,
-    color: 'rgba(96,100,109, 1)',
+    color: "rgba(96,100,109, 1)",
     lineHeight: 30,
-    textAlign: 'center',
+    textAlign: "center"
   },
   tabBarInfoContainer: {
-    position: 'absolute',
+    position: "absolute",
     bottom: 0,
     left: 0,
     right: 0,
     ...Platform.select({
       ios: {
-        shadowColor: 'black',
+        shadowColor: "black",
         shadowOffset: { height: -3 },
         shadowOpacity: 0.1,
-        shadowRadius: 3,
+        shadowRadius: 3
       },
       android: {
-        elevation: 20,
-      },
+        elevation: 20
+      }
     }),
-    alignItems: 'center',
-    backgroundColor: '#fbfbfb',
-    paddingVertical: 20,
+    alignItems: "center",
+    backgroundColor: "#fbfbfb",
+    paddingVertical: 20
   },
   tabBarInfoText: {
     fontSize: 17,
-    color: 'rgba(96,100,109, 1)',
-    textAlign: 'center',
+    color: "rgba(96,100,109, 1)",
+    textAlign: "center"
   },
   navigationFilename: {
-    marginTop: 5,
+    marginTop: 5
   },
   helpContainer: {
     marginTop: 15,
-    alignItems: 'center',
+    alignItems: "center"
   },
   helpLink: {
-    paddingVertical: 15,
+    paddingVertical: 15
   },
   helpLinkText: {
     fontSize: 14,
-    color: '#2e78b7',
-  },
+    color: "#2e78b7"
+  }
 });
