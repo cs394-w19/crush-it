@@ -7,8 +7,6 @@ import Confetti from 'react-native-confetti';
 import * as Progress from 'react-native-progress';
 
 
-
-
 let quizData = require("../assets/quiz_data.json");
 
 export default class ResultsScreen extends React.Component {
@@ -32,10 +30,9 @@ export default class ResultsScreen extends React.Component {
   }
 
   componentDidMount() {
-    
     setTimeout(() => {this.showExperienceGained(70)}, 200); // this should be depend on score
-
   }
+
 
   showExperienceGained(points){
 
@@ -88,7 +85,6 @@ export default class ResultsScreen extends React.Component {
     })
 
 
-
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Confetti 
@@ -101,10 +97,10 @@ export default class ResultsScreen extends React.Component {
             color={Colors.appPrimary}
             progress={this.state.progress}
             showsText={true}
-            formatText={(progress) => {return parseFloat(progress*100).toFixed(0) + "%";}}
+            formatText={(progress) => {return "XP";}}
             />
           <Text style={styles.title}>
-            You got {this.state.score} {this.state.score === 1 ? "point" :  "points"}!
+            You got {this.state.score * 10} points!
           </Text>
           <Text style={styles.subtitle}>
             {parseFloat((1-this.state.progress)*this.state.expPointsInThisLevel).toFixed(0)} points to the next level!
@@ -115,6 +111,7 @@ export default class ResultsScreen extends React.Component {
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -137,7 +134,7 @@ const styles = StyleSheet.create({
 
   },
   title: {
-    fontSize: 50,
+    fontSize: 40,
     color: 'black',
 
   },
