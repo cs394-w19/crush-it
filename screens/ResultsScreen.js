@@ -1,10 +1,10 @@
 import React from 'react';
 import {FlatList, ScrollView, StyleSheet, Button, Text, View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
-import ProgressBar from 'react-native-progress/Bar';
 import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
 import Confetti from 'react-native-confetti';
+import * as Progress from 'react-native-progress';
 
 
 let quizData = require("../assets/quiz_data.json");
@@ -15,7 +15,9 @@ export default class ResultsScreen extends React.Component {
 
     this.state = {
       score : this.props.navigation.getParam("score"),
-      maxScore : this.props.navigation.getParam("maxScore")
+      maxScore : this.props.navigation.getParam("maxScore"),
+      expPointsInThisLevel: 100,
+      progress : 0
     };
 
     // maybe move all of this into a componentDidMount()?
@@ -28,9 +30,18 @@ export default class ResultsScreen extends React.Component {
   }
 
   componentDidMount() {
-    if(this._confettiView) {
-       this._confettiView.startConfetti();
-    }
+    setTimeout(() => {this.showExperienceGained(70)}, 200); // this should be depend on score
+  }
+
+
+  showExperienceGained(points){
+
+    let progress = points / this.state.expPointsInThisLevel;
+
+    this.setState({progress}, () => {
+      if(this._confettiView) {
+      this._confettiView.startConfetti();
+   }});
   }
 
   static navigationOptions = ({ navigation }) => {
@@ -53,8 +64,6 @@ export default class ResultsScreen extends React.Component {
     let learningProgress = {};
     let correctAnswers = 0; // or XP or stars or something
 
-
-
     for(let i = 0; i < currentQuiz.questions.length; i++ ){
         // check whether they got it right, assume for now they did
         correctAnswers++;
@@ -76,7 +85,6 @@ export default class ResultsScreen extends React.Component {
     })
 
 
-
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Confetti 
@@ -84,13 +92,26 @@ export default class ResultsScreen extends React.Component {
           ref={(node) => this._confettiView = node}
         />
         <View style={styles.titleView}>
-            <Text style={styles.title}>You got {this.state.score} {this.state.score === 1 ? "point" :  "points"}!</Text>
+          <Progress.Circle 
+            size={200}
+            color={Colors.appPrimary}
+            progress={this.state.progress}
+            showsText={true}
+            formatText={(progress) => {return "XP";}}
+            />
+          <Text style={styles.title}>
+            You got {this.state.score * 10} points!
+          </Text>
+          <Text style={styles.subtitle}>
+            {parseFloat((1-this.state.progress)*this.state.expPointsInThisLevel).toFixed(0)} points to the next level!
+          </Text>
         </View>
         {categories}
       </ScrollView>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -108,11 +129,14 @@ const styles = StyleSheet.create({
   titleView: {
     padding: 10,
     borderBottomColor: '#e3e3e3',
-    borderBottomWidth: 1
+    borderBottomWidth: 1,
+    alignItems: 'center',
+
   },
   title: {
-    fontSize: 24,
-    color: 'black'
+    fontSize: 40,
+    color: 'black',
+
   },
   sliderStyle: {
     width: 300,
