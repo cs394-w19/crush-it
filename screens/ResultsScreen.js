@@ -80,7 +80,7 @@ export default class ResultsScreen extends React.Component {
     let categories = flattenedData.map((item) =>{
         //console.log(item);
         return (
-        <Text key={item[0]}>You got {item[1]} points in the {item[0]} category</Text>
+        <Text key={item[0]}>{item[1]*10} points in the {item[0]} category</Text>
         )
     })
 
@@ -102,7 +102,7 @@ export default class ResultsScreen extends React.Component {
           <Text style={styles.title}>
             You got {this.state.score * 10} points!
           </Text>
-          <Text style={styles.subtitle}>
+          <Text>
             {parseFloat((1-this.state.progress)*this.state.expPointsInThisLevel).toFixed(0)} points to the next level!
           </Text>
         </View>

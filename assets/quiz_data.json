@@ -2,14 +2,14 @@
 	"quizzes" :
 		[
 			{
-				"quizName" : "sample quiz",
-				"quizCategory" : "sample",
-				"learningCategories" : ["reading", "following directions"],
+				"quizName" : "Credit Card Debt",
+				"quizCategory" : "debt",
+				"learningCategories" : ["interest rates", "credit score"],
 				"questions" :
 				[
 					{
 						"questionText" : "You’re looking for a new credit card and read something about interest. After comparing a few credit cards, you find out interest rates can be as high as 30%.",
-						"learningCategory" : "reading",
+						"learningCategory" : "interest rates",
 						"answerChoices" :
 							[
 								{
@@ -27,7 +27,7 @@
 					,
 					{
 						"questionText" : "Next thing you know, you’re at the taping of Oprah’s holiday special episode. And you remember something your Mom always said, 'To build good credit, you have to carry a balance.'",
-						"learningCategory" : "reading",
+						"learningCategory" : "credit score",
 						"answerChoices" :
 							[
 								{
@@ -45,7 +45,7 @@
 					,
 					{
 						"questionText" : "You’re checking out at your favorite clothing store and they offered you 20% off your purchase by signing up for their credit card. 5 minutes later… your wallet is now overflowing with credit cards. 5 months later… you’ve maxed out every credit card in your wallet. You look at the interest rates of each card and begin paying off the lowest interest rate card first.",
-						"learningCategory" : "following directions",
+						"learningCategory" : "interest rates",
 						"answerChoices" :
 							[
 								{
