@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Golden Yellow",
-    "slug": "yellow-gold-client-project",
+    "name": "Crush it!",
+    "slug": "crush-it",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
@@ -25,6 +25,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": ""
+    "description": "Demo application for Team Gold",
+    "githubUrl": "https://github.com/cs394-w19/crush-it"
   }
 }

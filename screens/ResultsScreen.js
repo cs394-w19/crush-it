@@ -26,7 +26,7 @@ export default class ResultsScreen extends React.Component {
     // a list of whether you can do better in each category
 
     // need something that tracks what they put, but for now, assume all right
-   //Object.keys(learningProgress).map(key =>  { return {key : learningProgress[key]}});
+    //Object.keys(learningProgress).map(key =>  { return {key : learningProgress[key]}});
   }
 
   componentDidMount() {
@@ -47,16 +47,16 @@ export default class ResultsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-    title: 'Results',
-    headerLeft: (
+      title: "Results",
+      headerLeft: (
         <Button
-            onPress={() => navigation.navigate('Quiz')} // what should this be called/go back to 
-            title="Back"
-            color={Colors.tintColor}
-        />)
-    ,};
+          onPress={() => navigation.navigate("Quiz")} // what should this be called/go back to
+          title="Back"
+          color={Colors.tintColor}
+        />
+      )
+    };
   };
-
 
   render() {
     let currentQuiz = quizData["quizzes"][0]; // just the sample quiz for now
@@ -87,12 +87,12 @@ export default class ResultsScreen extends React.Component {
 
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Confetti 
-          confettiCount={200} 
-          ref={(node) => this._confettiView = node}
+        <Confetti
+          confettiCount={200}
+          ref={node => (this._confettiView = node)}
         />
         <View style={styles.titleView}>
-          <Progress.Circle 
+          <Progress.Circle
             size={200}
             color={Colors.appPrimary}
             progress={this.state.progress}
@@ -116,12 +116,11 @@ export default class ResultsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-    flexWrap: 'wrap-reverse',
-    width: '100%',
-
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#F5FCFF",
+    flexWrap: "wrap-reverse",
+    width: "100%"
   },
   child: {
     width: 300
@@ -141,5 +140,5 @@ const styles = StyleSheet.create({
   sliderStyle: {
     width: 300,
     marginTop: 40
-  },
+  }
 });

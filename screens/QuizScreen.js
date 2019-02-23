@@ -1,11 +1,17 @@
-import React from 'react';
-import { ScrollView, StyleSheet, Button, TouchableOpacity, Text, View } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
-import ProgressBar from 'react-native-progress/Bar';
-import CardView from 'react-native-cardview';
-import Colors from '../constants/Colors';
+import React from "react";
+import {
+  ScrollView,
+  StyleSheet,
+  Button,
+  TouchableOpacity,
+  Text,
+  View
+} from "react-native";
 
-
+import { ExpoLinksView } from "@expo/samples";
+import ProgressBar from "react-native-progress/Bar";
+import CardView from "react-native-cardview";
+import Colors from "../constants/Colors";
 
 export default class QuizScreen extends React.Component {
   constructor(props) {
@@ -14,70 +20,104 @@ export default class QuizScreen extends React.Component {
       quiz: null,
       quizProgress: 0,
       score: 0,
+      button: 0,
+      submitted: false,
     };
   }
 
-  static navigationOptions = ( navigation ) => {
+  static navigationOptions = navigation => {
     //const { params = {} } = navigation.state;
-    return ({
-      title: 'Quiz',
-    });
+    return {
+      title: "Quiz"
+    };
   };
 
-
   componentDidMount() {
-    let quiz_data = require('../assets/quiz_data.json').quizzes;
-    let quiz = quiz_data.find(q => { return q.quizName  === "sample quiz"});
+    let quiz_data = require("../assets/quiz_data.json").quizzes;
+    let quiz = quiz_data.find(q => {
+      return q.quizName === "sample quiz";
+    });
     this.setState({
-      quiz: quiz,
+      quiz: quiz
     });
 
     this.props.navigation.setParams({
-      quiz: this.state.quiz,
+      quiz: this.state.quiz
     });
+  }
+
+  isAnswerCorrect(answerText) {
+    let currQuestion = this.state.quiz.questions[this.state.quizProgress];
+    let choice = currQuestion.answerChoices.find(choice => {
+      return answerText === choice.answerText;
+    });
+    return choice.isCorrect;
   }
 
   nextQuestion(answerText) {
-    console.log(this.state.quizProgress);
-    let currQuestion = this.state.quiz.questions[this.state.quizProgress];
-    let choice = currQuestion.answerChoices.find(choice => { return answerText === choice.answerText });
-    let answerCorrect = choice.isCorrect;
-    this.setState({
-      quizProgress: this.state.quizProgress + 1,
-      score: this.state.score + (answerCorrect ? 1 : 0),
-    });
+    let answerCorrect = this.isAnswerCorrect(answerText);
+    let newScore = answerCorrect ? this.state.score + 1 : this.state.score;
 
-    if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
+    this.setState({ score: newScore });
+
+    if (this.state.quizProgress+1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
-      this.props.navigation.navigate('Results', {
+      this.props.navigation.navigate("Results", {
         score: this.state.score,
         maxScore: this.state.quiz.questions.length,
       });
-      this.setState({quizProgress : 0, score : 0});
+      this.setState({
+        quizProgress: 0,
+        score: 0,
+        submitted: false
+      });
+    }
+    else {
+      this.setState({
+        quizProgress: this.state.quizProgress + 1,
+        submitted: false,
+      });
     }
   }
 
-
+  handleAnswerButtonPress(answerText) {
+    let answerCorrect = this.isAnswerCorrect(answerText);
+    this.setState({
+      submitted: answerText,
+    });
+    setTimeout(() => { this.nextQuestion(answerText) }, 1000);
+  }
 
   render() {
-    if (!this.state.quiz) return(<Text />);
+    if (!this.state.quiz) return <Text />;
 
-    let answers = this.state.quiz.questions[this.state.quizProgress].answerChoices.map(choice => { return choice.answerText });
-    let buttons = answers.map((answerText) => {
+    let answers = this.state.quiz.questions[
+      this.state.quizProgress
+    ].answerChoices.map(choice => {
+      return choice.answerText;
+    });
+    let buttons = answers.map(answerText => {
+      let answerCorrect = this.isAnswerCorrect(answerText);
+      let answerStyle = answerCorrect ? styles.multipleChoiceOptionCorrect : styles.multipleChoiceOptionWrong;
+      let buttonStyle = answerText === this.state.submitted ? answerStyle : styles.multipleChoiceOption;
+
       return (
         <CardView
           key={answerText}
-          style={styles.multipleChoiceOption}
+          style={buttonStyle}
           cardElevation={5}
           cornerRadius={10}
           cornerOverlap={false}
         >
-          <TouchableOpacity title={answerText} onPress={() => this.nextQuestion(answerText)}>
+          <Button
+            title={answerText}
+            color={buttonStyle.color}
+            onPress={() => this.handleAnswerButtonPress(answerText)}
+          >
             <Text style={styles.multipleChoiceButton}>{answerText}</Text>
-          </TouchableOpacity>
+          </Button>
         </CardView>
-
-        );
+      );
     });
     return (
       <View style={styles.quizContainer}>
@@ -95,13 +135,13 @@ export default class QuizScreen extends React.Component {
           cornerRadius={10}
           cornerOverlap={false}
         >
-        <Text style={{fontSize: 24}}>
-          {this.state.quiz ? this.state.quiz.questions[this.state.quizProgress].questionText: ""}
-        </Text>
+          <Text style={{ fontSize: 24 }}>
+            {this.state.quiz
+              ? this.state.quiz.questions[this.state.quizProgress].questionText
+              : ""}
+          </Text>
         </CardView>
-        <View style={styles.buttonContainer}>
-          {buttons}
-        </View>
+        <View style={styles.buttonContainer}>{buttons}</View>
       </View>
     );
   }
@@ -109,37 +149,54 @@ export default class QuizScreen extends React.Component {
 
 const styles = StyleSheet.create({
   quizContainer: {
-    flex: 1,
+    flex: 1
   },
   buttonContainer: {
-    position: 'absolute',
-    bottom: '0%',
-    justifyContent: 'center',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    flexDirection: 'row',
-    width: '100%',
-    height: '30%',
+    position: "absolute",
+    bottom: "0%",
+    justifyContent: "center",
+    alignItems: "center",
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: "100%",
+    height: "30%"
   },
   questionContainer: {
-    position: 'absolute',
-    bottom: '30%',
-    backgroundColor: 'white',
+    position: "absolute",
+    bottom: "30%",
+    backgroundColor: "white",
     padding: 20,
-    margin: '3%',
-    width: '94%',
-    height: '60%',
+    margin: "3%",
+    width: "94%",
+    height: "60%"
   },
   multipleChoiceOption: {
     backgroundColor: 'white',
-    width: '44%',
-    margin: '3%',
-    padding: 15,
+    color: 'black',
+    width: "44%",
+    margin: "3%",
+    padding: 15
+  },
+  multipleChoiceOptionCorrect: {
+    backgroundColor: '#a8ffac',
+    color: 'black',
+    width: "44%",
+    margin: "3%",
+    padding: 15
+  },
+  multipleChoiceOptionWrong: {
+    backgroundColor: '#ffa8a8',
+    color: 'black',
+    width: "44%",
+    margin: "3%",
+    padding: 15
   },
   multipleChoiceButton: {
     fontSize: 24,
-    color: Colors.appPrimary,
-    textAlign: 'center',
-    //fontWeight: 'bold',
+    textAlign: "center"
   },
+  onfocused: {
+    backgroundColor: "red",
+    color: "white"
+  }
 });
