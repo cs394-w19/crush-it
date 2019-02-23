@@ -22,7 +22,6 @@ export default class QuizScreen extends React.Component {
       score: 0,
       button: 0,
       submitted: false,
-      color: "appPrimary"
     };
   }
 
@@ -47,58 +46,46 @@ export default class QuizScreen extends React.Component {
     });
   }
 
-  nextQuestion(answerText) {
-    //console.log(this.state.quizProgress);
+  isAnswerCorrect(answerText) {
     let currQuestion = this.state.quiz.questions[this.state.quizProgress];
     let choice = currQuestion.answerChoices.find(choice => {
       return answerText === choice.answerText;
     });
-    let answerCorrect = choice.isCorrect;
+    return choice.isCorrect;
+  }
 
-    this.setState({
-      quizProgress: this.state.quizProgress + 1,
-      score: this.state.score + (answerCorrect ? 1 : 0)
-    });
+  nextQuestion(answerText) {
+    let answerCorrect = this.isAnswerCorrect(answerText);
+    let newScore = answerCorrect ? this.state.score + 1 : this.state.score;
 
-    if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
+    this.setState({ score: newScore });
+
+    if (this.state.quizProgress+1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
       this.props.navigation.navigate("Results", {
         score: this.state.score,
-        maxScore: this.state.quiz.questions.length
+        maxScore: this.state.quiz.questions.length,
       });
-      this.setState({ quizProgress: 0, score: 0 });
+      this.setState({
+        quizProgress: 0,
+        score: 0,
+        submitted: false
+      });
+    }
+    else {
+      this.setState({
+        quizProgress: this.state.quizProgress + 1,
+        submitted: false,
+      });
     }
   }
-  buttonColorChange(answerText) {
-    let currQuestion = this.state.quiz.questions[this.state.quizProgress];
-    let choice = currQuestion.answerChoices.find(choice => {
-      return answerText === choice.answerText;
-    });
-    let answerCorrect = choice.isCorrect;
 
+  handleAnswerButtonPress(answerText) {
+    let answerCorrect = this.isAnswerCorrect(answerText);
     this.setState({
-      color: answerCorrect ? "green" : "red"
+      submitted: answerText,
     });
-  }
-  saveAndContinue = () => {
-    if (this.state.submitted == false) {
-      return new Promise(function() {
-        setTimeout(
-          function() {
-            this.setState({ submitted: true });
-          }.bind(this),
-          3000
-        ); // wait 3 seconds, then reset to false
-      });
-    }
-  };
-
-  buttonFunctionCombined(answerText) {
-    this.buttonColorChange(answerText);
-    //color changed
-    this.saveAndContinue();
-    // hold for 3 secs
-    this.nextQuestion(answerText);
+    setTimeout(() => { this.nextQuestion(answerText) }, 1000);
   }
 
   render() {
@@ -110,18 +97,22 @@ export default class QuizScreen extends React.Component {
       return choice.answerText;
     });
     let buttons = answers.map(answerText => {
+      let answerCorrect = this.isAnswerCorrect(answerText);
+      let answerStyle = answerCorrect ? styles.multipleChoiceOptionCorrect : styles.multipleChoiceOptionWrong;
+      let buttonStyle = answerText === this.state.submitted ? answerStyle : styles.multipleChoiceOption;
+
       return (
         <CardView
           key={answerText}
-          style={styles.multipleChoiceOption}
+          style={buttonStyle}
           cardElevation={5}
           cornerRadius={10}
           cornerOverlap={false}
         >
           <Button
-            color={this.state.color}
             title={answerText}
-            onPress={() => this.buttonFunctionCombined(answerText)}
+            color={buttonStyle.color}
+            onPress={() => this.handleAnswerButtonPress(answerText)}
           >
             <Text style={styles.multipleChoiceButton}>{answerText}</Text>
           </Button>
@@ -180,16 +171,29 @@ const styles = StyleSheet.create({
     height: "60%"
   },
   multipleChoiceOption: {
-    backgroundColor: "white",
+    backgroundColor: 'white',
+    color: 'black',
+    width: "44%",
+    margin: "3%",
+    padding: 15
+  },
+  multipleChoiceOptionCorrect: {
+    backgroundColor: '#a8ffac',
+    color: 'black',
+    width: "44%",
+    margin: "3%",
+    padding: 15
+  },
+  multipleChoiceOptionWrong: {
+    backgroundColor: '#ffa8a8',
+    color: 'black',
     width: "44%",
     margin: "3%",
     padding: 15
   },
   multipleChoiceButton: {
     fontSize: 24,
-    color: Colors.appPrimary,
     textAlign: "center"
-    //fontWeight: 'bold',
   },
   onfocused: {
     backgroundColor: "red",

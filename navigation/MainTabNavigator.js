@@ -28,6 +28,7 @@ HomeStack.navigationOptions = {
 
 const QuizStack = createStackNavigator({
   Quiz: QuizScreen,
+  Results: ResultsScreen
 });
 
 QuizStack.navigationOptions = {
@@ -72,5 +73,5 @@ export default createBottomTabNavigator({
   QuizStack,
   // HomeStack,
   // SettingsStack,
-  ResultsStack
+  //ResultsStack
 });
