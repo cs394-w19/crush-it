@@ -20,7 +20,7 @@ export default class QuizBody extends React.Component {
         cornerRadius={10}
         cornerOverlap={false}
       >
-        <Text style={{ fontSize: 24 }}>
+        <Text style={{ fontSize: 20 }}>
           {this.props.explanation
             ? quiz.questions[question].explanation
             : quiz.questions[question].questionText}
@@ -34,11 +34,11 @@ export default class QuizBody extends React.Component {
 const styles = StyleSheet.create({
   questionContainer: {
     position: "absolute",
-    bottom: "30%",
+    top: "33%",
     backgroundColor: "white",
-    padding: 20,
+    padding: 15,
     margin: "3%",
     width: "94%",
-    height: "60%"
+    height: "50%"
   },
 });

@@ -4,7 +4,8 @@ import {
   StyleSheet,
   Button,
   Text,
-  View
+  View,
+  Image,
 } from "react-native";
 import { ExpoLinksView } from "@expo/samples";
 import ProgressBar from "react-native-progress/Bar";
@@ -29,7 +30,8 @@ export default class QuizScreen extends React.Component {
   static navigationOptions = navigation => {
     //const { params = {} } = navigation.state;
     return {
-      title: "Quiz"
+      title: "Quiz",
+      tabBarVisible: false,
     };
   };
 
@@ -90,16 +92,42 @@ export default class QuizScreen extends React.Component {
     this.setState({
       submitted: answerText,
     });
-    setTimeout(() => { this.setState({ explanation: true }) }, 1000);
+    setTimeout(() => { this.setState({
+      explanation: true
+    }) }, 500);
   }
 
   render() {
     if (!this.state.quiz) return <Text />;
 
+    let image = null;
+    switch (10*this.state.quizProgress + this.state.explanation) {
+      case 0:
+        image = require('../assets/images/credit-card-debt/question0.png');
+        break;
+      case 1:
+        image = require('../assets/images/credit-card-debt/explanation0.png');
+        break;
+      case 10:
+        image = require('../assets/images/credit-card-debt/question1.png');
+        break;
+      case 11:
+        image = require('../assets/images/credit-card-debt/explanation1.png');
+        break;
+      case 20:
+        image = require('../assets/images/credit-card-debt/question2.png');
+        break;
+      case 21:
+        image = require('../assets/images/credit-card-debt/explanation2.png');
+        break;
+      default:
+        break;
+    }
+
     return (
       <View style={styles.quizContainer}>
         <ProgressBar
-          progress={this.state.quizProgress / this.state.quiz.questions.length}
+          progress={(this.state.quizProgress * 2 + this.state.explanation) / this.state.quiz.questions.length / 2}
           borderRadius={0}
           width={null}
           height={10}
@@ -112,6 +140,18 @@ export default class QuizScreen extends React.Component {
           explanation={this.state.explanation}
           nextQuestion={() => this.nextQuestion()}
         />
+        <CardView
+          style={styles.imageContainer}
+          cardElevation={5}
+          cornerRadius={10}
+          cornerOverlap={false}
+        >
+          <Image
+            source={image}
+            style={styles.image}
+            resizeMode={'contain'}
+          />
+        </CardView>
         <QuizButtons
           quiz={this.state.quiz}
           quizProgress={this.state.quizProgress}
@@ -130,4 +170,14 @@ const styles = StyleSheet.create({
   quizContainer: {
     flex: 1
   },
+  imageContainer: {
+    position: "absolute",
+    top: "3%",
+    padding: "1%",
+    height: "30%"
+  },
+  image: {
+    maxWidth: "100%",
+    maxHeight: "100%",
+  }
 });

@@ -36,7 +36,7 @@ export default class QuizButtons extends React.Component {
     let nextButton = (
       <QuizButton
         text={"Next"}
-        buttonStyle={styles.multipleChoiceOption}
+        buttonStyle={styles.nextButton}
         handleButtonPress={() => this.props.nextQuestion()}
       />
     );
@@ -59,13 +59,19 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     flexDirection: "row",
     width: "100%",
-    height: "30%"
+    height: "15%"
   },
   multipleChoiceOption: {
     backgroundColor: 'white',
     color: 'black',
     width: "44%",
     margin: "3%",
+    padding: 15
+  },
+  nextButton: {
+    backgroundColor: 'white',
+    color: 'black',
+    width: "94%",
     padding: 15
   },
   multipleChoiceOptionCorrect: {
