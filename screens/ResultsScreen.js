@@ -48,6 +48,7 @@ export default class ResultsScreen extends React.Component {
     const { params = {} } = navigation.state;
     return {
       title: "Results",
+      tabBarVisible: false,
       headerLeft: (
         <Button
           onPress={() => navigation.navigate("Quiz")} // what should this be called/go back to

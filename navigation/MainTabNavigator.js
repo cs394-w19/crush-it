@@ -26,10 +26,18 @@ HomeStack.navigationOptions = {
   ),
 };
 
-const QuizStack = createStackNavigator({
-  Quiz: QuizScreen,
-  Results: ResultsScreen
-});
+const QuizStack = createStackNavigator(
+  {
+    Quiz: QuizScreen,
+    Results: ResultsScreen
+  },
+  {
+    initialRouteName: 'Quiz',
+    navigationOptions: {
+      tabBarVisible: false,
+    },
+  }
+);
 
 QuizStack.navigationOptions = {
   tabBarLabel: 'Quiz',

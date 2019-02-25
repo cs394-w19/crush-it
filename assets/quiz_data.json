@@ -10,17 +10,16 @@
 					{
 						"questionText" : "You’re looking for a new credit card and read something about interest. After comparing a few credit cards, you find out interest rates can be as high as 30%.",
 						"learningCategory" : "interest rates",
+						"explanation" : "Interest is the fee you pay to borrow money. Credit card interest rates are determined by your credit, income, debt, payment history, and economic conditions.\nThe worse off these are, the higher the fee.",
 						"answerChoices" :
 							[
 								{
 									"answerText" : "BELIEVE",
 									"isCorrect" : true,
-									"explanation" : "You're right! We told you to pick A and you did!"
 								},
 								{
 									"answerText" : "YEAH RIGHT",
 									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick A!"
 								},
 							]
 					}
@@ -28,17 +27,16 @@
 					{
 						"questionText" : "Next thing you know, you’re at the taping of Oprah’s holiday special episode. And you remember something your Mom always said, 'To build good credit, you have to carry a balance.'",
 						"learningCategory" : "credit score",
+						"explanation" : "If you can pay the balance in full each month, you’re off to a great start towards building excellent credit!\nIf you can’t pay in full, try paying the previous statement balance. This will help you avoid paying interest fees and keep you on track for good credit.\nIf you can’t pay the statement balance, you must pay the minimum payment. Otherwise, those fees will be bigger and scarier and hurt your credit.",
 						"answerChoices" :
 							[
 								{
 									"answerText" : "BELIEVE",
 									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick B!"
 								},
 								{
 									"answerText" : "RIGHT",
 									"isCorrect" : true,
-									"explanation" : "You're right! We told you to pick B and you did!"
 								},
 							]
 					}
@@ -46,17 +44,17 @@
 					{
 						"questionText" : "You’re checking out at your favorite clothing store and they offered you 20% off your purchase by signing up for their credit card. 5 minutes later… your wallet is now overflowing with credit cards. 5 months later… you’ve maxed out every credit card in your wallet. You look at the interest rates of each card and begin paying off the lowest interest rate card first.",
 						"learningCategory" : "interest rates",
+						"explanation" : "Each month, start by paying the minimum balance on all credit cards – this will help you avoid any unnecessary late fees.\nThen follow the Avalanche method: Focus on making progress against the highest interest rate card first.\nOnce you’ve paid back the debt on the highest interest rate card, move onto pay off the card with the second highest interest rate and so on.\nFollow the avalanche from the top of the mountain to the bottom and you’ll pay off debt fast and with minimal interest.",
+
 						"answerChoices" :
 							[
 								{
 									"answerText" : "BELIEVE",
 									"isCorrect" : false,
-									"explanation" : "Wrong! We told you to pick C!"
 								},
 								{
 									"answerText" : "RIGHT",
 									"isCorrect" : true,
-									"explanation" : "You're right!"
 								},
 							]
 					}
