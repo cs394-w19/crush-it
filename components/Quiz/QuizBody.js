@@ -34,7 +34,7 @@ export default class QuizBody extends React.Component {
 const styles = StyleSheet.create({
   questionContainer: {
     position: "absolute",
-    top: "33%",
+    top: "1%",
     backgroundColor: "white",
     padding: 15,
     margin: "3%",
