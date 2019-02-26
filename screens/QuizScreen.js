@@ -137,6 +137,7 @@ export default class QuizScreen extends React.Component {
 
     return (
       <View style={styles.quizContainer}>
+      <ScrollView contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator>
         <ProgressBar
           progress={(this.state.quizProgress * 2 + this.state.explanation) / this.state.quiz.questions.length / 2}
           borderRadius={0}
@@ -172,6 +173,7 @@ export default class QuizScreen extends React.Component {
           isAnswerCorrect={(answerText) => this.isAnswerCorrect(answerText)}
           nextQuestion={() => this.nextQuestion()}
          />
+      </ScrollView>
       </View>
     );
   }
@@ -179,7 +181,8 @@ export default class QuizScreen extends React.Component {
 
 const styles = StyleSheet.create({
   quizContainer: {
-    flex: 1
+    flex: 1,
+    height: "100%"
   },
   imageContainer: {
     position: "absolute",
