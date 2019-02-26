@@ -51,7 +51,7 @@ export default class ResultsScreen extends React.Component {
       tabBarVisible: false,
       headerLeft: (
         <Button
-          onPress={() => navigation.navigate("Quiz")} // what should this be called/go back to
+          onPress={() => navigation.navigate("Levels")} // what should this be called/go back to
           title="Back"
           color={Colors.tintColor}
         />
