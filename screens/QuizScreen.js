@@ -32,6 +32,12 @@ export default class QuizScreen extends React.Component {
     return {
       title: "Quiz",
       tabBarVisible: false,
+      headerStyle: {height: 65},
+      headerLeft: (
+        <Image  
+          source={require('../assets/images/logos/CrushItLOGOsmall.png')}
+        />
+      ),
     };
   };
 
