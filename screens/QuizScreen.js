@@ -6,6 +6,7 @@ import {
   Text,
   View,
   Image,
+  TouchableOpacity
 } from "react-native";
 import { ExpoLinksView } from "@expo/samples";
 import ProgressBar from "react-native-progress/Bar";
@@ -27,16 +28,20 @@ export default class QuizScreen extends React.Component {
     };
   }
 
-  static navigationOptions = navigation => {
+  static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
     return {
       title: "Quiz",
       tabBarVisible: false,
       headerStyle: {height: 71},
       headerLeft: (
-        <Image  
-          source={require('../assets/images/logos/CrushItLOGOsmall.png')}
-        />
+        <TouchableOpacity
+        onPress={() => navigation.navigate("Levels")}
+        >
+          <Image  
+            source={require('../assets/images/logos/CrushIt_LogoV2small.png')}
+          />
+        </TouchableOpacity>
       ),
     };
   };
