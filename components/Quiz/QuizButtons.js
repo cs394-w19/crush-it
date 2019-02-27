@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     flexDirection: "row",
     width: "100%",
-    height: "15%"
+    height: "20%"
   },
   multipleChoiceOptionOne: {
     backgroundColor: "white",

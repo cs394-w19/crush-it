@@ -18,15 +18,13 @@ export default class QuizQuestion extends React.Component {
         style={styles.questionContainer}
       >
         <Image
-            source={image}
-            style={{flex: 1,
-                width: 275,
-                resizeMode: 'contain'}}
-          />
-
-        <Text style={{ fontSize: 20, color: "white"}}>
-          {quiz.questions[question].questionText}
-        </Text>
+          source={image}
+          style={styles.image}
+          resizeMode={'contain'}
+        />
+          <Text style={{ fontSize: 20, color: "white" }}>
+            {quiz.questions[question].questionText}
+          </Text>
       </View>
     );
   }
@@ -35,13 +33,20 @@ export default class QuizQuestion extends React.Component {
 
 const styles = StyleSheet.create({
   questionContainer: {
-    top: "1%",
     backgroundColor: "#c3c3c3",
     padding: 15,
-    margin: "3%",
-    width: "94%",
-    height: "75%", 
+    flex: 1,
+    //flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
   },
+  image: {
+    // maxHeight: "50%",
+    // maxWidth: "100%",
+    width: "80%",
+  },
+  textContainer: {
+    // width: "100%",
+    // height: "auto",
+  }
 });

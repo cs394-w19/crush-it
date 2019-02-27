@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
   questionStatementContainer: {
     padding: 10,
     width: "100%",
-    flex: 1,
+    // flex: 1,
     backgroundColor: "#ffe769",
   },
   questionStatementText: {
