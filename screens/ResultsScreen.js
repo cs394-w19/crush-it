@@ -47,13 +47,17 @@ export default class ResultsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      title: "Results",
+      //title: "Results",
       tabBarVisible: false,
+      headerStyle: {
+        height: 71,
+        backgroundColor: Colors.header
+      },
       headerLeft: (
         <Button
-          onPress={() => navigation.navigate("Levels")} // what should this be called/go back to
+          onPress={() => navigation.navigate("Quiz")} // what should this be called/go back to
           title="Back"
-          color={Colors.tintColor}
+          color={Colors.tabIconDefault}
         />
       )
     };

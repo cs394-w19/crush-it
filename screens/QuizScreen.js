@@ -8,11 +8,10 @@ import {
   Image,
   TouchableOpacity
 } from "react-native";
-import { ExpoLinksView } from "@expo/samples";
-import ProgressBar from "react-native-progress/Bar";
-import CardView from "react-native-cardview";
 
 import Colors from "../constants/Colors";
+
+import QuizProgressBar from "../components/Quiz/QuizProgressBar";
 import QuizStatement from "../components/Quiz/QuizStatement";
 import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
@@ -32,13 +31,18 @@ export default class QuizScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
     return {
-      title: "Quiz",
+      //title: "Quiz",
       tabBarVisible: false,
-      headerStyle: { height: 71 },
+      headerStyle: {
+        height: 71,
+        backgroundColor: Colors.header
+      },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Levels")}>
+        <TouchableOpacity
+        onPress={() => navigation.navigate("Levels")}
+        >
           <Image
-            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
+            source={require('../assets/images/logos/CrushIt_LogoV2small.png')}
           />
         </TouchableOpacity>
       )
@@ -137,48 +141,34 @@ export default class QuizScreen extends React.Component {
 
     return (
       <View style={styles.quizContainer}>
-        <ProgressBar
-          progress={
-            (this.state.quizProgress * 2 + this.state.explanation) /
-            this.state.quiz.questions.length /
-            2
-          }
-          borderRadius={0}
-          width={null}
-          height={10}
-          borderWidth={0}
-          color={Colors.appPrimary}
+        <QuizProgressBar
+          quizProgress={this.state.quizProgress}
+          length={this.state.quiz.questions.length}
         />
-        <ScrollView
-          contentContainerStyle={{ flex: 1 }}
-          showsVerticalScrollIndicator
-        >
-          <QuizStatement
-            quiz={this.state.quiz}
-            question={this.state.quizProgress}
-            explanation={this.state.explanation}
-            nextQuestion={() => this.nextQuestion()}
-          />
-          <View style={styles.imageContainer}>
-            <Image source={image} style={styles.image} resizeMode={"contain"} />
-          </View>
-          <QuizQuestion
-            quiz={this.state.quiz}
-            question={this.state.quizProgress}
-            explanation={this.state.explanation}
-            nextQuestion={() => this.nextQuestion()}
-          />
-          <QuizButtons
-            quiz={this.state.quiz}
-            quizProgress={this.state.quizProgress}
-            submitted={this.state.submitted}
-            explanation={this.state.explanation}
-            handleAnswerButtonPress={text => this.handleAnswerButtonPress(text)}
-            isAnswerCorrect={answerText => this.isAnswerCorrect(answerText)}
-            nextQuestion={() => this.nextQuestion()}
-            buttonOrder={this.state.buttonOrder}
-          />
-        </ScrollView>
+      <ScrollView contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator>
+        <QuizStatement
+          quiz={this.state.quiz}
+          question={this.state.quizProgress}
+          explanation={this.state.explanation}
+          nextQuestion={() => this.nextQuestion()}
+        />
+        <QuizQuestion
+          quiz={this.state.quiz}
+          question={this.state.quizProgress}
+          source={image}
+          style={styles.image}
+
+        />
+        <QuizButtons
+          quiz={this.state.quiz}
+          quizProgress={this.state.quizProgress}
+          submitted={this.state.submitted}
+          explanation={this.state.explanation}
+          handleAnswerButtonPress={(text) => this.handleAnswerButtonPress(text)}
+          isAnswerCorrect={(answerText) => this.isAnswerCorrect(answerText)}
+          nextQuestion={() => this.nextQuestion()}
+         />
+      </ScrollView>
       </View>
     );
   }
