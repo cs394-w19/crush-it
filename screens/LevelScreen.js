@@ -19,7 +19,7 @@ export default class QuizScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quizscores: [1, 3, 2],
+      quizscores: [2, 3, 3],
     }
   }
 
