@@ -26,14 +26,11 @@ export default class QuizScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
     return {
-      title: "Credit Card Debt",
+      //title: "Levels",
+      tabBarVisible: false,
       headerStyle: {
-        backgroundColor: Colors.appPurple,
-        height: 75,
-      },
-      headerTitleStyle: {
-        color: 'white',
-        fontSize: 24,
+        height: 71,
+        backgroundColor: Colors.header
       },
       headerLeft: (
         <Image
