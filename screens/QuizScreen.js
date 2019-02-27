@@ -31,9 +31,12 @@ export default class QuizScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
     return {
-      title: "Quiz",
+      //title: "Quiz",
       tabBarVisible: false,
-      headerStyle: {height: 71},
+      headerStyle: {
+        height: 71,
+        backgroundColor: Colors.header
+      },
       headerLeft: (
         <TouchableOpacity
         onPress={() => navigation.navigate("Levels")}

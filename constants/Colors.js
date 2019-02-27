@@ -12,4 +12,5 @@ export default {
   noticeBackground: tintColor,
   noticeText: '#fff',
   appPrimary: '#6fe0fc',
+  header: '#732473'
 };

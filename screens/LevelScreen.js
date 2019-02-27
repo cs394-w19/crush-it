@@ -30,9 +30,12 @@ export default class QuizScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
     return {
-      title: "Levels",
+      //title: "Levels",
       tabBarVisible: false,
-      headerStyle: {height: 71},
+      headerStyle: {
+        height: 71,
+        backgroundColor: Colors.header
+      },
       headerLeft: (
         <Image  
           source={require('../assets/images/logos/CrushIt_LogoV2small.png')}
