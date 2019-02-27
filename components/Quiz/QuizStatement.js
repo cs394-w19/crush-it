@@ -27,7 +27,7 @@ export default class QuizStatement extends React.Component {
 
 const styles = StyleSheet.create({
   questionStatementContainer: {
-    padding: 10,
+    padding: 25,
     width: "100%",
     // flex: 1,
     backgroundColor: "#ffe769",

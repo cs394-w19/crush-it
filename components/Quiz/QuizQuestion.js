@@ -14,7 +14,7 @@ export default class QuizQuestion extends React.Component {
     let question = this.props.question;
 
     return(
-      <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor: "#c3c3c3",padding:15}}>
+      <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor: "#c3c3c3",padding:25}}>
         <Image
           source={image}
           style={{width:200,height:200}}
