@@ -9,11 +9,12 @@ import {
   TouchableOpacity
 } from "react-native";
 
+import Colors from "../constants/Colors";
+
 import QuizProgressBar from "../components/Quiz/QuizProgressBar";
 import QuizStatement from "../components/Quiz/QuizStatement";
 import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
-import QuizQuestion from "../components/Quiz/QuizQuestion";
 
 export default class QuizScreen extends React.Component {
   constructor(props) {
@@ -150,7 +151,7 @@ export default class QuizScreen extends React.Component {
           explanation={this.state.explanation}
           nextQuestion={() => this.nextQuestion()}
         />
-        <QuizQuestion 
+        <QuizQuestion
           quiz={this.state.quiz}
           question={this.state.quizProgress}
           source={image}
