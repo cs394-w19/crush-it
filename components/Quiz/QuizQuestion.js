@@ -14,34 +14,16 @@ export default class QuizQuestion extends React.Component {
     let question = this.props.question;
 
     return(
-      <View
-        style={styles.questionContainer}
-      >
+      <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor: "#c3c3c3",padding:15}}>
         <Image
-            source={image}
-            style={{flex: 1,
-                width: 275,
-                resizeMode: 'contain'}}
-          />
-
-        <Text style={{ fontSize: 20, color: "white"}}>
-          {quiz.questions[question].questionText}
-        </Text>
+          source={image}
+          style={{width:200,height:200}}
+          resizeMode={"contain"}
+        />
+          <Text style={{ fontSize: 24, color: "white" }}>
+            {quiz.questions[question].questionText}
+          </Text>
       </View>
     );
   }
 }
-
-
-const styles = StyleSheet.create({
-  questionContainer: {
-    top: "1%",
-    backgroundColor: "#c3c3c3",
-    padding: 15,
-    margin: "3%",
-    width: "94%",
-    height: "75%", 
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});

@@ -24,7 +24,7 @@ export default class QuizScreen extends React.Component {
       quizProgress: 0,
       score: 0,
       submitted: false,
-      explanation: false,
+      explanation: false
     };
   }
 
@@ -45,7 +45,7 @@ export default class QuizScreen extends React.Component {
             source={require('../assets/images/logos/CrushIt_LogoV2small.png')}
           />
         </TouchableOpacity>
-      ),
+      )
     };
   };
 
@@ -72,24 +72,23 @@ export default class QuizScreen extends React.Component {
   }
 
   nextQuestion() {
-    if (this.state.quizProgress+1 >= this.state.quiz.questions.length) {
+    if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
       this.props.navigation.navigate("Results", {
         score: this.state.score,
-        maxScore: this.state.quiz.questions.length,
+        maxScore: this.state.quiz.questions.length
       });
       this.setState({
         quizProgress: 0,
         score: 0,
         submitted: false,
-        explanation: false,
+        explanation: false
       });
-    }
-    else {
+    } else {
       this.setState({
         quizProgress: this.state.quizProgress + 1,
         submitted: false,
-        explanation: false,
+        explanation: false
       });
     }
   }
@@ -104,35 +103,37 @@ export default class QuizScreen extends React.Component {
     let answerCorrect = this.isAnswerCorrect(answerText);
     this.handleScoring(answerText);
     this.setState({
-      submitted: answerText,
+      submitted: answerText
     });
-    setTimeout(() => { this.setState({
-      explanation: true
-    }) }, 500);
+    setTimeout(() => {
+      this.setState({
+        explanation: true
+      });
+    }, 500);
   }
 
   render() {
     if (!this.state.quiz) return <Text />;
 
     let image = null;
-    switch (10*this.state.quizProgress + this.state.explanation) {
+    switch (10 * this.state.quizProgress + this.state.explanation) {
       case 0:
-        image = require('../assets/images/credit-card-debt/question0.png');
+        image = require("../assets/images/credit-card-debt/question0.png");
         break;
       case 1:
-        image = require('../assets/images/credit-card-debt/explanation0.png');
+        image = require("../assets/images/credit-card-debt/explanation0.png");
         break;
       case 10:
-        image = require('../assets/images/credit-card-debt/question1.png');
+        image = require("../assets/images/credit-card-debt/question1.png");
         break;
       case 11:
-        image = require('../assets/images/credit-card-debt/explanation1.png');
+        image = require("../assets/images/credit-card-debt/explanation1.png");
         break;
       case 20:
-        image = require('../assets/images/credit-card-debt/question2.png');
+        image = require("../assets/images/credit-card-debt/question2.png");
         break;
       case 21:
-        image = require('../assets/images/credit-card-debt/explanation2.png');
+        image = require("../assets/images/credit-card-debt/explanation2.png");
         break;
       default:
         break;
@@ -144,7 +145,7 @@ export default class QuizScreen extends React.Component {
           quizProgress={this.state.quizProgress}
           length={this.state.quiz.questions.length}
         />
-      <ScrollView contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator>
+      <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator>
         <QuizStatement
           quiz={this.state.quiz}
           question={this.state.quizProgress}
@@ -156,7 +157,6 @@ export default class QuizScreen extends React.Component {
           question={this.state.quizProgress}
           source={image}
           style={styles.image}
-
         />
         <QuizButtons
           quiz={this.state.quiz}
@@ -166,7 +166,7 @@ export default class QuizScreen extends React.Component {
           handleAnswerButtonPress={(text) => this.handleAnswerButtonPress(text)}
           isAnswerCorrect={(answerText) => this.isAnswerCorrect(answerText)}
           nextQuestion={() => this.nextQuestion()}
-         />
+        />
       </ScrollView>
       </View>
     );
@@ -178,14 +178,4 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%"
   },
-  imageContainer: {
-    position: "absolute",
-    top: "55%",
-    padding: "1%",
-    height: "30%"
-  },
-  image: {
-    maxWidth: "100%",
-    maxHeight: "100%",
-  }
 });

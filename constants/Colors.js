@@ -1,4 +1,4 @@
-const tintColor = '#2f95dc';
+const tintColor = "#2f95dc";
 
 export default {
   appPrimary: '#6fe0fc',
@@ -8,4 +8,7 @@ export default {
   progressUnfilled: '#fcd771',
   quizStatementFill: '#ffe769',
   quizQuestionFill: '#d1d8d4',
+  buttonText: "889770",
+  buttonBorderOne: "#a8ffac",
+  buttonBorderTwo: "#ffa8a8",
 };
