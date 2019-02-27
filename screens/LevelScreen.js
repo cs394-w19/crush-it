@@ -18,13 +18,23 @@ import QuizButtons from "../components/Quiz/QuizButtons";
 export default class QuizScreen extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      quizscores: [1, 3, 2],
+    }
   }
 
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
     return {
       title: "Credit Card Debt",
-      headerStyle: {height: 71},
+      headerStyle: {
+        backgroundColor: Colors.appPurple,
+        height: 75,
+      },
+      headerTitleStyle: {
+        color: 'white',
+        fontSize: 24,
+      },
       headerLeft: (
         <Image
           source={require('../assets/images/logos/CrushIt_LogoV2small.png')}
@@ -36,26 +46,44 @@ export default class QuizScreen extends React.Component {
   render() {
 
     images = [
+      require('../assets/images/buttons/Level_1button0.png'),
+      require('../assets/images/buttons/Level_1button1.png'),
+      require('../assets/images/buttons/Level_1button2.png'),
       require('../assets/images/buttons/Level_1button3.png'),
+
+      require('../assets/images/buttons/Level_2button0.png'),
+      require('../assets/images/buttons/Level_2button1.png'),
+      require('../assets/images/buttons/Level_2button2.png'),
       require('../assets/images/buttons/Level_2button3.png'),
+
+      require('../assets/images/buttons/Level_3button0.png'),
+      require('../assets/images/buttons/Level_3button1.png'),
+      require('../assets/images/buttons/Level_3button2.png'),
       require('../assets/images/buttons/Level_3button3.png'),
     ];
 
-    level_buttons = images.map(image => {
-      return (
+    let level_buttons = [];
+
+    for (i = 0; i < this.state.quizscores.length; i++) {
+      let score = this.state.quizscores[i];
+
+      if (score > 3 || score < 0)
+        continue;
+
+      level_buttons.push(
         <View style={styles.imageContainer}>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Quiz")}
           >
           <Image
             style={styles.image}
-            source={image}
+            source={images[i*4+score]}
             resizeMode={'contain'}
           />
           </TouchableOpacity>
         </View>
       );
-    });
+    }
 
     return (
       <View style={styles.levelContainer}>
