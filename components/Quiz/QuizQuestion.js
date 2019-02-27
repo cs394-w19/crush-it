@@ -8,7 +8,7 @@ import CardView from "react-native-cardview";
 
 
 
-export default class QuizBody extends React.Component {
+export default class QuizQuestion extends React.Component {
   render() {
     let quiz = this.props.quiz;
     let question = this.props.question;
@@ -20,7 +20,7 @@ export default class QuizBody extends React.Component {
         cornerRadius={10}
         cornerOverlap={false}
       >
-        <Text style={{ fontSize: 20 }}>
+        <Text style={{ fontSize: 50 }}>
           {this.props.explanation
             ? quiz.questions[question].explanation
             : quiz.questions[question].questionText}
@@ -33,12 +33,10 @@ export default class QuizBody extends React.Component {
 
 const styles = StyleSheet.create({
   questionContainer: {
-    position: "absolute",
-    top: "1%",
     backgroundColor: "white",
     padding: 15,
     margin: "3%",
     width: "94%",
-    height: "50%"
+    flex: 1,
   },
 });

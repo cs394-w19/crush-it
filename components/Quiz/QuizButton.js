@@ -35,6 +35,7 @@ export default class QuizButtons extends React.Component {
 const styles = StyleSheet.create({
   multipleChoiceButton: {
     fontSize: 24,
-    textAlign: "center"
+    textAlign: "center",
+    flex: 1,
   },
 });

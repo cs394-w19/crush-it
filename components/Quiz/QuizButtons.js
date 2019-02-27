@@ -52,10 +52,9 @@ export default class QuizButtons extends React.Component {
 
 const styles = StyleSheet.create({
   buttonContainer: {
-    position: "absolute",
-    bottom: "0%",
     justifyContent: "center",
     alignItems: "center",
+    flex: 1,
     flexWrap: "wrap",
     flexDirection: "row",
     width: "100%",
