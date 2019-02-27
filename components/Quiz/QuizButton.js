@@ -1,17 +1,11 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  Button,
-  View,
-} from "react-native";
+import { StyleSheet, Text, Button, View } from "react-native";
 
 import CardView from "react-native-cardview";
+import Emoji from "react-native-emoji";
 
-export default class QuizButtons extends React.Component {
-
+export default class QuizButton extends React.Component {
   render() {
-
     return (
       <CardView
         style={this.props.buttonStyle}
@@ -31,11 +25,10 @@ export default class QuizButtons extends React.Component {
   }
 }
 
-
 const styles = StyleSheet.create({
   multipleChoiceButton: {
-    fontSize: 24,
+    fontSize: 50,
     textAlign: "center",
-    flex: 1,
-  },
+    flex: 1
+  }
 });
