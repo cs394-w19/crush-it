@@ -36,5 +36,6 @@ const styles = StyleSheet.create({
   multipleChoiceButton: {
     fontSize: 24,
     textAlign: "center",
+    flex: 1,
   },
 });

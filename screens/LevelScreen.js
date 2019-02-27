@@ -12,7 +12,6 @@ import ProgressBar from "react-native-progress/Bar";
 import CardView from "react-native-cardview";
 
 import Colors from "../constants/Colors";
-import QuizBody from "../components/Quiz/QuizBody";
 import QuizButtons from "../components/Quiz/QuizButtons";
 
 export default class QuizScreen extends React.Component {

@@ -8,7 +8,7 @@ import CardView from "react-native-cardview";
 
 
 
-export default class QuizBody extends React.Component {
+export default class QuizQuestion extends React.Component {
   render() {
     let quiz = this.props.quiz;
     let question = this.props.question;
