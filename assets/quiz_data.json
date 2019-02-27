@@ -2,15 +2,16 @@
 	"quizzes" :
 		[
 			{
-				"quizName" : "Credit Card Debt",
+				"quizName" : "Credit Card Debt Level 1",
 				"quizCategory" : "debt",
 				"learningCategories" : ["interest rates", "credit score"],
 				"questions" :
 				[
 					{
-						"questionText" : "You’re looking for a new credit card and read something about interest. After comparing a few credit cards, you find out interest rates can be as high as 30%.",
+						"statement" : "You’re looking for a new credit card and read something about interest.",
 						"learningCategory" : "interest rates",
-						"explanation" : "Interest is the fee you pay to borrow money. Credit card interest rates are determined by your credit, income, debt, payment history, and economic conditions.\nThe worse off these are, the higher the fee.",
+						"question" : "After comparing a few credit cards, you find out interest rates can be as high as 30%. Do you believe it?",
+						"imageName" : "./assets/images/credit-card-debt/confused.gif",
 						"answerChoices" :
 							[
 								{
@@ -18,44 +19,128 @@
 									"isCorrect" : true,
 								},
 								{
-									"answerText" : "YEAH RIGHT",
+									"answerText" : "NO WAY",
 									"isCorrect" : false,
 								},
 							]
 					}
 					,
 					{
-						"questionText" : "Next thing you know, you’re at the taping of Oprah’s holiday special episode. And you remember something your Mom always said, 'To build good credit, you have to carry a balance.'",
+						"statement" : "Interest is the fee you pay to borrow money. This is also called APR.",
 						"learningCategory" : "credit score",
-						"explanation" : "If you can pay the balance in full each month, you’re off to a great start towards building excellent credit!\nIf you can’t pay in full, try paying the previous statement balance. This will help you avoid paying interest fees and keep you on track for good credit.\nIf you can’t pay the statement balance, you must pay the minimum payment. Otherwise, those fees will be bigger and scarier and hurt your credit.",
+						"question" : "Credit card interest rates are determined by your credit, debt, payment history, and the economy.",
+						"imageName" : "./assets/images/credit-card-debt/throw-money.gif",
 						"answerChoices" :
 							[
 								{
-									"answerText" : "BELIEVE",
-									"isCorrect" : false,
+									"answerText" : "What is credit?",
+									"isCorrect" : true,
 								},
 								{
-									"answerText" : "YEAH RIGHT",
+									"answerText" : "All that is fine, but I can't control the economy.",
 									"isCorrect" : true,
 								},
 							]
 					}
 					,
 					{
-						"questionText" : "You’re checking out at your favorite clothing store and they offered you 20% off your purchase by signing up for their credit card. 5 minutes later… your wallet is now overflowing with credit cards. 5 months later… you’ve maxed out every credit card in your wallet. You look at the interest rates of each card and begin paying off the lowest interest rate card first.",
+						"statement" : "Think of credit like trust. You gain trust, and therefore credit, when you can show you are reliable.",
 						"learningCategory" : "interest rates",
-						"explanation" : "Each month, start by paying the minimum balance on all credit cards – this will help you avoid any unnecessary late fees.\nThen follow the Avalanche method: Focus on making progress against the highest interest rate card first.\nOnce you’ve paid back the debt on the highest interest rate card, move onto pay off the card with the second highest interest rate and so on.\nFollow the avalanche from the top of the mountain to the bottom and you’ll pay off debt fast and with minimal interest.",
-
+						"question" : "The less debt you have and more you pay bills on time, the more someone will trust you with their money.",
+						"imageName" : "./assets/images/credit-card-debt/trust.gif",
+						"answerChoices" :
+							[
+								{
+									"answerText" : "Got it! I still can't control the economy though.",
+									"isCorrect" : true,
+								},
+								
+							]
+					},
+					{
+						"statement" : "And that's ok! If you have good credit and make your payments every month, you're on the right track.",
+						"learningCategory" : "interest rates",
+						"question" : "Just know the tougher these conditions are, the higher the interest if you don't pay it all off.",
+						"imageName" : "./assets/images/credit-card-debt/good-work.gif",
+						"answerChoices" :
+							[
+								{
+									"answerText" : "Got it! Let's keep going!",
+									"isCorrect" : true,
+								},
+								
+							]
+					}
+				]
+			},
+			{
+				"quizName" : "Credit Card Debt Level 2",
+				"quizCategory" : "debt",
+				"learningCategories" : ["interest rates", "credit score"],
+				"questions" :
+				[
+					{
+						"statement" : "You’re looking for a new credit card and read something about interest.",
+						"learningCategory" : "interest rates",
+						"question" : "After comparing a few credit cards, you find out interest rates can be as high as 30%. Do you believe it?",
+						"imageName" : "./assets/images/credit-card-debt/confused.gif",
 						"answerChoices" :
 							[
 								{
 									"answerText" : "BELIEVE",
-									"isCorrect" : false,
-								},
-								{
-									"answerText" : "YEAH RIGHT",
 									"isCorrect" : true,
 								},
+								{
+									"answerText" : "NO WAY",
+									"isCorrect" : false,
+								},
+							]
+					}
+					,
+					{
+						"statement" : "Interest is the fee you pay to borrow money. This is also called APR.",
+						"learningCategory" : "credit score",
+						"question" : "Credit card interest rates are determined by your credit, debt, payment history, and the economy.",
+						"imageName" : "./assets/images/credit-card-debt/throw-money.gif",
+						"answerChoices" :
+							[
+								{
+									"answerText" : "What is credit?",
+									"isCorrect" : true,
+								},
+								{
+									"answerText" : "All that is fine, but I can't control the economy.",
+									"isCorrect" : true,
+								},
+							]
+					}
+					,
+					{
+						"statement" : "Think of credit like trust. You gain trust, and therefore credit, when you can show you are reliable.",
+						"learningCategory" : "interest rates",
+						"question" : "The less debt you have and more you pay bills on time, the more someone will trust you with their money.",
+						"imageName" : "./assets/images/credit-card-debt/trust.gif",
+						"answerChoices" :
+							[
+								{
+									"answerText" : "Got it! I still can't control the economy though.",
+									"isCorrect" : true,
+								},
+								
+							]
+					},
+					{
+						"statement" : "And that's ok! If you have good credit and make your payments every month, you're on the right track.",
+						"learningCategory" : "interest rates",
+						"question" : "Just know the tougher these conditions are, the higher the interest if you don't pay it all off.",
+						"imageName" : "./assets/images/credit-card-debt/good-work.gif",
+						"answerChoices" :
+							[
+								{
+									"answerText" : "Got it! Let's keep going!",
+									"isCorrect" : true,
+								},
+								
 							]
 					}
 				]
