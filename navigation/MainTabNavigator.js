@@ -15,7 +15,7 @@ const QuizStack = createStackNavigator(
     Levels: LevelScreen
   },
   {
-    initialRouteName: 'Quiz',
+    initialRouteName: 'Levels',
     navigationOptions: {
       tabBarVisible: false,
     },
