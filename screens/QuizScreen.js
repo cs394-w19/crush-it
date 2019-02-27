@@ -15,6 +15,7 @@ import CardView from "react-native-cardview";
 import Colors from "../constants/Colors";
 import QuizBody from "../components/Quiz/QuizBody";
 import QuizButtons from "../components/Quiz/QuizButtons";
+import QuizQuestion from "../components/Quiz/QuizQuestion";
 
 export default class QuizScreen extends React.Component {
   constructor(props) {
@@ -151,18 +152,15 @@ export default class QuizScreen extends React.Component {
           explanation={this.state.explanation}
           nextQuestion={() => this.nextQuestion()}
         />
-        <CardView
-          style={styles.imageContainer}
-          cardElevation={5}
-          cornerRadius={10}
-          cornerOverlap={false}
-        >
-          <Image
-            source={image}
-            style={styles.image}
-            resizeMode={'contain'}
-          />
-        </CardView>
+
+        <QuizQuestion 
+          quiz={this.state.quiz}
+          question={this.state.quizProgress}
+          source={image}
+          style={styles.image}
+
+        />
+        
         <QuizButtons
           quiz={this.state.quiz}
           quizProgress={this.state.quizProgress}
