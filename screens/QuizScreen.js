@@ -13,6 +13,7 @@ import QuizProgressBar from "../components/Quiz/QuizProgressBar";
 import QuizStatement from "../components/Quiz/QuizStatement";
 import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
+import QuizQuestion from "../components/Quiz/QuizQuestion";
 
 export default class QuizScreen extends React.Component {
   constructor(props) {
@@ -146,18 +147,12 @@ export default class QuizScreen extends React.Component {
           explanation={this.state.explanation}
           nextQuestion={() => this.nextQuestion()}
         />
-        <View style={styles.imageContainer}>
-          <Image
-            source={image}
-            style={styles.image}
-            resizeMode={'contain'}
-          />
-        </View>
-        <QuizQuestion
+        <QuizQuestion 
           quiz={this.state.quiz}
           question={this.state.quizProgress}
-          explanation={this.state.explanation}
-          nextQuestion={() => this.nextQuestion()}
+          source={image}
+          style={styles.image}
+
         />
         <QuizButtons
           quiz={this.state.quiz}

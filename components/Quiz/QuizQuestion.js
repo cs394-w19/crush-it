@@ -2,30 +2,32 @@ import React from "react";
 import {
   StyleSheet,
   Text,
+  View,
+  Image
 } from "react-native";
-
-import CardView from "react-native-cardview";
-
 
 
 export default class QuizQuestion extends React.Component {
   render() {
+    let image = this.props.source;
     let quiz = this.props.quiz;
     let question = this.props.question;
 
     return(
-      <CardView
+      <View
         style={styles.questionContainer}
-        cardElevation={5}
-        cornerRadius={10}
-        cornerOverlap={false}
       >
-        <Text style={{ fontSize: 50 }}>
-          {this.props.explanation
-            ? quiz.questions[question].explanation
-            : quiz.questions[question].questionText}
+        <Image
+            source={image}
+            style={{flex: 1,
+                width: 275,
+                resizeMode: 'contain'}}
+          />
+
+        <Text style={{ fontSize: 20, color: "white"}}>
+          {quiz.questions[question].questionText}
         </Text>
-      </CardView>
+      </View>
     );
   }
 }
@@ -33,10 +35,13 @@ export default class QuizQuestion extends React.Component {
 
 const styles = StyleSheet.create({
   questionContainer: {
-    backgroundColor: "white",
+    top: "1%",
+    backgroundColor: "#c3c3c3",
     padding: 15,
     margin: "3%",
     width: "94%",
-    flex: 1,
+    height: "75%", 
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
