@@ -1,15 +1,10 @@
 const tintColor = '#2f95dc';
 
 export default {
-  tintColor,
-  tabIconDefault: '#ccc',
-  tabIconSelected: tintColor,
-  tabBar: '#fefefe',
-  errorBackground: 'red',
-  errorText: '#fff',
-  warningBackground: '#EAEB5E',
-  warningText: '#666804',
-  noticeBackground: tintColor,
-  noticeText: '#fff',
   appPrimary: '#6fe0fc',
+  appPurple: '#62265e',
+  progressFilled: '#ebb846',
+  progressUnfilled: '#fcd771',
+  quizStatementFill: '#ffe769',
+  quizQuestionFill: '#d1d8d4',
 };
