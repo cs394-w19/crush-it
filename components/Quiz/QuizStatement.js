@@ -2,9 +2,8 @@ import React from "react";
 import {
   StyleSheet,
   Text,
+  View
 } from "react-native";
-
-import CardView from "react-native-cardview";
 
 
 
@@ -14,29 +13,30 @@ export default class QuizStatement extends React.Component {
     let question = this.props.question;
 
     return(
-      <CardView
-        style={styles.questionContainer}
-        cardElevation={5}
-        cornerRadius={10}
-        cornerOverlap={false}
-      >
-        <Text style={{ fontSize: 50 }}>
+      <View style={styles.questionStatementContainer}>
+        <Text style={styles.questionStatementText}>
           {this.props.explanation
             ? quiz.questions[question].explanation
             : quiz.questions[question].questionText}
         </Text>
-      </CardView>
+      </View>
     );
   }
 }
 
 
 const styles = StyleSheet.create({
-  questionContainer: {
-    backgroundColor: "white",
-    padding: 15,
-    margin: "3%",
-    width: "94%",
+  questionStatementContainer: {
+    padding: 5,
+    width: "100%",
     flex: 1,
+    backgroundColor: "#ffe769",
   },
+  questionStatementText: {
+    fontSize: 30,
+    color: "#d1d8d4",
+    textAlign: "center",
+    marginTop: "auto",
+    marginBottom: "auto"
+  }
 });
