@@ -14,13 +14,13 @@ export default class QuizQuestion extends React.Component {
     let question = this.props.question;
 
     return(
-      <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor: "#c3c3c3"}}>
+      <View style={{flex:1,alignItems:'center',justifyContent:'center',backgroundColor: "#c3c3c3",padding:15}}>
         <Image
           source={image}
           style={{width:200,height:200}}
           resizeMode={"contain"}
         />
-          <Text style={{ fontSize: 80, color: "white" }}>
+          <Text style={{ fontSize: 24, color: "white" }}>
             {quiz.questions[question].questionText}
           </Text>
       </View>
