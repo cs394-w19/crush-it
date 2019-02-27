@@ -8,11 +8,8 @@ import {
   Image,
   TouchableOpacity
 } from "react-native";
-import { ExpoLinksView } from "@expo/samples";
-import ProgressBar from "react-native-progress/Bar";
-import CardView from "react-native-cardview";
 
-import Colors from "../constants/Colors";
+import QuizProgressBar from "../components/Quiz/QuizProgressBar";
 import QuizStatement from "../components/Quiz/QuizStatement";
 import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
@@ -39,7 +36,7 @@ export default class QuizScreen extends React.Component {
         <TouchableOpacity
         onPress={() => navigation.navigate("Levels")}
         >
-          <Image  
+          <Image
             source={require('../assets/images/logos/CrushIt_LogoV2small.png')}
           />
         </TouchableOpacity>
@@ -138,14 +135,10 @@ export default class QuizScreen extends React.Component {
 
     return (
       <View style={styles.quizContainer}>
-        <ProgressBar
-            progress={(this.state.quizProgress * 2 + this.state.explanation) / this.state.quiz.questions.length / 2}
-            borderRadius={0}
-            width={null}
-            height={10}
-            borderWidth={0}
-            color={Colors.appPrimary}
-          />
+        <QuizProgressBar
+          quizProgress={this.state.quizProgress}
+          length={this.state.quiz.questions.length}
+        />
       <ScrollView contentContainerStyle={{flex: 1}} showsVerticalScrollIndicator>
         <QuizStatement
           quiz={this.state.quiz}
