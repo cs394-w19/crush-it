@@ -30,6 +30,10 @@ export default class ResultsScreen extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {this.showExperienceGained(70)}, 200); // this should be depend on score
+    InteractionManager.runAfterInteractions(() => {
+      this.myScroll.scrollTo(0);
+        console.log("called DidMount");
+    }) 
   }
 
 
@@ -90,7 +94,10 @@ export default class ResultsScreen extends React.Component {
 
 
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView 
+        ref={(ref) => this.myScroll = ref}
+        contentContainerStyle={styles.container}
+      >
         <Confetti
           confettiCount={200}
           ref={node => (this._confettiView = node)}
