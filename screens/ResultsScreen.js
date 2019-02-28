@@ -50,11 +50,11 @@ export default class ResultsScreen extends React.Component {
       tabBarVisible: false,
       headerStyle: {
         height: 71,
-        backgroundColor: Colors.header
+        backgroundColor: Colors.appPurple
       },
       headerLeft: (
         <Button
-          onPress={() => navigation.navigate("Quiz")} // what should this be called/go back to
+          onPress={() => navigation.navigate("Levels")} // what should this be called/go back to
           title="Back"
           color={Colors.tabIconDefault}
         />
@@ -98,19 +98,15 @@ export default class ResultsScreen extends React.Component {
         <View style={styles.titleView}>
           <Progress.Circle
             size={200}
-            color={Colors.appPrimary}
-            progress={this.state.progress}
+            color={Colors.appPurple}
+            progress={this.state.score / this.state.maxScore}
             showsText={true}
-            formatText={(progress) => {return "XP";}}
+            formatText={(progress) => {return "Score";}}
             />
           <Text style={styles.title}>
             You got {this.state.score * 10} points!
           </Text>
-          <Text>
-            {parseFloat((1-this.state.progress)*this.state.expPointsInThisLevel).toFixed(0)} points to the next level!
-          </Text>
         </View>
-        {categories}
       </ScrollView>
     );
   }
@@ -122,7 +118,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#F5FCFF",
+    backgroundColor: "white",
     flexWrap: "wrap-reverse",
     width: "100%"
   },
@@ -131,14 +127,13 @@ const styles = StyleSheet.create({
   },
   titleView: {
     padding: 10,
-    borderBottomColor: '#e3e3e3',
-    borderBottomWidth: 1,
     alignItems: 'center',
 
   },
   title: {
     fontSize: 40,
     color: 'black',
+    marginTop: 10,
 
   },
   sliderStyle: {

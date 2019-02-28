@@ -16,16 +16,22 @@ export default class QuizButtons extends React.Component {
     let answerButtons = answers.map(answer => {
       // let buttonStyle = styles.multipleChoiceOption;
       let answerCorrect = this.props.isAnswerCorrect(answer.answerText);
-      let buttonStyle =
-        answer.buttonOrder === "0"
-          ? styles.multipleChoiceOptionOne
-          : styles.multipleChoiceOptionTwo;
+
+      let buttonStyle = styles.nextButton;
+      if (answer.buttonOrder === "0") {
+        buttonStyle = styles.multipleChoiceOptionOne;
+      } else if (answer.buttonOrder === "1") {
+        buttonStyle = styles.multipleChoiceOptionTwo;
+      }
 
       let answerStyle = answerCorrect
         ? styles.multipleChoiceOptionCorrect
         : styles.multipleChoiceOptionWrong;
       buttonStyle =
-        answer.answerText === this.props.submitted ? answerStyle : buttonStyle;
+        answer.answerText === this.props.submitted &&
+        buttonStyle !== styles.nextButton
+          ? answerStyle
+          : buttonStyle;
 
       return (
         <QuizButton
@@ -39,19 +45,7 @@ export default class QuizButtons extends React.Component {
       );
     });
 
-    let nextButton = (
-      <QuizButton
-        text={"Next"}
-        buttonStyle={styles.nextButton}
-        handleButtonPress={() => this.props.nextQuestion()}
-      />
-    );
-
-    return (
-      <View style={styles.buttonContainer}>
-        {this.props.explanation ? nextButton : answerButtons}
-      </View>
-    );
+    return <View style={styles.buttonContainer}>{answerButtons}</View>;
   }
 }
 
@@ -67,23 +61,23 @@ const styles = StyleSheet.create({
   },
   multipleChoiceOptionOne: {
     backgroundColor: "white",
-    color: "#889770",
+    color: "black",
     width: "44%",
     margin: "3%",
     padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "#a8ffac"
+    borderColor: "#A9A9A9"
   },
   multipleChoiceOptionTwo: {
     backgroundColor: "white",
-    color: "#889770",
+    color: "black",
     width: "44%",
     margin: "3%",
     padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "#ffa8a8"
+    borderColor: "#A9A9A9"
   },
   nextButton: {
     backgroundColor: "white",
@@ -92,21 +86,24 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "black"
+    borderColor: "#A9A9A9",
+    marginTop: 10
   },
   multipleChoiceOptionCorrect: {
     backgroundColor: "#a8ffac",
     color: "black",
     width: "44%",
     margin: "3%",
-    padding: 15
+    padding: 15,
+    borderRadius: 10
   },
   multipleChoiceOptionWrong: {
     backgroundColor: "#ffa8a8",
     color: "black",
     width: "44%",
     margin: "3%",
-    padding: 15
+    padding: 15,
+    borderRadius: 10
   },
   multipleChoiceButton: {
     fontSize: 100,

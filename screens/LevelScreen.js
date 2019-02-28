@@ -30,7 +30,7 @@ export default class QuizScreen extends React.Component {
       tabBarVisible: false,
       headerStyle: {
         height: 71,
-        backgroundColor: Colors.header
+        backgroundColor: Colors.appPurple
       },
       headerLeft: (
         <Image
@@ -68,7 +68,7 @@ export default class QuizScreen extends React.Component {
         continue;
 
       level_buttons.push(
-        <View style={styles.imageContainer}>
+        <View style={styles.imageContainer} key={i * 4 + score}>
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Quiz")}
           >
@@ -99,14 +99,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonRow : {
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: "100%",
     justifyContent: 'center',
+    alignItems: 'center',
     padding: "5%",
-    paddingTop: "20%",
   },
   imageContainer: {
     width: "50%",
