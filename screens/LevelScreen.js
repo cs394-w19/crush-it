@@ -30,12 +30,16 @@ export default class QuizScreen extends React.Component {
       tabBarVisible: false,
       headerStyle: {
         height: 71,
-        backgroundColor: Colors.appPurple
+        backgroundColor: Colors.header
       },
       headerLeft: (
-        <Image
-          source={require('../assets/images/logos/CrushIt_LogoV2small.png')}
-        />
+        <TouchableOpacity
+        onPress={() => navigation.navigate("Levels")}
+        >
+          <Image
+            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
+          />
+        </TouchableOpacity>
       ),
     };
   };

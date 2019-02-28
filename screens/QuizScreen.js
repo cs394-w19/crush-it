@@ -35,35 +35,39 @@ export default class QuizScreen extends React.Component {
       tabBarVisible: false,
       headerStyle: {
         height: 71,
-        backgroundColor: Colors.appPurple
+        backgroundColor: Colors.header
       },
       headerLeft: (
         <TouchableOpacity
         onPress={() => navigation.navigate("Levels")}
         >
           <Image
-            source={require('../assets/images/logos/CrushIt_LogoV2small.png')}
+            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
         </TouchableOpacity>
       )
     };
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     let quiz_data = require("../assets/quiz_data.json").quizzes;
     let quiz = quiz_data.find(q => {
       return q.quizName === "Credit Card Debt Level 1";
     });
+    let quiz_images = [
+      require("../assets/images/credit-card-debt/confused.gif"),
+  	  require("../assets/images/credit-card-debt/throw-money.gif"),
+  	  require("../assets/images/credit-card-debt/trust.gif"),
+  	  require("../assets/images/credit-card-debt/good-work.gif")
+    ];
     this.setState({
-      quiz: quiz
+      quiz: quiz,
+      quiz_images: quiz_images
     });
 
     this.props.navigation.setParams({
       quiz: this.state.quiz
     });
-
-    
-       
   }
 
   isAnswerCorrect(answerText) {
@@ -116,11 +120,11 @@ export default class QuizScreen extends React.Component {
     if (!this.state.quiz) return <Text />;
 
     let image = null;
-    let images = [
+    /*let images = [
       require("../assets/images/credit-card-debt/confused.gif"),
       require("../assets/images/credit-card-debt/throw-money.gif"),
       require("../assets/images/credit-card-debt/trust.gif"),
-      require("../assets/images/credit-card-debt/good-work.gif")];
+      require("../assets/images/credit-card-debt/good-work.gif")];*/
     return (
       <View style={styles.quizContainer}>
         <QuizProgressBar
@@ -136,7 +140,7 @@ export default class QuizScreen extends React.Component {
         <QuizQuestion
           quiz={this.state.quiz}
           question={this.state.quizProgress}
-          source={images[this.state.quizProgress]}
+          source={this.state.quiz_images[this.state.quizProgress]}
           style={styles.image}
         />
         <QuizButtons

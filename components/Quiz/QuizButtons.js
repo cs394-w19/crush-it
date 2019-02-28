@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, Button, View } from "react-native";
 
-import CardView from "react-native-cardview";
+import Colors from "../../constants/Colors";
 import QuizButton from "./QuizButton";
 import Emoji from "react-native-emoji";
 
@@ -28,7 +28,10 @@ export default class QuizButtons extends React.Component {
         ? styles.multipleChoiceOptionCorrect
         : styles.multipleChoiceOptionWrong;
       buttonStyle =
-        answer.answerText === this.props.submitted && buttonStyle !== styles.nextButton ? answerStyle : buttonStyle;
+        answer.answerText === this.props.submitted &&
+        buttonStyle !== styles.nextButton
+          ? answerStyle
+          : buttonStyle;
 
       return (
         <QuizButton
@@ -42,11 +45,7 @@ export default class QuizButtons extends React.Component {
       );
     });
 
-    return (
-      <View style={styles.buttonContainer}>
-        {answerButtons}
-      </View>
-    );
+    return <View style={styles.buttonContainer}>{answerButtons}</View>;
   }
 }
 
@@ -58,56 +57,45 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     flexDirection: "row",
     width: "100%",
-    height: "20%"
   },
   multipleChoiceOptionOne: {
     backgroundColor: "white",
-    color: "#889770",
     width: "44%",
-    margin: "3%",
-    padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "#a8ffac"
+    borderColor: "#A9A9A9",
+    margin: 10,
   },
   multipleChoiceOptionTwo: {
     backgroundColor: "white",
-    color: "#889770",
     width: "44%",
-    margin: "3%",
-    padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "#ffa8a8"
+    borderColor: "#A9A9A9",
+    margin: 10,
   },
   nextButton: {
     backgroundColor: "white",
-    color: "black",
     width: "94%",
-    padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "black",
-    marginTop: 10,
+    borderColor: "#A9A9A9",
+    margin: 10
   },
   multipleChoiceOptionCorrect: {
     backgroundColor: "#a8ffac",
-    color: "black",
     width: "44%",
-    margin: "3%",
-    padding: 15,
+    margin: 10,
     borderRadius: 10,
+    borderColor: '#a8ffac',
+    borderWidth: 3,
   },
   multipleChoiceOptionWrong: {
     backgroundColor: "#ffa8a8",
-    color: "black",
     width: "44%",
-    margin: "3%",
-    padding: 15,
+    margin: 10,
     borderRadius: 10,
+    borderColor: '#ffa8a8',
+    borderWidth: 3,
   },
-  multipleChoiceButton: {
-    fontSize: 100,
-    textAlign: "center"
-  }
 });
