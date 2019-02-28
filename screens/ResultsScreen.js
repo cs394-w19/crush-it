@@ -50,7 +50,7 @@ export default class ResultsScreen extends React.Component {
       tabBarVisible: false,
       headerStyle: {
         height: 71,
-        backgroundColor: Colors.appPurple
+        backgroundColor: Colors.header
       },
       headerLeft: (
         <Button
