@@ -1,7 +1,8 @@
 import React from "react";
-import { Platform, StatusBar, StyleSheet, View } from "react-native";
+import { Platform, StatusBar, StyleSheet, View, Image } from "react-native";
 import { AppLoading, Asset, Font, Icon } from "expo";
 import AppNavigator from "./navigation/AppNavigator";
+import FadeOutView from "./components/FadeOutView";
 
 export default class App extends React.Component {
   state = {
@@ -22,6 +23,9 @@ export default class App extends React.Component {
         <View style={styles.container}>
           {Platform.OS === "ios" && <StatusBar barStyle="default" />}
           <AppNavigator />
+          <FadeOutView style={styles.fadeScreen}>
+            <Image style={styles.splashImage} source={require('./assets/images/splash.png')} />
+          </FadeOutView>
         </View>
       );
     }
@@ -30,8 +34,7 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require("./assets/images/robot-dev.png"),
-        require("./assets/images/robot-prod.png")
+        require('./assets/images/splash.png')
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
@@ -58,5 +61,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#fff"
+  },
+  fadeScreen: {
+    position: "absolute",
+    top: "0%",
+    width: "100%",
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#732473"
+  },
+  splashImage: {
+    width: "100%",
+    resizeMode: "cover",
   }
 });
