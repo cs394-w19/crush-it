@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   },
   multipleChoiceOptionOne: {
     backgroundColor: "white",
-    color: "#889770",
+    color: "black",
     width: "44%",
     margin: "3%",
     padding: 15,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   multipleChoiceOptionTwo: {
     backgroundColor: "white",
-    color: "#889770",
+    color: "black",
     width: "44%",
     margin: "3%",
     padding: 15,
