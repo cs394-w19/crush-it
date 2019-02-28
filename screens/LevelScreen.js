@@ -99,14 +99,16 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     flexWrap: 'wrap',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   buttonRow : {
     flexDirection: 'row',
     flexWrap: 'wrap',
     width: "100%",
     justifyContent: 'center',
+    alignItems: 'center',
     padding: "5%",
-    paddingTop: "20%",
   },
   imageContainer: {
     width: "50%",
