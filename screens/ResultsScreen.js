@@ -63,30 +63,30 @@ export default class ResultsScreen extends React.Component {
   };
 
   render() {
-    let currentQuiz = quizData["quizzes"][0]; // just the sample quiz for now
+    //let currentQuiz = quizData["quizzes"][0]; // just the sample quiz for now
 
-    let learningProgress = {};
-    let correctAnswers = 0; // or XP or stars or something
+    // let learningProgress = {};
+    // let correctAnswers = 0; // or XP or stars or something
 
-    for(let i = 0; i < currentQuiz.questions.length; i++ ){
-        // check whether they got it right, assume for now they did
-        correctAnswers++;
+    // for(let i = 0; i < currentQuiz.questions.length; i++ ){
+    //     // check whether they got it right, assume for now they did
+    //     correctAnswers++;
 
-        if( currentQuiz.questions[i].learningCategory in learningProgress){
-            learningProgress[currentQuiz.questions[i].learningCategory]++;
-        } else {
-            learningProgress[currentQuiz.questions[i].learningCategory] = 1;
-        }
-    }
+    //     if( currentQuiz.questions[i].learningCategory in learningProgress){
+    //         learningProgress[currentQuiz.questions[i].learningCategory]++;
+    //     } else {
+    //         learningProgress[currentQuiz.questions[i].learningCategory] = 1;
+    //     }
+    // }
 
-    let flattenedData = Object.entries(learningProgress);
+    // let flattenedData = Object.entries(learningProgress);
 
-    let categories = flattenedData.map((item) =>{
-        //console.log(item);
-        return (
-        <Text key={item[0]}>{item[1]*10} points in the {item[0]} category</Text>
-        )
-    })
+    // let categories = flattenedData.map((item) =>{
+    //     //console.log(item);
+    //     return (
+    //     <Text key={item[0]}>{item[1]*10} points in the {item[0]} category</Text>
+    //     )
+    // })
 
 
     return (
@@ -96,15 +96,15 @@ export default class ResultsScreen extends React.Component {
           ref={node => (this._confettiView = node)}
         />
         <View style={styles.titleView}>
-          <Progress.Circle
+          {/* <Progress.Circle
             size={200}
             color={Colors.appPurple}
             progress={this.state.score / this.state.maxScore}
             showsText={true}
             formatText={(progress) => {return "Score";}}
-            />
+            /> */}
           <Text style={styles.title}>
-            You got {this.state.score * 10} points!
+            Congrats, level completed!
           </Text>
         </View>
       </ScrollView>
@@ -132,7 +132,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 40,
-    color: 'black',
+    color: Colors.appPurple,
     marginTop: 10,
 
   },
