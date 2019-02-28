@@ -1,31 +1,28 @@
 import React from "react";
-import { StyleSheet, Text, Button, View } from "react-native";
+import { StyleSheet, Text, Button, View, TouchableOpacity} from "react-native";
 
-import CardView from "react-native-cardview";
+import Colors from "../../constants/Colors";
 import Emoji from "react-native-emoji";
 
 export default class QuizButton extends React.Component {
   render() {
     return (
-      <View
-        style={this.props.buttonStyle}
-      >
-        <Button
-          title={this.props.text}
-          color={this.props.buttonStyle.color}
+        <TouchableOpacity
+          style={this.props.buttonStyle}
           onPress={() => this.props.handleButtonPress()}
         >
           <Text style={styles.multipleChoiceButton}>{this.props.text}</Text>
-        </Button>
-      </View>
+        </TouchableOpacity>
     );
   }
 }
 
 const styles = StyleSheet.create({
   multipleChoiceButton: {
-    fontSize: 50,
+    fontSize: 24,
+    margin: 15,
     textAlign: "center",
-    flex: 1
+    justifyContent: "center",
+    color: Colors.buttonText,
   }
 });

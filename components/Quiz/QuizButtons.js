@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, Button, View } from "react-native";
 
-import CardView from "react-native-cardview";
+import Colors from "../../constants/Colors";
 import QuizButton from "./QuizButton";
 import Emoji from "react-native-emoji";
 
@@ -57,56 +57,45 @@ const styles = StyleSheet.create({
     flexWrap: "wrap",
     flexDirection: "row",
     width: "100%",
-    height: "20%"
   },
   multipleChoiceOptionOne: {
     backgroundColor: "white",
-    color: "black",
     width: "44%",
-    margin: "3%",
-    padding: 15,
-    borderRadius: 10,
-    borderWidth: 3,
-    borderColor: "#A9A9A9"
-  },
-  multipleChoiceOptionTwo: {
-    backgroundColor: "white",
-    color: "black",
-    width: "44%",
-    margin: "3%",
-    padding: 15,
-    borderRadius: 10,
-    borderWidth: 3,
-    borderColor: "#A9A9A9"
-  },
-  nextButton: {
-    backgroundColor: "white",
-    color: "black",
-    width: "94%",
-    padding: 15,
     borderRadius: 10,
     borderWidth: 3,
     borderColor: "#A9A9A9",
-    marginTop: 10
+    margin: 10,
+  },
+  multipleChoiceOptionTwo: {
+    backgroundColor: "white",
+    width: "44%",
+    borderRadius: 10,
+    borderWidth: 3,
+    borderColor: "#A9A9A9",
+    margin: 10,
+  },
+  nextButton: {
+    backgroundColor: "white",
+    width: "94%",
+    borderRadius: 10,
+    borderWidth: 3,
+    borderColor: "#A9A9A9",
+    margin: 10
   },
   multipleChoiceOptionCorrect: {
     backgroundColor: "#a8ffac",
-    color: "black",
     width: "44%",
-    margin: "3%",
-    padding: 15,
-    borderRadius: 10
+    margin: 10,
+    borderRadius: 10,
+    borderColor: '#a8ffac',
+    borderWidth: 3,
   },
   multipleChoiceOptionWrong: {
     backgroundColor: "#ffa8a8",
-    color: "black",
     width: "44%",
-    margin: "3%",
-    padding: 15,
-    borderRadius: 10
+    margin: 10,
+    borderRadius: 10,
+    borderColor: '#ffa8a8',
+    borderWidth: 3,
   },
-  multipleChoiceButton: {
-    fontSize: 100,
-    textAlign: "center"
-  }
 });

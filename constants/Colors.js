@@ -8,7 +8,7 @@ export default {
   progressUnfilled: "#fcd771",
   quizStatementFill: "#ffe769",
   quizQuestionFill: "#d1d8d4",
-  buttonText: "889770",
+  buttonText: "#889770",
   buttonBorder: "#A9A9A9",
 
   lightBackground: "#c3c3c3"
