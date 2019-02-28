@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, Button, View } from "react-native";
 
 import CardView from "react-native-cardview";
 import Emoji from "react-native-emoji";
