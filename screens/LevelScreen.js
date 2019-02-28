@@ -88,7 +88,7 @@ export default class QuizScreen extends React.Component {
 
     return (
       <View style={styles.levelContainer}>
-        <ScrollView>
+        <ScrollView ref={(ref) => this.myScroll = ref}>
           <View style={styles.buttonRow}>
             {level_buttons}
           </View>

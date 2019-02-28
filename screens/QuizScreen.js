@@ -6,7 +6,8 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+  InteractionManager
 } from "react-native";
 
 import Colors from "../constants/Colors";
@@ -95,6 +96,7 @@ export default class QuizScreen extends React.Component {
         submitted: false,
       });
     }
+    this.myScroll.scrollTo({x: 0, y: 0, animated: false});
   }
 
   handleScoring(answerText) {
@@ -129,7 +131,7 @@ export default class QuizScreen extends React.Component {
           quizProgress={this.state.quizProgress}
           length={this.state.quiz.questions.length}
         />
-      <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator>
+      <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator ref={(ref) => this.myScroll = ref}>
         <QuizStatement
           quiz={this.state.quiz}
           question={this.state.quizProgress}

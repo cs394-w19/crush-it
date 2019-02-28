@@ -96,7 +96,9 @@ export default class ResultsScreen extends React.Component {
 
 
     return (
-      <View contentContainerStyle={styles.container}>
+      <View 
+        contentContainerStyle={styles.container}
+      >
         <Confetti
           confettiCount={200}
           ref={node => (this._confettiView = node)}
