@@ -10,13 +10,13 @@ export default class QuizButton extends React.Component {
       <View
         style={this.props.buttonStyle}
       >
-        <TouchableOpacity
+        <Button
           title={this.props.text}
           color={this.props.buttonStyle.color}
           onPress={() => this.props.handleButtonPress()}
         >
           <Text style={styles.multipleChoiceButton}>{this.props.text}</Text>
-        </TouchableOpacity>
+        </Button>
       </View>
     );
   }
