@@ -103,6 +103,9 @@ export default class QuizScreen extends React.Component {
     this.setState({
       submitted: answerText
     });
+    goToTop = () => {
+      this.scroll.scrollTo({x: 0, y: 0, animated: false});
+    }
     setTimeout(() => {
       this.nextQuestion();
     }, 500);
