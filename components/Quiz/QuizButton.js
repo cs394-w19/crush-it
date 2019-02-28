@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, Button, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import CardView from "react-native-cardview";
 import Emoji from "react-native-emoji";
@@ -10,13 +10,13 @@ export default class QuizButton extends React.Component {
       <View
         style={this.props.buttonStyle}
       >
-        <Button
+        <TouchableOpacity
           title={this.props.text}
           color={this.props.buttonStyle.color}
           onPress={() => this.props.handleButtonPress()}
         >
           <Text style={styles.multipleChoiceButton}>{this.props.text}</Text>
-        </Button>
+        </TouchableOpacity>
       </View>
     );
   }
