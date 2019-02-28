@@ -55,8 +55,8 @@ export default class ResultsScreen extends React.Component {
       headerLeft: (
         <Button
           onPress={() => navigation.navigate("Levels")} // what should this be called/go back to
-          title="Back"
-          color={Colors.tabIconDefault}
+          title="Back to Levels"
+          color={"white"}
         />
       )
     };
