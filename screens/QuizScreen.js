@@ -53,11 +53,11 @@ export default class QuizScreen extends React.Component {
     let quiz = quiz_data.find(q => {
       return q.quizName === "Credit Card Debt Level 1";
     });
-    let quiz_images = await [
-   		require("../assets/images/credit-card-debt/confused.gif"),
-      	require("../assets/images/credit-card-debt/throw-money.gif"),
-      	require("../assets/images/credit-card-debt/trust.gif"),
-      	require("../assets/images/credit-card-debt/good-work.gif")
+    let quiz_images = [
+      require("../assets/images/credit-card-debt/confused.gif"),
+  	  require("../assets/images/credit-card-debt/throw-money.gif"),
+  	  require("../assets/images/credit-card-debt/trust.gif"),
+  	  require("../assets/images/credit-card-debt/good-work.gif")
     ];
     this.setState({
       quiz: quiz,
