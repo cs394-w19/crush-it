@@ -1,5 +1,5 @@
 import React from 'react';
-import {FlatList, ScrollView, StyleSheet, Button, Text, View } from 'react-native';
+import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
@@ -32,6 +32,10 @@ export default class ResultsScreen extends React.Component {
     setTimeout(() => {this.showExperienceGained(70)}, 200); // this should be depend on score
   }
 
+  componentWillUnmount() {
+    this._confettiView.stopConfetti();
+  }
+
 
   showExperienceGained(points){
 
@@ -53,11 +57,13 @@ export default class ResultsScreen extends React.Component {
         backgroundColor: Colors.header
       },
       headerLeft: (
-        <Button
-          onPress={() => navigation.navigate("Levels")} // what should this be called/go back to
-          title="Back to Levels"
-          color={"white"}
-        />
+        <TouchableOpacity
+        onPress={() => navigation.navigate("Levels")}
+        >
+          <Image
+            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
+          />
+        </TouchableOpacity>
       )
     };
   };
@@ -90,7 +96,7 @@ export default class ResultsScreen extends React.Component {
 
 
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <View contentContainerStyle={styles.container}>
         <Confetti
           confettiCount={200}
           ref={node => (this._confettiView = node)}
@@ -106,8 +112,13 @@ export default class ResultsScreen extends React.Component {
           <Text style={styles.title}>
             Congrats, level completed!
           </Text>
+          <Button
+            onPress={() => this.props.navigation.navigate("Levels")} // what should this be called/go back to
+            title="Back to Levels"
+            color={Colors.appPurple}
+          />
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }
@@ -126,14 +137,14 @@ const styles = StyleSheet.create({
     width: 300
   },
   titleView: {
-    padding: 10,
+    padding: "20%",
     alignItems: 'center',
-
+    justifyContent: 'flex-end'
   },
   title: {
     fontSize: 40,
     color: Colors.appPurple,
-    marginTop: 10,
+    margin: 20,
 
   },
   sliderStyle: {
