@@ -15,9 +15,7 @@ export default class QuizStatement extends React.Component {
     return(
       <View style={styles.questionStatementContainer}>
         <Text style={styles.questionStatementText}>
-          {this.props.explanation
-            ? quiz.questions[question].explanation
-            : quiz.questions[question].questionText}
+            {quiz.questions[question].statement}
         </Text>
       </View>
     );

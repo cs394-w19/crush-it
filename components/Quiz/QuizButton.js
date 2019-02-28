@@ -7,11 +7,8 @@ import Emoji from "react-native-emoji";
 export default class QuizButton extends React.Component {
   render() {
     return (
-      <CardView
+      <View
         style={this.props.buttonStyle}
-        cardElevation={5}
-        cornerRadius={10}
-        cornerOverlap={false}
       >
         <Button
           title={this.props.text}
@@ -20,7 +17,7 @@ export default class QuizButton extends React.Component {
         >
           <Text style={styles.multipleChoiceButton}>{this.props.text}</Text>
         </Button>
-      </CardView>
+      </View>
     );
   }
 }

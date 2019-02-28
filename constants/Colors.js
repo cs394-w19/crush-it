@@ -11,4 +11,5 @@ export default {
   buttonText: "889770",
   buttonBorderOne: "#a8ffac",
   buttonBorderTwo: "#ffa8a8",
+  lightBackground: "#c3c3c3",
 };

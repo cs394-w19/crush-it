@@ -24,7 +24,6 @@ export default class QuizScreen extends React.Component {
       quizProgress: 0,
       score: 0,
       submitted: false,
-      explanation: false
     };
   }
 
@@ -35,7 +34,7 @@ export default class QuizScreen extends React.Component {
       tabBarVisible: false,
       headerStyle: {
         height: 71,
-        backgroundColor: Colors.header
+        backgroundColor: Colors.appPurple
       },
       headerLeft: (
         <TouchableOpacity
@@ -52,7 +51,7 @@ export default class QuizScreen extends React.Component {
   componentDidMount() {
     let quiz_data = require("../assets/quiz_data.json").quizzes;
     let quiz = quiz_data.find(q => {
-      return q.quizName === "Credit Card Debt";
+      return q.quizName === "Credit Card Debt Level 1";
     });
     this.setState({
       quiz: quiz
@@ -61,6 +60,7 @@ export default class QuizScreen extends React.Component {
     this.props.navigation.setParams({
       quiz: this.state.quiz
     });
+
   }
 
   isAnswerCorrect(answerText) {
@@ -82,13 +82,11 @@ export default class QuizScreen extends React.Component {
         quizProgress: 0,
         score: 0,
         submitted: false,
-        explanation: false
       });
     } else {
       this.setState({
         quizProgress: this.state.quizProgress + 1,
         submitted: false,
-        explanation: false
       });
     }
   }
@@ -106,9 +104,7 @@ export default class QuizScreen extends React.Component {
       submitted: answerText
     });
     setTimeout(() => {
-      this.setState({
-        explanation: true
-      });
+      this.nextQuestion();
     }, 500);
   }
 
@@ -116,29 +112,11 @@ export default class QuizScreen extends React.Component {
     if (!this.state.quiz) return <Text />;
 
     let image = null;
-    switch (10 * this.state.quizProgress + this.state.explanation) {
-      case 0:
-        image = require("../assets/images/credit-card-debt/question0.png");
-        break;
-      case 1:
-        image = require("../assets/images/credit-card-debt/explanation0.png");
-        break;
-      case 10:
-        image = require("../assets/images/credit-card-debt/question1.png");
-        break;
-      case 11:
-        image = require("../assets/images/credit-card-debt/explanation1.png");
-        break;
-      case 20:
-        image = require("../assets/images/credit-card-debt/question2.png");
-        break;
-      case 21:
-        image = require("../assets/images/credit-card-debt/explanation2.png");
-        break;
-      default:
-        break;
-    }
-
+    let images = [
+      require("../assets/images/credit-card-debt/confused.gif"),
+      require("../assets/images/credit-card-debt/throw-money.gif"),
+      require("../assets/images/credit-card-debt/trust.gif"),
+      require("../assets/images/credit-card-debt/good-work.gif")];
     return (
       <View style={styles.quizContainer}>
         <QuizProgressBar
@@ -149,20 +127,18 @@ export default class QuizScreen extends React.Component {
         <QuizStatement
           quiz={this.state.quiz}
           question={this.state.quizProgress}
-          explanation={this.state.explanation}
           nextQuestion={() => this.nextQuestion()}
         />
         <QuizQuestion
           quiz={this.state.quiz}
           question={this.state.quizProgress}
-          source={image}
+          source={images[this.state.quizProgress]}
           style={styles.image}
         />
         <QuizButtons
           quiz={this.state.quiz}
           quizProgress={this.state.quizProgress}
           submitted={this.state.submitted}
-          explanation={this.state.explanation}
           handleAnswerButtonPress={(text) => this.handleAnswerButtonPress(text)}
           isAnswerCorrect={(answerText) => this.isAnswerCorrect(answerText)}
           nextQuestion={() => this.nextQuestion()}
