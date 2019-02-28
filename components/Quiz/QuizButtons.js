@@ -28,7 +28,10 @@ export default class QuizButtons extends React.Component {
         ? styles.multipleChoiceOptionCorrect
         : styles.multipleChoiceOptionWrong;
       buttonStyle =
-        answer.answerText === this.props.submitted && buttonStyle !== styles.nextButton ? answerStyle : buttonStyle;
+        answer.answerText === this.props.submitted &&
+        buttonStyle !== styles.nextButton
+          ? answerStyle
+          : buttonStyle;
 
       return (
         <QuizButton
@@ -42,11 +45,7 @@ export default class QuizButtons extends React.Component {
       );
     });
 
-    return (
-      <View style={styles.buttonContainer}>
-        {answerButtons}
-      </View>
-    );
+    return <View style={styles.buttonContainer}>{answerButtons}</View>;
   }
 }
 
@@ -68,7 +67,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "#a8ffac"
+    borderColor: "#A9A9A9"
   },
   multipleChoiceOptionTwo: {
     backgroundColor: "white",
@@ -78,7 +77,7 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "#ffa8a8"
+    borderColor: "#A9A9A9"
   },
   nextButton: {
     backgroundColor: "white",
@@ -87,8 +86,8 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 10,
     borderWidth: 3,
-    borderColor: "black",
-    marginTop: 10,
+    borderColor: "#A9A9A9",
+    marginTop: 10
   },
   multipleChoiceOptionCorrect: {
     backgroundColor: "#a8ffac",
@@ -96,7 +95,7 @@ const styles = StyleSheet.create({
     width: "44%",
     margin: "3%",
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 10
   },
   multipleChoiceOptionWrong: {
     backgroundColor: "#ffa8a8",
@@ -104,7 +103,7 @@ const styles = StyleSheet.create({
     width: "44%",
     margin: "3%",
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 10
   },
   multipleChoiceButton: {
     fontSize: 100,
