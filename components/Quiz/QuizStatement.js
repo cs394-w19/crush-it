@@ -5,7 +5,7 @@ import {
   View
 } from "react-native";
 
-
+import Colors from "../../constants/Colors";
 
 export default class QuizStatement extends React.Component {
   render() {
@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
     padding: 25,
     width: "100%",
     // flex: 1,
-    backgroundColor: "#ffe769",
+    backgroundColor: Colors.quizStatementFill,
   },
   questionStatementText: {
     fontSize: 24,
-    color: "black",
+    color: Colors.quizText,
     textAlign: "left",
     marginTop: "auto",
     marginBottom: "auto"

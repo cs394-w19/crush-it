@@ -37,7 +37,7 @@ export default class QuizButtons extends React.Component {
         <QuizButton
           key={answer.answerText}
           text={answer.answerText}
-          buttonStyle={buttonStyle}
+          buttonStyle={[styles.quizButton, buttonStyle]}
           handleButtonPress={() =>
             this.props.handleAnswerButtonPress(answer.answerText)
           }
@@ -58,44 +58,34 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
   },
+  quizButton: {
+    borderRadius: 10,
+    borderWidth: 3,
+    margin: 10,
+  },
   multipleChoiceOptionOne: {
     backgroundColor: "white",
     width: "44%",
-    borderRadius: 10,
-    borderWidth: 3,
-    borderColor: "#A9A9A9",
-    margin: 10,
+    borderColor: Colors.buttonBorder,
   },
   multipleChoiceOptionTwo: {
     backgroundColor: "white",
     width: "44%",
-    borderRadius: 10,
-    borderWidth: 3,
-    borderColor: "#A9A9A9",
-    margin: 10,
+    borderColor: Colors.buttonBorder,
   },
   nextButton: {
     backgroundColor: "white",
     width: "94%",
-    borderRadius: 10,
-    borderWidth: 3,
-    borderColor: "#A9A9A9",
-    margin: 10
+    borderColor: Colors.buttonBorder,
   },
   multipleChoiceOptionCorrect: {
-    backgroundColor: "#a8ffac",
+    backgroundColor: Colors.buttonCorrect,
     width: "44%",
-    margin: 10,
-    borderRadius: 10,
-    borderColor: '#a8ffac',
-    borderWidth: 3,
+    borderColor: Colors.buttonCorrect,
   },
   multipleChoiceOptionWrong: {
-    backgroundColor: "#ffa8a8",
+    backgroundColor: Colors.buttonWrong,
     width: "44%",
-    margin: 10,
-    borderRadius: 10,
-    borderColor: '#ffa8a8',
-    borderWidth: 3,
+    borderColor: Colors.buttonWrong,
   },
 });
