@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   questionStatementText: {
     fontSize: 24,
     color: "black",
-    textAlign: "center",
+    textAlign: "left",
     marginTop: "auto",
     marginBottom: "auto"
   }
