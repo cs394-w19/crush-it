@@ -73,7 +73,7 @@ export default class HomeScreen extends React.Component {
         style = {styles.listContainer}
         onPress={() => this.props.navigation.navigate("Levels", {topicName})}
         >
-        <Text>
+        <Text style = {styles.listText}>
           {topicName} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} />
         </Text>
       </TouchableOpacity>);
@@ -84,7 +84,7 @@ export default class HomeScreen extends React.Component {
       <View style={styles.levelContainer}>
       <ScrollView ref={(ref) => this.myScroll = ref}>
         <View>
-          <Text style={styles.title}>Topics:</Text>
+          <Text style={styles.title}>Choose a topic...</Text>
           {topicButtons}
         </View>
       </ScrollView>

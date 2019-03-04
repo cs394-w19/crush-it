@@ -43,7 +43,7 @@ export default class LevelScreen extends React.Component {
       },
       headerLeft: (
         <TouchableOpacity
-          onPress={() => navigation.navigate("Levels")}
+          onPress={() => navigation.navigate("Home")}
         >
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
