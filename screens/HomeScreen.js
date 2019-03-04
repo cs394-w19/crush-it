@@ -1,38 +1,61 @@
 import React from "react";
 import {
-  Image,
   Platform,
   ScrollView,
   StyleSheet,
   Text,
   TouchableOpacity,
-  AppRegistry,
   View
 } from "react-native";
-import { WebBrowser } from "expo";
-import Confetti from "react-native-confetti";
-import { MonoText } from "../components/StyledText";
-import Emoji from "react-native-emoji";
+
+import Colors from "../constants/Colors";
+import { Ionicons, FontAwesome } from '@expo/vector-icons'
+
+
 
 export default class HomeScreen extends React.Component {
-  componentDidMount() {
-    if (this._confettiView) {
-      this._confettiView.startConfetti();
-    }
+  constructor(props){
+    super(props);
+
+    // some stuff for gathering the topics (i.e. reading json or firebase calls)
+  
+    this.state = { 
+      "topics" : ["Credit Cards", "Student Loans", "Investing"]
+    };
+  
+
+    
   }
 
+
   render() {
+    let topicButtons = []
+
+    this.state.topics.forEach((topicName, index) => {
+      let level = index.toString();
+
+
+      topicButtons.push(<TouchableOpacity
+        key = {level}
+        style = {styles.listContainer}
+        onPress={() => this.props.navigation.navigate("Levels", {topicName})}
+        >
+        <Text>
+          {topicName} <Ionicons name="md-card" size={32} color={Colors.darkGrayPurple} />
+        </Text>
+      </TouchableOpacity>);
+    })
+
     return (
-      <View style={styles.container}>
-        <Confetti
-          confettiCount={200}
-          ref={node => (this._confettiView = node)}
-        />
-        <View style={styles.welcomeContainer}>
-          <Text style={styles.congratsText}>Congratulations!</Text>
-          <Emoji name="smile-cat" style={{ fontSize: 50 }} />
+      // this should be a for loop or a map or something
+      <View style={styles.levelContainer}>
+      <ScrollView ref={(ref) => this.myScroll = ref}>
+        <View>
+          <Text style={styles.title}>Topics:</Text>
+          {topicButtons}
         </View>
-      </View>
+      </ScrollView>
+    </View>
     );
   }
 }
@@ -42,86 +65,40 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff"
   },
-  developmentModeText: {
-    marginBottom: 20,
-    color: "rgba(0,0,0,0.4)",
-    fontSize: 14,
-    lineHeight: 19,
-    textAlign: "center"
-  },
+ 
   contentContainer: {
     paddingTop: 30
   },
-  welcomeContainer: {
-    alignItems: "center",
-    marginTop: 80,
-    marginBottom: 20
+  levelContainer: {
+    flex: 1,
+    color: Colors.darkGrayPurple
   },
-  welcomeImage: {
-    width: 100,
-    height: 80,
-    resizeMode: "contain",
-    marginTop: 3,
-    marginLeft: -10
+  listContainer: {
+    padding: 15,
+    marginTop: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.darkGrayPurple,
+    color: Colors.darkGrayPurple,
   },
-  getStartedContainer: {
-    alignItems: "center",
-    marginHorizontal: 50
+  listText: {
+    fontSize: 24,
+    color: Colors.darkGrayPurple,
   },
-  homeScreenFilename: {
-    marginVertical: 7
+  title: {
+    fontSize: 32,
+    marginTop: 13,
+    color: Colors.darkGrayPurple,
+    textAlign: 'center',
+
   },
-  codeHighlightText: {
-    color: "rgba(96,100,109, 0.8)"
+  disabledText: {
+    color: Colors.lightGrayPurple,
+    fontSize: 24
   },
-  codeHighlightContainer: {
-    backgroundColor: "rgba(0,0,0,0.05)",
-    borderRadius: 3,
-    paddingHorizontal: 4
-  },
-  congratsText: {
-    fontSize: 30,
-    color: "rgba(96,100,109, 1)",
-    lineHeight: 30,
-    textAlign: "center"
-  },
-  tabBarInfoContainer: {
-    position: "absolute",
-    bottom: 0,
-    left: 0,
-    right: 0,
-    ...Platform.select({
-      ios: {
-        shadowColor: "black",
-        shadowOffset: { height: -3 },
-        shadowOpacity: 0.1,
-        shadowRadius: 3
-      },
-      android: {
-        elevation: 20
-      }
-    }),
-    alignItems: "center",
-    backgroundColor: "#fbfbfb",
-    paddingVertical: 20
-  },
-  tabBarInfoText: {
-    fontSize: 17,
-    color: "rgba(96,100,109, 1)",
-    textAlign: "center"
-  },
-  navigationFilename: {
-    marginTop: 5
-  },
-  helpContainer: {
-    marginTop: 15,
-    alignItems: "center"
-  },
-  helpLink: {
-    paddingVertical: 15
-  },
-  helpLinkText: {
-    fontSize: 14,
-    color: "#2e78b7"
+  headerStats: {
+    color: Colors.lightGrayPurple,
+    fontSize: 25,
+    marginRight: 5
   }
+  
 });
