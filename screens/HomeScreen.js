@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Image,
   Platform,
   ScrollView,
   StyleSheet,
@@ -28,11 +29,43 @@ export default class HomeScreen extends React.Component {
   }
 
 
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
+      //title: "Results",
+      tabBarVisible: false,
+      headerStyle: {
+        height: 71,
+        backgroundColor: Colors.header
+      },
+      headerLeft: (
+        <TouchableOpacity
+        >
+          <Image
+            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
+          />
+        </TouchableOpacity>
+      )
+    };
+  };
+
   render() {
     let topicButtons = []
 
     this.state.topics.forEach((topicName, index) => {
       let level = index.toString();
+
+      // probs should use a dict to do this instead of if but lol I love bad code
+      // also it lets others get those sweet, sweet commits
+
+      let icon = "money";
+      if(topicName === "Credit Cards") {
+        icon = "md-card"
+      } else if(topicName === "Student Loans"){
+        icon = "md-school"
+      } else if(topicName === "Investing"){
+        icon = "md-trending-up"
+      }
 
 
       topicButtons.push(<TouchableOpacity
@@ -41,7 +74,7 @@ export default class HomeScreen extends React.Component {
         onPress={() => this.props.navigation.navigate("Levels", {topicName})}
         >
         <Text>
-          {topicName} <Ionicons name="md-card" size={32} color={Colors.darkGrayPurple} />
+          {topicName} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} />
         </Text>
       </TouchableOpacity>);
     })
