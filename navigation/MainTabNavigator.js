@@ -6,16 +6,18 @@ import TabBarIcon from '../components/TabBarIcon';
 import QuizScreen from '../screens/QuizScreen';
 import ResultsScreen from "../screens/ResultsScreen";
 import LevelScreen from "../screens/LevelScreen";
+import HomeScreen from '../screens/HomeScreen';
 
 
 const QuizStack = createStackNavigator(
   {
     Quiz: QuizScreen,
     Results: ResultsScreen,
-    Levels: LevelScreen
+    Levels: LevelScreen,
+    Home: HomeScreen
   },
   {
-    initialRouteName: 'Levels',
+    initialRouteName: 'Home',
     navigationOptions: {
       tabBarVisible: false,
     },

@@ -9,29 +9,50 @@ import {
   AppRegistry,
   View
 } from "react-native";
-import { WebBrowser } from "expo";
-import Confetti from "react-native-confetti";
-import { MonoText } from "../components/StyledText";
-import Emoji from "react-native-emoji";
+
 
 export default class HomeScreen extends React.Component {
-  componentDidMount() {
-    if (this._confettiView) {
-      this._confettiView.startConfetti();
-    }
+  constructor(props){
+    super(props);
+
+    // some stuff for gathering the topics (i.e. reading json or firebase calls)
+  
+    const topics = ["Credit Cards", "Student Loans", "Investing"]
+  
+
+    // let topicButtons = []
+
+    // topics.forEach((topicName) => {
+    //   topicButtons.push(<TouchableOpacity>
+    //     <Text>
+    //       {topicName}
+    //     </Text>
+    //   </TouchableOpacity>);
+    // })
   }
 
+
   render() {
+    
+
+
     return (
       <View style={styles.container}>
-        <Confetti
-          confettiCount={200}
-          ref={node => (this._confettiView = node)}
-        />
-        <View style={styles.welcomeContainer}>
-          <Text style={styles.congratsText}>Congratulations!</Text>
-          <Emoji name="smile-cat" style={{ fontSize: 50 }} />
-        </View>
+        <TouchableOpacity>
+        <Text>
+          Credit Cards
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text>
+          Student Loans
+        </Text>
+      </TouchableOpacity>
+      <TouchableOpacity>
+        <Text>
+          Investing
+        </Text>
+      </TouchableOpacity>
       </View>
     );
   }
