@@ -55,6 +55,18 @@ export default class HomeScreen extends React.Component {
     this.state.topics.forEach((topicName, index) => {
       let level = index.toString();
 
+      // probs should use a dict to do this instead of if but lol I love bad code
+      // also it lets others get those sweet, sweet commits
+
+      let icon = "money";
+      if(topicName === "Credit Cards") {
+        icon = "md-card"
+      } else if(topicName === "Student Loans"){
+        icon = "md-school"
+      } else if(topicName === "Investing"){
+        icon = "md-trending-up"
+      }
+
 
       topicButtons.push(<TouchableOpacity
         key = {level}
@@ -62,7 +74,7 @@ export default class HomeScreen extends React.Component {
         onPress={() => this.props.navigation.navigate("Levels", {topicName})}
         >
         <Text>
-          {topicName} <Ionicons name="md-card" size={32} color={Colors.darkGrayPurple} />
+          {topicName} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} />
         </Text>
       </TouchableOpacity>);
     })
