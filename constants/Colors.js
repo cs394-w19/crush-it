@@ -13,5 +13,7 @@ export default {
   buttonWrong: '#ffa8a8',
   buttonCorrect: '#a8ffac',
   buttonBorder: "#889770",
-  lightBackground: "#c3c3c3"
+  lightBackground: "#c3c3c3",
+  darkGrayPurple: "#706777",
+  lightGrayPurple: "#cfc7d6"
 };

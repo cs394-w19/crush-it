@@ -117,7 +117,7 @@ export default class ResultsScreen extends React.Component {
           <Button
             onPress={() => this.props.navigation.navigate("Levels")} // what should this be called/go back to
             title="Back to Levels"
-            color={Colors.appPurple}
+            color={Colors.darkGrayPurple}
           />
         </View>
       </View>
@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 40,
-    color: Colors.appPurple,
+    color: Colors.darkGrayPurple,
     margin: 20,
 
   },

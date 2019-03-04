@@ -21,7 +21,7 @@ export default class QuizQuestion extends React.Component {
           style={{width:250,height:200}}
           resizeMode={"contain"}
         />
-          <Text style={{ fontSize: 24, color: Colors.quizText, paddingTop: 20}}>
+          <Text style={{ fontSize: 24, color: Colors.darkGrayPurple, paddingTop: 20}}>
             {quiz.questions[question].question}
           </Text>
       </View>
