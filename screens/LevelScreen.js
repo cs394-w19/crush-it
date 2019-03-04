@@ -8,25 +8,34 @@ import {
   Image,
   TouchableOpacity,
 } from "react-native";
-import { ExpoLinksView } from "@expo/samples";
-import ProgressBar from "react-native-progress/Bar";
-import CardView from "react-native-cardview";
-
 import Colors from "../constants/Colors";
-import QuizButtons from "../components/Quiz/QuizButtons";
+import { Ionicons, FontAwesome } from '@expo/vector-icons'
 
-export default class QuizScreen extends React.Component {
+export default class LevelScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      quizscores: [2, 3, 1],
+      quizLevels: [{
+        title: "Easy", 
+        id: 0,
+        available: true,
+      },
+      {
+        title: "Medium",
+        id: 1,
+        available: false,
+      },
+      {
+        title: "Hard",
+        id: 2,
+        available: false,
+      }],
     }
   }
 
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
     return {
-      //title: "Levels",
       tabBarVisible: false,
       headerStyle: {
         height: 71,
@@ -34,62 +43,52 @@ export default class QuizScreen extends React.Component {
       },
       headerLeft: (
         <TouchableOpacity
-        onPress={() => navigation.navigate("Levels")}
+          onPress={() => navigation.navigate("Levels")}
         >
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
         </TouchableOpacity>
       ),
+      headerRight: (
+        <Text style={styles.headerStats}> 
+          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />   250
+        </Text>
+      )
     };
   };
+  
 
   render() {
-
-    images = [
-      require('../assets/images/buttons/Level_1button0.png'),
-      require('../assets/images/buttons/Level_1button1.png'),
-      require('../assets/images/buttons/Level_1button2.png'),
-      require('../assets/images/buttons/Level_1button3.png'),
-
-      require('../assets/images/buttons/Level_2button0.png'),
-      require('../assets/images/buttons/Level_2button1.png'),
-      require('../assets/images/buttons/Level_2button2.png'),
-      require('../assets/images/buttons/Level_2button3.png'),
-
-      require('../assets/images/buttons/Level_3button0.png'),
-      require('../assets/images/buttons/Level_3button1.png'),
-      require('../assets/images/buttons/Level_3button2.png'),
-      require('../assets/images/buttons/Level_3button3.png'),
-    ];
-
     let level_buttons = [];
-
-    for (i = 0; i < this.state.quizscores.length; i++) {
-      let score = this.state.quizscores[i];
-
-      if (score > 3 || score < 0)
-        continue;
-
-      level_buttons.push(
-        <View style={styles.imageContainer} key={i * 4 + score}>
+    this.state.quizLevels.forEach((item, index) => {
+      let level = index.toString();
+      if(item.available) {
+        level_buttons.push(
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Quiz")}
-          >
-          <Image
-            style={styles.image}
-            source={images[i*4+score]}
-            resizeMode={'contain'}
-          />
-          </TouchableOpacity>
-        </View>
-      );
-    }
+            key = {level}
+            style = {styles.listContainer}
+            onPress = {() => this.props.navigation.navigate("Quiz", {level: level})}>
+            <Text style = {styles.listText}>
+                {item.title}   <Ionicons name="md-unlock" size={32} color={Colors.darkGrayPurple} />
+            </Text> 
+          </TouchableOpacity>)
+      } else {
+        level_buttons.push(
+          <View style={styles.listContainer}>
+            <Text style = {styles.disabledText}>
+                {item.title}
+            </Text>
+          </View>
+        );
+      }
+    });
 
     return (
       <View style={styles.levelContainer}>
         <ScrollView ref={(ref) => this.myScroll = ref}>
-          <View style={styles.buttonRow}>
+          <View>
+            <Text style={styles.title}> Credit Card Debt <Ionicons name="md-card" size={32} color={Colors.darkGrayPurple} /></Text>
             {level_buttons}
           </View>
         </ScrollView>
@@ -101,26 +100,33 @@ export default class QuizScreen extends React.Component {
 const styles = StyleSheet.create({
   levelContainer: {
     flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'center',
-    alignItems: 'center',
+    color: Colors.darkGrayPurple
   },
-  buttonRow : {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    width: "100%",
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: "5%",
+  listContainer: {
+    padding: 15,
+    marginTop: 5,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.darkGrayPurple,
+    color: Colors.darkGrayPurple,
   },
-  imageContainer: {
-    width: "50%",
-    height: 200,
-    padding: "5%",
+  listText: {
+    fontSize: 24,
+    color: Colors.darkGrayPurple,
   },
-  image: {
-    maxHeight: "100%",
-    maxWidth: "100%",
+  title: {
+    fontSize: 32,
+    marginTop: 13,
+    color: Colors.darkGrayPurple,
+    textAlign: 'center',
+
+  },
+  disabledText: {
+    color: Colors.lightGrayPurple,
+    fontSize: 24
+  },
+  headerStats: {
+    color: Colors.lightGrayPurple,
+    fontSize: 25,
+    marginRight: 5
   }
 });

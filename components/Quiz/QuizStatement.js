@@ -28,11 +28,11 @@ const styles = StyleSheet.create({
     padding: 25,
     width: "100%",
     // flex: 1,
-    backgroundColor: Colors.quizStatementFill,
+    //backgroundColor: Colors.quizStatementFill,
   },
   questionStatementText: {
     fontSize: 24,
-    color: Colors.quizText,
+    color: Colors.darkGrayPurple,
     textAlign: "left",
     marginTop: "auto",
     marginBottom: "auto"

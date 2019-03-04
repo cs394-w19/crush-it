@@ -66,17 +66,17 @@ const styles = StyleSheet.create({
   multipleChoiceOptionOne: {
     backgroundColor: "white",
     width: "44%",
-    borderColor: Colors.buttonBorder,
+    borderColor: Colors.darkGrayPurple,
   },
   multipleChoiceOptionTwo: {
     backgroundColor: "white",
     width: "44%",
-    borderColor: Colors.buttonBorder,
+    borderColor: Colors.darkGrayPurple,
   },
   nextButton: {
     backgroundColor: "white",
     width: "94%",
-    borderColor: Colors.buttonBorder,
+    borderColor: Colors.darkGrayPurple,
   },
   multipleChoiceOptionCorrect: {
     backgroundColor: Colors.buttonCorrect,

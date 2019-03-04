@@ -117,6 +117,9 @@ export default class QuizScreen extends React.Component {
   }
 
   render() {
+     const { navigation } = this.props;
+    const level = navigation.getParam('level', '0');
+    console.log(level);
     if (!this.state.quiz) return <Text />;
 
     let image = null;

@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
     margin: 15,
     textAlign: "center",
     justifyContent: "center",
-    color: Colors.buttonText,
+    color: Colors.darkGrayPurple,
   }
 });
