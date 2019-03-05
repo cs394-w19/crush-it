@@ -10,17 +10,20 @@ import Colors from "../../constants/Colors";
 
 export default class QuizQuestion extends React.Component {
   render() {
-    let image = this.props.source;
     let quiz = this.props.quiz;
     let question = this.props.question;
 
+    image =  (
+      <Image
+        source={this.props.source}
+        style={{width:250,height:200}}
+        resizeMode={"contain"}
+      />
+    );
+
     return(
       <View style={styles.questionContainer}>
-        <Image
-          source={image}
-          style={{width:250,height:200}}
-          resizeMode={"contain"}
-        />
+          {this.props.source ? image : <Text />}
           <Text style={{ fontSize: 24, color: Colors.darkGrayPurple, paddingTop: 20}}>
             {quiz.questions[question].question}
           </Text>
