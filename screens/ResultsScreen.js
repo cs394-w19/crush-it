@@ -6,8 +6,6 @@ import Colors from '../constants/Colors';
 import Confetti from 'react-native-confetti';
 import * as Progress from 'react-native-progress';
 
-let quizData = require("../assets/quiz_data.json");
-
 export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -96,7 +94,7 @@ export default class ResultsScreen extends React.Component {
 
 
     return (
-      <View 
+      <View
         contentContainerStyle={styles.container}
       >
         <Confetti
