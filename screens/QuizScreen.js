@@ -26,7 +26,7 @@ export default class QuizScreen extends React.Component {
       quiz: null,
       quizProgress: 0,
       score: 0,
-      submitted: false,
+      submitted: false
     };
   }
 
@@ -40,9 +40,7 @@ export default class QuizScreen extends React.Component {
         backgroundColor: Colors.header
       },
       headerLeft: (
-        <TouchableOpacity
-        onPress={() => navigation.navigate("Levels")}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate("Levels")}>
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
@@ -55,6 +53,7 @@ export default class QuizScreen extends React.Component {
     let quiz = quiz_data.find(q => {
       return q.quizName === "Credit Card Debt Level 1";
     });
+
     this.setState({
       quiz: quiz,
     });
@@ -82,15 +81,15 @@ export default class QuizScreen extends React.Component {
       this.setState({
         quizProgress: 0,
         score: 0,
-        submitted: false,
+        submitted: false
       });
     } else {
       this.setState({
         quizProgress: this.state.quizProgress + 1,
-        submitted: false,
+        submitted: false
       });
     }
-    this.myScroll.scrollTo({x: 0, y: 0, animated: false});
+    this.myScroll.scrollTo({ x: 0, y: 0, animated: false });
   }
 
   handleScoring(answerText) {
@@ -107,12 +106,12 @@ export default class QuizScreen extends React.Component {
     });
     setTimeout(() => {
       this.nextQuestion();
-    }, 500);
+    }, 1000);
   }
 
   render() {
     const { navigation } = this.props;
-    const level = navigation.getParam('level', '0');
+    const level = navigation.getParam("level", "0");
     console.log(level);
     if (!this.state.quiz) return <Text />;
 
@@ -152,5 +151,5 @@ const styles = StyleSheet.create({
   quizContainer: {
     flex: 1,
     height: "100%"
-  },
+  }
 });
