@@ -24,7 +24,7 @@ export default class QuizScreen extends React.Component {
       quiz: null,
       quizProgress: 0,
       score: 0,
-      submitted: false,
+      submitted: false
     };
   }
 
@@ -38,9 +38,7 @@ export default class QuizScreen extends React.Component {
         backgroundColor: Colors.header
       },
       headerLeft: (
-        <TouchableOpacity
-        onPress={() => navigation.navigate("Levels")}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate("Levels")}>
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
@@ -56,9 +54,9 @@ export default class QuizScreen extends React.Component {
     });
     let quiz_images = [
       require("../assets/images/credit-card-debt/confused.gif"),
-  	  require("../assets/images/credit-card-debt/throw-money.gif"),
-  	  require("../assets/images/credit-card-debt/trust.gif"),
-  	  require("../assets/images/credit-card-debt/good-work.gif")
+      require("../assets/images/credit-card-debt/throw-money.gif"),
+      require("../assets/images/credit-card-debt/trust.gif"),
+      require("../assets/images/credit-card-debt/good-work.gif")
     ];
     this.setState({
       quiz: quiz,
@@ -88,15 +86,15 @@ export default class QuizScreen extends React.Component {
       this.setState({
         quizProgress: 0,
         score: 0,
-        submitted: false,
+        submitted: false
       });
     } else {
       this.setState({
         quizProgress: this.state.quizProgress + 1,
-        submitted: false,
+        submitted: false
       });
     }
-    this.myScroll.scrollTo({x: 0, y: 0, animated: false});
+    this.myScroll.scrollTo({ x: 0, y: 0, animated: false });
   }
 
   handleScoring(answerText) {
@@ -113,12 +111,12 @@ export default class QuizScreen extends React.Component {
     });
     setTimeout(() => {
       this.nextQuestion();
-    }, 500);
+    }, 1000);
   }
 
   render() {
-     const { navigation } = this.props;
-    const level = navigation.getParam('level', '0');
+    const { navigation } = this.props;
+    const level = navigation.getParam("level", "0");
     console.log(level);
     if (!this.state.quiz) return <Text />;
 
@@ -134,27 +132,31 @@ export default class QuizScreen extends React.Component {
           quizProgress={this.state.quizProgress}
           length={this.state.quiz.questions.length}
         />
-      <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator ref={(ref) => this.myScroll = ref}>
-        <QuizStatement
-          quiz={this.state.quiz}
-          question={this.state.quizProgress}
-          nextQuestion={() => this.nextQuestion()}
-        />
-        <QuizQuestion
-          quiz={this.state.quiz}
-          question={this.state.quizProgress}
-          source={this.state.quiz_images[this.state.quizProgress]}
-          style={styles.image}
-        />
-        <QuizButtons
-          quiz={this.state.quiz}
-          quizProgress={this.state.quizProgress}
-          submitted={this.state.submitted}
-          handleAnswerButtonPress={(text) => this.handleAnswerButtonPress(text)}
-          isAnswerCorrect={(answerText) => this.isAnswerCorrect(answerText)}
-          nextQuestion={() => this.nextQuestion()}
-        />
-      </ScrollView>
+        <ScrollView
+          contentContainerStyle={{ flexGrow: 1 }}
+          showsVerticalScrollIndicator
+          ref={ref => (this.myScroll = ref)}
+        >
+          <QuizStatement
+            quiz={this.state.quiz}
+            question={this.state.quizProgress}
+            nextQuestion={() => this.nextQuestion()}
+          />
+          <QuizQuestion
+            quiz={this.state.quiz}
+            question={this.state.quizProgress}
+            source={this.state.quiz_images[this.state.quizProgress]}
+            style={styles.image}
+          />
+          <QuizButtons
+            quiz={this.state.quiz}
+            quizProgress={this.state.quizProgress}
+            submitted={this.state.submitted}
+            handleAnswerButtonPress={text => this.handleAnswerButtonPress(text)}
+            isAnswerCorrect={answerText => this.isAnswerCorrect(answerText)}
+            nextQuestion={() => this.nextQuestion()}
+          />
+        </ScrollView>
       </View>
     );
   }
@@ -164,5 +166,5 @@ const styles = StyleSheet.create({
   quizContainer: {
     flex: 1,
     height: "100%"
-  },
+  }
 });
