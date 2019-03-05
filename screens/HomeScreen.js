@@ -65,7 +65,11 @@ export default class HomeScreen extends React.Component {
         icon = "md-school"
       } else if(topicName === "Investing"){
         icon = "md-trending-up"
-      }
+      } /*else if(topicName === "Budgeting"){
+        icon = "md-lock"
+      } else if(topicName === "Retirement"){
+        icon = 
+      }*/
 
 
       topicButtons.push(<TouchableOpacity

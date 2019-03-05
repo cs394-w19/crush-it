@@ -70,14 +70,14 @@ export default class LevelScreen extends React.Component {
             style = {styles.listContainer}
             onPress = {() => this.props.navigation.navigate("Quiz", {level: level})}>
             <Text style = {styles.listText}>
-                {item.title}   <Ionicons name="md-unlock" size={32} color={Colors.darkGrayPurple} />
+                {item.title}
             </Text> 
           </TouchableOpacity>)
       } else {
         level_buttons.push(
           <View style={styles.listContainer}>
             <Text style = {styles.disabledText}>
-                {item.title}
+                {item.title} <Ionicons name="md-lock" size={32} color={Colors.lightGrayPurple} />
             </Text>
           </View>
         );
