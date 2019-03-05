@@ -102,28 +102,12 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
+        /* appp assets */
         require('./assets/images/splash.png'),
         require('./assets/images/logos/CrushIt_LogoV2small.png'),
-
-        require('./assets/images/buttons/Level_1button0.png'),
-        require('./assets/images/buttons/Level_1button1.png'),
-        require('./assets/images/buttons/Level_1button2.png'),
-        require('./assets/images/buttons/Level_1button3.png'),
-
-        require('./assets/images/buttons/Level_2button0.png'),
-        require('./assets/images/buttons/Level_2button1.png'),
-        require('./assets/images/buttons/Level_2button2.png'),
-        require('./assets/images/buttons/Level_2button3.png'),
-
-        require('./assets/images/buttons/Level_3button0.png'),
-        require('./assets/images/buttons/Level_3button1.png'),
-        require('./assets/images/buttons/Level_3button2.png'),
-        require('./assets/images/buttons/Level_3button3.png'),
-
-        require("./assets/images/credit-card-debt/confused.gif"),
-        require("./assets/images/credit-card-debt/throw-money.gif"),
-        require("./assets/images/credit-card-debt/trust.gif"),
-        require("./assets/images/credit-card-debt/good-work.gif")
+        /* credit card debt 1 */
+        require("./assets/images/credit-card-debt/ready.gif"),
+        require("./assets/images/credit-card-debt/good-work.gif"),
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
