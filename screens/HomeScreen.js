@@ -21,6 +21,7 @@ export default class HomeScreen extends React.Component {
 
     // some stuff for gathering the topics (i.e. reading json or firebase calls)
     this.state = {
+      points : this.props.navigation.getParam("points", 0),
       topics : quiz_categories,
       availablilities: [
                           [true, false, false],
@@ -48,6 +49,15 @@ export default class HomeScreen extends React.Component {
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
+        </TouchableOpacity>
+      ),
+      headerRight: (
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <Image
+            style = {{width : 40, height : 40}}
+            source={require("../assets/images/coin.png")}
+          />
+          <Text>300</Text>
         </TouchableOpacity>
       )
     };

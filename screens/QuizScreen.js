@@ -23,6 +23,7 @@ export default class QuizScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      points : 0,
       quiz: null,
       quizProgress: 0,
       score: 0,
@@ -44,6 +45,15 @@ export default class QuizScreen extends React.Component {
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
+        </TouchableOpacity>
+      ),
+      headerRight: (
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <Image
+            style = {{width : 40, height : 40}}
+            source={require("../assets/images/coin.png")}
+          />
+          <Text>300</Text>
         </TouchableOpacity>
       )
     };
