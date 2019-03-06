@@ -17,6 +17,8 @@ import QuizStatement from "../components/Quiz/QuizStatement";
 import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
 
+import quiz_data from "../assets/quiz_data";
+
 export default class QuizScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -24,7 +26,7 @@ export default class QuizScreen extends React.Component {
       quiz: null,
       quizProgress: 0,
       score: 0,
-      submitted: false,
+      submitted: false
     };
   }
 
@@ -38,9 +40,7 @@ export default class QuizScreen extends React.Component {
         backgroundColor: Colors.header
       },
       headerLeft: (
-        <TouchableOpacity
-        onPress={() => navigation.navigate("Levels")}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate("Levels")}>
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
@@ -50,19 +50,12 @@ export default class QuizScreen extends React.Component {
   };
 
   async componentDidMount() {
-    let quiz_data = require("../assets/quiz_data.json").quizzes;
     let quiz = quiz_data.find(q => {
-      return q.quizName === "Credit Card Debt Level 1";
+      return q.quizCategory === "credit-card-debt" && q.quizLevel === 1;
     });
-    let quiz_images = [
-      require("../assets/images/credit-card-debt/confused.gif"),
-  	  require("../assets/images/credit-card-debt/throw-money.gif"),
-  	  require("../assets/images/credit-card-debt/trust.gif"),
-  	  require("../assets/images/credit-card-debt/good-work.gif")
-    ];
+
     this.setState({
       quiz: quiz,
-      quiz_images: quiz_images
     });
 
     this.props.navigation.setParams({
@@ -88,15 +81,15 @@ export default class QuizScreen extends React.Component {
       this.setState({
         quizProgress: 0,
         score: 0,
-        submitted: false,
+        submitted: false
       });
     } else {
       this.setState({
         quizProgress: this.state.quizProgress + 1,
-        submitted: false,
+        submitted: false
       });
     }
-    this.myScroll.scrollTo({x: 0, y: 0, animated: false});
+    this.myScroll.scrollTo({ x: 0, y: 0, animated: false });
   }
 
   handleScoring(answerText) {
@@ -113,21 +106,15 @@ export default class QuizScreen extends React.Component {
     });
     setTimeout(() => {
       this.nextQuestion();
-    }, 500);
+    }, 1000);
   }
 
   render() {
-     const { navigation } = this.props;
-    const level = navigation.getParam('level', '0');
+    const { navigation } = this.props;
+    const level = navigation.getParam("level", "0");
     console.log(level);
     if (!this.state.quiz) return <Text />;
 
-    let image = null;
-    /*let images = [
-      require("../assets/images/credit-card-debt/confused.gif"),
-      require("../assets/images/credit-card-debt/throw-money.gif"),
-      require("../assets/images/credit-card-debt/trust.gif"),
-      require("../assets/images/credit-card-debt/good-work.gif")];*/
     return (
       <View style={styles.quizContainer}>
         <QuizProgressBar
@@ -143,7 +130,7 @@ export default class QuizScreen extends React.Component {
         <QuizQuestion
           quiz={this.state.quiz}
           question={this.state.quizProgress}
-          source={this.state.quiz_images[this.state.quizProgress]}
+          source={this.state.quiz.questions[this.state.quizProgress].image}
           style={styles.image}
         />
         <QuizButtons
@@ -164,5 +151,5 @@ const styles = StyleSheet.create({
   quizContainer: {
     flex: 1,
     height: "100%"
-  },
+  }
 });
