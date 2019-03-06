@@ -19,7 +19,7 @@ const QuizStack = createStackNavigator(
     Partners: PartnerScreen
   },
   {
-    initialRouteName: 'Partners',
+    initialRouteName: 'Home',
     navigationOptions: {
       tabBarVisible: false,
     },
