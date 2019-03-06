@@ -11,6 +11,7 @@ import {
 
 import Colors from "../constants/Colors";
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
+import { Tooltip} from 'react-native-elements';
 
 import quiz_categories from "../assets/quiz_categories";
 
@@ -21,6 +22,13 @@ export default class HomeScreen extends React.Component {
     // some stuff for gathering the topics (i.e. reading json or firebase calls)
     this.state = {
       topics : quiz_categories,
+      availablilities: [
+                          [true, false, false],
+                          [false, false, false],
+                          [false, false, false],
+                          [false, false, false],
+                          [false, false, false],
+                       ],
     };
   }
 
@@ -48,43 +56,46 @@ export default class HomeScreen extends React.Component {
   render() {
     let topicButtons = []
 
-    this.state.topics.forEach((topicName, index) => {
-      let level = index.toString();
+    this.state.topics.forEach((topic, index) => {
+      if(this.state.availablilities[index].indexOf(true) != -1) {
+        topicButtons.push(
+          <TouchableOpacity
+            style={styles.buttonStyle}
+            key = {index}
+            onPress={() => this.props.navigation.navigate("Levels", {
+              availablilities: this.state.availablilities[index],
+              topicName: topic,
+              numLevels: this.state.availablilities[index].length
+            })}
+            >
+            <Text style = {styles.listText}>
+              {topic}
+            </Text>
 
-      // probs should use a dict to do this instead of if but lol I love bad code
-      // also it lets others get those sweet, sweet commits
+          </TouchableOpacity>);
 
-      let icon = "money";
-      if(topicName === "Credit Cards") {
-        icon = "md-card"
-      } else if(topicName === "Student Loans"){
-        icon = "md-school"
-      } else if(topicName === "Investing"){
-        icon = "md-trending-up"
-      } else if(topicName === "Budgeting"){
-        icon = "md-lock"
-      }/* else if(topicName === "Retirement"){
-        icon =
-      }*/
-
-      topicButtons.push(<TouchableOpacity
-        key = {level}
-        style = {styles.listContainer}
-        onPress={() => this.props.navigation.navigate("Levels", { topicName: topicName, category: index })}
-        >
-        <Text style = {styles.listText}>
-          {topicName} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} />
-        </Text>
-      </TouchableOpacity>);
-    })
+      } else {
+        topicButtons.push(
+          <View style={styles.disabledButtonStyle}>
+          <Tooltip width="90%"popover={<Text>This module is unavailable</Text>}>
+            <Text style={styles.icon}>
+                <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
+              </Text>
+            <Text style = {styles.listText}>
+              {topic}
+            </Text>
+          </Tooltip>
+          </View>);
+      }
+    });
 
     return (
       // this should be a for loop or a map or something
-      <View style={styles.levelContainer}>
+      <View style={styles.categoryContainer}>
       <ScrollView ref={(ref) => this.myScroll = ref}>
         <View>
-          <Text style={styles.title}>Choose a topic...</Text>
-          {topicButtons}
+          <Text style={styles.title}> Quiz Category</Text>
+            {topicButtons}
         </View>
       </ScrollView>
     </View>
@@ -97,31 +108,49 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff"
   },
-
-  contentContainer: {
-    paddingTop: 30
+  buttonStyle: {
+    backgroundColor: "white",
+    width: "94%",
+    borderColor: Colors.darkGrayPurple,
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 10,
   },
-  levelContainer: {
-    flex: 1,
-    color: Colors.darkGrayPurple
-  },
-  listContainer: {
-    padding: 15,
-    marginTop: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.darkGrayPurple,
-    color: Colors.darkGrayPurple,
+  disabledButtonStyle: {
+    backgroundColor: "white",
+    width: "94%",
+    borderColor: Colors.lightGrayPurple,
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 10,
   },
   listText: {
     fontSize: 24,
+    margin: 15,
+    textAlign: "center",
+    justifyContent: "center",
     color: Colors.darkGrayPurple,
   },
   title: {
-    fontSize: 32,
-    marginTop: 13,
+    fontSize: 30,
     color: Colors.darkGrayPurple,
-    textAlign: 'center',
-
+    marginTop: 15,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.lightGrayPurple,
+    textAlign: "center",
+  },
+  icon: {
+    position: "absolute",
+    justifyContent: "center",
+    width: "100%",
+    textAlign: "center"
+  },
+  categoryContainer: {
+    flex: 1,
+    color: Colors.darkGrayPurple,
+    justifyContent: "center",
+    //alignItems: "center",
   },
   disabledText: {
     color: Colors.lightGrayPurple,

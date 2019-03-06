@@ -9,31 +9,10 @@ import {
   TouchableOpacity
 } from "react-native";
 import Colors from "../constants/Colors";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
+import { Tooltip} from 'react-native-elements';
 
 export default class LevelScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quizLevels: [
-        {
-          title: "Easy",
-          id: 1,
-          available: true
-        },
-        {
-          title: "Medium",
-          id: 2,
-          available: false
-        },
-        {
-          title: "Hard",
-          id: 3,
-          available: false
-        }
-      ]
-    };
-  }
 
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
@@ -60,51 +39,52 @@ export default class LevelScreen extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
+    const numLevels = navigation.getParam("numLevels", "3");
+    const topicID = navigation.getParam("topicID", "-1");
+    const title = navigation.getParam("topicName", "Topic Unavailable");
+    const icon = navigation.getParam("topicIcon", "");
+    const availablilities = navigation.getParam("availablilities", [true, false, false]);
+    console.log(numLevels);
+    console.log(topicID);
+    console.log(title);
+
     let level_buttons = [];
     let topicName = this.props.navigation.getParam("topicName", "Unknown Quiz");
 
-    this.state.quizLevels.forEach((item, index) => {
-      if (item.available) {
+
+    for (let i = 0; i< numLevels; i++) {
+      if (availablilities[i]) {
         level_buttons.push(
           <TouchableOpacity
-            key={index}
-            style={styles.listContainer}
-            onPress={() =>
-              this.props.navigation.navigate("Quiz", { category: 0, level: index+1 })
-            }
-          >
-            <Text style={styles.listText}>{item.title}</Text>
-          </TouchableOpacity>
-        );
+            key = {i}
+            style = {styles.buttonStyle}
+            onPress = {() => this.props.navigation.navigate("Quiz", {level: i+1})}>
+            <Text style = {styles.listText}>
+              Level {i+1}
+            </Text>
+          </TouchableOpacity>)
       } else {
         level_buttons.push(
-          <View style={styles.listContainer}>
-            <Text style={styles.disabledText}>
-              {item.title}{" "}
-              <Ionicons
-                name="md-lock"
-                size={32}
-                color={Colors.lightGrayPurple}
-              />
-            </Text>
+          <View style={styles.disabledButtonStyle}>
+            <Tooltip width="90%"popover={<Text>Complete previous level to unlock.</Text>}>
+              <Text style={styles.icon}>
+                  <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
+              </Text>
+              <Text style = {styles.listText}>
+                  Level {i+1}
+              </Text>
+            </Tooltip>
           </View>
         );
       }
-    });
+    }
 
     return (
       <View style={styles.levelContainer}>
         <ScrollView ref={ref => (this.myScroll = ref)}>
           <View>
-            <Text style={styles.title}>
-              {" "}
-              {topicName}{" "}
-              <Ionicons
-                name="md-card"
-                size={32}
-                color={Colors.darkGrayPurple}
-              />
-            </Text>
+            <Text style={styles.title}> {title} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} /></Text>
             {level_buttons}
           </View>
         </ScrollView>
@@ -114,26 +94,53 @@ export default class LevelScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  levelContainer: {
+  container: {
     flex: 1,
-    color: Colors.darkGrayPurple
+    backgroundColor: "#fff"
   },
-  listContainer: {
-    padding: 15,
-    marginTop: 5,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.darkGrayPurple,
-    color: Colors.darkGrayPurple
+  buttonStyle: {
+    backgroundColor: "white",
+    width: "94%",
+    borderColor: Colors.darkGrayPurple,
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 10,
+  },
+  disabledButtonStyle: {
+    backgroundColor: "white",
+    width: "94%",
+    borderColor: Colors.lightGrayPurple,
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 10,
   },
   listText: {
     fontSize: 24,
-    color: Colors.darkGrayPurple
+    margin: 15,
+    textAlign: "center",
+    justifyContent: "center",
+    color: Colors.darkGrayPurple,
   },
   title: {
-    fontSize: 32,
-    marginTop: 13,
+    fontSize: 30,
     color: Colors.darkGrayPurple,
+    marginTop: 15,
+    marginBottom: 10,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.lightGrayPurple,
+    textAlign: "center",
+  },
+  icon: {
+    position: "absolute",
+    justifyContent: "center",
+    width: "100%",
     textAlign: "center"
+  },
+  levelContainer: {
+    flex: 1,
+    color: Colors.darkGrayPurple,
+    justifyContent: "center",
+   // alignItems: "center",
   },
   disabledText: {
     color: Colors.lightGrayPurple,
