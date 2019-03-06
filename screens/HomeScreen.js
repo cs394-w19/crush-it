@@ -52,13 +52,15 @@ export default class HomeScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
+        <View style={styles.coinsTotal}>
         <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
-          <Image
-            style = {{width : 40, height : 40}}
-            source={require("../assets/images/coin.png")}
-          />
-          <Text>300</Text>
+            <Image
+              style = {{width : 40, height : 40}}
+              source={require("../assets/images/coin.png")}
+            />
         </TouchableOpacity>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>100</Text>
+        </View>
       )
     };
   };
@@ -170,6 +172,14 @@ const styles = StyleSheet.create({
     color: Colors.lightGrayPurple,
     fontSize: 25,
     marginRight: 5
+  },
+  coinsTotal: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    marginRight: 10
   }
 
 });
