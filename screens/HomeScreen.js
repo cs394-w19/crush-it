@@ -13,52 +13,24 @@ import Colors from "../constants/Colors";
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 import { Tooltip} from 'react-native-elements';
 
-
+import quiz_categories from "../assets/quiz_categories";
 
 export default class HomeScreen extends React.Component {
   constructor(props){
     super(props);
 
     // some stuff for gathering the topics (i.e. reading json or firebase calls)
-  
-    this.state = { 
+    this.state = {
       points : this.props.navigation.getParam("points", 0),
-      "topics" : [
-        {
-          id: 0,
-          title: "Credit Cards", 
-          num_levels: 3,
-          available: true,
-          icon: 'md-card'
-        }, 
-        {
-          id: 1,
-          title: "Student Loans", 
-          num_levels: 3,
-          available: false,
-        },
-        {
-          id: 2,
-          title: "Budgeting", 
-          num_levels: 3,
-          available: false,
-        },
-        { 
-          id: 3,
-          title: "Retirement", 
-          num_levels: 3,
-          available: false,
-        },
-        {
-          id: 4,
-          title: "Investing",
-          num_levels: 3,
-          available: false,
-        }]
+      topics : quiz_categories,
+      availablilities: [
+                          [true, false, false],
+                          [false, false, false],
+                          [false, false, false],
+                          [false, false, false],
+                          [false, false, false],
+                       ],
     };
-  
-
-    
   }
 
 
@@ -95,24 +67,23 @@ export default class HomeScreen extends React.Component {
     let topicButtons = []
 
     this.state.topics.forEach((topic, index) => {
-      if(topic.available) {
+      if(this.state.availablilities[index].indexOf(true) != -1) {
         topicButtons.push(
           <TouchableOpacity
             style={styles.buttonStyle}
-            key = {topic.id}
+            key = {index}
             onPress={() => this.props.navigation.navigate("Levels", {
-                                                                      topicName: topic.title, 
-                                                                      topicID: topic.id, 
-                                                                      topicNumLevels: topic.num_levels,
-                                                                      topicIcon: topic.icon
-                                                                    })}
+              availablilities: this.state.availablilities[index],
+              topicName: topic,
+              numLevels: this.state.availablilities[index].length
+            })}
             >
             <Text style = {styles.listText}>
-              {topic.title} 
+              {topic}
             </Text>
-            
+
           </TouchableOpacity>);
-      
+
       } else {
         topicButtons.push(
           <View style={styles.disabledButtonStyle}>
@@ -121,12 +92,12 @@ export default class HomeScreen extends React.Component {
                 <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
               </Text>
             <Text style = {styles.listText}>
-              {topic.title} 
-            </Text>  
-          </Tooltip> 
+              {topic}
+            </Text>
+          </Tooltip>
           </View>);
       }
-    })
+    });
 
     return (
       // this should be a for loop or a map or something
@@ -154,7 +125,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     margin: 10,
-  }, 
+  },
   disabledButtonStyle: {
     backgroundColor: "white",
     width: "94%",
@@ -162,7 +133,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     margin: 10,
-  }, 
+  },
   listText: {
     fontSize: 24,
     margin: 15,
@@ -190,7 +161,7 @@ const styles = StyleSheet.create({
     color: Colors.darkGrayPurple,
     justifyContent: "center",
     //alignItems: "center",
-  },  
+  },
   disabledText: {
     color: Colors.lightGrayPurple,
     fontSize: 24
@@ -200,5 +171,5 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginRight: 5
   }
-  
+
 });
