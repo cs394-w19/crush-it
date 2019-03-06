@@ -24,7 +24,7 @@ export default class HomeScreen extends React.Component {
       points : this.props.navigation.getParam("points", 0),
       topics : quiz_categories,
       availablilities: [
-                          [true, false, false],
+                          [true, true, true],
                           [false, false, false],
                           [false, false, false],
                           [false, false, false],

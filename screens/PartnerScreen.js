@@ -18,9 +18,9 @@ export default class ResultsScreen extends React.Component {
     componentDidMount() {
         let items = [require("../assets/images/partners/amazon.jpg"),
                             require("../assets/images/partners/grubhub.jpg"),
-                            require("../assets/images/partners/lyft.png"), 
-                            require("../assets/images/partners/starbucks.jpg"), 
-                            require("../assets/images/partners/target.jpg"), 
+                            require("../assets/images/partners/lyft.png"),
+                            require("../assets/images/partners/starbucks.jpg"),
+                            require("../assets/images/partners/target.jpg"),
                             require("../assets/images/partners/urban.jpg")];
 
         this.setState({ items });
@@ -67,23 +67,23 @@ export default class ResultsScreen extends React.Component {
     });
 
     return (
-      <View 
+      <View
         contentContainerStyle={styles.container}
       >
-        <View style={styles.titleView}>  
+        <View style={styles.titleView}>
           <Text style={styles.title}>
             Woohoo! You have  <Text style={{fontWeight: "bold", color : Colors.appPurple}}>{this.state.points}</Text> coins to spend!
           </Text>
         </View>
 
-        <View>  
+        <View>
           <Text style={styles.subtitle}>
             Earn coins & get a $5 e-gift card to your favorite shop! Choose from below!
           </Text>
         </View>
         <View style={styles.imagegrid}>
             {itemImages}
-        
+
         </View>
       </View>
     );
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
   imagegrid : {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     alignItems: "flex-start",
     flexWrap:"wrap",
   },
