@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-native';
-import PhotoGrid from 'react-native-image-grid';
 
 
 import Colors from '../constants/Colors';

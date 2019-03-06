@@ -82,13 +82,13 @@ export default class HomeScreen extends React.Component {
     return (
       // this should be a for loop or a map or something
       <View style={styles.levelContainer}>
-      <ScrollView ref={(ref) => this.myScroll = ref}>
-        <View>
-          <Text style={styles.title}>Choose a topic...</Text>
-          {topicButtons}
-        </View>
-      </ScrollView>
-    </View>
+        <ScrollView ref={(ref) => this.myScroll = ref}>
+          <View>
+            <Text style={styles.title}>Choose a topic...</Text>
+            {topicButtons}
+          </View>
+        </ScrollView>
+      </View>
     );
   }
 }
