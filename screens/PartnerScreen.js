@@ -1,5 +1,7 @@
 import React from 'react';
 import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-native';
+import PhotoGrid from 'react-native-image-grid';
+
 
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -7,20 +9,28 @@ import { Ionicons } from '@expo/vector-icons';
 let quizData = require("../assets/quiz_data.json");
 
 export default class ResultsScreen extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      points : this.props.navigation.getParam("points", 0),
-    };
+        this.state = {
+            points : this.props.navigation.getParam("points", 0),
+            items: []
+        };
     }
 
-//   componentDidMount() {
-//   }
+    componentDidMount() {
+        let items = [require("../assets/images/partners/amazon.jpg"),
+                            require("../assets/images/partners/grubhub.jpg"),
+                            require("../assets/images/partners/lyft.png"), 
+                            require("../assets/images/partners/starbucks.jpg"), 
+                            require("../assets/images/partners/target.jpg"), 
+                            require("../assets/images/partners/urban.jpg")];
+
+        this.setState({ items });
+      }
 
 //   componentWillUnmount() {
 //   }
-
 
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
@@ -48,7 +58,12 @@ export default class ResultsScreen extends React.Component {
     };
   };
 
+
   render() {
+
+    let itemImages = this.state.items.map((im) => {
+        return (<Image style={styles.image} source={im}/>);
+    });
 
     return (
       <View 
@@ -59,12 +74,16 @@ export default class ResultsScreen extends React.Component {
             Woohoo! You have  <Text style={{fontWeight: "bold", color : Colors.appPurple}}>{this.state.points}</Text> coins to spend!
           </Text>
         </View>
+
+        <View>  
+          <Text style={styles.subtitle}>
+            Earn coins & get a $5 e-gift card to your favorite shop! Choose from below!
+          </Text>
+        </View>
+        <View style={styles.imagegrid}>
+            {itemImages}
         
-          <Button
-            onPress={() => this.props.navigation.navigate("Levels")} // what should this be called/go back to
-            title="Back to Levels"
-            color={Colors.darkGrayPurple}
-          />
+        </View>
       </View>
     );
   }
@@ -89,18 +108,31 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-end'
   },
   title: {
-    fontSize: 40,
+    fontSize: 30,
     color: Colors.darkGrayPurple,
     margin: 20,
 
   },
-  sliderStyle: {
-    width: 300,
-    marginTop: 40
+  subtitle: {
+    fontSize: 18,
+    color: Colors.darkGrayPurple,
+    margin: 20,
   },
   headerStats: {
     color: Colors.lightGrayPurple,
     fontSize: 25,
     marginRight: 5
+  },
+  imagegrid : {
+    flexDirection: 'row', 
+    alignItems: "flex-start",
+    flexWrap:"wrap",
+  },
+  image : {
+    flex : 2,
+    width: 200,
+    height: 200,
+    resizeMode: 'contain',
   }
+
 });
