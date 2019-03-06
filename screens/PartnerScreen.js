@@ -1,19 +1,17 @@
 import React from 'react';
 import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-native';
 
-
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
-let quizData = require("../assets/quiz_data.json");
 
 export default class ResultsScreen extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            points : this.props.navigation.getParam("points", 0),
-            items: []
+          points : 0,
+          items: []
         };
     }
 
@@ -50,9 +48,13 @@ export default class ResultsScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
-        <Text style={styles.headerStats}> 
-          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />   250
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <Image
+            style = {{width : 40, height : 40}}
+            source={require("../assets/images/coin.png")}
+          />
+          <Text>300</Text>
+        </TouchableOpacity>
       )
     };
   };

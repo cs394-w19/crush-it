@@ -17,6 +17,7 @@ export default class LevelScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      points : 0,
       quizLevels: [{
         title: "Level 1", 
         id: 0,
@@ -51,10 +52,15 @@ export default class LevelScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
-        <Text style={styles.headerStats}>
-          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
-          250
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <View style={{flex : 1, flexDirection : "row"}}>
+            <Image
+              style = {{width : 40, height : 40, padding : 5}}
+              source={require("../assets/images/coin.png")}
+            />
+            <Text>300</Text>
+          </View>
+        </TouchableOpacity>
       )
     };
   };
