@@ -87,7 +87,7 @@ export default class QuizScreen extends React.Component {
   }
 
   isAnswerCorrect(answerText) {
-    this.getAnswerChoice(answerText).isCorrect;
+    return this.getAnswerChoice(answerText).isCorrect;
   }
 
   nextQuestion() {
