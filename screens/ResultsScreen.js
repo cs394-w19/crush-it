@@ -110,13 +110,24 @@ export default class ResultsScreen extends React.Component {
             formatText={(progress) => {return "Score";}}
             /> */}
           <Text style={styles.title}>
-            Congrats, level completed!
+            Congrats, Level Complete!
           </Text>
-          <Button
+          <Image source={require("../assets/images/buttons/coin.png")} style={styles.coin}/>
+          <Text style={styles.title}>
+            You Earned 100 Coins!
+          </Text>
+          <View style={styles.buttonContainer}>
+          <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Levels")} // what should this be called/go back to
-            title="Back to Levels"
-            color={Colors.darkGrayPurple}
-          />
+            style={styles.navButtons}>
+            <Text style={styles.buttonText}> KEEP GOING</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("Home")} // what should this be called/go back to
+            style={styles.navButtons}>
+            <Text style={styles.buttonText}>RETURN HOME</Text>
+          </TouchableOpacity>
+          </View>
         </View>
       </View>
     );
@@ -145,10 +156,25 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: Colors.darkGrayPurple,
     margin: 20,
+    textAlign: 'center',
 
   },
   sliderStyle: {
     width: 300,
     marginTop: 40
+  },
+  buttonContainer: {
+
+  },
+  navButtons: {
+    backgroundColor: Colors.darkGrayPurple,
+    borderRadius: 2,
+    alignItems: 'center',
+    padding: 10,
+  },
+  coin: {
+    width: 50,
+    height: 90,
   }
+
 });
