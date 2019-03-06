@@ -65,15 +65,17 @@ export default class ResultsScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
+        <View style={styles.coinsTotal}>
         <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
-          <View style={{flex : 1, flexDirection : "row"}}>
             <Image
-              style = {{width : 40, height : 40, padding : 5}}
+              style = {{width : 40, height : 40}}
               source={require("../assets/images/coin.png")}
             />
             <Text>{navigation.getParam("points", 1000) + 100}</Text>
           </View>
         </TouchableOpacity>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>100</Text>
+        </View>
       )
     };
   };
@@ -181,4 +183,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     color: Colors.darkGrayPurple,
   },
+  coinsTotal: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    marginRight: 10
+  }
 });

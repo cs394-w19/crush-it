@@ -49,6 +49,7 @@ export default class QuizScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
+        <View style={styles.coinsTotal}>
         <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
           <Image
             style = {{width : 40, height : 40}}
@@ -56,6 +57,8 @@ export default class QuizScreen extends React.Component {
           />
           <Text>{navigation.getParam("points", 0)}</Text>
         </TouchableOpacity>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>100</Text>
+        </View>
       )
     };
   };
@@ -180,9 +183,12 @@ const styles = StyleSheet.create({
     flex: 1,
     height: "100%"
   },
-  headerStats: {
-    color: Colors.lightGrayPurple,
-    fontSize: 25,
-    marginRight: 5
+  coinsTotal: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    marginRight: 10
   }
 });
