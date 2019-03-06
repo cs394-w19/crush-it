@@ -50,8 +50,12 @@ export default class QuizScreen extends React.Component {
   };
 
   async componentDidMount() {
+
+    let category = this.props.navigation.getParam("category", 0);
+    let level = this.props.navigation.getParam("level", 1);
+
     let quiz = quiz_data.find(q => {
-      return q.quizCategory === "credit-card-debt" && q.quizLevel === 1;
+      return q.quizCategory === category && q.quizLevel === level;
     });
 
     this.setState({
