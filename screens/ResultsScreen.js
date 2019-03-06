@@ -11,6 +11,7 @@ export default class ResultsScreen extends React.Component {
     super(props);
 
     this.state = {
+      points : 0,
       score : this.props.navigation.getParam("score"),
       maxScore : this.props.navigation.getParam("maxScore"),
       expPointsInThisLevel: 100,
@@ -61,6 +62,15 @@ export default class ResultsScreen extends React.Component {
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
+        </TouchableOpacity>
+      ),
+      headerRight: (
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <Image
+            style = {{width : 40, height : 40}}
+            source={require("../assets/images/coin.png")}
+          />
+          <Text>300</Text>
         </TouchableOpacity>
       )
     };
