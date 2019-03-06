@@ -7,6 +7,7 @@ import QuizScreen from '../screens/QuizScreen';
 import ResultsScreen from "../screens/ResultsScreen";
 import LevelScreen from "../screens/LevelScreen";
 import HomeScreen from '../screens/HomeScreen';
+import PartnerScreen from "../screens/PartnerScreen";
 
 
 const QuizStack = createStackNavigator(
@@ -14,10 +15,11 @@ const QuizStack = createStackNavigator(
     Quiz: QuizScreen,
     Results: ResultsScreen,
     Levels: LevelScreen,
-    Home: HomeScreen
+    Home: HomeScreen,
+    Partners: PartnerScreen
   },
   {
-    initialRouteName: 'Home',
+    initialRouteName: 'Partners',
     navigationOptions: {
       tabBarVisible: false,
     },
