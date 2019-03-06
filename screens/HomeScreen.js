@@ -12,20 +12,16 @@ import {
 import Colors from "../constants/Colors";
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
 
-
+import quiz_categories from "../assets/quiz_categories";
 
 export default class HomeScreen extends React.Component {
   constructor(props){
     super(props);
 
     // some stuff for gathering the topics (i.e. reading json or firebase calls)
-  
-    this.state = { 
-      "topics" : ["Credit Cards", "Student Loans", "Investing"]
+    this.state = {
+      topics : quiz_categories,
     };
-  
-
-    
   }
 
 
@@ -65,17 +61,16 @@ export default class HomeScreen extends React.Component {
         icon = "md-school"
       } else if(topicName === "Investing"){
         icon = "md-trending-up"
-      } /*else if(topicName === "Budgeting"){
+      } else if(topicName === "Budgeting"){
         icon = "md-lock"
-      } else if(topicName === "Retirement"){
-        icon = 
+      }/* else if(topicName === "Retirement"){
+        icon =
       }*/
-
 
       topicButtons.push(<TouchableOpacity
         key = {level}
         style = {styles.listContainer}
-        onPress={() => this.props.navigation.navigate("Levels", {topicName})}
+        onPress={() => this.props.navigation.navigate("Levels", { topicName: topicName, category: index })}
         >
         <Text style = {styles.listText}>
           {topicName} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} />
@@ -102,7 +97,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff"
   },
- 
+
   contentContainer: {
     paddingTop: 30
   },
@@ -137,5 +132,5 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginRight: 5
   }
-  
+
 });

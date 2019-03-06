@@ -18,17 +18,17 @@ export default class LevelScreen extends React.Component {
       quizLevels: [
         {
           title: "Easy",
-          id: 0,
+          id: 1,
           available: true
         },
         {
           title: "Medium",
-          id: 1,
+          id: 2,
           available: false
         },
         {
           title: "Hard",
-          id: 2,
+          id: 3,
           available: false
         }
       ]
@@ -61,15 +61,16 @@ export default class LevelScreen extends React.Component {
 
   render() {
     let level_buttons = [];
+    let topicName = this.props.navigation.getParam("topicName", "Unknown Quiz");
+
     this.state.quizLevels.forEach((item, index) => {
-      let level = index.toString();
       if (item.available) {
         level_buttons.push(
           <TouchableOpacity
-            key={level}
+            key={index}
             style={styles.listContainer}
             onPress={() =>
-              this.props.navigation.navigate("Quiz", { level: level })
+              this.props.navigation.navigate("Quiz", { category: 0, level: index+1 })
             }
           >
             <Text style={styles.listText}>{item.title}</Text>
@@ -97,7 +98,7 @@ export default class LevelScreen extends React.Component {
           <View>
             <Text style={styles.title}>
               {" "}
-              Credit Card Debt{" "}
+              {topicName}{" "}
               <Ionicons
                 name="md-card"
                 size={32}
