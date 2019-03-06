@@ -66,7 +66,7 @@ export default class ResultsScreen extends React.Component {
       ),
       headerRight: (
         <View style={styles.coinsTotal}>
-        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0) + 100})}>
             <Image
               style = {{width : 40, height : 40}}
               source={require("../assets/images/coin.png")}
