@@ -4,7 +4,6 @@ import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-n
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
-
 export default class ResultsScreen extends React.Component {
     constructor(props) {
         super(props);
