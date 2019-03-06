@@ -13,6 +13,12 @@ import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { Tooltip} from 'react-native-elements';
 
 export default class LevelScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      points : 0,
+    }
+  }
 
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
@@ -30,10 +36,16 @@ export default class LevelScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
-        <Text style={styles.headerStats}>
-          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
-          {navigation.getParam("points", 10000)}
-        </Text>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <View style={{flex : 1, flexDirection : "row"}}>
+            <Image
+              style = {{width : 40, height : 40, padding : 5}}
+              source={require("../assets/images/coin.png")}
+            />
+            <Text>{navigation.getParam("points", 0)}</Text>
+          </View>
+        </TouchableOpacity>
       )
     };
   };

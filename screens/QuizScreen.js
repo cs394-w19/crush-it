@@ -24,6 +24,7 @@ export default class QuizScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      points : 0,
       quiz: null,
       quizProgress: 0,
       score: 0,
@@ -48,10 +49,13 @@ export default class QuizScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
-        <Text style={styles.headerStats}>
-          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
-          {navigation.getParam("points", 100)}
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <Image
+            style = {{width : 40, height : 40}}
+            source={require("../assets/images/coin.png")}
+          />
+          <Text>{navigation.getParam("points", 0)}</Text>
+        </TouchableOpacity>
       )
     };
   };
@@ -82,7 +86,7 @@ export default class QuizScreen extends React.Component {
   }
 
   isAnswerCorrect(answerText) {
-    this.getAnswerChoice(answerText).isCorrect;
+    return this.getAnswerChoice(answerText).isCorrect;
   }
 
   nextQuestion() {

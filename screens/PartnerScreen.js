@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-native';
 
-
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
@@ -10,17 +9,17 @@ export default class ResultsScreen extends React.Component {
         super(props);
 
         this.state = {
-            points : this.props.navigation.getParam("points", 0),
-            items: []
+          points : 0,
+          items: []
         };
     }
 
     componentDidMount() {
         let items = [require("../assets/images/partners/amazon.jpg"),
                             require("../assets/images/partners/grubhub.jpg"),
-                            require("../assets/images/partners/lyft.png"), 
-                            require("../assets/images/partners/starbucks.jpg"), 
-                            require("../assets/images/partners/target.jpg"), 
+                            require("../assets/images/partners/lyft.png"),
+                            require("../assets/images/partners/starbucks.jpg"),
+                            require("../assets/images/partners/target.jpg"),
                             require("../assets/images/partners/urban.jpg")];
 
         this.setState({ items });
@@ -48,9 +47,13 @@ export default class ResultsScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
-        <Text style={styles.headerStats}> 
-          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />   250
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <Image
+            style = {{width : 40, height : 40}}
+            source={require("../assets/images/coin.png")}
+          />
+          <Text>300</Text>
+        </TouchableOpacity>
       )
     };
   };
@@ -63,23 +66,23 @@ export default class ResultsScreen extends React.Component {
     });
 
     return (
-      <View 
+      <View
         contentContainerStyle={styles.container}
       >
-        <View style={styles.titleView}>  
+        <View style={styles.titleView}>
           <Text style={styles.title}>
             Woohoo! You have  <Text style={{fontWeight: "bold", color : Colors.appPurple}}>{this.state.points}</Text> coins to spend!
           </Text>
         </View>
 
-        <View>  
+        <View>
           <Text style={styles.subtitle}>
             Earn coins & get a $5 e-gift card to your favorite shop! Choose from below!
           </Text>
         </View>
         <View style={styles.imagegrid}>
             {itemImages}
-        
+
         </View>
       </View>
     );
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
   imagegrid : {
-    flexDirection: 'row', 
+    flexDirection: 'row',
     alignItems: "flex-start",
     flexWrap:"wrap",
   },

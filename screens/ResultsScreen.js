@@ -65,10 +65,15 @@ export default class ResultsScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
-        <Text style={styles.headerStats}>
-          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
-          {navigation.getParam("points", 1000) + 100}
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <View style={{flex : 1, flexDirection : "row"}}>
+            <Image
+              style = {{width : 40, height : 40, padding : 5}}
+              source={require("../assets/images/coin.png")}
+            />
+            <Text>{navigation.getParam("points", 1000) + 100}</Text>
+          </View>
+        </TouchableOpacity>
       )
     };
   };
@@ -111,21 +116,23 @@ export default class ResultsScreen extends React.Component {
           ref={node => (this._confettiView = node)}
         />
         <View style={styles.titleView}>
-          {/* <Progress.Circle
-            size={200}
-            color={Colors.appPurple}
-            progress={this.state.score / this.state.maxScore}
-            showsText={true}
-            formatText={(progress) => {return "Score";}}
-            /> */}
           <Text style={styles.title}>
-            Congrats, level completed!
+            Congrats, Level Complete!
           </Text>
-          <Button
+          <Image source={require("../assets/images/coin.png")} style={styles.coin}/>
+          <Text style={styles.title}>
+            You Earned 100 Coins!
+          </Text>
+          <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Levels", {points: points + 100})} // what should this be called/go back to
-            title="Back to Levels"
-            color={Colors.darkGrayPurple}
-          />
+            style={styles.buttonStyle}>
+            <Text style={styles.listText}> KEEP GOING</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("Home", {points: points + 100})} // what should this be called/go back to
+            style={styles.buttonStyle}>
+            <Text style={styles.listText}>RETURN HOME</Text>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -142,27 +149,36 @@ const styles = StyleSheet.create({
     flexWrap: "wrap-reverse",
     width: "100%"
   },
-  child: {
-    width: 300
-  },
   titleView: {
-    padding: "20%",
+    paddingTop: "10%",
+    paddingLeft: "15%",
+    paddingRight: "15%",
     alignItems: 'center',
-    justifyContent: 'flex-end'
   },
   title: {
     fontSize: 40,
     color: Colors.darkGrayPurple,
-    margin: 20,
+    margin: 15,
+    textAlign: 'center',
 
   },
-  sliderStyle: {
-    width: 300,
-    marginTop: 40
+  coin: {
+    width: 80,
+    height: 80,
   },
-  headerStats: {
-    color: Colors.lightGrayPurple,
-    fontSize: 25,
-    marginRight: 5
-  }
+    buttonStyle: {
+    backgroundColor: "white",
+    width: "100%",
+    borderColor: Colors.darkGrayPurple,
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 10,
+  },
+    listText: {
+    fontSize: 24,
+    margin: 15,
+    textAlign: "center",
+    justifyContent: "center",
+    color: Colors.darkGrayPurple,
+  },
 });

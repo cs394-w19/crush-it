@@ -21,9 +21,10 @@ export default class HomeScreen extends React.Component {
 
     // some stuff for gathering the topics (i.e. reading json or firebase calls)
     this.state = {
+      points : this.props.navigation.getParam("points", 0),
       topics : quiz_categories,
       availablilities: [
-                          [true, false, false],
+                          [true, true, true],
                           [false, false, false],
                           [false, false, false],
                           [false, false, false],
@@ -51,10 +52,13 @@ export default class HomeScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
-        <Text style={styles.headerStats}>
-          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
-          {navigation.getParam("points", 0)}
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+          <Image
+            style = {{width : 40, height : 40}}
+            source={require("../assets/images/coin.png")}
+          />
+          <Text>{navigation.getParam("points", 0)}</Text>
+        </TouchableOpacity>
       )
     };
   };
