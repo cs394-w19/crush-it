@@ -51,7 +51,7 @@ export default class QuizScreen extends React.Component {
 
   async componentDidMount() {
     let quiz = quiz_data.find(q => {
-      return q.quizName === "Credit Card Debt Level 1";
+      return q.quizCategory === "credit-card-debt" && q.quizLevel === 1;
     });
 
     this.setState({

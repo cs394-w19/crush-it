@@ -6,11 +6,12 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity,
+  TouchableOpacity
 } from "react-native";
 import Colors from "../constants/Colors";
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { Tooltip} from 'react-native-elements';
+
 
 export default class LevelScreen extends React.Component {
   constructor(props) {
@@ -43,22 +44,20 @@ export default class LevelScreen extends React.Component {
         backgroundColor: Colors.header
       },
       headerLeft: (
-        <TouchableOpacity
-          onPress={() => navigation.navigate("Home")}
-        >
+        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
         </TouchableOpacity>
       ),
       headerRight: (
-        <Text style={styles.headerStats}> 
-          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />   250
+        <Text style={styles.headerStats}>
+          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
+          250
         </Text>
       )
     };
   };
-  
 
   render() {
     const { navigation } = this.props;
@@ -73,7 +72,7 @@ export default class LevelScreen extends React.Component {
     let level_buttons = [];
     this.state.quizLevels.forEach((item, index) => {
       let level = index.toString();
-      if(item.available) {
+      if (item.available) {
         level_buttons.push(
           <TouchableOpacity
             key = {level}
@@ -101,7 +100,7 @@ export default class LevelScreen extends React.Component {
 
     return (
       <View style={styles.levelContainer}>
-        <ScrollView ref={(ref) => this.myScroll = ref}>
+        <ScrollView ref={ref => (this.myScroll = ref)}>
           <View>
             <Text style={styles.title}> {title} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} /></Text>
             {level_buttons}
