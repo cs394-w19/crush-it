@@ -2,7 +2,8 @@ export default quiz_data =
 [
   {
     quizName: 'Credit Card Debt Level 1',
-    quizCategory: 'debt',
+    quizCategory: 'credit-card-debt',
+    quizLevel: 1,
     learningCategories: [
       'interest rates',
       'credit score'
