@@ -4,13 +4,11 @@ import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-n
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
-
-export default class ResultsScreen extends React.Component {
+export default class PartnerScreen extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-          points : 0,
           items: []
         };
     }
@@ -40,7 +38,7 @@ export default class ResultsScreen extends React.Component {
       },
       headerLeft: (
         <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("Home", {points: navigation.getParam("points", 0)})}
         >
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
@@ -48,19 +46,24 @@ export default class ResultsScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
+        <View style={styles.coinsTotal}>
         <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
-          <Image
-            style = {{width : 40, height : 40}}
-            source={require("../assets/images/coin.png")}
-          />
-          <Text>300</Text>
+            <Image
+              style = {{width : 40, height : 40}}
+              source={require("../assets/images/coin.png")}
+            />
         </TouchableOpacity>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0)}</Text>
+        </View>
       )
     };
   };
 
 
   render() {
+
+    const { navigation } = this.props;
+    let points = navigation.getParam("points", 0);
 
     let itemImages = this.state.items.map((im) => {
         return (<Image style={styles.image} source={im}/>);
@@ -72,7 +75,7 @@ export default class ResultsScreen extends React.Component {
       >
         <View style={styles.titleView}>
           <Text style={styles.title}>
-            Woohoo! You have  <Text style={{fontWeight: "bold", color : Colors.appPurple}}>{this.state.points}</Text> coins to spend!
+            Woohoo! You have  <Text style={{fontWeight: "bold", color : Colors.appPurple}}>{points}</Text> coins to spend!
           </Text>
         </View>
 
@@ -134,6 +137,14 @@ const styles = StyleSheet.create({
     width: 200,
     height: 200,
     resizeMode: 'contain',
+  },
+  coinsTotal: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    marginRight: 10
   }
 
 });

@@ -259,17 +259,17 @@ export default (quiz_data = [
           "Suppose you buy a $100 shirt on a credit card with 30% APR. If you don’t make any payments, how much do you owe after a year?",
         answerChoices: [
           {
-            buttonOrder: "2",
+            buttonOrder: "1",
             answerText: "Less than $120",
             isCorrect: false
           },
           {
-            buttonOrder: "2",
+            buttonOrder: "0",
             answerText: "About $130",
             isCorrect: true
           },
           {
-            buttonOrder: "2",
+            buttonOrder: "1",
             answerText: "Wait. Pay?",
             isCorrect: false
           }
@@ -283,12 +283,12 @@ export default (quiz_data = [
           " If inflation goes up, what’s going to happen to the interest rate of your credit card?",
         answerChoices: [
           {
-            buttonOrder: "2",
+            buttonOrder: "0",
             answerText: "It goes up.",
             isCorrect: true
           },
           {
-            buttonOrder: "2",
+            buttonOrder: "1",
             answerText: "It goes down.",
             isCorrect: false
           }
@@ -302,17 +302,17 @@ export default (quiz_data = [
           "Suppose you have a $1000 balance on a credit card with 30% APR. If you don’t make any payments, how long will it take for that balance to double?",
         answerChoices: [
           {
-            buttonOrder: "2",
+            buttonOrder: "0",
             answerText: "Less than 3 years",
             isCorrect: true
           },
           {
-            buttonOrder: "2",
+            buttonOrder: "1",
             answerText: "More than 3 years",
             isCorrect: false
           },
           {
-            buttonOrder: "2",
+            buttonOrder: "1",
             answerText: "Wait. Payment?",
             isCorrect: false
           }
@@ -326,17 +326,17 @@ export default (quiz_data = [
           "Suppose you have $100 in a savings account earning 2% interest a year, and a credit card with a balance of $100 and 20% APR. What is the best thing to do?",
         answerChoices: [
           {
-            buttonOrder: "2",
+            buttonOrder: "0",
             answerText: "Pay off the credit card! ",
             isCorrect: true
           },
           {
-            buttonOrder: "2",
+            buttonOrder: "1",
             answerText: "Don’t do a thing and get all of that interest!",
             isCorrect: false
           },
           {
-            buttonOrder: "2",
+            buttonOrder: "1",
             answerText: "IDK",
             isCorrect: false
           }
