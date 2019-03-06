@@ -1,7 +1,7 @@
 export default (quiz_data = [
   {
     quizName: "Credit Card Debt Level 1",
-    quizCategory: "credit-card-debt",
+    quizCategory: 0,
     quizLevel: 1,
     learningCategories: ["interest rates", "credit score"],
     questions: [
@@ -117,7 +117,8 @@ export default (quiz_data = [
   },
   {
     quizName: "Credit Card Debt Level 2",
-    quizCategory: "debt",
+    quizCategory: 0,
+    quizLevel: 2,
     learningCategories: ["interest rates", "credit score"],
     questions: [
       {
@@ -212,7 +213,7 @@ export default (quiz_data = [
   },
   {
     quizName: "Credit Card Debt Level 3",
-    quizCategory: "credit-card-debt",
+    quizCategory: 0,
     quizLevel: 3,
     learningCategories: ["interest rates", "credit score"],
     questions: [

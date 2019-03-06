@@ -12,28 +12,7 @@ import Colors from "../constants/Colors";
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import { Tooltip} from 'react-native-elements';
 
-
 export default class LevelScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      quizLevels: [{
-        title: "Level 1", 
-        id: 0,
-        available: true,
-      },
-      {
-        title: "Level 2",
-        id: 1,
-        available: false,
-      },
-      {
-        title: "Level 3",
-        id: 2,
-        available: false,
-      }],
-    }
-  }
 
   static navigationOptions = ({ navigation }) => {
     //const { params = {} } = navigation.state;
@@ -61,26 +40,29 @@ export default class LevelScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const numLevels = navigation.getParam("numLevels", "0");
+    const numLevels = navigation.getParam("numLevels", "3");
     const topicID = navigation.getParam("topicID", "-1");
     const title = navigation.getParam("topicName", "Topic Unavailable");
     const icon = navigation.getParam("topicIcon", "");
+    const availablilities = navigation.getParam("availablilities", [true, false, false]);
     console.log(numLevels);
     console.log(topicID);
     console.log(title);
 
     let level_buttons = [];
-    this.state.quizLevels.forEach((item, index) => {
-      let level = index.toString();
-      if (item.available) {
+    let topicName = this.props.navigation.getParam("topicName", "Unknown Quiz");
+
+
+    for (let i = 0; i< numLevels; i++) {
+      if (availablilities[i]) {
         level_buttons.push(
           <TouchableOpacity
-            key = {level}
+            key = {i}
             style = {styles.buttonStyle}
-            onPress = {() => this.props.navigation.navigate("Quiz", {level: level})}>
+            onPress = {() => this.props.navigation.navigate("Quiz", {level: i+1})}>
             <Text style = {styles.listText}>
-                {item.title}
-            </Text> 
+              Level {i+1}
+            </Text>
           </TouchableOpacity>)
       } else {
         level_buttons.push(
@@ -90,13 +72,13 @@ export default class LevelScreen extends React.Component {
                   <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
               </Text>
               <Text style = {styles.listText}>
-                  {item.title}
+                  Level {i+1}
               </Text>
             </Tooltip>
           </View>
         );
       }
-    });
+    }
 
     return (
       <View style={styles.levelContainer}>
@@ -122,8 +104,8 @@ const styles = StyleSheet.create({
     borderColor: Colors.darkGrayPurple,
     borderRadius: 10,
     borderWidth: 2,
-    margin: 10, 
-  }, 
+    margin: 10,
+  },
   disabledButtonStyle: {
     backgroundColor: "white",
     width: "94%",
@@ -131,7 +113,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderWidth: 2,
     margin: 10,
-  }, 
+  },
   listText: {
     fontSize: 24,
     margin: 15,
@@ -159,7 +141,7 @@ const styles = StyleSheet.create({
     color: Colors.darkGrayPurple,
     justifyContent: "center",
    // alignItems: "center",
-  },  
+  },
   disabledText: {
     color: Colors.lightGrayPurple,
     fontSize: 24

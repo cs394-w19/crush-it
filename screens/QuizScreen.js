@@ -50,8 +50,12 @@ export default class QuizScreen extends React.Component {
   };
 
   async componentDidMount() {
+
+    let category = this.props.navigation.getParam("category", 0);
+    let level = this.props.navigation.getParam("level", 1);
+
     let quiz = quiz_data.find(q => {
-      return q.quizCategory === "credit-card-debt" && q.quizLevel === 1;
+      return q.quizCategory === category && q.quizLevel === level;
     });
 
     this.setState({
@@ -63,12 +67,15 @@ export default class QuizScreen extends React.Component {
     });
   }
 
-  isAnswerCorrect(answerText) {
+  getAnswerChoice(answerText) {
     let currQuestion = this.state.quiz.questions[this.state.quizProgress];
-    let choice = currQuestion.answerChoices.find(choice => {
+    return currQuestion.answerChoices.find(choice => {
       return answerText === choice.answerText;
     });
-    return choice.isCorrect;
+  }
+
+  isAnswerCorrect(answerText) {
+    this.getAnswerChoice(answerText).isCorrect;
   }
 
   nextQuestion() {
@@ -104,9 +111,17 @@ export default class QuizScreen extends React.Component {
     this.setState({
       submitted: answerText
     });
-    setTimeout(() => {
-      this.nextQuestion();
-    }, 1000);
+
+    if (this.getAnswerChoice(answerText).buttonOrder === '2') {
+      setTimeout(() => {
+        this.nextQuestion();
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        this.nextQuestion();
+      }, 2000);
+    }
+
   }
 
   render() {
