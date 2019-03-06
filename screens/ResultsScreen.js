@@ -5,6 +5,7 @@ import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
 import Confetti from 'react-native-confetti';
 import * as Progress from 'react-native-progress';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 export default class ResultsScreen extends React.Component {
   constructor(props) {
@@ -56,17 +57,25 @@ export default class ResultsScreen extends React.Component {
       },
       headerLeft: (
         <TouchableOpacity
-        onPress={() => navigation.navigate("Levels")}
+        onPress={() => navigation.navigate("Levels", {points: navigation.getParam("points", 0) + 100})}
         >
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
         </TouchableOpacity>
+      ),
+      headerRight: (
+        <Text style={styles.headerStats}>
+          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
+          {navigation.getParam("points", 1000) + 100}
+        </Text>
       )
     };
   };
 
   render() {
+    const { navigation } = this.props;
+    const points = navigation.getParam("points", 0);
     //let currentQuiz = quizData["quizzes"][0]; // just the sample quiz for now
 
     // let learningProgress = {};
@@ -113,7 +122,7 @@ export default class ResultsScreen extends React.Component {
             Congrats, level completed!
           </Text>
           <Button
-            onPress={() => this.props.navigation.navigate("Levels")} // what should this be called/go back to
+            onPress={() => this.props.navigation.navigate("Levels", {points: points + 100})} // what should this be called/go back to
             title="Back to Levels"
             color={Colors.darkGrayPurple}
           />
@@ -150,5 +159,10 @@ const styles = StyleSheet.create({
   sliderStyle: {
     width: 300,
     marginTop: 40
+  },
+  headerStats: {
+    color: Colors.lightGrayPurple,
+    fontSize: 25,
+    marginRight: 5
   }
 });

@@ -5,8 +5,6 @@ import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-n
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
-let quizData = require("../assets/quiz_data.json");
-
 export default class ResultsScreen extends React.Component {
     constructor(props) {
         super(props);

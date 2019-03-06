@@ -23,7 +23,7 @@ export default class LevelScreen extends React.Component {
         backgroundColor: Colors.header
       },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home", {points: navigation.getParam("points", 0)})}>
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
@@ -32,7 +32,7 @@ export default class LevelScreen extends React.Component {
       headerRight: (
         <Text style={styles.headerStats}>
           <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
-          250
+          {navigation.getParam("points", 10000)}
         </Text>
       )
     };
@@ -41,17 +41,13 @@ export default class LevelScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const numLevels = navigation.getParam("numLevels", "3");
-    const topicID = navigation.getParam("topicID", "-1");
     const title = navigation.getParam("topicName", "Topic Unavailable");
     const icon = navigation.getParam("topicIcon", "");
     const availablilities = navigation.getParam("availablilities", [true, false, false]);
-    console.log(numLevels);
-    console.log(topicID);
-    console.log(title);
+    const points = navigation.getParam("points", 0);
+    console.log(points);
 
     let level_buttons = [];
-    let topicName = this.props.navigation.getParam("topicName", "Unknown Quiz");
-
 
     for (let i = 0; i< numLevels; i++) {
       if (availablilities[i]) {
@@ -59,7 +55,7 @@ export default class LevelScreen extends React.Component {
           <TouchableOpacity
             key = {i}
             style = {styles.buttonStyle}
-            onPress = {() => this.props.navigation.navigate("Quiz", {level: i+1})}>
+            onPress = {() => this.props.navigation.navigate("Quiz", {level: i+1, points: points })}>
             <Text style = {styles.listText}>
               Level {i+1}
             </Text>

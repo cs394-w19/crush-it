@@ -49,12 +49,22 @@ export default class HomeScreen extends React.Component {
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
         </TouchableOpacity>
+      ),
+      headerRight: (
+        <Text style={styles.headerStats}>
+          <Ionicons name="md-ribbon" size={32} color={Colors.lightGrayPurple} />{" "}
+          {navigation.getParam("points", 0)}
+        </Text>
       )
     };
   };
 
+
   render() {
-    let topicButtons = []
+    const { navigation } = this.props;
+    const points = navigation.getParam("points", 0);
+
+    let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
       if(this.state.availablilities[index].indexOf(true) != -1) {
@@ -65,7 +75,8 @@ export default class HomeScreen extends React.Component {
             onPress={() => this.props.navigation.navigate("Levels", {
               availablilities: this.state.availablilities[index],
               topicName: topic,
-              numLevels: this.state.availablilities[index].length
+              numLevels: this.state.availablilities[index].length,
+              points: points
             })}
             >
             <Text style = {styles.listText}>
