@@ -71,10 +71,8 @@ export default class ResultsScreen extends React.Component {
               style = {{width : 40, height : 40}}
               source={require("../assets/images/coin.png")}
             />
-            <Text>{navigation.getParam("points", 1000) + 100}</Text>
-          </View>
         </TouchableOpacity>
-        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>100</Text>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0) + 100}</Text>
         </View>
       )
     };
