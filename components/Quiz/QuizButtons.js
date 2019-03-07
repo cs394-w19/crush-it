@@ -22,7 +22,9 @@ export default class QuizButtons extends React.Component {
         buttonStyle = styles.multipleChoiceOptionOne;
       } else if (answer.buttonOrder === "1") {
         buttonStyle = styles.multipleChoiceOptionTwo;
-      }
+      } /*else if (answer.buttonOrder === "3") {
+        buttonStyle = styles.multipleChoiceOptionThree;
+      }*/
 
       let answerStyle = answerCorrect
         ? styles.multipleChoiceOptionCorrect

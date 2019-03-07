@@ -29,22 +29,23 @@ export default class LevelScreen extends React.Component {
         backgroundColor: Colors.header
       },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Home")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Home", {points: navigation.getParam("points", 0)})}>
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
         </TouchableOpacity>
       ),
       headerRight: (
-        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
-          <View style={{flex : 1, flexDirection : "row"}}>
+        <View style={styles.coinsTotal}>
+
+        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0)})}>
             <Image
-              style = {{width : 40, height : 40, padding : 5}}
+              style = {{width : 40, height : 40}}
               source={require("../assets/images/coin.png")}
             />
-            <Text>300</Text>
-          </View>
         </TouchableOpacity>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0)}</Text>
+        </View>
       )
     };
   };
@@ -52,17 +53,13 @@ export default class LevelScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const numLevels = navigation.getParam("numLevels", "3");
-    const topicID = navigation.getParam("topicID", "-1");
     const title = navigation.getParam("topicName", "Topic Unavailable");
     const icon = navigation.getParam("topicIcon", "");
     const availablilities = navigation.getParam("availablilities", [true, false, false]);
-    console.log(numLevels);
-    console.log(topicID);
-    console.log(title);
+    const points = navigation.getParam("points", 0);
+    console.log(points);
 
     let level_buttons = [];
-    let topicName = this.props.navigation.getParam("topicName", "Unknown Quiz");
-
 
     for (let i = 0; i< numLevels; i++) {
       if (availablilities[i]) {
@@ -70,7 +67,7 @@ export default class LevelScreen extends React.Component {
           <TouchableOpacity
             key = {i}
             style = {styles.buttonStyle}
-            onPress = {() => this.props.navigation.navigate("Quiz", {level: i+1})}>
+            onPress = {() => this.props.navigation.navigate("Quiz", {level: i+1, points: points })}>
             <Text style = {styles.listText}>
               Level {i+1}
             </Text>
@@ -161,5 +158,13 @@ const styles = StyleSheet.create({
     color: Colors.lightGrayPurple,
     fontSize: 25,
     marginRight: 5
+  },
+  coinsTotal: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    marginRight: 10
   }
 });

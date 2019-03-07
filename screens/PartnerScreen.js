@@ -4,8 +4,7 @@ import { StyleSheet, Button, TouchableOpacity, Text, View, Image, ListView} from
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
-
-export default class ResultsScreen extends React.Component {
+export default class PartnerScreen extends React.Component {
     constructor(props) {
         super(props);
 
@@ -41,7 +40,7 @@ export default class ResultsScreen extends React.Component {
       },
       headerLeft: (
         <TouchableOpacity
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("Home", {points: navigation.getParam("points", 0)})}
         >
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
@@ -49,19 +48,24 @@ export default class ResultsScreen extends React.Component {
         </TouchableOpacity>
       ),
       headerRight: (
+        <View style={styles.coinsTotal}>
         <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
-          <Image
-            style = {{width : 40, height : 40}}
-            source={require("../assets/images/coin.png")}
-          />
-          <Text>300</Text>
+            <Image
+              style = {{width : 40, height : 40}}
+              source={require("../assets/images/coin.png")}
+            />
         </TouchableOpacity>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0)}</Text>
+        </View>
       )
     };
   };
 
 
   render() {
+
+    const { navigation } = this.props;
+    let points = navigation.getParam("points", 0);
 
     let itemImages = this.state.items.map((im) => {
         return (
@@ -101,7 +105,7 @@ export default class ResultsScreen extends React.Component {
       >
         <View style={styles.titleView}>
           <Text style={styles.title}>
-            Woohoo! You have  <Text style={{fontWeight: "bold", color : Colors.appPurple}}>{this.state.points}</Text> coins to spend!
+            Woohoo! You have  <Text style={{fontWeight: "bold", color : Colors.appPurple}}>{points}</Text> coins to spend!
           </Text>
         </View>
 
@@ -110,7 +114,6 @@ export default class ResultsScreen extends React.Component {
             Earn coins & get a $5 e-gift card to your favorite shop! Choose from below!
           </Text>
         </View>
-
           <TouchableOpacity
             style={styles.imageGrid}
             onPress = {()=>{ this.setState({redeeming:1})}}
@@ -126,7 +129,6 @@ export default class ResultsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
     width: "100%"
@@ -155,37 +157,25 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginRight: 5
   },
-  imageGrid: {
+
+  imageGrid : {
+    flex: 1, 
+    flexDirection: 'row',
+    alignItems: "center",
+    flexWrap:"wrap",
+    paddingLeft: 80,
+  },
+  image : {
+    width:120,
+    height: 120,
+  },
+  coinsTotal: {
     flex: 1,
     flexWrap: "wrap",
     flexDirection: "row",
     width: "100%",
-    height: "100%",
-  },
-  imageContainer : {
-    width: "44%",
-    margin: 10,
-
-  },
-  image : {
-    flex : 1,
-    width: 300,
-    height: 300,
-  },
-  buttonStyle: {
-    backgroundColor: "white",
-    width: "94%",
-    borderColor: Colors.darkGrayPurple,
-    borderRadius: 10,
-    borderWidth: 2,
-    margin: 10,
-  },
-  buttonWord: {
-    fontSize: 24,
-    color: Colors.darkGrayPurple,
-    margin: 15,
-    textAlign:"center",
-    justifyContent: "center"
+    alignItems: "center",
+    marginRight: 10
   }
 
 });

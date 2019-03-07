@@ -18,6 +18,7 @@ import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
 
 import quiz_data from "../assets/quiz_data";
+import { Ionicons, FontAwesome } from '@expo/vector-icons'
 
 export default class QuizScreen extends React.Component {
   constructor(props) {
@@ -41,20 +42,22 @@ export default class QuizScreen extends React.Component {
         backgroundColor: Colors.header
       },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Levels")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Levels", {points: navigation.getParam("points", 0)})}>
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
           />
         </TouchableOpacity>
       ),
       headerRight: (
-        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+        <View style={styles.coinsTotal}>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0)})}>
           <Image
             style = {{width : 40, height : 40}}
             source={require("../assets/images/coin.png")}
           />
-          <Text>300</Text>
         </TouchableOpacity>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0)}</Text>
+        </View>
       )
     };
   };
@@ -85,15 +88,18 @@ export default class QuizScreen extends React.Component {
   }
 
   isAnswerCorrect(answerText) {
-    this.getAnswerChoice(answerText).isCorrect;
+    return this.getAnswerChoice(answerText).isCorrect;
   }
 
   nextQuestion() {
+    const { navigation } = this.props;
+    const points = navigation.getParam("points", 0);
     if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
       this.props.navigation.navigate("Results", {
         score: this.state.score,
-        maxScore: this.state.quiz.questions.length
+        maxScore: this.state.quiz.questions.length,
+        points: points
       });
       this.setState({
         quizProgress: 0,
@@ -137,7 +143,6 @@ export default class QuizScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const level = navigation.getParam("level", "0");
-    console.log(level);
     if (!this.state.quiz) return <Text />;
 
     return (
@@ -176,5 +181,13 @@ const styles = StyleSheet.create({
   quizContainer: {
     flex: 1,
     height: "100%"
+  },
+  coinsTotal: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: "100%",
+    alignItems: "center",
+    marginRight: 10
   }
 });
