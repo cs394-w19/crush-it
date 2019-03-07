@@ -105,26 +105,26 @@ export default class App extends React.Component {
         /* appp assets */
         require('./assets/images/splash.png'),
         require('./assets/images/logos/CrushIt_LogoV2small.png'),
-        require("../assets/images/coin.png"),
+        require("./assets/images/coin.png"),
         /* credit card debt 1 */
         require("./assets/images/credit-card-debt/ready.gif"),
         require("./assets/images/credit-card-debt/good-work.gif"),
         /* credit card debt 2*/
-        require("../assets/images/credit-card-debt/dwight.gif"),
-        require("../assets/images/credit-card-debt/minion.gif"),
-        require("../assets/images/credit-card-debt/kanye.gif"),
+        require("./assets/images/credit-card-debt/dwight.gif"),
+        require("./assets/images/credit-card-debt/minion.gif"),
+        require("./assets/images/credit-card-debt/kanye.gif"),
         /* credit card debt 3*/
-        require("../assets/images/credit-card-debt/dog.gif"),
-        require("../assets/images/credit-card-debt/im-rich.gif"),
-        require("../assets/images/credit-card-debt/poor.gif"),
-        require("../assets/images/credit-card-debt/bear.gif"),
+        require("./assets/images/credit-card-debt/dog.gif"),
+        require("./assets/images/credit-card-debt/im-rich.gif"),
+        require("./assets/images/credit-card-debt/poor.gif"),
+        require("./assets/images/credit-card-debt/bear.gif"),
         /*Partner Screen */
-        require("../assets/images/partners/amazon.jpg"),
-        require("../assets/images/partners/grubhub.jpg"),
-        require("../assets/images/partners/lyft.png"),
-        require("../assets/images/partners/starbucks.jpg"),
-        require("../assets/images/partners/target.jpg"),
-        require("../assets/images/partners/urban.jpg")
+        require("./assets/images/partners/amazon.jpg"),
+        require("./assets/images/partners/grubhub.jpg"),
+        require("./assets/images/partners/lyft.png"),
+        require("./assets/images/partners/starbucks.jpg"),
+        require("./assets/images/partners/target.jpg"),
+        require("./assets/images/partners/urban.jpg")
 
       ]),
       Font.loadAsync({
