@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, TouchableOpacity, Text, View, Image, ListView} from 'react-native';
+import { StyleSheet, Button, TouchableOpacity, Text, View, Image, ScrollView} from 'react-native';
 
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -89,7 +89,7 @@ export default class PartnerScreen extends React.Component {
               The more you learn, the more $$ you earn!
             </Text>
           </View>
-  
+
             <TouchableOpacity
               style = {styles.buttonStyle}
               onPress = {() => this.setState({redeeming:0})}
@@ -98,9 +98,9 @@ export default class PartnerScreen extends React.Component {
             </TouchableOpacity>
         </View>
       );
-    } 
+    }
     return (
-      <View
+      <ScrollView
         contentContainerStyle={styles.container}
       >
         <View style={styles.titleView}>
@@ -114,13 +114,15 @@ export default class PartnerScreen extends React.Component {
             Earn coins & get a $5 e-gift card to your favorite shop! Choose from below!
           </Text>
         </View>
-          <TouchableOpacity
-            style={styles.imageGrid}
-            onPress = {()=>{ this.setState({redeeming:1})}}
-          >
-            {itemImages}
-          </TouchableOpacity>
-      </View>
+        <View style={{ height: "100%", width: "100%" }}>
+            <TouchableOpacity
+              style={styles.imageGrid}
+              onPress = {()=>{ this.setState({redeeming:1})}}
+            >
+              {itemImages}
+            </TouchableOpacity>
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     width: 300
   },
   titleView: {
-    padding: "3%",
+    padding: "0%",
     alignItems: 'center',
     justifyContent: 'flex-end'
   },
@@ -159,16 +161,18 @@ const styles = StyleSheet.create({
   },
 
   imageGrid : {
-    flex: 1, 
+    flex: 1,
     flexDirection: 'row',
     alignItems: "center",
     flexWrap:"wrap",
+    width: "100%",
+    height: "100%",
     justifyContent : "center",
     padding: "10%",
     paddingTop : 0
   },
   image : {
-    width:120,
+    width: 120,
     height: 120,
     margin : 10,
   },
@@ -187,7 +191,7 @@ const styles = StyleSheet.create({
     borderRadius : 10,
     borderWidth : 2,
     margin: 10,
-  }, 
+  },
   buttonWord : {
     fontSize : 24,
     color: Colors.darkGrayPurple,
