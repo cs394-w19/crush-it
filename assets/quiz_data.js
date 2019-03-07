@@ -27,7 +27,7 @@ export default (quiz_data = [
           },
           {
             buttonOrder: "1",
-            answerText: "No way.",
+            answerText: "No way",
             isCorrect: false
           }
         ]
@@ -39,12 +39,12 @@ export default (quiz_data = [
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "It’s my credit rating. ",
+            answerText: "It’s my credit rating ",
             isCorrect: false
           },
           {
             buttonOrder: "0",
-            answerText: "It’s basically interest. ",
+            answerText: "It’s basically interest ",
             isCorrect: true
           }
         ]
@@ -73,7 +73,7 @@ export default (quiz_data = [
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "Only pay the minimum. ",
+            answerText: "Only pay the minimum ",
             isCorrect: false
           },
           {
@@ -271,7 +271,7 @@ export default (quiz_data = [
             isCorrect: true
           }
         ]
-      },
+      }
     ]
   },
   {
@@ -282,21 +282,21 @@ export default (quiz_data = [
       {
         image: require("./images/credit-card-debt/dog.gif"),
         question:
-          "Suppose you buy a $100 shirt on a credit card with 30% APR. If you don’t make any payments, how much do you owe after a year?",
+          "Suppose you buy a $100 shirt on a credit card with 30% APR. If you don’t make any payments, how much do you owe after a year?\n\nA. Less than $120\nB. About $130\nC. Wait. Pay?",
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "Less than $120",
+            answerText: "A",
             isCorrect: false
           },
           {
             buttonOrder: "0",
-            answerText: "About $130",
+            answerText: "B",
             isCorrect: true
           },
           {
             buttonOrder: "1",
-            answerText: "Wait. Pay?",
+            answerText: "C",
             isCorrect: false
           }
         ]
@@ -323,44 +323,44 @@ export default (quiz_data = [
         image: require("./images/credit-card-debt/poor.gif"),
         statement: "",
         question:
-          "Suppose you have a $1000 balance on a credit card with 30% APR. If you don’t make any payments, how long will it take for that balance to double?",
+          "Suppose you have a $1000 balance on a credit card with 30% APR. If you don’t make any payments, how long will it take for that balance to double?\n\nA. Less than 3 years\nB. More than 3 years\nC. Wait. Payment?",
         answerChoices: [
           {
             buttonOrder: "0",
-            answerText: "Less than 3 years",
+            answerText: "A",
             isCorrect: true
           },
           {
             buttonOrder: "1",
-            answerText: "More than 3 years",
+            answerText: "B",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText: "Wait. Payment?",
+            answerText: "C",
             isCorrect: false
           }
         ]
       },
       {
         image: require("./images/credit-card-debt/bear.gif"),
-        statement: "",
+        statement: "Suppose you have $100 in a savings account earning 2% interest a year, and a credit card with a balance of $100 and 20% APR. What is the best thing to do?",
         question:
-          "Suppose you have $100 in a savings account earning 2% interest a year, and a credit card with a balance of $100 and 20% APR. What is the best thing to do?",
+          "A. Pay off the credit card!\nB. Don’t do a thing and get all of that interest!\nC. IDK",
         answerChoices: [
           {
             buttonOrder: "0",
-            answerText: "Pay off the credit card!",
+            answerText: "A",
             isCorrect: true
           },
           {
             buttonOrder: "1",
-            answerText: "Don’t do a thing and get all of that interest!",
+            answerText: "B",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText: "IDK",
+            answerText: "C",
             isCorrect: false
           }
         ]
