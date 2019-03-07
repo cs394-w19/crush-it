@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-native';
+import { StyleSheet, Button, TouchableOpacity, Text, View, Image, ListView} from 'react-native';
 
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -10,6 +10,7 @@ export default class ResultsScreen extends React.Component {
         super(props);
 
         this.state = {
+          redeeming : 0, // if you are redeeming, you are trying to get your rewards
           points : 0,
           items: []
         };
@@ -63,9 +64,37 @@ export default class ResultsScreen extends React.Component {
   render() {
 
     let itemImages = this.state.items.map((im) => {
-        return (<Image style={styles.image} source={im}/>);
+        return (
+            <Image style={styles.image} source={im}/>
+        );
     });
 
+    if (this.state.redeeming ){
+      return (
+        <View
+          contentContainerStyle={styles.container}
+        >
+          <View style={styles.titleView}>
+            <Text style={styles.title}>
+              Almost there!
+            </Text>
+            <Text style={styles.title}>
+              400 coins away from your next reward!
+            </Text>
+            <Text style={styles.title}>
+              The more you learn, the more $$ you earn!
+            </Text>
+          </View>
+  
+            <TouchableOpacity
+              style = {styles.buttonStyle}
+              onPress = {() => this.setState({redeeming:0})}
+            >
+              <Text style={styles.buttonWord}>RETURN HOME</Text>
+            </TouchableOpacity>
+        </View>
+      );
+    } 
     return (
       <View
         contentContainerStyle={styles.container}
@@ -81,10 +110,13 @@ export default class ResultsScreen extends React.Component {
             Earn coins & get a $5 e-gift card to your favorite shop! Choose from below!
           </Text>
         </View>
-        <View style={styles.imagegrid}>
-            {itemImages}
 
-        </View>
+          <TouchableOpacity
+            style={styles.imageGrid}
+            onPress = {()=>{ this.setState({redeeming:1})}}
+          >
+            {itemImages}
+          </TouchableOpacity>
       </View>
     );
   }
@@ -97,7 +129,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
-    flexWrap: "wrap-reverse",
     width: "100%"
   },
   child: {
@@ -124,16 +155,37 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginRight: 5
   },
-  imagegrid : {
-    flexDirection: 'row',
-    alignItems: "flex-start",
-    flexWrap:"wrap",
+  imageGrid: {
+    flex: 1,
+    flexWrap: "wrap",
+    flexDirection: "row",
+    width: "100%",
+    height: "100%",
+  },
+  imageContainer : {
+    width: "44%",
+    margin: 10,
+
   },
   image : {
-    flex : 2,
-    width: 200,
-    height: 200,
-    resizeMode: 'contain',
+    flex : 1,
+    width: 300,
+    height: 300,
+  },
+  buttonStyle: {
+    backgroundColor: "white",
+    width: "94%",
+    borderColor: Colors.darkGrayPurple,
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 10,
+  },
+  buttonWord: {
+    fontSize: 24,
+    color: Colors.darkGrayPurple,
+    margin: 15,
+    textAlign:"center",
+    justifyContent: "center"
   }
 
 });
