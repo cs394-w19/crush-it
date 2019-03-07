@@ -215,7 +215,7 @@ export default (quiz_data = [
       },
       {
         statement: "",
-        //image: require("./images/credit-card-debt/minion.gif"),
+        image: require("./images/credit-card-debt/kanye.gif"),
         learningCategory: "interest rates",
         question:
           "A credit-card bill arrives on the 15th of the month; it's due on the 30th. When should you pay it to get the best results on your credit record?",
