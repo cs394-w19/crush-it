@@ -26,13 +26,6 @@ export default class HomeScreen extends React.Component {
     this.state = {
       points : this.props.navigation.getParam("points", 0),
       topics : quiz_categories,
-      availablilities: [
-                          [true, true, true],
-                          [false, false, false],
-                          [false, false, false],
-                          [false, false, false],
-                          [false, false, false],
-                       ],
     };
   }
 
@@ -53,19 +46,28 @@ export default class HomeScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
+    const availabilities = navigation.getParam("availabilities", 
+    [
+      [true, false, false],
+      [false, false, false],
+      [false, false, false],
+      [false, false, false],
+      [false, false, false],
+    ])
 
     let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
-      if(this.state.availablilities[index].indexOf(true) != -1) {
+      if(availabilities[index].indexOf(true) != -1) {
         topicButtons.push(
           <TouchableOpacity
             style={styles.buttonStyle}
             key = {index}
             onPress={() => this.props.navigation.navigate("Levels", {
-              availablilities: this.state.availablilities[index],
+              availabilities: availabilities,
+              categoryIndex: index,
               topicName: topic,
-              numLevels: this.state.availablilities[index].length,
+              numLevels: availabilities[index].length,
               points: points
             })}
             >

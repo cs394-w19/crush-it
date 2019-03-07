@@ -10,7 +10,18 @@ import {
 export default class CoinHeader extends React.Component {
   render() {
     return(
-      <TouchableOpacity style={styles.coinsTotal} onPress={() => this.props.navigation.navigate("Partners", {points: this.props.navigation.getParam("points", 0)})}>
+      <TouchableOpacity style={styles.coinsTotal} onPress={() => this.props.navigation.navigate("Partners", 
+      {
+        points: this.props.navigation.getParam("points", 0),
+        availabilities: navigation.getParam("availabilities", [
+          [true, false, false],
+          [false, false, false],
+          [false, false, false],
+          [false, false, false],
+          [false, false, false],
+        ]),
+        categoryIndex: navigation.getParam("categoryIndex", 0)
+      })}>
         <View style={{ flex: 1 }}>
           <Image
             style = {{ width : 25, height : 25, resizeMode: "contain" }}

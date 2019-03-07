@@ -74,12 +74,20 @@ export default class QuizScreen extends React.Component {
   nextQuestion() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
+    const availabilities = navigation.getParam("availabilities");
+    const categoryIndex = navigation.getParam("categoryIndex");
+    let level = this.props.navigation.getParam("level", 1);
     if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
+      if(level < availabilities[categoryIndex].length) {
+        availabilities[categoryIndex][level] = true;
+      }
       this.props.navigation.navigate("Results", {
-        score: this.state.score,
+        score: this.state.score + 100,
         maxScore: this.state.quiz.questions.length,
-        points: points
+        points: points + 100,
+        availabilities: availabilities,
+        categoryIndex: categoryIndex
       });
       this.setState({
         quizProgress: 0,

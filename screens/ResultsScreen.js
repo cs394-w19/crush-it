@@ -61,6 +61,8 @@ export default class ResultsScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
+    const availabilities = navigation.getParam("availabilities");
+    const categoryIndex = navigation.getParam("categoryIndex");
 
     return (
       <View
@@ -79,12 +81,12 @@ export default class ResultsScreen extends React.Component {
             You Earned 100 Coins!
           </Text>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Levels", {points: points + 100})} // what should this be called/go back to
+            onPress={() => this.props.navigation.navigate("Levels", {points: points, availabilites: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
             style={styles.buttonStyle}>
             <Text style={styles.listText}> KEEP GOING</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Home", {points: points + 100})} // what should this be called/go back to
+            onPress={() => this.props.navigation.navigate("Home", {points: points, availabilities: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
             style={styles.buttonStyle}>
             <Text style={styles.listText}>RETURN HOME</Text>
           </TouchableOpacity>
