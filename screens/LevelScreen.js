@@ -40,18 +40,19 @@ export default class LevelScreen extends React.Component {
     const numLevels = navigation.getParam("numLevels", "3");
     const title = navigation.getParam("topicName", "Topic Unavailable");
     const icon = navigation.getParam("topicIcon", "");
-    const availablilities = navigation.getParam("availablilities", [true, false, false]);
+    const availabilities = navigation.getParam("availabilities");
+    const categoryIndex = navigation.getParam("categoryIndex", 0)
     const points = navigation.getParam("points", 0);
 
     let level_buttons = [];
 
     for (let i = 0; i< numLevels; i++) {
-      if (availablilities[i]) {
+      if (availabilities[categoryIndex][i]) {
         level_buttons.push(
           <TouchableOpacity
             key = {i}
             style = {styles.buttonStyle}
-            onPress = {() => this.props.navigation.navigate("Quiz", {level: i+1, points: points })}>
+            onPress = {() => this.props.navigation.navigate("Quiz", {level: i + 1, points: points, availabilities: availabilities, categoryIndex: categoryIndex })}>
             <Text style = {styles.listText}>
               Level {i+1}
             </Text>
