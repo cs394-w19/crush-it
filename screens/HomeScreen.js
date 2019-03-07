@@ -53,20 +53,24 @@ export default class HomeScreen extends React.Component {
       ),
       headerRight: (
         <View style={styles.coinsTotal}>
-        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
-            <Image
-              style = {{width : 40, height : 40}}
-              source={require("../assets/images/coin.png")}
-            />
+        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0)})}>
+          <Image
+            style = {{width : 40, height : 40}}
+            source={require("../assets/images/coin.png")}
+          />
         </TouchableOpacity>
-        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>100</Text>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0)}</Text>
         </View>
       )
     };
   };
 
+
   render() {
-    let topicButtons = []
+    const { navigation } = this.props;
+    const points = navigation.getParam("points", 0);
+
+    let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
       if(this.state.availablilities[index].indexOf(true) != -1) {
@@ -77,7 +81,8 @@ export default class HomeScreen extends React.Component {
             onPress={() => this.props.navigation.navigate("Levels", {
               availablilities: this.state.availablilities[index],
               topicName: topic,
-              numLevels: this.state.availablilities[index].length
+              numLevels: this.state.availablilities[index].length,
+              points: points
             })}
             >
             <Text style = {styles.listText}>

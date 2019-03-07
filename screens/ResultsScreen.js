@@ -5,6 +5,7 @@ import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
 import Confetti from 'react-native-confetti';
 import * as Progress from 'react-native-progress';
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 export default class ResultsScreen extends React.Component {
   constructor(props) {
@@ -56,7 +57,7 @@ export default class ResultsScreen extends React.Component {
       },
       headerLeft: (
         <TouchableOpacity
-        onPress={() => navigation.navigate("Levels")}
+        onPress={() => navigation.navigate("Levels", {points: navigation.getParam("points", 0) + 100})}
         >
           <Image
             source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
@@ -65,19 +66,21 @@ export default class ResultsScreen extends React.Component {
       ),
       headerRight: (
         <View style={styles.coinsTotal}>
-        <TouchableOpacity onPress={() => navigation.navigate("Partners")}>
+        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0) + 100})}>
             <Image
               style = {{width : 40, height : 40}}
               source={require("../assets/images/coin.png")}
             />
         </TouchableOpacity>
-        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>100</Text>
+        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0) + 100}</Text>
         </View>
       )
     };
   };
 
   render() {
+    const { navigation } = this.props;
+    const points = navigation.getParam("points", 0);
     //let currentQuiz = quizData["quizzes"][0]; // just the sample quiz for now
 
     // let learningProgress = {};
@@ -121,12 +124,12 @@ export default class ResultsScreen extends React.Component {
             You Earned 100 Coins!
           </Text>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Levels")} // what should this be called/go back to
+            onPress={() => this.props.navigation.navigate("Levels", {points: points + 100})} // what should this be called/go back to
             style={styles.buttonStyle}>
             <Text style={styles.listText}> KEEP GOING</Text>
           </TouchableOpacity>
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Home")} // what should this be called/go back to
+            onPress={() => this.props.navigation.navigate("Home", {points: points + 100})} // what should this be called/go back to
             style={styles.buttonStyle}>
             <Text style={styles.listText}>RETURN HOME</Text>
           </TouchableOpacity>
@@ -186,5 +189,4 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginRight: 10
   }
-
 });
