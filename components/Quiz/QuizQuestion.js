@@ -16,7 +16,7 @@ export default class QuizQuestion extends React.Component {
     image =  (
       <Image
         source={this.props.source}
-        style={{width:250,height:200}}
+        style={{ width:250, height:200 }}
         resizeMode={"contain"}
       />
     );
@@ -34,7 +34,6 @@ export default class QuizQuestion extends React.Component {
 
 const styles = StyleSheet.create({
   questionContainer: {
-    flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: "white",

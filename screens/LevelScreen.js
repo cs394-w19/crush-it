@@ -10,7 +10,11 @@ import {
 } from "react-native";
 import Colors from "../constants/Colors";
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
-import { Tooltip} from 'react-native-elements';
+import { Tooltip } from 'react-native-elements';
+
+import CoinHeader from "../components/Header/CoinHeader.js";
+import LogoHeader from "../components/Header/LogoHeader.js";
+
 
 export default class LevelScreen extends React.Component {
   constructor(props) {
@@ -21,31 +25,12 @@ export default class LevelScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => {
-    //const { params = {} } = navigation.state;
     return {
-      tabBarVisible: false,
-      headerStyle: {
-        height: 71,
-        backgroundColor: Colors.header
-      },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Home", {points: navigation.getParam("points", 0)})}>
-          <Image
-            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
-          />
-        </TouchableOpacity>
+        <LogoHeader navigation={navigation} navigateTo="Home" />
       ),
       headerRight: (
-        <View style={styles.coinsTotal}>
-
-        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0)})}>
-            <Image
-              style = {{width : 40, height : 40}}
-              source={require("../assets/images/coin.png")}
-            />
-        </TouchableOpacity>
-        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0)}</Text>
-        </View>
+        <CoinHeader navigation={navigation} />
       )
     };
   };
@@ -57,7 +42,6 @@ export default class LevelScreen extends React.Component {
     const icon = navigation.getParam("topicIcon", "");
     const availablilities = navigation.getParam("availablilities", [true, false, false]);
     const points = navigation.getParam("points", 0);
-    console.log(points);
 
     let level_buttons = [];
 
@@ -89,14 +73,10 @@ export default class LevelScreen extends React.Component {
     }
 
     return (
-      <View style={styles.levelContainer}>
-        <ScrollView ref={ref => (this.myScroll = ref)}>
-          <View>
-            <Text style={styles.title}> {title} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} /></Text>
-            {level_buttons}
-          </View>
-        </ScrollView>
-      </View>
+      <ScrollView contentContainerStyle={styles.levelContainer}>
+        <Text style={styles.title}> {title} <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} /></Text>
+        {level_buttons}
+      </ScrollView>
     );
   }
 }
@@ -132,8 +112,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: Colors.darkGrayPurple,
-    marginTop: 15,
-    marginBottom: 10,
+    marginTop: 20,
+    marginBottom: 20,
     borderBottomWidth: 1,
     borderBottomColor: Colors.lightGrayPurple,
     textAlign: "center",

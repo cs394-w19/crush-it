@@ -7,6 +7,9 @@ import Confetti from 'react-native-confetti';
 import * as Progress from 'react-native-progress';
 import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
+import CoinHeader from "../components/Header/CoinHeader.js";
+import LogoHeader from "../components/Header/LogoHeader.js";
+
 export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -14,8 +17,6 @@ export default class ResultsScreen extends React.Component {
     this.state = {
       score : this.props.navigation.getParam("score"),
       maxScore : this.props.navigation.getParam("maxScore"),
-      expPointsInThisLevel: 100,
-      progress : 0
     };
 
     // maybe move all of this into a componentDidMount()?
@@ -35,7 +36,6 @@ export default class ResultsScreen extends React.Component {
     this._confettiView.stopConfetti();
   }
 
-
   showExperienceGained(points){
 
     let progress = points / this.state.expPointsInThisLevel;
@@ -49,31 +49,11 @@ export default class ResultsScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      //title: "Results",
-      tabBarVisible: false,
-      headerStyle: {
-        height: 71,
-        backgroundColor: Colors.header
-      },
       headerLeft: (
-        <TouchableOpacity
-        onPress={() => navigation.navigate("Levels", {points: navigation.getParam("points", 0) + 100})}
-        >
-          <Image
-            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
-          />
-        </TouchableOpacity>
+        <LogoHeader navigation={navigation} navigateTo="Home" />
       ),
       headerRight: (
-        <View style={styles.coinsTotal}>
-        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0) + 100})}>
-            <Image
-              style = {{width : 40, height : 40}}
-              source={require("../assets/images/coin.png")}
-            />
-        </TouchableOpacity>
-        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0) + 100}</Text>
-        </View>
+        <CoinHeader navigation={navigation} />
       )
     };
   };
@@ -81,31 +61,6 @@ export default class ResultsScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
-    //let currentQuiz = quizData["quizzes"][0]; // just the sample quiz for now
-
-    // let learningProgress = {};
-    // let correctAnswers = 0; // or XP or stars or something
-
-    // for(let i = 0; i < currentQuiz.questions.length; i++ ){
-    //     // check whether they got it right, assume for now they did
-    //     correctAnswers++;
-
-    //     if( currentQuiz.questions[i].learningCategory in learningProgress){
-    //         learningProgress[currentQuiz.questions[i].learningCategory]++;
-    //     } else {
-    //         learningProgress[currentQuiz.questions[i].learningCategory] = 1;
-    //     }
-    // }
-
-    // let flattenedData = Object.entries(learningProgress);
-
-    // let categories = flattenedData.map((item) =>{
-    //     //console.log(item);
-    //     return (
-    //     <Text key={item[0]}>{item[1]*10} points in the {item[0]} category</Text>
-    //     )
-    // })
-
 
     return (
       <View
@@ -160,13 +115,12 @@ const styles = StyleSheet.create({
     color: Colors.darkGrayPurple,
     margin: 15,
     textAlign: 'center',
-
   },
   coin: {
     width: 80,
     height: 80,
   },
-    buttonStyle: {
+  buttonStyle: {
     backgroundColor: "white",
     width: "100%",
     borderColor: Colors.darkGrayPurple,
@@ -174,19 +128,11 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     margin: 10,
   },
-    listText: {
+  listText: {
     fontSize: 24,
     margin: 15,
     textAlign: "center",
     justifyContent: "center",
     color: Colors.darkGrayPurple,
   },
-  coinsTotal: {
-    flex: 1,
-    flexWrap: "wrap",
-    flexDirection: "row",
-    width: "100%",
-    alignItems: "center",
-    marginRight: 10
-  }
 });

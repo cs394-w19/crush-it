@@ -27,8 +27,6 @@ const styles = StyleSheet.create({
   questionStatementContainer: {
     padding: 25,
     width: "100%",
-    // flex: 1,
-    //backgroundColor: Colors.quizStatementFill,
   },
   questionStatementText: {
     fontSize: 24,

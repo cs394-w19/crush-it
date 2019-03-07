@@ -280,7 +280,6 @@ export default (quiz_data = [
     quizLevel: 3,
     questions: [
       {
-        image: require("./images/credit-card-debt/dog.gif"),
         question:
           "Suppose you buy a $100 shirt on a credit card with 30% APR. If you don’t make any payments, how much do you owe after a year?\n\nA. Less than $120\nB. About $130\nC. Wait. Pay?",
         answerChoices: [
@@ -302,7 +301,16 @@ export default (quiz_data = [
         ]
       },
       {
-        image: require("./images/credit-card-debt/im-rich.gif"),
+        image: require("./images/credit-card-debt/dog.gif"),
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Next",
+            isCorrect: true
+          }
+        ]
+      },
+      {
         statement: "",
         question:
           " If inflation goes up, what’s going to happen to the interest rate of your credit card?",
@@ -316,6 +324,16 @@ export default (quiz_data = [
             buttonOrder: "1",
             answerText: "It goes down",
             isCorrect: false
+          }
+        ]
+      },
+      {
+        image: require("./images/credit-card-debt/im-rich.gif"),
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Next",
+            isCorrect: true
           }
         ]
       },
@@ -343,6 +361,16 @@ export default (quiz_data = [
         ]
       },
       {
+        image: require("./images/credit-card-debt/poor.gif"),
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Next",
+            isCorrect: true
+          }
+        ]
+      },
+      {
         image: require("./images/credit-card-debt/bear.gif"),
         statement: "Suppose you have $100 in a savings account earning 2% interest a year, and a credit card with a balance of $100 and 20% APR. What is the best thing to do?",
         question:
@@ -364,7 +392,17 @@ export default (quiz_data = [
             isCorrect: false
           }
         ]
-      }
+      },
+      {
+        image: require("./images/credit-card-debt/bear.gif"),
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Next",
+            isCorrect: true
+          }
+        ]
+      },
     ]
   }
 ]);

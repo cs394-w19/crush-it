@@ -11,7 +11,10 @@ import {
 
 import Colors from "../constants/Colors";
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
-import { Tooltip} from 'react-native-elements';
+import { Tooltip } from 'react-native-elements';
+
+import CoinHeader from "../components/Header/CoinHeader.js";
+import LogoHeader from "../components/Header/LogoHeader.js";
 
 import quiz_categories from "../assets/quiz_categories";
 
@@ -37,30 +40,11 @@ export default class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      //title: "Results",
-      tabBarVisible: false,
-      headerStyle: {
-        height: 71,
-        backgroundColor: Colors.header
-      },
       headerLeft: (
-        <TouchableOpacity
-        >
-          <Image
-            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
-          />
-        </TouchableOpacity>
+        <LogoHeader navigation={navigation} navigateTo="Home" />
       ),
       headerRight: (
-        <View style={styles.coinsTotal}>
-        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0)})}>
-          <Image
-            style = {{width : 40, height : 40}}
-            source={require("../assets/images/coin.png")}
-          />
-        </TouchableOpacity>
-        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0)}</Text>
-        </View>
+        <CoinHeader navigation={navigation} />
       )
     };
   };
@@ -107,15 +91,10 @@ export default class HomeScreen extends React.Component {
     });
 
     return (
-      // this should be a for loop or a map or something
-      <View style={styles.categoryContainer}>
-      <ScrollView ref={(ref) => this.myScroll = ref}>
-        <View>
+      <ScrollView contentContainerStyle={styles.categoryContainer}>
           <Text style={styles.title}> Quiz Category</Text>
-            {topicButtons}
-        </View>
+          {topicButtons}
       </ScrollView>
-    </View>
     );
   }
 }
@@ -151,8 +130,8 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     color: Colors.darkGrayPurple,
-    marginTop: 15,
-    marginBottom: 10,
+    marginTop: 20,
+    marginBottom: 20,
     borderBottomWidth: 1,
     borderBottomColor: Colors.lightGrayPurple,
     textAlign: "center",
@@ -165,26 +144,14 @@ const styles = StyleSheet.create({
   },
   categoryContainer: {
     flex: 1,
+    flexDirection: "column",
     color: Colors.darkGrayPurple,
     justifyContent: "center",
-    //alignItems: "center",
+    alignItems: "center",
   },
   disabledText: {
     color: Colors.lightGrayPurple,
     fontSize: 24
   },
-  headerStats: {
-    color: Colors.lightGrayPurple,
-    fontSize: 25,
-    marginRight: 5
-  },
-  coinsTotal: {
-    flex: 1,
-    flexWrap: "wrap",
-    flexDirection: "row",
-    width: "100%",
-    alignItems: "center",
-    marginRight: 10
-  }
 
 });

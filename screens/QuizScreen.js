@@ -9,6 +9,7 @@ import {
   TouchableOpacity,
   InteractionManager
 } from "react-native";
+import { Ionicons, FontAwesome } from '@expo/vector-icons'
 
 import Colors from "../constants/Colors";
 
@@ -17,8 +18,10 @@ import QuizStatement from "../components/Quiz/QuizStatement";
 import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
 
+import CoinHeader from "../components/Header/CoinHeader.js";
+import LogoHeader from "../components/Header/LogoHeader.js";
+
 import quiz_data from "../assets/quiz_data";
-import { Ionicons, FontAwesome } from '@expo/vector-icons'
 
 export default class QuizScreen extends React.Component {
   constructor(props) {
@@ -33,31 +36,12 @@ export default class QuizScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => {
-    //const { params = {} } = navigation.state;
     return {
-      //title: "Quiz",
-      tabBarVisible: false,
-      headerStyle: {
-        height: 71,
-        backgroundColor: Colors.header
-      },
       headerLeft: (
-        <TouchableOpacity onPress={() => navigation.navigate("Levels", {points: navigation.getParam("points", 0)})}>
-          <Image
-            source={require("../assets/images/logos/CrushIt_LogoV2small.png")}
-          />
-        </TouchableOpacity>
+        <LogoHeader navigation={navigation} navigateTo="Levels" />
       ),
       headerRight: (
-        <View style={styles.coinsTotal}>
-        <TouchableOpacity onPress={() => navigation.navigate("Partners", {points: navigation.getParam("points", 0)})}>
-          <Image
-            style = {{width : 40, height : 40}}
-            source={require("../assets/images/coin.png")}
-          />
-        </TouchableOpacity>
-        <Text style = {{fontSize: 18, color: "white", marginLeft: 5}}>{navigation.getParam("points", 0)}</Text>
-        </View>
+        <CoinHeader navigation={navigation} />
       )
     };
   };
@@ -71,13 +55,9 @@ export default class QuizScreen extends React.Component {
       return q.quizCategory === category && q.quizLevel === level;
     });
 
-    this.setState({
-      quiz: quiz,
-    });
+    this.setState({ quiz: quiz });
 
-    this.props.navigation.setParams({
-      quiz: this.state.quiz
-    });
+    this.props.navigation.setParams({ quiz: this.state.quiz });
   }
 
   getAnswerChoice(answerText) {
@@ -142,7 +122,7 @@ export default class QuizScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const level = navigation.getParam("level", "0");
+    const level = navigation.getParam("level", 1);
     if (!this.state.quiz) return <Text />;
 
     return (
@@ -180,14 +160,5 @@ export default class QuizScreen extends React.Component {
 const styles = StyleSheet.create({
   quizContainer: {
     flex: 1,
-    height: "100%"
-  },
-  coinsTotal: {
-    flex: 1,
-    flexWrap: "wrap",
-    flexDirection: "row",
-    width: "100%",
-    alignItems: "center",
-    marginRight: 10
   }
 });
