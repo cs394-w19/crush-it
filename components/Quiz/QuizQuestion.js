@@ -24,8 +24,7 @@ export default class QuizQuestion extends React.Component {
     return(
       <View style={styles.questionContainer}>
           {this.props.source ? image : <Text />}
-          <Text style={{ fontSize: 24, color: Colors.darkGrayPurple, paddingTop: 20, width: "100%", textAlign : "left"
-}}>
+          <Text style={{ fontSize: 24, color: Colors.darkGrayPurple, width: "100%", textAlign : "left" }}>
             {quiz.questions[question].question}
           </Text>
       </View>
