@@ -28,7 +28,7 @@ export default (quiz_data = [
           },
           {
             buttonOrder: "1",
-            answerText: "No way.",
+            answerText: "No way",
             isCorrect: false
           }
         ]
@@ -40,12 +40,12 @@ export default (quiz_data = [
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "It’s my credit rating. ",
+            answerText: "It’s my credit rating ",
             isCorrect: false
           },
           {
             buttonOrder: "0",
-            answerText: "It’s basically interest. ",
+            answerText: "It’s basically interest ",
             isCorrect: true
           }
         ]
@@ -74,7 +74,7 @@ export default (quiz_data = [
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "Only pay the minimum. ",
+            answerText: "Only pay the minimum ",
             isCorrect: false
           },
           {
@@ -161,7 +161,8 @@ export default (quiz_data = [
         ]
       },
       {
-        statement: "Data - The Fair Credit Billing Act limits cardholder liabilities in the event of fraud. If charges are incurred after the card is reported stolen, the cardholder is not liable for ANY charges and $50 until the card is reported stolen.",
+        statement:
+          "Data - The Fair Credit Billing Act limits cardholder liabilities in the event of fraud. If charges are incurred after the card is reported stolen, the cardholder is not liable for ANY charges and $50 until the card is reported stolen.",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -209,7 +210,8 @@ export default (quiz_data = [
         ]
       },
       {
-        statement: "Data - In 2010, as part of the credit card reform law and associated regulations, issuers had to make multiple changes. Among them:\n- Credit card companies cannot charge more than $25 for routine, occasional late payments.\n-  Card issuers can't raise rates at any time for any reason.\n- Cardholders must 'opt in' to over-limit protection -- and the hefty fees that go with such programs. They previously had been imposed automatically.",
+        statement:
+          "Data - In 2010, as part of the credit card reform law and associated regulations, issuers had to make multiple changes. Among them:\n- Credit card companies cannot charge more than $25 for routine, occasional late payments.\n-  Card issuers can't raise rates at any time for any reason.\n- Cardholders must 'opt in' to over-limit protection -- and the hefty fees that go with such programs. They previously had been imposed automatically.",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -287,7 +289,8 @@ export default (quiz_data = [
         ]
       },
       {
-        statement: "Data - Your credit card bill’s due date simply signifies that a billing cycle has ended and it’s time to pay up. The due date is not necessarily when your current balance will be reported to the credit bureaus. That’s why it might make sense to pay your bill well before it’s actually due. For example say your payment is due on the 20th of each month, but your issuer reports your balance on the 15th. If your issuer reported a $4,500 balance on the 15th, the credit bureaus would see a 45% utilization ratio — even if you paid it off in full just days later. Your credit score could end up getting dinged, even though your payment habits are solid.",
+        statement:
+          "Data - Your credit card bill’s due date simply signifies that a billing cycle has ended and it’s time to pay up. The due date is not necessarily when your current balance will be reported to the credit bureaus. That’s why it might make sense to pay your bill well before it’s actually due. For example say your payment is due on the 20th of each month, but your issuer reports your balance on the 15th. If your issuer reported a $4,500 balance on the 15th, the credit bureaus would see a 45% utilization ratio — even if you paid it off in full just days later. Your credit score could end up getting dinged, even though your payment habits are solid.",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -295,7 +298,7 @@ export default (quiz_data = [
             isCorrect: true
           }
         ]
-      },
+      }
     ]
   },
   {
@@ -309,21 +312,21 @@ export default (quiz_data = [
 
         learningCategory: "interest rates",
         question:
-          "Suppose you buy a $100 shirt on a credit card with 30% APR. If you don’t make any payments, how much do you owe after a year?",
+          "Suppose you buy a $100 shirt on a credit card with 30% APR. If you don’t make any payments, how much do you owe after a year?\n\nA. Less than $120\nB. About $130\nC. Wait. Pay?",
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "Less than $120",
+            answerText: "A",
             isCorrect: false
           },
           {
             buttonOrder: "0",
-            answerText: "About $130",
+            answerText: "B",
             isCorrect: true
           },
           {
             buttonOrder: "1",
-            answerText: "Wait. Pay?",
+            answerText: "C",
             isCorrect: false
           }
         ]
@@ -337,12 +340,12 @@ export default (quiz_data = [
         answerChoices: [
           {
             buttonOrder: "0",
-            answerText: "It goes up.",
+            answerText: "It goes up",
             isCorrect: true
           },
           {
             buttonOrder: "1",
-            answerText: "It goes down.",
+            answerText: "It goes down",
             isCorrect: false
           }
         ]
@@ -352,21 +355,21 @@ export default (quiz_data = [
         statement: "",
         learningCategory: "interest rates",
         question:
-          "Suppose you have a $1000 balance on a credit card with 30% APR. If you don’t make any payments, how long will it take for that balance to double?",
+          "Suppose you have a $1000 balance on a credit card with 30% APR. If you don’t make any payments, how long will it take for that balance to double?\n\nA. Less than 3 years\nB. More than 3 years\nC. Wait. Payment?",
         answerChoices: [
           {
             buttonOrder: "0",
-            answerText: "Less than 3 years",
+            answerText: "A",
             isCorrect: true
           },
           {
             buttonOrder: "1",
-            answerText: "More than 3 years",
+            answerText: "B",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText: "Wait. Payment?",
+            answerText: "C",
             isCorrect: false
           }
         ]
@@ -376,21 +379,21 @@ export default (quiz_data = [
         statement: "",
         learningCategory: "interest rates",
         question:
-          "Suppose you have $100 in a savings account earning 2% interest a year, and a credit card with a balance of $100 and 20% APR. What is the best thing to do?",
+          "Suppose you have $100 in a savings account earning 2% interest a year, and a credit card with a balance of $100 and 20% APR. What is the best thing to do?\n\nA. Pay off the credit card!\nB. Don’t do a thing and get all of that interest!\nC. IDK",
         answerChoices: [
           {
             buttonOrder: "0",
-            answerText: "Pay off the credit card! ",
+            answerText: "A",
             isCorrect: true
           },
           {
             buttonOrder: "1",
-            answerText: "Don’t do a thing and get all of that interest!",
+            answerText: "B",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText: "IDK",
+            answerText: "C",
             isCorrect: false
           }
         ]
