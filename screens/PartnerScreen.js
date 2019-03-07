@@ -163,11 +163,14 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: "center",
     flexWrap:"wrap",
-    paddingLeft: 80,
+    justifyContent : "center",
+    padding: "10%",
+    paddingTop : 0
   },
   image : {
     width:120,
     height: 120,
+    margin : 10,
   },
   coinsTotal: {
     flex: 1,
@@ -176,6 +179,21 @@ const styles = StyleSheet.create({
     width: "100%",
     alignItems: "center",
     marginRight: 10
+  },
+  buttonStyle : {
+    backgroundColor : "#fff",
+    width : "94%",
+    borderColor: Colors.darkGrayPurple,
+    borderRadius : 10,
+    borderWidth : 2,
+    margin: 10,
+  }, 
+  buttonWord : {
+    fontSize : 24,
+    color: Colors.darkGrayPurple,
+    margin: 15,
+    textAlign : "center",
+    justifyContent : "center"
   }
 
 });
