@@ -130,14 +130,13 @@ const styles = StyleSheet.create({
     flexWrap:"wrap",
     width: "100%",
     height: "100%",
-    justifyContent : "center",
-    padding: "10%",
-    paddingTop : 0
+    justifyContent : "center"
+
   },
   image : {
     width: 80,
     height: 80,
-    margin : 20,
+    margin : "5%",
   },
   buttonStyle : {
     backgroundColor : "#fff",
