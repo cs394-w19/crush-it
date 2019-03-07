@@ -4,6 +4,8 @@ import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-n
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
 
+import GridLayout from 'react-native-layout-grid';
+
 
 export default class ResultsScreen extends React.Component {
     constructor(props) {
@@ -85,7 +87,6 @@ export default class ResultsScreen extends React.Component {
         </View>
         <View style={styles.imagegrid}>
             {itemImages}
-
         </View>
       </View>
     );
@@ -96,7 +97,6 @@ export default class ResultsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
     backgroundColor: "white",
     flexWrap: "wrap-reverse",
@@ -127,15 +127,15 @@ const styles = StyleSheet.create({
     marginRight: 5
   },
   imagegrid : {
+    flex: 1, 
     flexDirection: 'row',
-    alignItems: "flex-start",
+    alignItems: "center",
     flexWrap:"wrap",
+    paddingLeft: 80,
   },
   image : {
-    flex : 2,
-    width: 200,
-    height: 200,
-    resizeMode: 'contain',
+    width:120,
+    height: 120,
   },
   coinsTotal: {
     flex: 1,
