@@ -24,7 +24,8 @@ export default class QuizQuestion extends React.Component {
     return(
       <View style={styles.questionContainer}>
           {this.props.source ? image : <Text />}
-          <Text style={{ fontSize: 24, color: Colors.darkGrayPurple, paddingTop: 20}}>
+          <Text style={{ fontSize: 24, color: Colors.darkGrayPurple, paddingTop: 20, width: "100%", textAlign : "left"
+}}>
             {quiz.questions[question].question}
           </Text>
       </View>
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     backgroundColor: "white",
-    padding: 25
+    padding: 25,
+    width : "100%",
   },
 });
