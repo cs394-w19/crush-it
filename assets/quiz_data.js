@@ -131,7 +131,7 @@ export default (quiz_data = [
     questions: [
       {
         statement:
-          "The Fair Credit Billing Act limits cardholder liabilities in the event of fraud. If charges are incurred after the card is reported stolen, the cardholder is not liable for ANY charges and $50 until the card is reported stolen.\n\nYour credit card has been stolen, and before you know it, the thief has charged $10,000. How much should you expect to have to pay?",
+          "Your credit card has been stolen, and before you know it, the thief has charged $10,000. How much should you expect to have to pay?",
         question:
           "A. $0\nB. $50 until card reported stolen\nC. All Charges\nD. A & B",
         answerChoices: [
@@ -168,7 +168,8 @@ export default (quiz_data = [
         ]
       },
       {
-        statement: "The Fair Credit Billing Act limits cardholder liabilities in the event of fraud. If charges are incurred after the card is reported stolen, the cardholder is not liable for ANY charges and $50 until the card is reported stolen.",
+        statement:
+          "The Fair Credit Billing Act limits cardholder liabilities in the event of fraud. If charges are incurred after the card is reported stolen, the cardholder is not liable for ANY charges and $50 until the card is reported stolen.",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -179,7 +180,8 @@ export default (quiz_data = [
       },
       {
         //statement: "",
-        statement: "In 2010, federal regulations changed, adding consumer protection that:",
+        statement:
+          "In 2010, federal regulations changed, adding consumer protection that:",
         question:
           "A. Prohibits card issuers from charging a penalty of more than $25 for a customer's first late payment\nB. Forbids 'any time, any reason' rate hikes\nC. Requires card issuers to ask customers whether they want to over-limit protection\nD. All of the above",
         answerChoices: [
@@ -216,7 +218,8 @@ export default (quiz_data = [
         ]
       },
       {
-        statement: "In 2010, as part of the credit card reform law and associated regulations, issuers had to make multiple changes. Among them:\n\n- Credit card companies cannot charge more than $25 for routine, occasional late payments.\n-  Card issuers can't raise rates at any time for any reason.\n- Cardholders must 'opt in' to over-limit protection -- and the hefty fees that go with such programs. They previously had been imposed automatically.",
+        statement:
+          "In 2010, as part of the credit card reform law and associated regulations, issuers had to make multiple changes. Among them:\n\n- Credit card companies cannot charge more than $25 for routine, occasional late payments.\n-  Card issuers can't raise rates at any time for any reason.\n- Cardholders must 'opt in' to over-limit protection -- and the hefty fees that go with such programs. They previously had been imposed automatically.",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -226,7 +229,8 @@ export default (quiz_data = [
         ]
       },
       {
-        statement: "A credit-card bill arrives on the 15th of the month; it's due on the 30th. When should you pay it to get the best results on your credit record?",
+        statement:
+          "A credit-card bill arrives on the 15th of the month; it's due on the 30th. When should you pay it to get the best results on your credit record?",
         question:
           "A. The day it arrives in the mail\nB. Wait until a few days before it's due, then pay it\nC. On time, but a few days before the credit card company sends payment data to the credit bureaus -- that way you’ll show zero balance\nD. There are no 'credit cards.' They are the invention of the Trilateral Commission bent on a New World Order.",
         answerChoices: [
@@ -263,7 +267,8 @@ export default (quiz_data = [
         ]
       },
       {
-        statement: "Your credit card bill’s due date simply signifies that a billing cycle has ended and it’s time to pay up. The due date is not necessarily when your current balance will be reported to the credit bureaus. That’s why it might make sense to pay your bill well before it’s actually due. For example say your payment is due on the 20th of each month, but your issuer reports your balance on the 15th. If your issuer reported a $4,500 balance on the 15th, the credit bureaus would see a 45% utilization ratio — even if you paid it off in full just days later. Your credit score could end up getting dinged, even though your payment habits are solid.",
+        statement:
+          "Your credit card bill’s due date simply signifies that a billing cycle has ended and it’s time to pay up. The due date is not necessarily when your current balance will be reported to the credit bureaus. That’s why it might make sense to pay your bill well before it’s actually due. For example say your payment is due on the 20th of each month, but your issuer reports your balance on the 15th. If your issuer reported a $4,500 balance on the 15th, the credit bureaus would see a 45% utilization ratio — even if you paid it off in full just days later. Your credit score could end up getting dinged, even though your payment habits are solid.",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -338,7 +343,6 @@ export default (quiz_data = [
         ]
       },
       {
-        image: require("./images/credit-card-debt/poor.gif"),
         statement: "",
         question:
           "Suppose you have a $1000 balance on a credit card with 30% APR. If you don’t make any payments, how long will it take for that balance to double?\n\nA. Less than 3 years\nB. More than 3 years\nC. Wait. Payment?",
@@ -371,8 +375,8 @@ export default (quiz_data = [
         ]
       },
       {
-        image: require("./images/credit-card-debt/bear.gif"),
-        statement: "Suppose you have $100 in a savings account earning 2% interest a year, and a credit card with a balance of $100 and 20% APR. What is the best thing to do?",
+        statement:
+          "Suppose you have $100 in a savings account earning 2% interest a year, and a credit card with a balance of $100 and 20% APR. What is the best thing to do?",
         question:
           "A. Pay off the credit card!\nB. Don’t do a thing and get all of that interest!\nC. IDK",
         answerChoices: [
@@ -402,7 +406,7 @@ export default (quiz_data = [
             isCorrect: true
           }
         ]
-      },
+      }
     ]
   }
 ]);
