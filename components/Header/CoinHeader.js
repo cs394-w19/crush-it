@@ -17,7 +17,7 @@ export default class CoinHeader extends React.Component {
             source={require("../../assets/images/coin.png")}
           />
         </View>
-        <Text style = {{ flex: 1, fontSize: 18, color: "white", marginLeft: 5 }}>{this.props.navigation.getParam("points", 0)}</Text>
+        <Text style = {{ flex: 1, fontSize: 20, color: "white", marginLeft: 10 }}>{this.props.navigation.getParam("points", 0)}</Text>
       </TouchableOpacity>
     );
   }
@@ -26,9 +26,8 @@ export default class CoinHeader extends React.Component {
 const styles = StyleSheet.create({
   coinsTotal: {
     flexDirection: "row",
-    width: 60,
     height: 30,
     alignItems: "center",
-    marginRight: 10
+    marginRight: 15
   },
 });
