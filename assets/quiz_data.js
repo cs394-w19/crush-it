@@ -124,125 +124,178 @@ export default (quiz_data = [
       {
         statement:
           "The Fair Credit Billing Act limits cardholder liabilities in the event of fraud. If charges are incurred after the card is reported stolen, the cardholder is not liable for ANY charges and $50 until the card is reported stolen.",
-        image: require("./images/credit-card-debt/dwight.gif"),
         learningCategory: "interest rates",
         question:
-          "Your credit card has been stolen, and before you know it, the thief has charged $10,000. How much should you expect to have to pay?",
+          "Your credit card has been stolen, and before you know it, the thief has charged $10,000. How much should you expect to have to pay?\nA. $0\nB. $50 until card reported stolen\nC. All Charges\nD. A & B",
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "A. $0",
+            answerText: "A",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText: "B. $50 until card reported stolen",
+            answerText: "B",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText: "C. All Charges",
+            answerText: "C",
             isCorrect: false
           },
           {
             buttonOrder: "0",
-            answerText: "D. A & B",
+            answerText: "D",
             isCorrect: true
           }
         ]
       },
       {
-        statement: "",
         image: require("./images/credit-card-debt/dwight.gif"),
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "View Question Explanation",
+            isCorrect: true
+          }
+        ]
+      },
+      {
+        statement: "Data - The Fair Credit Billing Act limits cardholder liabilities in the event of fraud. If charges are incurred after the card is reported stolen, the cardholder is not liable for ANY charges and $50 until the card is reported stolen.",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Next Question",
+            isCorrect: true
+          }
+        ]
+      },
+      {
+        //statement: "",
         learningCategory: "credit score",
         question:
-          "In 2010, federal regulations changed, adding consumer protection that:",
+          "In 2010, federal regulations changed, adding consumer protection that:\nA. Prohibits card issuers from charging a penalty of more than $25 for a customer's first late payment\nB. Forbids 'any time, any reason' rate hikes\nC. Requires card issuers to ask customers whether they want to over-limit protection\nD. All of the above",
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText:
-              "A. Prohibits card issuers from charging a penalty of more than $25 for a customer's first late payment.",
+            answerText: "A",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText: "B. Forbids 'any time, any reason' rate hikes.",
+            answerText: "B",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText:
-              "C. Requires card issuers to ask customers whether they want to over-limit protection.",
+            answerText: "C",
             isCorrect: false
           },
           {
             buttonOrder: "0",
-            answerText: "D. All of the Above",
+            answerText: "D",
             isCorrect: true
           }
         ]
       },
       {
-        statement: "",
         image: require("./images/credit-card-debt/minion.gif"),
-        learningCategory: "credit score",
-        question:
-          "In 2010, as part of the credit card reform law and associated regulations, issuers had to make multiple changes. Among them:",
         answerChoices: [
           {
-            buttonOrder: "1",
-            answerText:
-              "A. Credit card companies cannot charge more than $25 for routine, occasional late payments.",
-            isCorrect: false
-          },
-          {
-            buttonOrder: "1",
-            answerText: "B.  Card issuers can't raise rates at any time for any reason.",
-            isCorrect: false
-          },
-          {
-            buttonOrder: "1",
-            answerText:
-              "C. Cardholders must 'opt in' to over-limit protection -- and the hefty fees that go with such programs. They previously had been imposed automatically.",
-            isCorrect: false
-          },
-          {
-            buttonOrder: "0",
-            answerText: "D. All the above",
+            buttonOrder: "2",
+            answerText: "View Question Explanation",
             isCorrect: true
           }
         ]
       },
       {
+        statement: "Data - In 2010, as part of the credit card reform law and associated regulations, issuers had to make multiple changes. Among them:\n- Credit card companies cannot charge more than $25 for routine, occasional late payments.\n-  Card issuers can't raise rates at any time for any reason.\n- Cardholders must 'opt in' to over-limit protection -- and the hefty fees that go with such programs. They previously had been imposed automatically.",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Next Question",
+            isCorrect: true
+          }
+        ]
+      },
+      /*{
         statement: "",
-        image: require("./images/credit-card-debt/kanye.gif"),
-        learningCategory: "interest rates",
+        learningCategory: "credit score",
         question:
-          "A credit-card bill arrives on the 15th of the month; it's due on the 30th. When should you pay it to get the best results on your credit record?",
+          "In 2010, as part of the credit card reform law and associated regulations, issuers had to make multiple changes. Among them:\nA. Credit card companies cannot charge more than $25 for routine, occasional late payments\nB. Card issuers can't raise rates at any time for any reason\nC. Cardholders must 'opt in' to over-limit protection -- and the hefty fees that go with such programs. They previously had been imposed automatically.\nD. All the above",
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "A. The day it arrives in the mail.",
+            answerText:
+              "A",
             isCorrect: false
           },
           {
             buttonOrder: "1",
-            answerText: "B. Wait until a few days before it's due, then pay it.",
+            answerText: "B",
             isCorrect: false
-          },
-          {
-            buttonOrder: "0",
-            answerText: "C. On time, but a few days before the credit card company sends payment data to the credit bureaus -- that way you’ll show zero balance.",
-            isCorrect: true
           },
           {
             buttonOrder: "1",
             answerText:
-              "D. There are no 'credit cards.' They are the invention of the Trilateral Commission bent on a New World Order.",
+              "C",
+            isCorrect: false
+          },
+          {
+            buttonOrder: "0",
+            answerText: "D",
+            isCorrect: true
+          }
+        ]
+      },*/
+      {
+        //statement: "",
+        learningCategory: "interest rates",
+        question:
+          "A credit-card bill arrives on the 15th of the month; it's due on the 30th. When should you pay it to get the best results on your credit record?\nA. The day it arrives in the mail\nB. Wait until a few days before it's due, then pay it\nC. On time, but a few days before the credit card company sends payment data to the credit bureaus -- that way you’ll show zero balance\nD. There are no 'credit cards.' They are the invention of the Trilateral Commission bent on a New World Order.",
+        answerChoices: [
+          {
+            buttonOrder: "1",
+            answerText: "A",
+            isCorrect: false
+          },
+          {
+            buttonOrder: "1",
+            answerText: "B",
+            isCorrect: false
+          },
+          {
+            buttonOrder: "0",
+            answerText: "C",
+            isCorrect: true
+          },
+          {
+            buttonOrder: "1",
+            answerText: "D",
             isCorrect: false
           }
         ]
-      }
+      },
+      {
+        image: require("./images/credit-card-debt/kanye.gif"),
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "View Question Explanation",
+            isCorrect: true
+          }
+        ]
+      },
+      {
+        statement: "Data - Your credit card bill’s due date simply signifies that a billing cycle has ended and it’s time to pay up. The due date is not necessarily when your current balance will be reported to the credit bureaus. That’s why it might make sense to pay your bill well before it’s actually due. For example say your payment is due on the 20th of each month, but your issuer reports your balance on the 15th. If your issuer reported a $4,500 balance on the 15th, the credit bureaus would see a 45% utilization ratio — even if you paid it off in full just days later. Your credit score could end up getting dinged, even though your payment habits are solid.",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Finish Quiz",
+            isCorrect: true
+          }
+        ]
+      },
     ]
   },
   {
