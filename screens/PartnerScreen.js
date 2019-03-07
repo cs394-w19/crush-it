@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-native';
+import { StyleSheet, Button, TouchableOpacity, Text, View, Image, ListView} from 'react-native';
 
 import Colors from '../constants/Colors';
 import { Ionicons } from '@expo/vector-icons';
@@ -9,6 +9,8 @@ export default class PartnerScreen extends React.Component {
         super(props);
 
         this.state = {
+          redeeming : 0, // if you are redeeming, you are trying to get your rewards
+          points : 0,
           items: []
         };
     }
@@ -66,9 +68,37 @@ export default class PartnerScreen extends React.Component {
     let points = navigation.getParam("points", 0);
 
     let itemImages = this.state.items.map((im) => {
-        return (<Image style={styles.image} source={im}/>);
+        return (
+            <Image style={styles.image} source={im}/>
+        );
     });
 
+    if (this.state.redeeming ){
+      return (
+        <View
+          contentContainerStyle={styles.container}
+        >
+          <View style={styles.titleView}>
+            <Text style={styles.title}>
+              Almost there!
+            </Text>
+            <Text style={styles.title}>
+              400 coins away from your next reward!
+            </Text>
+            <Text style={styles.title}>
+              The more you learn, the more $$ you earn!
+            </Text>
+          </View>
+  
+            <TouchableOpacity
+              style = {styles.buttonStyle}
+              onPress = {() => this.setState({redeeming:0})}
+            >
+              <Text style={styles.buttonWord}>RETURN HOME</Text>
+            </TouchableOpacity>
+        </View>
+      );
+    } 
     return (
       <View
         contentContainerStyle={styles.container}
@@ -84,9 +114,12 @@ export default class PartnerScreen extends React.Component {
             Earn coins & get a $5 e-gift card to your favorite shop! Choose from below!
           </Text>
         </View>
-        <View style={styles.imagegrid}>
+          <TouchableOpacity
+            style={styles.imageGrid}
+            onPress = {()=>{ this.setState({redeeming:1})}}
+          >
             {itemImages}
-        </View>
+          </TouchableOpacity>
       </View>
     );
   }
@@ -98,7 +131,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     backgroundColor: "white",
-    flexWrap: "wrap-reverse",
     width: "100%"
   },
   child: {
@@ -125,7 +157,8 @@ const styles = StyleSheet.create({
     fontSize: 25,
     marginRight: 5
   },
-  imagegrid : {
+
+  imageGrid : {
     flex: 1, 
     flexDirection: 'row',
     alignItems: "center",
