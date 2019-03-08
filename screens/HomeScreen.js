@@ -81,11 +81,12 @@ export default class HomeScreen extends React.Component {
         topicButtons.push(
           <View style={styles.disabledButtonStyle}>
           <Tooltip width="90%"popover={<Text>This module is unavailable</Text>}>
-            <Text style={styles.icon}>
-                <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
-              </Text>
+            
             <Text style = {styles.listText}>
               {topic}
+              <Text style={styles.icon}>
+                <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
+              </Text>
             </Text>
           </Tooltip>
           </View>);
