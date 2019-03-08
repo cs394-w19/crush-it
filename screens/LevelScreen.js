@@ -61,11 +61,12 @@ export default class LevelScreen extends React.Component {
         level_buttons.push(
           <View style={styles.disabledButtonStyle}>
             <Tooltip width="90%"popover={<Text>Complete previous level to unlock.</Text>}>
-              <Text style={styles.icon}>
-                  <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
-              </Text>
+              
               <Text style = {styles.listText}>
                   Level {i+1}
+                  <Text style={styles.icon}>
+                    <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
+                  </Text>
               </Text>
             </Tooltip>
           </View>
@@ -108,6 +109,7 @@ const styles = StyleSheet.create({
     margin: 15,
     textAlign: "center",
     justifyContent: "center",
+    flexDirection: "row",
     color: Colors.darkGrayPurple,
   },
   title: {
@@ -123,7 +125,8 @@ const styles = StyleSheet.create({
     position: "absolute",
     justifyContent: "center",
     width: "100%",
-    textAlign: "center"
+    textAlign: "center",
+    flex : 1
   },
   levelContainer: {
     flex: 1,
