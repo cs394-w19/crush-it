@@ -74,9 +74,23 @@ export default class ResultsScreen extends React.Component {
         />
         <View style={styles.titleView}>
           <Text style={styles.title}>
-            Congrats, Level Complete!
+            You Crushed It!
           </Text>
-          <Image source={require("../assets/images/coin.png")} style={styles.coin}/>
+          <TouchableOpacity
+            onPress={() => this.props.navigation.navigate("Partners", 
+          {
+            points: this.props.navigation.getParam("points", 0),
+            availabilities: this.props.navigation.getParam("availabilities", [
+              [true, false, false],
+              [false, false, false],
+              [false, false, false],
+              [false, false, false],
+              [false, false, false],
+            ]),
+            categoryIndex: this.props.navigation.getParam("categoryIndex", 0)
+          })}>
+            <Image source={require("../assets/images/coin.png")} style={styles.coin}/>
+          </TouchableOpacity>  
           <Text style={styles.title}>
             You Earned 100 Coins!
           </Text>
@@ -108,8 +122,8 @@ const styles = StyleSheet.create({
   },
   titleView: {
     paddingTop: "10%",
-    paddingLeft: "15%",
-    paddingRight: "15%",
+    paddingLeft: "14%",
+    paddingRight: "14%",
     alignItems: 'center',
   },
   title: {
