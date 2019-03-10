@@ -60,6 +60,7 @@ export default class HomeScreen extends React.Component {
     this.state.topics.forEach((topic, index) => {
       if(availabilities[index].indexOf(true) != -1) {
         topicButtons.push(
+          <View style={styles.buttonRow}>
           <TouchableOpacity
             style={styles.buttonStyle}
             key = {index}
@@ -75,20 +76,37 @@ export default class HomeScreen extends React.Component {
               {topic}
             </Text>
 
-          </TouchableOpacity>);
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.lockStyle}
+            disabled={true}
+          >
+          <Ionicons name="md-checkmark-circle" size={38} color={Colors.greenCheck} />
+          </TouchableOpacity>
+          </View>
+          );
+          
+
 
       } else {
         topicButtons.push(
-          <View style={styles.disabledButtonStyle}>
-          <Tooltip width="90%"popover={<Text>This module is unavailable</Text>}>
-            
-            <Text style = {styles.listText}>
-              {topic}
-              <Text style={styles.icon}>
-                <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
-              </Text>
-            </Text>
-          </Tooltip>
+          <View style={styles.buttonRow}>
+            <TouchableOpacity 
+              style={styles.buttonStyle}
+              disabled={true}
+            >
+              <Tooltip width="90%"popover={<Text>This module is unavailable</Text>}> 
+                <Text style = {styles.listText}>
+                  {topic}
+                </Text>
+              </Tooltip>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.lockStyle}
+              disabled={true}
+            >
+              <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
+            </TouchableOpacity>
           </View>);
       }
     });
@@ -109,16 +127,30 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     backgroundColor: "white",
-    width: "94%",
     borderColor: Colors.darkGrayPurple,
+    width: "80%",
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 5,
+  },
+  lockStyle: {
+    alignItems: "center",
+    backgroundColor: "white",
+    borderColor: Colors.darkGrayPurple,
+    width: 50,
     borderRadius: 10,
     borderWidth: 2,
     margin: 10,
+    justifyContent: "center",
+  },
+  buttonRow: {
+    flexDirection: "row",
+    margin: 8,
   },
   disabledButtonStyle: {
     backgroundColor: "white",
-    width: "94%",
     borderColor: Colors.lightGrayPurple,
+    width: "94%",
     borderRadius: 10,
     borderWidth: 2,
     margin: 10,

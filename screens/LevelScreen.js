@@ -49,26 +49,43 @@ export default class LevelScreen extends React.Component {
     for (let i = 0; i< numLevels; i++) {
       if (availabilities[categoryIndex][i]) {
         level_buttons.push(
-          <TouchableOpacity
-            key = {i}
-            style = {styles.buttonStyle}
-            onPress = {() => this.props.navigation.navigate("Quiz", {level: i + 1, points: points, availabilities: availabilities, categoryIndex: categoryIndex })}>
-            <Text style = {styles.listText}>
-              Level {i+1}
-            </Text>
-          </TouchableOpacity>)
+          <View style={styles.buttonRow}>
+            <TouchableOpacity
+              key = {i}
+              style = {styles.buttonStyle}
+              onPress = {() => this.props.navigation.navigate("Quiz", {level: i + 1, points: points, availabilities: availabilities, categoryIndex: categoryIndex })}>
+              <Text style = {styles.listText}>
+                Level {i+1}
+              </Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+                style={styles.lockStyle}
+                disabled={true}
+            >
+                <Ionicons name="md-checkmark-circle" size={38} color={Colors.greenCheck} />
+            </TouchableOpacity>
+          </View>
+          )
       } else {
         level_buttons.push(
-          <View style={styles.disabledButtonStyle}>
-            <Tooltip width="90%"popover={<Text>Complete previous level to unlock.</Text>}>
-              
-              <Text style = {styles.listText}>
+          ///////
+          <View style={styles.buttonRow}>
+            <TouchableOpacity 
+              style={styles.buttonStyle}
+              disabled={true}
+            >
+              <Tooltip width="90%"popover={<Text>Complete previous level to unlock.</Text>}>
+                <Text style = {styles.listText}>
                   Level {i+1}
-                  <Text style={styles.icon}>
-                    <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
-                  </Text>
-              </Text>
-            </Tooltip>
+                </Text>
+              </Tooltip>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.lockStyle}
+              disabled={true}
+            >
+              <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
+            </TouchableOpacity>
           </View>
         );
       }
@@ -90,11 +107,25 @@ const styles = StyleSheet.create({
   },
   buttonStyle: {
     backgroundColor: "white",
-    width: "94%",
     borderColor: Colors.darkGrayPurple,
+    width: "80%",
+    borderRadius: 10,
+    borderWidth: 2,
+    margin: 5,
+  },
+  lockStyle: {
+    alignItems: "center",
+    backgroundColor: "white",
+    borderColor: Colors.darkGrayPurple,
+    width: 50,
     borderRadius: 10,
     borderWidth: 2,
     margin: 10,
+    justifyContent: "center",
+  },
+  buttonRow: {
+    flexDirection: "row",
+    margin: 8,
   },
   disabledButtonStyle: {
     backgroundColor: "white",
