@@ -13,7 +13,7 @@ import LogoHeader from "../components/Header/LogoHeader.js";
 export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.spinValue = new Animated.Value(0)
+    this.spinValue = new Animated.Value(0);
     this.state = {
       score : this.props.navigation.getParam("score"),
       maxScore : this.props.navigation.getParam("maxScore"),
@@ -46,8 +46,8 @@ export default class ResultsScreen extends React.Component {
       duration: 4000,
       easing: Easing.linear
     }
-  ).start(() => this.spin())
-}
+    ).start(() => this.spin())
+  }
 
   showExperienceGained(points){
 

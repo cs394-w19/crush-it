@@ -10,117 +10,196 @@ export default (quiz_data = [
           {
             buttonOrder: "2",
             answerText: "Let’s do this!",
-            isCorrect: true
+            isCorrect: true,
+            emoji: ""
           }
         ]
       },
       {
         statement:
-          "You’re applying for a credit card. \n\nYou look up some stuff online and read that credit card interest rates can be as high as 30%. ",
+          "You’re applying for a credit card. \n\nYou look up some stuff online and read that credit card interest rates can be over 29%. ",
         learningCategory: "credit score",
         question: "Do you believe it?",
         answerChoices: [
           {
             buttonOrder: "0",
             answerText: "Yes",
-            isCorrect: true
+            isCorrect: true,
+            emoji: ""
           },
           {
             buttonOrder: "1",
             answerText: "No way",
-            isCorrect: false
+            isCorrect: false,
+            emoji: ""
           }
         ]
       },
       {
         statement:
-          "Interest is the fee you pay to borrow money.\n\nIt will be higher or lower depending on your credit history and on how the economy is doing.  ",
-        question: "Now what do you think “APR” is?",
+          "Crazy, right?!\n\nInterest is the fee you pay to borrow money.\n\nIt will be higher or lower depending on your credit history and on how the economy is doing.",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Good to know!",
+            isCorrect: true,
+            emoji: "+1"
+          },
+        ]
+      },
+      { 
+        statement:
+          "Now... what do you think \"APR\" is?",
+        question:
+          "A.  Absolute Perfect Rate\n\nB.  My Credit Rating\n\nC.  Basically Interest\n\nD.  Average Price Range",
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "It’s my credit rating ",
-            isCorrect: false
+            answerText: "A",
+            isCorrect: false,
+            emoji: ""
+          },
+          {
+            buttonOrder: "1",
+            answerText: "B",
+            isCorrect: false,
+            emoji: ""
           },
           {
             buttonOrder: "0",
-            answerText: "It’s basically interest ",
-            isCorrect: true
+            answerText: "C",
+            isCorrect: true,
+            emoji: ""
+          },
+          {
+            buttonOrder: "1",
+            answerText: "D",
+            isCorrect: false,
+            emoji: ""
           }
         ]
       },
       {
         statement:
-          "APR is basically interest!\n\nAn APR tells you how much interest you’ll have to pay over the course of a year if your normal payments are missed or delayed.",
-        question: "What is the “best” APR?",
+          "APR = Annual Percentage Rate\n\nIt's basically interest!\n\nAPR tells you how much interest you’ll pay over 1 year if you have an outstanding balance.",
+        question: "So which APR would you rather have?",
         answerChoices: [
           {
             buttonOrder: "0",
             answerText: "0%",
-            isCorrect: true
+            isCorrect: true,
+            emoji: ""
           },
           {
             buttonOrder: "1",
             answerText: "30%",
-            isCorrect: false
+            isCorrect: false,
+            emoji: ""
           }
         ]
       },
       {
         statement:
-          "Most credit cards offer 0% Introductory APR as an incentive.\n\nPay attention to what APR is after the intro period though. It could jump to that 30%.",
-        question: "How can you get the lowest APR?",
+          "Remember...",
+        image: require("./images/credit-card-debt/apr.png"),  
+        question: "\n\nYou want to minimize fees, so 0% is the best APR.",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "I get it now!",
+            isCorrect: true,
+            emoji: ""
+          },
+        ]
+      },
+      {
+        statement:
+          "WATCH OUT!",
+        image: require("./images/credit-card-debt/watch-out.jpg"),  
+        question: "Most credit cards offer 0% Introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Whew! Thanks!",
+            isCorrect: true,
+            emoji: "sweat_smile"
+          },
+        ]
+      },
+      {
+        statement:
+          "How can you get the lowest APR?",
+        question: "A.  Make minimum payment only\n\nB.  ↑ credit score\n\nC.  Open multiple credit cards\n\nD.  I can’t affect APR",
         answerChoices: [
           {
             buttonOrder: "1",
-            answerText: "Only pay the minimum ",
-            isCorrect: false
+            answerText: "A",
+            isCorrect: false,
+            emoji: ""
           },
           {
             buttonOrder: "0",
-            answerText: "Increase my credit score",
-            isCorrect: true
+            answerText: "B",
+            isCorrect: true,
+            emoji: ""
+          },
+          {
+            buttonOrder: "1",
+            answerText: "C",
+            isCorrect: false,
+            emoji: ""
+          },
+          {
+            buttonOrder: "1",
+            answerText: "D",
+            isCorrect: false,
+            emoji: ""
           }
         ]
       },
       {
         statement:
-          "Think of credit like trust.\n\nYou build trust, and credit, when you show you’re reliable. This is one reason to pay your bills on time and in full!",
-        question: "Be honest with yourself: Do you pay your bills on time? ",
+          "↑ credit score = ↓ APR.\n\nThink of credit like trust.\n\nYou build trust, and credit, when you show you’re reliable.\n\nThis is one reason to pay your bills on time and in full!",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Makes sense",
+            isCorrect: true,
+            emoji: ""
+          },
+        ]
+      },
+      {
+        statement:
+          "Time to be honest with yourself…\n\nDo you pay your bills on time?",
         answerChoices: [
           {
             buttonOrder: "0",
-            answerText: "Always",
-            isCorrect: true
+            answerText: "Duh!",
+            isCorrect: true,
+            emoji: ""
           },
           {
             buttonOrder: "0",
             answerText: "Not really",
-            isCorrect: true
+            isCorrect: true,
+            emoji: ""
           }
-        ]
+        ] 
       },
       {
         statement:
-          "Honesty is a good start!\n\nIf you pay attention to interest & pay bills in full and on time, you’re on the right track to building solid credit.",
-        answerChoices: [
+          "Honesty is a good start!\n\nIf you pay bills in full and on time, you’re on the right track to building solid credit.",
+        image: require("./images/credit-card-debt/good-work.gif"),  
+        answerChoices: [  
           {
             buttonOrder: "2",
-            answerText: "Got it",
-            isCorrect: true
+            answerText: "Got it!",
+            isCorrect: true,
+            emoji: ""
           }
         ]
       },
-      {
-        image: require("./images/credit-card-debt/good-work.gif"),
-        answerChoices: [
-          {
-            buttonOrder: "2",
-            answerText: "Next",
-            isCorrect: true
-          }
-        ]
-      }
     ]
   },
   {
@@ -131,152 +210,186 @@ export default (quiz_data = [
     questions: [
       {
         statement:
-          "Your credit card has been stolen, and before you know it, the thief has charged $10,000. How much should you expect to have to pay?",
-        question:
-          "A. $0\nB. $50 until card reported stolen\nC. All Charges\nD. A & B",
-        answerChoices: [
-          {
-            buttonOrder: "1",
-            answerText: "A",
-            isCorrect: false
-          },
-          {
-            buttonOrder: "1",
-            answerText: "B",
-            isCorrect: false
-          },
-          {
-            buttonOrder: "1",
-            answerText: "C",
-            isCorrect: false
-          },
-          {
-            buttonOrder: "0",
-            answerText: "D",
-            isCorrect: true
-          }
-        ]
-      },
-      {
-        image: require("./images/credit-card-debt/dwight.gif"),
+          "You just bought a $100 shirt for your next adventure.\n\nRealizing you’re low on cash this month, you charged it to your credit card.",
+        image: require("./images/credit-card-debt/shrug.png"),
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "View Explanation",
-            isCorrect: true
+            answerText: "I'll pay for it later",
+            isCorrect: true,
+            emoji: ""
           }
         ]
       },
       {
         statement:
-          "The Fair Credit Billing Act limits cardholder liabilities in the event of fraud. If charges are incurred after the card is reported stolen, the cardholder is not liable for ANY charges and $50 until the card is reported stolen.",
+          "Your credit card has a 20% APR and requires a minimum monthly payment of $25.",
+        question: "If you only pay the minimum $25 each month, how much did this shirt actually cost?",
         answerChoices: [
           {
-            buttonOrder: "2",
-            answerText: "Next Question",
-            isCorrect: true
+            buttonOrder: "1",
+            answerText: "$100",
+            isCorrect: false,
+            emoji: ""
+          },
+          {
+            buttonOrder: "0",
+            answerText: ">$100",
+            isCorrect: true,
+            emoji: ""
           }
         ]
       },
       {
         //statement: "",
         statement:
-          "In 2010, federal regulations changed, adding consumer protection that:",
+          "If you carry a balance, you may pay interest on that balance, making $100 closer to $105.\n\nImagine if you had a $1,000 expense on that same card and only made the $25 payment…",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Oh boy...",
+            isCorrect: true,
+            emoji: ""
+          },
+        ]
+      },
+      {
+        statement:
+          "How long would it take to pay off $1,000 with 30% APR?",
         question:
-          "A. Prohibits card issuers from charging a penalty of more than $25 for a customer's first late payment\nB. Forbids 'any time, any reason' rate hikes\nC. Requires card issuers to ask customers whether they want to over-limit protection\nD. All of the above",
+          "A.  < 12 months\n\nB.  40 months\n\nC.  > 80 months",
         answerChoices: [
           {
             buttonOrder: "1",
             answerText: "A",
-            isCorrect: false
+            isCorrect: false,
+            emoji: ""
           },
           {
             buttonOrder: "1",
             answerText: "B",
-            isCorrect: false
-          },
-          {
-            buttonOrder: "1",
-            answerText: "C",
-            isCorrect: false
+            isCorrect: false,
+            emoji: ""
           },
           {
             buttonOrder: "0",
-            answerText: "D",
-            isCorrect: true
-          }
-        ]
-      },
-      {
-        image: require("./images/credit-card-debt/minion.gif"),
-        answerChoices: [
-          {
-            buttonOrder: "2",
-            answerText: "View Explanation",
-            isCorrect: true
-          }
+            answerText: "C",
+            isCorrect: true,
+            emoji: ""
+          },
         ]
       },
       {
         statement:
-          "In 2010, as part of the credit card reform law and associated regulations, issuers had to make multiple changes. Among them:\n\n- Credit card companies cannot charge more than $25 for routine, occasional late payments.\n-  Card issuers can't raise rates at any time for any reason.\n- Cardholders must 'opt in' to over-limit protection -- and the hefty fees that go with such programs. They previously had been imposed automatically.",
+          "Not only would it take 7 years to pay off, but you would pay more than $1000 in interest!",
+        image: require("./images/credit-card-debt/impoor.gif"),
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Next Question",
-            isCorrect: true
-          }
+            answerText: "OMG!",
+            isCorrect: true,
+            emoji: ""
+          },
         ]
       },
       {
         statement:
-          "A credit-card bill arrives on the 15th of the month; it's due on the 30th. When should you pay it to get the best results on your credit record?",
+          "To recover from this shock, you went on a Netflix binge…\n\nSuddenly, you remembered you forgot to pay your credit card bill.\n\nCan you prevent this oversight from hurting your credit score?",
+        answerChoices: [
+          {
+            buttonOrder: "0",
+            answerText: "Yes",
+            isCorrect: true,
+            emoji:""
+          },
+          {
+            buttonOrder: "1",
+            answerText: "No way",
+            isCorrect: false,
+            emoji:""
+          },
+        ]
+      },
+      {
+        statement:
+          "Yes!\n\nIf you make up the payment before your next due date, your credit score should be safe.\n\nYou may still be charged a late fee though.",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Got it!",
+            isCorrect: true,
+            emoji: ""
+          },
+        ]
+      },
+      {
+        statement:
+          "PSST...",
+        image: require("./images/credit-card-debt/secret.png"),
+        question: "\n\nIf it’s your first offense, try calling your credit card company. They may waive the fee if you ask nicely.",  
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Got it!",
+            isCorrect: true,
+            emoji: ""
+          },
+        ]
+      },
+      {
+        statement:
+          "All that talk about missing a payment made you check your bank account.\n\nYou have $100 in savings earning 2% interest a year.",
+        image: require("./images/credit-card-debt/woman-tipping-hand.png"),
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Woohoo!",
+            isCorrect: true,
+            emoji: ""
+          },
+        ]
+      },
+      {
+        statement:
+          "Your credit card (CC) has a balance of $100 and 17% APR.\n\nWhat should you do?",
         question:
-          "A. The day it arrives in the mail\nB. Wait until a few days before it's due, then pay it\nC. On time, but a few days before the credit card company sends payment data to the credit bureaus -- that way you’ll show zero balance\nD. There are no 'credit cards.' They are the invention of the Trilateral Commission bent on a New World Order.",
+          "A.  Pay off the card\n\nB.  Keep the $ in savings\n\nC.  IDK",
         answerChoices: [
           {
-            buttonOrder: "1",
+            buttonOrder: "0",
             answerText: "A",
-            isCorrect: false
+            isCorrect: true,
+            emoji: ""
           },
           {
             buttonOrder: "1",
             answerText: "B",
-            isCorrect: false
-          },
-          {
-            buttonOrder: "0",
-            answerText: "C",
-            isCorrect: true
+            isCorrect: false,
+            emoji: ""
           },
           {
             buttonOrder: "1",
-            answerText: "D",
-            isCorrect: false
-          }
-        ]
-      },
-      {
-        image: require("./images/credit-card-debt/kanye.gif"),
-        answerChoices: [
-          {
-            buttonOrder: "2",
-            answerText: "View Explanation",
-            isCorrect: true
-          }
+            answerText: "C",
+            isCorrect: false,
+            emoji: ""
+          },
         ]
       },
       {
         statement:
-          "Your credit card bill’s due date simply signifies that a billing cycle has ended and it’s time to pay up. The due date is not necessarily when your current balance will be reported to the credit bureaus. That’s why it might make sense to pay your bill well before it’s actually due. For example say your payment is due on the 20th of each month, but your issuer reports your balance on the 15th. If your issuer reported a $4,500 balance on the 15th, the credit bureaus would see a 45% utilization ratio — even if you paid it off in full just days later. Your credit score could end up getting dinged, even though your payment habits are solid.",
+          "Start by putting the $100 towards your highest interest rate (APR) credit card.",
+        image: require("./images/credit-card-debt/interest.png"),
+        question:
+          "\n\nKeep going until you have zero CC debt.",
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Finish Quiz",
-            isCorrect: true
-          }
+            answerText: "I'll give it a shot",
+            isCorrect: true,
+            emoji: ""
+          },
         ]
-      }
+      },
     ]
   },
   {

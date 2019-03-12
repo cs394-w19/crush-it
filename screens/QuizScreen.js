@@ -10,6 +10,7 @@ import {
   InteractionManager
 } from "react-native";
 import { Ionicons, FontAwesome } from '@expo/vector-icons'
+import Emoji from 'react-native-emoji';
 
 import Colors from "../constants/Colors";
 

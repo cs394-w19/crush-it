@@ -4,11 +4,39 @@ import {
   Image,
   View,
   Text,
-  StyleSheet
+  StyleSheet,
+  Animated, 
+  Easing
 } from "react-native";
 
 export default class CoinHeader extends React.Component {
+  constructor(props) {
+    super(props);
+    this.spinValue = new Animated.Value(0)
+  };
+
+  componentDidMount() {
+    this.spin()
+  }
+
+  spin () {
+  this.spinValue.setValue(0)
+  Animated.timing(
+    this.spinValue,
+    {
+      toValue: 1,
+      duration: 4000,
+      easing: Easing.linear
+    }
+    ).start(() => this.spin())
+  }  
+
   render() {
+    const spin = this.spinValue.interpolate({
+        inputRange: [0, 1],
+        outputRange: ['0deg', '360deg']
+    })
+
     return(
       <TouchableOpacity style={styles.coinsTotal} onPress={() => this.props.navigation.navigate("Partners", 
       {
@@ -23,10 +51,7 @@ export default class CoinHeader extends React.Component {
         categoryIndex: this.props.navigation.getParam("categoryIndex", 0)
       })}>
         <View style={{ flex: 1 }}>
-          <Image
-            style = {{ width : 25, height : 25, resizeMode: "contain" }}
-            source={require("../../assets/images/coin.png")}
-          />
+          <Animated.Image source={require("../../assets/images/coin.png")} style={{width: 35, height: 35, resizeMode: "contain", transform: [{rotate: spin}] }}/>
         </View>
         <Text style = {{ flex: 1, fontSize: 20, color: "white", marginLeft: 10 }}>{this.props.navigation.getParam("points", 0)}</Text>
       </TouchableOpacity>
