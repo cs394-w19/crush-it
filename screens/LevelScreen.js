@@ -42,7 +42,35 @@ export default class LevelScreen extends React.Component {
     let level_buttons = [];
 
     for (let i = 0; i < numLevels; i++) {
-      if (availabilities[categoryIndex][i]) {
+      // need to implement checkmarks
+      if (availabilities[categoryIndex][i] == 2) {
+        level_buttons.push(
+          <View style={styles.buttonRow}>
+            <TouchableOpacity
+              key={i}
+              style={styles.buttonStyle}
+              onPress={() =>
+                this.props.navigation.navigate("Quiz", {
+                  level: i + 1,
+                  points: points,
+                  availabilities: availabilities,
+                  categoryIndex: categoryIndex
+                })
+              }
+            >
+              <Text style={styles.listText}>Level {i + 1}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.lockStyle} disabled={true}>
+              <Ionicons
+                name="md-checkmark-circle"
+                size={38}
+                color={Colors.greenCheck}
+              />
+            </TouchableOpacity>
+          </View>
+        );
+      }
+      else if (availabilities[categoryIndex][i] == 1) {
         level_buttons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity

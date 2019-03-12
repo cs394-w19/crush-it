@@ -13,51 +13,96 @@ import LogoHeader from "../components/Header/LogoHeader.js";
 export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
-    //this.spinValue = new Animated.Value(0);
     this.state = {
       score : this.props.navigation.getParam("score"),
       maxScore : this.props.navigation.getParam("maxScore"),
+      crushedIt: false,
+      splashAnimation: new Animated.Value(0),
+      splashAnimationComplete: false,
     };
-
-    // maybe move all of this into a componentDidMount()?
-    // need some way to track whether they got it right or not, and what they need to work on
-    // maybe make a "you got 1 right!" as a header and then
-    // a list of whether you can do better in each category
-
-    // need something that tracks what they put, but for now, assume all right
-    //Object.keys(learningProgress).map(key =>  { return {key : learningProgress[key]}});
   }
 
   componentDidMount() {
-    setTimeout(() => {this.showExperienceGained(70)}, 200); // this should be depend on score
-    //this.spin()
+    if (this._confettiView) {
+      this._confettiView.startConfetti();
+    }
+
+    const crushedIt = this.props.navigation.getParam("crushedIt", false);
+
+    if (crushedIt) {
+      this.setState({
+        crushedIt: true,
+        crushedScreen: true
+      });
+
+      setTimeout(() => { this.setState({
+          crushedScreen: false
+        });
+      }, 1000);
+    }
+
   }
 
   componentWillUnmount() {
     this._confettiView.stopConfetti();
   }
 
-  // spin () {
-  // this.spinValue.setValue(0)
-  // Animated.timing(
-  //   this.spinValue,
-  //   {
-  //     toValue: 1,
-  //     duration: 4000,
-  //     easing: Easing.linear
-  //   }
-  //   ).start(() => this.spin())
-  // }
+  renderCrushItImage = () => {
 
-  showExperienceGained(points){
+    return (
+      <Animated.View
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          bottom: 0,
+          right: 0,
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: '#fff',
+          opacity: this.state.splashAnimation.interpolate({
+            inputRange: [0, 1],
+            outputRange: [1, 0],
+          }),
+        }}>
+        <Animated.Image
+          source={require('../assets/images/splash.png')}
+          style={{
+            width: "100%",
+            height: "100%",
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0,
+            resizeMode: 'cover',
+            transform: [
+              {
+                scale: this.state.splashAnimation.interpolate({
+                  inputRange: [0, 1],
+                  outputRange: [1, 4],
+                }),
+              },
+            ],
+          }}
+          onLoadEnd={this.animateOut}
+        />
+      </Animated.View>
+    );
+  };
 
-    let progress = points / this.state.expPointsInThisLevel;
-
-    this.setState({progress}, () => {
-      if(this._confettiView) {
-      this._confettiView.startConfetti();
-   }});
-  }
+  animateOut = () => {
+    Animated.timing(this.state.splashAnimation, {
+      toValue: 1,
+      duration: 1000,
+      useNativeDriver: true,
+    }).start(() => {
+      this.setState({ splashAnimationComplete: true });
+      if (this._confettiView) {
+        this._confettiView.startConfetti();
+      }
+    });
+  };
 
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
@@ -74,12 +119,31 @@ export default class ResultsScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
-    const availabilities = navigation.getParam("availabilities");
-    const categoryIndex = navigation.getParam("categoryIndex");
-    // const spin = this.spinValue.interpolate({
-    //     inputRange: [0, 1],
-    //     outputRange: ['0deg', '360deg']
-    // })
+    const crushedIt = navigation.getParam("crushedIt", false);
+    const availabilities = navigation.getParam("availabilities", [
+      [1, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+    ]);
+    const categoryIndex = navigation.getParam("categoryIndex", 0);
+
+    let levelCompleteText = crushedIt ? "All Levels Complete" : "Level Complete!";
+    let crushedItMessage = crushedIt ? <Text style={{ fontSize:50, fontWeight:"bold", textAlign: 'center' }}>YOU CRUSHED IT!</Text>
+                                     : <Text />;
+
+    let keepGoing = (
+      <TouchableOpacity
+        onPress={() => this.props.navigation.navigate("Levels", {points: points, availabilites: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
+        style={styles.buttonStyle}>
+        <Text style={styles.listText}> KEEP GOING</Text>
+      </TouchableOpacity>
+    );
+
+    if (!this.state.splashAnimationComplete && this.state.crushedIt) {
+      return this.renderCrushItImage();
+    }
 
     return (
       <View
@@ -91,31 +155,23 @@ export default class ResultsScreen extends React.Component {
         />
         <View style={styles.titleView}>
           <Text style={styles.title}>
-            You Crushed It!
+            {levelCompleteText}
           </Text>
+          {crushedItMessage}
           <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Partners", 
-          {
-            points: this.props.navigation.getParam("points", 0),
-            availabilities: this.props.navigation.getParam("availabilities", [
-              [true, false, false],
-              [false, false, false],
-              [false, false, false],
-              [false, false, false],
-              [false, false, false],
-            ]),
-            categoryIndex: this.props.navigation.getParam("categoryIndex", 0)
-          })}>
+            onPress={() => this.props.navigation.navigate("Partners",
+            {
+              points: points,
+              availabilities: availabilities,
+              categoryIndex: categoryIndex
+            })}
+          >
             <Image source={require("../assets/images/coin.png")} style={{width: 80, height: 80 }}/>
-          </TouchableOpacity>  
+          </TouchableOpacity>
           <Text style={styles.title}>
             You Earned 100 Coins!
           </Text>
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Levels", {points: points, availabilites: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
-            style={styles.buttonStyle}>
-            <Text style={styles.listText}> KEEP GOING</Text>
-          </TouchableOpacity>
+          {this.state.crushedIt ? <Text /> : keepGoing}
           <TouchableOpacity
             onPress={() => this.props.navigation.navigate("Home", {points: points, availabilities: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
             style={styles.buttonStyle}>
