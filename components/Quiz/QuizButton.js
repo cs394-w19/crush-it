@@ -11,7 +11,7 @@ export default class QuizButton extends React.Component {
           style={this.props.buttonStyle}
           onPress={() => this.props.handleButtonPress()}
         >
-          <Text style={styles.multipleChoiceButton}>{this.props.text}</Text>
+          <Text style={styles.multipleChoiceButton}><Emoji name={this.props.emoji} style={{fontSize: 40}} />{this.props.text}</Text>
         </TouchableOpacity>
     );
   }

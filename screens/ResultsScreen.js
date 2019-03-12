@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, TouchableOpacity, Text, View, Image } from 'react-native';
+import { StyleSheet, Button, TouchableOpacity, Text, View, Image, Animated, Easing } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
@@ -13,7 +13,7 @@ import LogoHeader from "../components/Header/LogoHeader.js";
 export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
-
+    //this.spinValue = new Animated.Value(0);
     this.state = {
       score : this.props.navigation.getParam("score"),
       maxScore : this.props.navigation.getParam("maxScore"),
@@ -30,11 +30,24 @@ export default class ResultsScreen extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {this.showExperienceGained(70)}, 200); // this should be depend on score
+    //this.spin()
   }
 
   componentWillUnmount() {
     this._confettiView.stopConfetti();
   }
+
+  // spin () {
+  // this.spinValue.setValue(0)
+  // Animated.timing(
+  //   this.spinValue,
+  //   {
+  //     toValue: 1,
+  //     duration: 4000,
+  //     easing: Easing.linear
+  //   }
+  //   ).start(() => this.spin())
+  // }
 
   showExperienceGained(points){
 
@@ -53,7 +66,7 @@ export default class ResultsScreen extends React.Component {
         <LogoHeader navigation={navigation} navigateTo="Home" />
       ),
       headerRight: (
-        <CoinHeader navigation={navigation} />
+        <CoinHeader navigation={navigation} shouldSpin = {true}/>
       )
     };
   };
@@ -63,6 +76,10 @@ export default class ResultsScreen extends React.Component {
     const points = navigation.getParam("points", 0);
     const availabilities = navigation.getParam("availabilities");
     const categoryIndex = navigation.getParam("categoryIndex");
+    // const spin = this.spinValue.interpolate({
+    //     inputRange: [0, 1],
+    //     outputRange: ['0deg', '360deg']
+    // })
 
     return (
       <View
@@ -89,7 +106,7 @@ export default class ResultsScreen extends React.Component {
             ]),
             categoryIndex: this.props.navigation.getParam("categoryIndex", 0)
           })}>
-            <Image source={require("../assets/images/coin.png")} style={styles.coin}/>
+            <Image source={require("../assets/images/coin.png")} style={{width: 80, height: 80 }}/>
           </TouchableOpacity>  
           <Text style={styles.title}>
             You Earned 100 Coins!
@@ -131,10 +148,6 @@ const styles = StyleSheet.create({
     color: Colors.darkGrayPurple,
     margin: 15,
     textAlign: 'center',
-  },
-  coin: {
-    width: 80,
-    height: 80,
   },
   buttonStyle: {
     backgroundColor: "white",

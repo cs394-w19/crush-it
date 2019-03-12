@@ -37,6 +37,7 @@ export default class QuizButtons extends React.Component {
 
       return (
         <QuizButton
+          emoji={answer.emoji}
           key={answer.answerText}
           text={answer.answerText}
           buttonStyle={[styles.quizButton, buttonStyle]}
