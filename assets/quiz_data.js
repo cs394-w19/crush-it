@@ -16,6 +16,7 @@ export default (quiz_data = [
         ]
       },
       {
+        header: "Level 1",
         statement:
           "You’re applying for a credit card. \n\nYou look up some stuff online and read that credit card interest rates can be over 29%. ",
         learningCategory: "credit score",
@@ -80,8 +81,9 @@ export default (quiz_data = [
         ]
       },
       {
+        header: "APR = Annual Percentage Rate\n",
         statement:
-          "APR = Annual Percentage Rate\n\nIt's basically interest!\n\nAPR tells you how much interest you’ll pay over 1 year if you have an outstanding balance.",
+          "It's basically interest!\n\nAPR tells you how much interest you’ll pay over 1 year if you have an outstanding balance.",
         question: "So which APR would you rather have?",
         answerChoices: [
           {
@@ -113,9 +115,9 @@ export default (quiz_data = [
         ]
       },
       {
-        statement:
+        header:
           "WATCH OUT!",
-        image: require("./images/credit-card-debt/watch-out.jpg"),  
+        image: require("./images/credit-card-debt/watchout.png"),  
         question: "Most credit cards offer 0% Introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
         answerChoices: [
           {
@@ -158,8 +160,10 @@ export default (quiz_data = [
         ]
       },
       {
+        header:
+          "↑ credit score = ↓ APR.\n",
         statement:
-          "↑ credit score = ↓ APR.\n\nThink of credit like trust.\n\nYou build trust, and credit, when you show you’re reliable.\n\nThis is one reason to pay your bills on time and in full!",
+          "Think of credit like trust.\n\nYou build trust, and credit, when you show you’re reliable.\n\nThis is one reason to pay your bills on time and in full!",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -209,6 +213,7 @@ export default (quiz_data = [
     learningCategories: ["interest rates", "credit score"],
     questions: [
       {
+        header: "Level 2",
         statement:
           "You just bought a $100 shirt for your next adventure.\n\nRealizing you’re low on cash this month, you charged it to your credit card.",
         image: require("./images/credit-card-debt/shrug.png"),
@@ -323,7 +328,7 @@ export default (quiz_data = [
         ]
       },
       {
-        statement:
+        header:
           "PSST...",
         image: require("./images/credit-card-debt/secret.png"),
         question: "\n\nIf it’s your first offense, try calling your credit card company. They may waive the fee if you ask nicely.",  

@@ -9,9 +9,7 @@ import {
   TouchableOpacity,
   InteractionManager
 } from "react-native";
-import { Ionicons, FontAwesome } from '@expo/vector-icons'
-import Emoji from 'react-native-emoji';
-
+import { Ionicons, FontAwesome } from '@expo/vector-icons';
 import Colors from "../constants/Colors";
 
 import QuizProgressBar from "../components/Quiz/QuizProgressBar";
