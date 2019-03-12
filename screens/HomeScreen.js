@@ -41,17 +41,17 @@ export default class HomeScreen extends React.Component {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
     const availabilities = navigation.getParam("availabilities", [
-      [true, false, false],
-      [false, false, false],
-      [false, false, false],
-      [false, false, false],
-      [false, false, false]
+      [1, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
+      [0, 0, 0],
     ]);
 
     let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
-      if (availabilities[index].indexOf(true) != -1) {
+      if (availabilities[index].indexOf(1) != -1 || availabilities[index].indexOf(2) != -1) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity
