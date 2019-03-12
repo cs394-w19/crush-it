@@ -10,8 +10,8 @@ import {
 } from "react-native";
 
 import Colors from "../constants/Colors";
-import { Ionicons, FontAwesome } from '@expo/vector-icons'
-import { Tooltip } from 'react-native-elements';
+import { Ionicons, FontAwesome } from "@expo/vector-icons";
+import { Tooltip } from "react-native-elements";
 
 import CoinHeader from "../components/Header/CoinHeader.js";
 import LogoHeader from "../components/Header/LogoHeader.js";
@@ -19,102 +19,92 @@ import LogoHeader from "../components/Header/LogoHeader.js";
 import quiz_categories from "../assets/quiz_categories";
 
 export default class HomeScreen extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
 
     // some stuff for gathering the topics (i.e. reading json or firebase calls)
     this.state = {
-      points : this.props.navigation.getParam("points", 0),
-      topics : quiz_categories,
+      points: this.props.navigation.getParam("points", 0),
+      topics: quiz_categories
     };
   }
-
 
   static navigationOptions = ({ navigation }) => {
     const { params = {} } = navigation.state;
     return {
-      headerLeft: (
-        <LogoHeader navigation={navigation} navigateTo="Home" />
-      ),
-      headerRight: (
-        <CoinHeader navigation={navigation} />
-      )
+      headerLeft: <LogoHeader navigation={navigation} navigateTo="Home" />,
+      headerRight: <CoinHeader navigation={navigation} />
     };
   };
-
 
   render() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
-    const availabilities = navigation.getParam("availabilities", 
-    [
+    const availabilities = navigation.getParam("availabilities", [
       [true, false, false],
       [false, false, false],
       [false, false, false],
       [false, false, false],
-      [false, false, false],
-    ])
+      [false, false, false]
+    ]);
 
     let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
-      if(availabilities[index].indexOf(true) != -1) {
+      if (availabilities[index].indexOf(true) != -1) {
         topicButtons.push(
           <View style={styles.buttonRow}>
-          <TouchableOpacity
-            style={styles.buttonStyle}
-            key = {index}
-            onPress={() => this.props.navigation.navigate("Levels", {
-              availabilities: availabilities,
-              categoryIndex: index,
-              topicName: topic,
-              numLevels: availabilities[index].length,
-              points: points
-            })}
+            <TouchableOpacity
+              style={styles.buttonStyle}
+              key={index}
+              onPress={() =>
+                this.props.navigation.navigate("Levels", {
+                  availabilities: availabilities,
+                  categoryIndex: index,
+                  topicName: topic,
+                  numLevels: availabilities[index].length,
+                  points: points
+                })
+              }
             >
-            <Text style = {styles.listText}>
-              {topic}
-            </Text>
-
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.lockStyle}
-            disabled={true}
-          >
-          <Ionicons name="md-checkmark-circle" size={38} color={Colors.greenCheck} />
-          </TouchableOpacity>
+              <Text style={styles.listText}>{topic}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.lockStyle} disabled={true}>
+              <FontAwesome
+                name="unlock"
+                size={38}
+                color={Colors.lightGrayPurple}
+              />
+            </TouchableOpacity>
           </View>
-          );
-          
-
-
+        );
       } else {
         topicButtons.push(
           <View style={styles.buttonRow}>
-            <TouchableOpacity 
-              style={styles.buttonStyle}
-              disabled={true}
-            >
-              <Tooltip width="90%"popover={<Text>This module is unavailable</Text>}> 
-                <Text style = {styles.listText}>
-                  {topic}
-                </Text>
+            <TouchableOpacity style={styles.buttonStyle} disabled={true}>
+              <Tooltip
+                width="90%"
+                popover={<Text>This module is unavailable</Text>}
+              >
+                <Text style={styles.listText}>{topic}</Text>
               </Tooltip>
             </TouchableOpacity>
-            <TouchableOpacity
-              style={styles.lockStyle}
-              disabled={true}
-            >
-              <Ionicons name="md-lock" size={38} color={Colors.lightGrayPurple} />
+            <TouchableOpacity style={styles.lockStyle} disabled={true}>
+              <FontAwesome
+                name="lock"
+                size={38}
+                color={Colors.lightGrayPurple}
+              />
             </TouchableOpacity>
-          </View>);
+          </View>
+        );
       }
     });
 
     return (
       <ScrollView contentContainerStyle={styles.categoryContainer}>
-          <Text style={styles.title}> Quiz Category</Text>
-          {topicButtons}
+        <Text style={styles.title}> Quiz Category</Text>
+        {topicButtons}
       </ScrollView>
     );
   }
@@ -131,21 +121,20 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: 10,
     borderWidth: 2,
-    margin: 5,
+    margin: 5
   },
   lockStyle: {
     alignItems: "center",
     backgroundColor: "white",
-    borderColor: Colors.darkGrayPurple,
+
     width: 50,
-    borderRadius: 10,
-    borderWidth: 2,
+
     margin: 10,
-    justifyContent: "center",
+    justifyContent: "center"
   },
   buttonRow: {
     flexDirection: "row",
-    margin: 8,
+    margin: 8
   },
   disabledButtonStyle: {
     backgroundColor: "white",
@@ -153,14 +142,14 @@ const styles = StyleSheet.create({
     width: "94%",
     borderRadius: 10,
     borderWidth: 2,
-    margin: 10,
+    margin: 10
   },
   listText: {
     fontSize: 24,
     margin: 15,
     textAlign: "center",
     justifyContent: "center",
-    color: Colors.darkGrayPurple,
+    color: Colors.darkGrayPurple
   },
   title: {
     fontSize: 30,
@@ -169,7 +158,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     borderBottomWidth: 1,
     borderBottomColor: Colors.lightGrayPurple,
-    textAlign: "center",
+    textAlign: "center"
   },
   icon: {
     position: "absolute",
@@ -182,11 +171,10 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     color: Colors.darkGrayPurple,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "center"
   },
   disabledText: {
     color: Colors.lightGrayPurple,
     fontSize: 24
-  },
-
+  }
 });
