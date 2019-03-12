@@ -124,7 +124,19 @@ export default class App extends React.Component {
         require("./assets/images/partners/lyft.png"),
         require("./assets/images/partners/starbucks.jpg"),
         require("./assets/images/partners/target.jpg"),
-        require("./assets/images/partners/urban.jpg")
+        require("./assets/images/partners/urban.jpg"),
+        require("./assets/images/credit-card-debt/im-watching-you.gif"),
+        require("./assets/images/credit-card-debt/cap.png"),
+        require("./assets/images/credit-card-debt/shit.png"),
+        require("./assets/images/credit-card-debt/interest.png"),
+        require("./assets/images/credit-card-debt/woman-tipping-hand.png"),
+        require("./assets/images/credit-card-debt/secret.png"),
+        require("./assets/images/credit-card-debt/impoor.gif"),
+        require("./assets/images/credit-card-debt/shrug.png"),
+        require("./assets/images/credit-card-debt/good-work.gif"),
+        require("./assets/images/credit-card-debt/watchout.png"),
+        require("./assets/images/credit-card-debt/apr.png"),
+
 
       ]),
       Font.loadAsync({
