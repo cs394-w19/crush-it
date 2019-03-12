@@ -156,8 +156,6 @@ const styles = StyleSheet.create({
     color: Colors.darkGrayPurple,
     marginTop: 20,
     marginBottom: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: Colors.lightGrayPurple,
     textAlign: "center"
   },
   icon: {
