@@ -335,7 +335,7 @@ export default (quiz_data = [
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Got it!",
+            answerText: "Thanks for the tip!",
             isCorrect: true,
             emoji: ""
           },
