@@ -19,12 +19,12 @@ export default class CoinHeader extends React.Component {
     this.spin()
   }
 
-  spin () {
+  spin() {
   this.spinValue.setValue(0)
   Animated.timing(
     this.spinValue,
     {
-      toValue: 1,
+      toValue: 4,
       duration: 4000,
       easing: Easing.linear
     }
@@ -37,7 +37,18 @@ export default class CoinHeader extends React.Component {
         outputRange: ['0deg', '360deg']
     })
 
+    let coinImage = null
+
+    if (this.props.shouldSpin){
+      coinImage = <Animated.Image source={require("../../assets/images/coin.png")} style={{width: 35, height: 35, resizeMode: "contain", transform: [{rotate: spin}] }}/>;
+    } else {
+      coinImage = <Image source={require("../../assets/images/coin.png")} style={{width: 35, height: 35, resizeMode: "contain"}}/>
+
+    }
+
     return(
+      
+
       <TouchableOpacity style={styles.coinsTotal} onPress={() => this.props.navigation.navigate("Partners", 
       {
         points: this.props.navigation.getParam("points", 0),
@@ -51,7 +62,7 @@ export default class CoinHeader extends React.Component {
         categoryIndex: this.props.navigation.getParam("categoryIndex", 0)
       })}>
         <View style={{ flex: 1 }}>
-          <Animated.Image source={require("../../assets/images/coin.png")} style={{width: 35, height: 35, resizeMode: "contain", transform: [{rotate: spin}] }}/>
+          {coinImage}
         </View>
         <Text style = {{ flex: 1, fontSize: 20, color: "white", marginLeft: 10 }}>{this.props.navigation.getParam("points", 0)}</Text>
       </TouchableOpacity>

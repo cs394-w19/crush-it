@@ -13,7 +13,7 @@ import LogoHeader from "../components/Header/LogoHeader.js";
 export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.spinValue = new Animated.Value(0);
+    //this.spinValue = new Animated.Value(0);
     this.state = {
       score : this.props.navigation.getParam("score"),
       maxScore : this.props.navigation.getParam("maxScore"),
@@ -30,24 +30,24 @@ export default class ResultsScreen extends React.Component {
 
   componentDidMount() {
     setTimeout(() => {this.showExperienceGained(70)}, 200); // this should be depend on score
-    this.spin()
+    //this.spin()
   }
 
   componentWillUnmount() {
     this._confettiView.stopConfetti();
   }
 
-  spin () {
-  this.spinValue.setValue(0)
-  Animated.timing(
-    this.spinValue,
-    {
-      toValue: 1,
-      duration: 4000,
-      easing: Easing.linear
-    }
-    ).start(() => this.spin())
-  }
+  // spin () {
+  // this.spinValue.setValue(0)
+  // Animated.timing(
+  //   this.spinValue,
+  //   {
+  //     toValue: 1,
+  //     duration: 4000,
+  //     easing: Easing.linear
+  //   }
+  //   ).start(() => this.spin())
+  // }
 
   showExperienceGained(points){
 
@@ -66,7 +66,7 @@ export default class ResultsScreen extends React.Component {
         <LogoHeader navigation={navigation} navigateTo="Home" />
       ),
       headerRight: (
-        <CoinHeader navigation={navigation} />
+        <CoinHeader navigation={navigation} shouldSpin = {true}/>
       )
     };
   };
@@ -76,10 +76,10 @@ export default class ResultsScreen extends React.Component {
     const points = navigation.getParam("points", 0);
     const availabilities = navigation.getParam("availabilities");
     const categoryIndex = navigation.getParam("categoryIndex");
-    const spin = this.spinValue.interpolate({
-        inputRange: [0, 1],
-        outputRange: ['0deg', '360deg']
-    })
+    // const spin = this.spinValue.interpolate({
+    //     inputRange: [0, 1],
+    //     outputRange: ['0deg', '360deg']
+    // })
 
     return (
       <View
@@ -106,7 +106,7 @@ export default class ResultsScreen extends React.Component {
             ]),
             categoryIndex: this.props.navigation.getParam("categoryIndex", 0)
           })}>
-            <Animated.Image source={require("../assets/images/coin.png")} style={{width: 80, height: 80, transform: [{rotate: spin}] }}/>
+            <Image source={require("../assets/images/coin.png")} style={{width: 80, height: 80 }}/>
           </TouchableOpacity>  
           <Text style={styles.title}>
             You Earned 100 Coins!
