@@ -45,13 +45,16 @@ export default class HomeScreen extends React.Component {
       [0, 0, 0],
       [0, 0, 0],
       [0, 0, 0],
-      [0, 0, 0],
+      [0, 0, 0]
     ]);
 
     let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
-      if (availabilities[index].indexOf(0) == -1 && availabilities[index].indexOf(1) == -1) {
+      if (
+        availabilities[index].indexOf(0) == -1 &&
+        availabilities[index].indexOf(1) == -1
+      ) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity
@@ -78,8 +81,10 @@ export default class HomeScreen extends React.Component {
             </TouchableOpacity>
           </View>
         );
-      }
-      else if (availabilities[index].indexOf(1) != -1 || availabilities[index].indexOf(2) != -1) {
+      } else if (
+        availabilities[index].indexOf(1) != -1 ||
+        availabilities[index].indexOf(2) != -1
+      ) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity
