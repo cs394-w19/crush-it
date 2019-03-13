@@ -43,9 +43,9 @@ export default class HomeScreen extends React.Component {
     // 1 - available, not complete (unlocked)
     // 2 - available, completed (checkmark)
     let availabilites = [];
-    for (let i=0; i < this.state.topics.length; i++) {
+    for (let i = 0; i < this.state.topics.length; i++) {
       let category_availabilities = [];
-      for (let j=0; j < quiz_data.length; j++) {
+      for (let j = 0; j < quiz_data.length; j++) {
         if (quiz_data[j].quizCategory == i) {
           category_availabilities.push(0);
         }
@@ -60,13 +60,18 @@ export default class HomeScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
-    const availabilities = navigation.getParam("availabilities", this.getQuizAvailabilities());
-
+    const availabilities = navigation.getParam(
+      "availabilities",
+      this.getQuizAvailabilities()
+    );
     let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
-
-      if (availabilities[index].length && availabilities[index].lastIndexOf(2) === availabilities[index].length-1) {
+      if (
+        availabilities[index].length &&
+        availabilities[index].lastIndexOf(2) ===
+          availabilities[index].length - 1
+      ) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity
@@ -78,7 +83,7 @@ export default class HomeScreen extends React.Component {
                   categoryIndex: index,
                   topicName: topic,
                   numLevels: availabilities[index].length,
-                  points: points,
+                  points: points
                 })
               }
             >
@@ -93,7 +98,10 @@ export default class HomeScreen extends React.Component {
             </TouchableOpacity>
           </View>
         );
-      } else if (availabilities[index].indexOf(1) !== -1 || availabilities[index].indexOf(2) !== -1) {
+      } else if (
+        availabilities[index].indexOf(1) !== -1 ||
+        availabilities[index].indexOf(2) !== -1
+      ) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity

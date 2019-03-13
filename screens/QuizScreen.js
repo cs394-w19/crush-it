@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  Text,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import QuizProgressBar from "../components/Quiz/QuizProgressBar";
 import QuizStatement from "../components/Quiz/QuizStatement";
@@ -21,23 +16,19 @@ export default class QuizScreen extends React.Component {
     this.state = {
       quiz: null,
       quizProgress: 0,
-      submitted: false
+      submitted: false,
+      isButtonDisabled: false,
     };
   }
 
   static navigationOptions = ({ navigation }) => {
     return {
-      headerLeft: (
-        <LogoHeader navigation={navigation} navigateTo="Levels" />
-      ),
-      headerRight: (
-        <CoinHeader navigation={navigation} />
-      )
+      headerLeft: <LogoHeader navigation={navigation} navigateTo="Levels" />,
+      headerRight: <CoinHeader navigation={navigation} />
     };
   };
 
   async componentDidMount() {
-
     let category = this.props.navigation.getParam("category", 0);
     let level = this.props.navigation.getParam("level", 1);
 
@@ -71,24 +62,34 @@ export default class QuizScreen extends React.Component {
     let dailyGoalMet = false;
     if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
-      if(level < availabilities[categoryIndex].length) {
+      if (level < availabilities[categoryIndex].length) {
         availabilities[categoryIndex][level] = 1;
-      } else if (availabilities[categoryIndex][level-1] == 1) {
+      } else if (availabilities[categoryIndex][level - 1] == 1) {
         crushedIt = true;
       }
 
-      availabilities[categoryIndex][level-1] = 2;
+      availabilities[categoryIndex][level - 1] = 2;
 
-      if (availabilities[categoryIndex][0] === 2 && availabilities[categoryIndex][1] === 1) {
+      if (
+        availabilities[categoryIndex][0] === 2 &&
+        availabilities[categoryIndex][1] === 1
+      ) {
         dailyGoalMet = true;
       }
+      if (
+        availabilities[categoryIndex][2] === 2 &&
+        availabilities.length > categoryIndex + 1
+      ) {
+        availabilities[categoryIndex + 1][0] = 1;
+      }
+
       this.props.navigation.navigate("Results", {
         maxScore: this.state.quiz.questions.length,
         points: points + 100,
         availabilities: availabilities,
         categoryIndex: categoryIndex,
         crushedIt: crushedIt,
-        dailyGoalMet : dailyGoalMet,
+        dailyGoalMet: dailyGoalMet
       });
       this.setState({
         quizProgress: 0,
@@ -106,16 +107,27 @@ export default class QuizScreen extends React.Component {
 
   handleAnswerButtonPress(answerText) {
     this.setState({
-      submitted: answerText
+      submitted: answerText,
+      isButtonDisabled: true
     });
 
-    if (this.getAnswerChoice(answerText).buttonOrder === '2') {
+    if (this.getAnswerChoice(answerText).buttonOrder === "2") {
       setTimeout(() => {
         this.nextQuestion();
+      }, 1000);
+      setTimeout(() => {
+        this.setState({
+          isButtonDisabled: false,
+        });
       }, 1000);
     } else {
       setTimeout(() => {
         this.nextQuestion();
+      }, 2000);
+      setTimeout(() => {
+        this.setState({
+          isButtonDisabled: false,
+        });
       }, 2000);
     }
   }
@@ -144,6 +156,7 @@ export default class QuizScreen extends React.Component {
           quiz={this.state.quiz}
           quizProgress={this.state.quizProgress}
           submitted={this.state.submitted}
+          isButtonDisabled={this.state.isButtonDisabled}
           handleAnswerButtonPress={(text) => this.handleAnswerButtonPress(text)}
           isAnswerCorrect={(answerText) => this.isAnswerCorrect(answerText)}
           nextQuestion={() => this.nextQuestion()}
@@ -156,6 +169,6 @@ export default class QuizScreen extends React.Component {
 
 const styles = StyleSheet.create({
   quizContainer: {
-    flex: 1,
+    flex: 1
   }
 });

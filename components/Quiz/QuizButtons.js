@@ -40,6 +40,8 @@ export default class QuizButtons extends React.Component {
           emoji={answer.emoji}
           key={answer.answerText}
           text={answer.answerText}
+          submitted={this.props.submitted}
+          isButtonDisabled={this.props.isButtonDisabled}
           buttonStyle={[styles.quizButton, buttonStyle]}
           handleButtonPress={() =>
             this.props.handleAnswerButtonPress(answer.answerText)
