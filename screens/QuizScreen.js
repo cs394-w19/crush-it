@@ -30,7 +30,8 @@ export default class QuizScreen extends React.Component {
       quiz: null,
       quizProgress: 0,
       score: 0,
-      submitted: false
+      submitted: false,
+      isButtonDisabled: false,
     };
   }
 
@@ -124,16 +125,27 @@ export default class QuizScreen extends React.Component {
     let answerCorrect = this.isAnswerCorrect(answerText);
     this.handleScoring(answerText);
     this.setState({
-      submitted: answerText
+      submitted: answerText,
+      isButtonDisabled: true
     });
 
     if (this.getAnswerChoice(answerText).buttonOrder === '2') {
       setTimeout(() => {
         this.nextQuestion();
       }, 1000);
+      setTimeout(() => {
+        this.setState({
+          isButtonDisabled: false,
+        });
+      }, 1000);
     } else {
       setTimeout(() => {
         this.nextQuestion();
+      }, 2000);
+      setTimeout(() => {
+        this.setState({
+          isButtonDisabled: false,
+        });
       }, 2000);
     }
 
@@ -166,6 +178,7 @@ export default class QuizScreen extends React.Component {
           quiz={this.state.quiz}
           quizProgress={this.state.quizProgress}
           submitted={this.state.submitted}
+          isButtonDisabled={this.state.isButtonDisabled}
           handleAnswerButtonPress={(text) => this.handleAnswerButtonPress(text)}
           isAnswerCorrect={(answerText) => this.isAnswerCorrect(answerText)}
           nextQuestion={() => this.nextQuestion()}
