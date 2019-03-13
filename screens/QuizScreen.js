@@ -64,7 +64,7 @@ export default class QuizScreen extends React.Component {
   nextQuestion() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
-    const availabilities = navigation.getParam("availabilities");
+    const availabilities = navigation.getParam("availabilities", [[1]]);
     const categoryIndex = navigation.getParam("categoryIndex");
     let level = this.props.navigation.getParam("level", 1);
     let crushedIt = false;

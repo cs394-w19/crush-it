@@ -7,6 +7,7 @@ import {
   Image, 
   Animated,
 } from 'react-native';
+
 import Colors from '../constants/Colors';
 import Confetti from 'react-native-confetti';
 
@@ -27,6 +28,7 @@ export default class ResultsScreen extends React.Component {
   componentDidMount() {
     if (this._confettiView) {
       this._confettiView.startConfetti();
+      this.myScroll.scrollTo({ x: 0, y: 0, animated: false });
     }
     const crushedIt = this.props.navigation.getParam("crushedIt", false);
     if (crushedIt) {
@@ -117,18 +119,13 @@ export default class ResultsScreen extends React.Component {
     const crushedIt = navigation.getParam("crushedIt", false);
     const dailyGoalMet = navigation.getParam("dailyGoalMet", false);
 
-    const availabilities = navigation.getParam("availabilities", [
-      [1, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-    ]);
+    const availabilities = navigation.getParam("availabilities", [[1]]);
     const categoryIndex = navigation.getParam("categoryIndex", 0);
 
     let levelCompleteText = crushedIt ? "All Levels Complete" : dailyGoalMet ? "Daily Goal Met!": "Level Complete!";
     let crushedItMessage = crushedIt ? <Text style={{ fontSize:50, fontWeight:"bold", textAlign: 'center' }}>YOU CRUSHED IT!</Text>
                                      : <Text />;
+
     let keepGoing = (
       <TouchableOpacity
         onPress={() => this.props.navigation.navigate("Levels", {points: points, availabilites: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
@@ -142,9 +139,8 @@ export default class ResultsScreen extends React.Component {
     }
 
     return (
-      <View
-        contentContainerStyle={styles.container}
-      >
+      <View style={styles.container}>
+      <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator ref={(ref) => this.myScroll = ref}>
         <Confetti
           confettiCount={200}
           ref={node => (this._confettiView = node)}
@@ -174,6 +170,7 @@ export default class ResultsScreen extends React.Component {
             <Text style={styles.listText}>RETURN HOME</Text>
           </TouchableOpacity>
         </View>
+        </ScrollView>
       </View>
     );
   }
@@ -182,11 +179,6 @@ export default class ResultsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    flexWrap: "wrap-reverse",
-    width: "100%"
   },
   titleView: {
     paddingTop: "10%",
