@@ -1,22 +1,10 @@
 import React from "react";
-import {
-  ScrollView,
-  StyleSheet,
-  Button,
-  Text,
-  View,
-  Image,
-  TouchableOpacity,
-  InteractionManager
-} from "react-native";
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
-import Colors from "../constants/Colors";
+import { ScrollView, StyleSheet, Text, View } from "react-native";
 
 import QuizProgressBar from "../components/Quiz/QuizProgressBar";
 import QuizStatement from "../components/Quiz/QuizStatement";
 import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
-
 import CoinHeader from "../components/Header/CoinHeader.js";
 import LogoHeader from "../components/Header/LogoHeader.js";
 
@@ -26,10 +14,8 @@ export default class QuizScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      points : 0,
       quiz: null,
       quizProgress: 0,
-      score: 0,
       submitted: false,
       isButtonDisabled: false,
     };
@@ -37,17 +23,12 @@ export default class QuizScreen extends React.Component {
 
   static navigationOptions = ({ navigation }) => {
     return {
-      headerLeft: (
-        <LogoHeader navigation={navigation} navigateTo="Levels" />
-      ),
-      headerRight: (
-        <CoinHeader navigation={navigation} />
-      )
+      headerLeft: <LogoHeader navigation={navigation} navigateTo="Levels" />,
+      headerRight: <CoinHeader navigation={navigation} />
     };
   };
 
   async componentDidMount() {
-
     let category = this.props.navigation.getParam("category", 0);
     let level = this.props.navigation.getParam("level", 1);
 
@@ -74,32 +55,41 @@ export default class QuizScreen extends React.Component {
   nextQuestion() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
-    const availabilities = navigation.getParam("availabilities");
+    const availabilities = navigation.getParam("availabilities", [[1]]);
     const categoryIndex = navigation.getParam("categoryIndex");
     let level = this.props.navigation.getParam("level", 1);
     let crushedIt = false;
     let dailyGoalMet = false;
     if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
-      if(level < availabilities[categoryIndex].length) {
+      if (level < availabilities[categoryIndex].length) {
         availabilities[categoryIndex][level] = 1;
-      }
-      else if (availabilities[categoryIndex][level-1] == 1) {
+      } else if (availabilities[categoryIndex][level - 1] == 1) {
         crushedIt = true;
       }
-      availabilities[categoryIndex][level-1] = 2;
 
-      if(availabilities[categoryIndex][0] === 2 && availabilities[categoryIndex][1] === 1){
+      availabilities[categoryIndex][level - 1] = 2;
+
+      if (
+        availabilities[categoryIndex][0] === 2 &&
+        availabilities[categoryIndex][1] === 1
+      ) {
         dailyGoalMet = true;
       }
+      if (
+        availabilities[categoryIndex][2] === 2 &&
+        availabilities.length > categoryIndex + 1
+      ) {
+        availabilities[categoryIndex + 1][0] = 1;
+      }
+
       this.props.navigation.navigate("Results", {
-        score: this.state.score + 100,
         maxScore: this.state.quiz.questions.length,
         points: points + 100,
         availabilities: availabilities,
         categoryIndex: categoryIndex,
         crushedIt: crushedIt,
-        dailyGoalMet : dailyGoalMet,
+        dailyGoalMet: dailyGoalMet
       });
       this.setState({
         quizProgress: 0,
@@ -115,21 +105,13 @@ export default class QuizScreen extends React.Component {
     this.myScroll.scrollTo({ x: 0, y: 0, animated: false });
   }
 
-  handleScoring(answerText) {
-    let answerCorrect = this.isAnswerCorrect(answerText);
-    let newScore = answerCorrect ? this.state.score + 1 : this.state.score;
-    this.setState({ score: newScore });
-  }
-
   handleAnswerButtonPress(answerText) {
-    let answerCorrect = this.isAnswerCorrect(answerText);
-    this.handleScoring(answerText);
     this.setState({
       submitted: answerText,
       isButtonDisabled: true
     });
 
-    if (this.getAnswerChoice(answerText).buttonOrder === '2') {
+    if (this.getAnswerChoice(answerText).buttonOrder === "2") {
       setTimeout(() => {
         this.nextQuestion();
       }, 1000);
@@ -148,14 +130,10 @@ export default class QuizScreen extends React.Component {
         });
       }, 2000);
     }
-
   }
 
   render() {
-    const { navigation } = this.props;
-    const level = navigation.getParam("level", 1);
     if (!this.state.quiz) return <Text />;
-
     return (
       <View style={styles.quizContainer}>
         <QuizProgressBar
@@ -191,6 +169,6 @@ export default class QuizScreen extends React.Component {
 
 const styles = StyleSheet.create({
   quizContainer: {
-    flex: 1,
+    flex: 1
   }
 });

@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -17,6 +15,7 @@ import CoinHeader from "../components/Header/CoinHeader.js";
 import LogoHeader from "../components/Header/LogoHeader.js";
 
 import quiz_categories from "../assets/quiz_categories";
+import quiz_data from "../assets/quiz_data";
 
 export default class HomeScreen extends React.Component {
   constructor(props) {
@@ -30,28 +29,49 @@ export default class HomeScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
     return {
       headerLeft: <LogoHeader navigation={navigation} navigateTo="Home" />,
       headerRight: <CoinHeader navigation={navigation} />
     };
   };
 
+  getQuizAvailabilities() {
+    // creates an array of arrays that holds information about the
+    // availability or completion of a quiz.
+    // States:
+    // 0 - not available (locked)
+    // 1 - available, not complete (unlocked)
+    // 2 - available, completed (checkmark)
+    let availabilites = [];
+    for (let i = 0; i < this.state.topics.length; i++) {
+      let category_availabilities = [];
+      for (let j = 0; j < quiz_data.length; j++) {
+        if (quiz_data[j].quizCategory == i) {
+          category_availabilities.push(0);
+        }
+      }
+      availabilites.push(category_availabilities);
+    }
+    availabilites[0][0] = 1;
+    console.log(availabilites);
+    return availabilites;
+  }
+
   render() {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
-    const availabilities = navigation.getParam("availabilities", [
-      [1, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-    ]);
-
+    const availabilities = navigation.getParam(
+      "availabilities",
+      this.getQuizAvailabilities()
+    );
     let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
-      if (availabilities[index].indexOf(0) == -1 && availabilities[index].indexOf(1) == -1) {
+      if (
+        availabilities[index].length &&
+        availabilities[index].lastIndexOf(2) ===
+          availabilities[index].length - 1
+      ) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity
@@ -78,8 +98,10 @@ export default class HomeScreen extends React.Component {
             </TouchableOpacity>
           </View>
         );
-      }
-      else if (availabilities[index].indexOf(1) != -1 || availabilities[index].indexOf(2) != -1) {
+      } else if (
+        availabilities[index].indexOf(1) !== -1 ||
+        availabilities[index].indexOf(2) !== -1
+      ) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity
@@ -154,9 +176,7 @@ const styles = StyleSheet.create({
   lockStyle: {
     alignItems: "center",
     backgroundColor: "white",
-
     width: 50,
-
     margin: 10,
     justifyContent: "center"
   },
