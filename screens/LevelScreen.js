@@ -35,7 +35,7 @@ export default class LevelScreen extends React.Component {
     const numLevels = navigation.getParam("numLevels", "3");
     const title = navigation.getParam("topicName", "Topic Unavailable");
     const icon = navigation.getParam("topicIcon", "");
-    const availabilities = navigation.getParam("availabilities");
+    const availabilities = navigation.getParam("availabilities", [[1]]);
     const categoryIndex = navigation.getParam("categoryIndex", 0);
     const points = navigation.getParam("points", 0);
 

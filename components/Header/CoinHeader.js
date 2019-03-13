@@ -5,7 +5,7 @@ import {
   View,
   Text,
   StyleSheet,
-  Animated, 
+  Animated,
   Easing
 } from "react-native";
 
@@ -29,7 +29,7 @@ export default class CoinHeader extends React.Component {
       easing: Easing.linear
     }
     ).start(() => this.spin())
-  }  
+  }
 
   render() {
     const spin = this.spinValue.interpolate({
@@ -47,18 +47,12 @@ export default class CoinHeader extends React.Component {
     }
 
     return(
-      
 
-      <TouchableOpacity style={styles.coinsTotal} onPress={() => this.props.navigation.navigate("Partners", 
+
+      <TouchableOpacity style={styles.coinsTotal} onPress={() => this.props.navigation.navigate("Partners",
       {
         points: this.props.navigation.getParam("points", 0),
-        availabilities: this.props.navigation.getParam("availabilities", [
-          [true, false, false],
-          [false, false, false],
-          [false, false, false],
-          [false, false, false],
-          [false, false, false],
-        ]),
+        availabilities: this.props.navigation.getParam("availabilities", [[1]]),
         categoryIndex: this.props.navigation.getParam("categoryIndex", 0)
       })}>
         <View style={{ flex: 1 }}>

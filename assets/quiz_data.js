@@ -48,7 +48,7 @@ export default (quiz_data = [
           },
         ]
       },
-      { 
+      {
         statement:
           "Now... what do you think \"APR\" is?",
         question:
@@ -103,7 +103,7 @@ export default (quiz_data = [
       {
         statement:
           "Remember...",
-        image: require("./images/credit-card-debt/apr.png"),  
+        image: require("./images/credit-card-debt/apr.png"),
         question: "\n\nYou want to minimize fees, so 0% is the best APR.",
         answerChoices: [
           {
@@ -117,7 +117,7 @@ export default (quiz_data = [
       {
         header:
           "WATCH OUT!",
-        image: require("./images/credit-card-debt/watchout.png"),  
+        image: require("./images/credit-card-debt/watchout.png"),
         question: "Most credit cards offer 0% Introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
         answerChoices: [
           {
@@ -189,13 +189,13 @@ export default (quiz_data = [
             isCorrect: true,
             emoji: ""
           }
-        ] 
+        ]
       },
       {
         statement:
           "Honesty is a good start!\n\nIf you pay bills in full and on time, you’re on the right track to building solid credit.",
-        image: require("./images/credit-card-debt/good-work.gif"),  
-        answerChoices: [  
+        image: require("./images/credit-card-debt/good-work.gif"),
+        answerChoices: [
           {
             buttonOrder: "2",
             answerText: "Got it!",
@@ -331,7 +331,7 @@ export default (quiz_data = [
         header:
           "PSST...",
         image: require("./images/credit-card-debt/secret.png"),
-        question: "\n\nIf it’s your first offense, try calling your credit card company. They may waive the fee if you ask nicely.",  
+        question: "\n\nIf it’s your first offense, try calling your credit card company. They may waive the fee if you ask nicely.",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -406,7 +406,7 @@ export default (quiz_data = [
         header: "Level 3",
         statement:
           "Now let’s say your credit card has been stolen…\n\nThe thief charged $10,000!",
-        image: require("./images/credit-card-debt/shit.png"),  
+        image: require("./images/credit-card-debt/shit.png"),
         answerChoices: [
           {
             buttonOrder: "2",
@@ -570,6 +570,26 @@ export default (quiz_data = [
           {
             buttonOrder: "2",
             answerText: "I'll pay! I swear!",
+            isCorrect: true,
+            emoji: ""
+          },
+        ]
+      },
+    ]
+  },
+  {
+    quizName: "Student Loans Level 1",
+    quizCategory: 1,
+    quizLevel: 1,
+    questions: [
+      {
+        header: "Level 1",
+        statement:
+          "This is a dummy quiz.",
+        answerChoices: [
+          {
+            buttonOrder: "2",
+            answerText: "Sh*t... Now what?",
             isCorrect: true,
             emoji: ""
           },
