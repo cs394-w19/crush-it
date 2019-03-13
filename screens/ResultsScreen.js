@@ -17,6 +17,7 @@ export default class ResultsScreen extends React.Component {
       score : this.props.navigation.getParam("score"),
       maxScore : this.props.navigation.getParam("maxScore"),
       crushedIt: false,
+      dailyGoalMet : false,
       splashAnimation: new Animated.Value(0),
       splashAnimationComplete: false,
     };
@@ -28,6 +29,13 @@ export default class ResultsScreen extends React.Component {
     }
 
     const crushedIt = this.props.navigation.getParam("crushedIt", false);
+    // const dailyGoalMet = this.props.navigation.getParam("dailyGoalMet", false);
+
+    // if (dailyGoalMet){
+    //   this.setState({
+    //     dailyGoalMet : true
+    //   });
+    // }
 
     if (crushedIt) {
       this.setState({
@@ -120,6 +128,8 @@ export default class ResultsScreen extends React.Component {
     const { navigation } = this.props;
     const points = navigation.getParam("points", 0);
     const crushedIt = navigation.getParam("crushedIt", false);
+    const dailyGoalMet = navigation.getParam("dailyGoalMet", false);
+
     const availabilities = navigation.getParam("availabilities", [
       [1, 0, 0],
       [0, 0, 0],
@@ -129,9 +139,12 @@ export default class ResultsScreen extends React.Component {
     ]);
     const categoryIndex = navigation.getParam("categoryIndex", 0);
 
-    let levelCompleteText = crushedIt ? "All Levels Complete" : "Level Complete!";
+    let levelCompleteText = crushedIt ? "All Levels Complete" : dailyGoalMet ? "Daily Goal Met!": "Level Complete!";
     let crushedItMessage = crushedIt ? <Text style={{ fontSize:50, fontWeight:"bold", textAlign: 'center' }}>YOU CRUSHED IT!</Text>
                                      : <Text />;
+
+    
+
 
     let keepGoing = (
       <TouchableOpacity
