@@ -51,7 +51,7 @@ export default (quiz_data = [
       {
         statement: 'Now... what do you think "APR" is?',
         question:
-          "A.  Absolute Perfect Rate\nB.  My Credit Rating\nC.  Basically Interest\nD.  Average Price Range",
+          "A.  Absolute Perfect Rate\n\nB.  My credit rating\n\nC.  Basically interest\n\nD.  Average Price Range",
         answerChoices: [
           {
             buttonOrder: "1",
@@ -115,21 +115,21 @@ export default (quiz_data = [
       {
         header: "WATCH OUT!",
         image: require("./images/credit-card-debt/watchout.png"),
-        question:
-          "Most credit cards offer 0% Introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
+        question: "Most credit cards offer 0% introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Whew! Thanks!",
+            answerText: "   Whew! Thanks!",
             isCorrect: true,
             emoji: "sweat_smile"
           }
         ]
       },
       {
-        statement: "How can you get the lowest APR?",
-        question:
-          "A.  Make minimum payment only\n\nB.  ↑ credit score\n\nC.  Open multiple credit cards\n\nD.  I can’t affect APR",
+        statement:
+          "How can you get the lowest APR?",
+        question: "A.  Make minimum payment only\nB.  ↑ credit score\nC.  Open multiple credit cards\nD.  I can’t affect APR",
+
         answerChoices: [
           {
             buttonOrder: "1",
@@ -158,7 +158,8 @@ export default (quiz_data = [
         ]
       },
       {
-        header: "↑ credit score = ↓ APR.\n",
+        header:
+          "↑ credit score = ↓ APR\n",
         statement:
           "Think of credit like trust.\n\nYou build trust, and credit, when you show you’re reliable.\n\nThis is one reason to pay your bills on time and in full!",
         answerChoices: [
@@ -210,7 +211,7 @@ export default (quiz_data = [
     learningCategories: ["interest rates", "credit score"],
     questions: [
       {
-        header: "Level 2",
+        header: "Level 2\n",
         statement:
           "You just bought a $100 shirt for your next adventure.\n\nRealizing you’re low on cash this month, you charged it to your credit card.",
         image: require("./images/credit-card-debt/shrug.png"),
@@ -398,7 +399,7 @@ export default (quiz_data = [
     quizLevel: 3,
     questions: [
       {
-        header: "Level 3",
+        header: "Level 3\n",
         statement:
           "Now let’s say your credit card has been stolen…\n\nThe thief charged $10,000!",
         image: require("./images/credit-card-debt/shit.png"),
@@ -506,19 +507,19 @@ export default (quiz_data = [
       },
       {
         statement:
-          "Because fixed APRs are set-in-stone, issuers must provide 45-day notice prior to any changes.\n\nThe Captain is looking out for you.",
+          "Because fixed APRs are set in stone, issuers must provide 45-day notice prior to any changes.\n\nThe Captain is looking out for you.",
         image: require("./images/credit-card-debt/cap.png"),
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Thanks Cap!",
+            answerText: "Thanks, Cap!",
             isCorrect: true,
             emoji: ""
           }
         ]
       },
       {
-        header: "PRO TIP",
+        header: "Pro Tip",
         statement:
           "Reading the fine print of a contract can be a total snooze.\n\nHowever, it can help you avoid late fees and save you money in the long run.\n\nWho doesn’t love money?",
         answerChoices: [
