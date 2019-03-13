@@ -14,7 +14,6 @@ export default class PartnerScreen extends React.Component {
 
       this.state = {
         redeeming : 0, // if you are redeeming, you are trying to get your rewards
-        points : 0,
         items: []
       };
   }

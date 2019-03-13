@@ -1,10 +1,10 @@
 import React from 'react';
-import { 
+import {
   StyleSheet,
-  TouchableOpacity, 
-  Text, 
-  View, 
-  Image, 
+  TouchableOpacity,
+  Text,
+  View,
+  Image,
   Animated,
   ScrollView
 } from 'react-native';
