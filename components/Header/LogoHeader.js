@@ -9,16 +9,10 @@ export default class LogoHeader extends React.Component {
     let navigation = this.props.navigation;
 
     return(
-      <TouchableOpacity onPress={() => navigation.navigate(this.props.navigateTo, 
+      <TouchableOpacity onPress={() => navigation.navigate(this.props.navigateTo,
         {
           points: navigation.getParam("points", 0),
-          availabilities: navigation.getParam("availabilities", [
-            [true, false, false],
-            [false, false, false],
-            [false, false, false],
-            [false, false, false],
-            [false, false, false],
-          ]),
+          availabilities: navigation.getParam("availabilities", [[1]]),
           categoryIndex: navigation.getParam("categoryIndex", 0)
         })}>
         <Image

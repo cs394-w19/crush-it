@@ -130,20 +130,14 @@ export default class ResultsScreen extends React.Component {
     const crushedIt = navigation.getParam("crushedIt", false);
     const dailyGoalMet = navigation.getParam("dailyGoalMet", false);
 
-    const availabilities = navigation.getParam("availabilities", [
-      [1, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-      [0, 0, 0],
-    ]);
+    const availabilities = navigation.getParam("availabilities", [[1]]);
     const categoryIndex = navigation.getParam("categoryIndex", 0);
 
     let levelCompleteText = crushedIt ? "All Levels Complete" : dailyGoalMet ? "Daily Goal Met!": "Level Complete!";
     let crushedItMessage = crushedIt ? <Text style={{ fontSize:50, fontWeight:"bold", textAlign: 'center' }}>YOU CRUSHED IT!</Text>
                                      : <Text />;
 
-    
+
 
 
     let keepGoing = (
