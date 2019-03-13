@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -31,7 +29,6 @@ export default class HomeScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
     return {
       headerLeft: <LogoHeader navigation={navigation} navigateTo="Home" />,
       headerRight: <CoinHeader navigation={navigation} />
@@ -102,8 +99,8 @@ export default class HomeScreen extends React.Component {
           </View>
         );
       } else if (
-        availabilities[index].indexOf(1) != -1 ||
-        availabilities[index].indexOf(2) != -1
+        availabilities[index].indexOf(1) !== -1 ||
+        availabilities[index].indexOf(2) !== -1
       ) {
         topicButtons.push(
           <View style={styles.buttonRow}>
@@ -179,9 +176,7 @@ const styles = StyleSheet.create({
   lockStyle: {
     alignItems: "center",
     backgroundColor: "white",
-
     width: 50,
-
     margin: 10,
     justifyContent: "center"
   },

@@ -2,16 +2,13 @@ import React from "react";
 import {
   ScrollView,
   StyleSheet,
-  Button,
   Text,
   View,
-  Image,
   TouchableOpacity
 } from "react-native";
 import Colors from "../constants/Colors";
 import { Ionicons, FontAwesome } from "@expo/vector-icons";
 import { Tooltip } from "react-native-elements";
-
 import CoinHeader from "../components/Header/CoinHeader.js";
 import LogoHeader from "../components/Header/LogoHeader.js";
 
@@ -34,7 +31,6 @@ export default class LevelScreen extends React.Component {
     const { navigation } = this.props;
     const numLevels = navigation.getParam("numLevels", "3");
     const title = navigation.getParam("topicName", "Topic Unavailable");
-    const icon = navigation.getParam("topicIcon", "");
     const availabilities = navigation.getParam("availabilities", [[1]]);
     const categoryIndex = navigation.getParam("categoryIndex", 0);
     const points = navigation.getParam("points", 0);
@@ -42,9 +38,8 @@ export default class LevelScreen extends React.Component {
     let level_buttons = [];
 
     for (let i = 0; i < numLevels; i++) {
-      // need to implement checkmarks
       if (availabilities[categoryIndex][i] == 2) {
-        level_buttons.push(
+        level_buttons.push (
           <View style={styles.buttonRow}>
             <TouchableOpacity
               key={i}
@@ -125,7 +120,6 @@ export default class LevelScreen extends React.Component {
         <Text style={styles.title}>
           {" "}
           {title}{" "}
-          <Ionicons name={icon} size={32} color={Colors.darkGrayPurple} />
         </Text>
         {level_buttons}
       </ScrollView>
@@ -136,7 +130,7 @@ export default class LevelScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff"
+    backgroundColor: "#fff",
   },
   buttonStyle: {
     backgroundColor: "white",
@@ -144,20 +138,18 @@ const styles = StyleSheet.create({
     width: "80%",
     borderRadius: 10,
     borderWidth: 2,
-    margin: 5
+    margin: 5,
   },
   lockStyle: {
     alignItems: "center",
     backgroundColor: "white",
-
     width: 50,
-
     margin: 10,
-    justifyContent: "center"
+    justifyContent: "center",
   },
   buttonRow: {
     flexDirection: "row",
-    margin: 8
+    margin: 8,
   },
   disabledButtonStyle: {
     backgroundColor: "white",
@@ -165,7 +157,7 @@ const styles = StyleSheet.create({
     borderColor: Colors.lightGrayPurple,
     borderRadius: 10,
     borderWidth: 2,
-    margin: 10
+    margin: 10,
   },
   listText: {
     fontSize: 24,
@@ -173,7 +165,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     justifyContent: "center",
     flexDirection: "row",
-    color: Colors.darkGrayPurple
+    color: Colors.darkGrayPurple,
   },
   title: {
     fontSize: 30,
@@ -187,22 +179,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     width: "100%",
     textAlign: "center",
-    flex: 1
+    flex: 1,
   },
   levelContainer: {
     flex: 1,
     color: Colors.darkGrayPurple,
-    justifyContent: "center"
-    // alignItems: "center",
+    justifyContent: "center",
   },
   disabledText: {
     color: Colors.lightGrayPurple,
-    fontSize: 24
+    fontSize: 24,
   },
   headerStats: {
     color: Colors.lightGrayPurple,
     fontSize: 25,
-    marginRight: 5
+    marginRight: 5,
   },
   coinsTotal: {
     flex: 1,
@@ -210,6 +201,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     width: "100%",
     alignItems: "center",
-    marginRight: 10
+    marginRight: 10,
   }
 });
