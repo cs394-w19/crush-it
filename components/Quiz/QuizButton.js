@@ -9,6 +9,7 @@ export default class QuizButton extends React.Component {
     return (
         <TouchableOpacity
           style={this.props.buttonStyle}
+          disabled={this.props.isButtonDisabled}
           onPress={() => this.props.handleButtonPress()}
         >
           <Text style={styles.multipleChoiceButton}><Emoji name={this.props.emoji} style={{fontSize: 40}} />{this.props.text}</Text>
