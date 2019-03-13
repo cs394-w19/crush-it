@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
     color: Colors.darkGrayPurple,
     textAlign: "left",
     marginTop: "auto",
-    marginBottom: "auto"
+    marginBottom: "auto",
   }
 });

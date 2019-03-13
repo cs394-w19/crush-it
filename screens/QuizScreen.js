@@ -16,7 +16,8 @@ export default class QuizScreen extends React.Component {
     this.state = {
       quiz: null,
       quizProgress: 0,
-      submitted: false
+      submitted: false,
+      isButtonDisabled: false,
     };
   }
 
@@ -106,16 +107,27 @@ export default class QuizScreen extends React.Component {
 
   handleAnswerButtonPress(answerText) {
     this.setState({
-      submitted: answerText
+      submitted: answerText,
+      isButtonDisabled: true
     });
 
     if (this.getAnswerChoice(answerText).buttonOrder === "2") {
       setTimeout(() => {
         this.nextQuestion();
       }, 1000);
+      setTimeout(() => {
+        this.setState({
+          isButtonDisabled: false,
+        });
+      }, 1000);
     } else {
       setTimeout(() => {
         this.nextQuestion();
+      }, 2000);
+      setTimeout(() => {
+        this.setState({
+          isButtonDisabled: false,
+        });
       }, 2000);
     }
   }
@@ -128,31 +140,28 @@ export default class QuizScreen extends React.Component {
           quizProgress={this.state.quizProgress}
           length={this.state.quiz.questions.length}
         />
-        <ScrollView
-          contentContainerStyle={{ flexGrow: 1 }}
-          showsVerticalScrollIndicator
-          ref={ref => (this.myScroll = ref)}
-        >
-          <QuizStatement
-            quiz={this.state.quiz}
-            question={this.state.quizProgress}
-            nextQuestion={() => this.nextQuestion()}
-          />
-          <QuizQuestion
-            quiz={this.state.quiz}
-            question={this.state.quizProgress}
-            source={this.state.quiz.questions[this.state.quizProgress].image}
-            style={styles.image}
-          />
-          <QuizButtons
-            quiz={this.state.quiz}
-            quizProgress={this.state.quizProgress}
-            submitted={this.state.submitted}
-            handleAnswerButtonPress={text => this.handleAnswerButtonPress(text)}
-            isAnswerCorrect={answerText => this.isAnswerCorrect(answerText)}
-            nextQuestion={() => this.nextQuestion()}
-          />
-        </ScrollView>
+      <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator ref={(ref) => this.myScroll = ref}>
+        <QuizStatement
+          quiz={this.state.quiz}
+          question={this.state.quizProgress}
+          nextQuestion={() => this.nextQuestion()}
+        />
+        <QuizQuestion
+          quiz={this.state.quiz}
+          question={this.state.quizProgress}
+          source={this.state.quiz.questions[this.state.quizProgress].image}
+          style={styles.image}
+        />
+        <QuizButtons
+          quiz={this.state.quiz}
+          quizProgress={this.state.quizProgress}
+          submitted={this.state.submitted}
+          isButtonDisabled={this.state.isButtonDisabled}
+          handleAnswerButtonPress={(text) => this.handleAnswerButtonPress(text)}
+          isAnswerCorrect={(answerText) => this.isAnswerCorrect(answerText)}
+          nextQuestion={() => this.nextQuestion()}
+        />
+      </ScrollView>
       </View>
     );
   }

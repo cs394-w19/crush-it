@@ -16,7 +16,7 @@ export default (quiz_data = [
         ]
       },
       {
-        header: "Level 1",
+        header: "Level 1\n",
         statement:
           "You’re applying for a credit card. \n\nYou look up some stuff online and read that credit card interest rates can be over 29%. ",
         learningCategory: "credit score",
@@ -42,17 +42,16 @@ export default (quiz_data = [
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Good to know!",
+            answerText: "  Good to know!",
             isCorrect: true,
             emoji: "+1"
-          },
+          }
         ]
       },
       {
-        statement:
-          "Now... what do you think \"APR\" is?",
+        statement: 'Now... what do you think "APR" is?',
         question:
-          "A.  Absolute Perfect Rate\n\nB.  My Credit Rating\n\nC.  Basically Interest\n\nD.  Average Price Range",
+          "A.  Absolute Perfect Rate\n\nB.  My credit rating\n\nC.  Basically interest\n\nD.  Average Price Range",
         answerChoices: [
           {
             buttonOrder: "1",
@@ -101,8 +100,7 @@ export default (quiz_data = [
         ]
       },
       {
-        statement:
-          "Remember...",
+        statement: "Remember...",
         image: require("./images/credit-card-debt/apr.png"),
         question: "\n\nYou want to minimize fees, so 0% is the best APR.",
         answerChoices: [
@@ -111,27 +109,27 @@ export default (quiz_data = [
             answerText: "I get it now!",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
-        header:
-          "WATCH OUT!",
+        header: "WATCH OUT!",
         image: require("./images/credit-card-debt/watchout.png"),
-        question: "Most credit cards offer 0% Introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
+        question: "Most credit cards offer 0% introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Whew! Thanks!",
+            answerText: "   Whew! Thanks!",
             isCorrect: true,
             emoji: "sweat_smile"
-          },
+          }
         ]
       },
       {
         statement:
           "How can you get the lowest APR?",
-        question: "A.  Make minimum payment only\n\nB.  ↑ credit score\n\nC.  Open multiple credit cards\n\nD.  I can’t affect APR",
+        question: "A.  Make minimum payment only\nB.  ↑ credit score\nC.  Open multiple credit cards\nD.  I can’t affect APR",
+
         answerChoices: [
           {
             buttonOrder: "1",
@@ -161,7 +159,7 @@ export default (quiz_data = [
       },
       {
         header:
-          "↑ credit score = ↓ APR.\n",
+          "↑ credit score = ↓ APR\n",
         statement:
           "Think of credit like trust.\n\nYou build trust, and credit, when you show you’re reliable.\n\nThis is one reason to pay your bills on time and in full!",
         answerChoices: [
@@ -170,7 +168,7 @@ export default (quiz_data = [
             answerText: "Makes sense",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
@@ -203,7 +201,7 @@ export default (quiz_data = [
             emoji: ""
           }
         ]
-      },
+      }
     ]
   },
   {
@@ -213,7 +211,7 @@ export default (quiz_data = [
     learningCategories: ["interest rates", "credit score"],
     questions: [
       {
-        header: "Level 2",
+        header: "Level 2\n",
         statement:
           "You just bought a $100 shirt for your next adventure.\n\nRealizing you’re low on cash this month, you charged it to your credit card.",
         image: require("./images/credit-card-debt/shrug.png"),
@@ -229,7 +227,8 @@ export default (quiz_data = [
       {
         statement:
           "Your credit card has a 20% APR and requires a minimum monthly payment of $25.",
-        question: "If you only pay the minimum $25 each month, how much did this shirt actually cost?",
+        question:
+          "If you only pay the minimum $25 each month, how much did this shirt actually cost?",
         answerChoices: [
           {
             buttonOrder: "1",
@@ -255,14 +254,12 @@ export default (quiz_data = [
             answerText: "Oh boy...",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
-        statement:
-          "How long would it take to pay off $1,000 with 30% APR?",
-        question:
-          "A.  < 12 months\n\nB.  40 months\n\nC.  > 80 months",
+        statement: "How long would it take to pay off $1,000 with 30% APR?",
+        question: "A.  < 12 months\n\nB.  40 months\n\nC.  > 80 months",
         answerChoices: [
           {
             buttonOrder: "1",
@@ -281,7 +278,7 @@ export default (quiz_data = [
             answerText: "C",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
@@ -294,7 +291,7 @@ export default (quiz_data = [
             answerText: "OMG!",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
@@ -305,14 +302,14 @@ export default (quiz_data = [
             buttonOrder: "0",
             answerText: "Yes",
             isCorrect: true,
-            emoji:""
+            emoji: ""
           },
           {
             buttonOrder: "1",
             answerText: "No way",
             isCorrect: false,
-            emoji:""
-          },
+            emoji: ""
+          }
         ]
       },
       {
@@ -324,21 +321,21 @@ export default (quiz_data = [
             answerText: "Got it!",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
-        header:
-          "PSST...",
+        header: "PSST...",
         image: require("./images/credit-card-debt/secret.png"),
-        question: "\n\nIf it’s your first offense, try calling your credit card company. They may waive the fee if you ask nicely.",
+        question:
+          "\n\nIf it’s your first offense, try calling your credit card company. They may waive the fee if you ask nicely.",
         answerChoices: [
           {
             buttonOrder: "2",
             answerText: "Thanks for the tip!",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
@@ -351,7 +348,7 @@ export default (quiz_data = [
             answerText: "Woohoo!",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
@@ -377,24 +374,23 @@ export default (quiz_data = [
             answerText: "C",
             isCorrect: false,
             emoji: ""
-          },
+          }
         ]
       },
       {
         statement:
           "Start by putting the $100 towards your highest interest rate (APR) credit card.",
         image: require("./images/credit-card-debt/interest.png"),
-        question:
-          "\n\nKeep going until you have zero CC debt.",
+        question: "\n\nKeep going until you have zero CC debt.",
         answerChoices: [
           {
             buttonOrder: "2",
             answerText: "I'll give it a shot",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -403,7 +399,7 @@ export default (quiz_data = [
     quizLevel: 3,
     questions: [
       {
-        header: "Level 3",
+        header: "Level 3\n",
         statement:
           "Now let’s say your credit card has been stolen…\n\nThe thief charged $10,000!",
         image: require("./images/credit-card-debt/shit.png"),
@@ -413,12 +409,11 @@ export default (quiz_data = [
             answerText: "Sh*t... Now what?",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
-        statement:
-          "How much are you liable for?",
+        statement: "How much are you liable for?",
         question:
           "A.  Nothing!\n\nB.  $50 until card reported stolen\n\nC.  The full $10,000\n\nD.  A & B",
         answerChoices: [
@@ -446,17 +441,18 @@ export default (quiz_data = [
             isCorrect: true,
             emoji: ""
           }
-         ]
+        ]
       },
       {
-        statement: "If the thief has already started holiday shopping on your dime, you may be liable for up to $50.\n\nEasily report the theft to your CC company via phone or online.\n\nThen you’re off the hook!",
+        statement:
+          "If the thief has already started holiday shopping on your dime, you may be liable for up to $50.\n\nEasily report the theft to your CC company via phone or online.\n\nThen you’re off the hook!",
         answerChoices: [
           {
             buttonOrder: "2",
             answerText: "Whew!",
             isCorrect: true,
-            emoji:""
-          },
+            emoji: ""
+          }
         ]
       },
       {
@@ -468,19 +464,18 @@ export default (quiz_data = [
             buttonOrder: "0",
             answerText: "Yes",
             isCorrect: true,
-            emoji:""
+            emoji: ""
           },
           {
             buttonOrder: "1",
             answerText: "No",
             isCorrect: false,
-            emoji:""
-          },
+            emoji: ""
+          }
         ]
       },
       {
-        statement:
-          "Most of the time, issuers don’t need to provide notice.",
+        statement: "Most of the time, issuers don’t need to provide notice.",
         question:
           "Which one situation does require notice?\n\nA.  Paid ≥ 60 days late\nB.  Fixed APR\nC.  Promotion expired\nD.  Variable interest",
         answerChoices: [
@@ -508,23 +503,23 @@ export default (quiz_data = [
             isCorrect: false,
             emoji: ""
           }
-         ]
+        ]
       },
       {
         statement:
-          "Because fixed APRs are set-in-stone, issuers must provide 45-day notice prior to any changes.\n\nThe Captain is looking out for you.",
+          "Because fixed APRs are set in stone, issuers must provide 45-day notice prior to any changes.\n\nThe Captain is looking out for you.",
         image: require("./images/credit-card-debt/cap.png"),
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Thanks Cap!",
+            answerText: "Thanks, Cap!",
             isCorrect: true,
-            emoji:""
+            emoji: ""
           }
         ]
       },
       {
-        header: "PRO TIP",
+        header: "Pro Tip",
         statement:
           "Reading the fine print of a contract can be a total snooze.\n\nHowever, it can help you avoid late fees and save you money in the long run.\n\nWho doesn’t love money?",
         answerChoices: [
@@ -533,7 +528,7 @@ export default (quiz_data = [
             answerText: "OK, I'll look",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
       },
       {
@@ -559,7 +554,7 @@ export default (quiz_data = [
             answerText: "C",
             isCorrect: false,
             emoji: ""
-          },
+          }
         ]
       },
       {
@@ -572,9 +567,9 @@ export default (quiz_data = [
             answerText: "I'll pay! I swear!",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
-      },
+      }
     ]
   },
   {
@@ -584,17 +579,16 @@ export default (quiz_data = [
     questions: [
       {
         header: "Level 1",
-        statement:
-          "This is a dummy quiz.",
+        statement: "This is a dummy quiz.",
         answerChoices: [
           {
             buttonOrder: "2",
             answerText: "Sh*t... Now what?",
             isCorrect: true,
             emoji: ""
-          },
+          }
         ]
-      },
+      }
     ]
   }
 ]);
