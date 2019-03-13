@@ -77,6 +77,7 @@ export default class QuizScreen extends React.Component {
     const categoryIndex = navigation.getParam("categoryIndex");
     let level = this.props.navigation.getParam("level", 1);
     let crushedIt = false;
+    let dailyGoalMet = false;
     if (this.state.quizProgress + 1 >= this.state.quiz.questions.length) {
       // presumably also need metrics for each question
       if(level < availabilities[categoryIndex].length) {
@@ -86,13 +87,18 @@ export default class QuizScreen extends React.Component {
         crushedIt = true;
       }
       availabilities[categoryIndex][level-1] = 2;
+
+      if(availabilities[categoryIndex][0] === 2 && availabilities[categoryIndex][1] === 1){
+        dailyGoalMet = true;
+      }
       this.props.navigation.navigate("Results", {
         score: this.state.score + 100,
         maxScore: this.state.quiz.questions.length,
         points: points + 100,
         availabilities: availabilities,
         categoryIndex: categoryIndex,
-        crushedIt: crushedIt
+        crushedIt: crushedIt,
+        dailyGoalMet : dailyGoalMet,
       });
       this.setState({
         quizProgress: 0,
