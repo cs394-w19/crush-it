@@ -52,7 +52,7 @@ export default (quiz_data = [
         statement:
           "Now... what do you think \"APR\" is?",
         question:
-          "A.  Absolute Perfect Rate\n\nB.  My Credit Rating\n\nC.  Basically Interest\n\nD.  Average Price Range",
+          "A.  Absolute Perfect Rate\n\nB.  My credit rating\n\nC.  Basically interest\n\nD.  Average Price Range",
         answerChoices: [
           {
             buttonOrder: "1",
@@ -118,7 +118,7 @@ export default (quiz_data = [
         header:
           "WATCH OUT!",
         image: require("./images/credit-card-debt/watchout.png"),
-        question: "Most credit cards offer 0% Introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
+        question: "Most credit cards offer 0% introductory APR as an incentive.\n\nPay attention to what APR is after the intro period. It could jump to that 30%.",
         answerChoices: [
           {
             buttonOrder: "2",
@@ -161,7 +161,7 @@ export default (quiz_data = [
       },
       {
         header:
-          "↑ credit score = ↓ APR.\n",
+          "↑ credit score = ↓ APR\n",
         statement:
           "Think of credit like trust.\n\nYou build trust, and credit, when you show you’re reliable.\n\nThis is one reason to pay your bills on time and in full!",
         answerChoices: [
@@ -512,19 +512,19 @@ export default (quiz_data = [
       },
       {
         statement:
-          "Because fixed APRs are set-in-stone, issuers must provide 45-day notice prior to any changes.\n\nThe Captain is looking out for you.",
+          "Because fixed APRs are set in stone, issuers must provide 45-day notice prior to any changes.\n\nThe Captain is looking out for you.",
         image: require("./images/credit-card-debt/cap.png"),
         answerChoices: [
           {
             buttonOrder: "2",
-            answerText: "Thanks Cap!",
+            answerText: "Thanks, Cap!",
             isCorrect: true,
             emoji:""
           }
         ]
       },
       {
-        header: "PRO TIP",
+        header: "Pro Tip",
         statement:
           "Reading the fine print of a contract can be a total snooze.\n\nHowever, it can help you avoid late fees and save you money in the long run.\n\nWho doesn’t love money?",
         answerChoices: [
