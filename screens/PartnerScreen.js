@@ -54,9 +54,7 @@ export default class PartnerScreen extends React.Component {
 
     if (this.state.redeeming ){
       return (
-        <View
-          contentContainerStyle={styles.container}
-        >
+        <View contentContainerStyle={styles.container} >
           <View>
             <Text style={styles.title}>
               Almost there!
@@ -68,20 +66,17 @@ export default class PartnerScreen extends React.Component {
               The more you learn, the more $$ you earn!
             </Text>
           </View>
-
-            <TouchableOpacity
-              style = {styles.buttonStyle}
-              onPress = {() => this.setState({redeeming:0})}
-            >
-              <Text style={styles.buttonWord}>RETURN HOME</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style = {styles.buttonStyle}
+            onPress = {() => this.setState({redeeming:0})}
+          >
+            <Text style={styles.buttonWord}>RETURN HOME</Text>
+          </TouchableOpacity>
         </View>
       );
     }
     return (
-      <ScrollView
-        contentContainerStyle={styles.container}
-      >
+      <ScrollView contentContainerStyle={styles.container} >
         <View>
           <Text style={styles.title}>
             Woohoo! You have  <Text style={{fontWeight: "bold", color : Colors.appPurple}}>{points}</Text> coins to spend!
@@ -89,7 +84,7 @@ export default class PartnerScreen extends React.Component {
         </View>
         <View>
           <Text style={styles.subtitle}>
-            Earn coins & get a $5 e-gift card to your favorite shop! Choose from below!
+            Earn coins &amp; get a $5 e-gift card to your favorite shop! Choose from below!
           </Text>
         </View>
         <View style={{ height: "100%", width: "100%" }}>
@@ -130,8 +125,7 @@ const styles = StyleSheet.create({
     flexWrap:"wrap",
     width: "100%",
     height: "100%",
-    justifyContent : "center"
-
+    justifyContent : "center",
   },
   image : {
     width: 80,
@@ -151,7 +145,6 @@ const styles = StyleSheet.create({
     color: Colors.darkGrayPurple,
     margin: 15,
     textAlign : "center",
-    justifyContent : "center"
+    justifyContent : "center",
   }
-
 });

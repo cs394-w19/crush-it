@@ -2,21 +2,14 @@ import React from "react";
 import {
   ScrollView,
   StyleSheet,
-  Button,
   Text,
   View,
-  Image,
-  TouchableOpacity,
-  InteractionManager
 } from "react-native";
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
-import Colors from "../constants/Colors";
 
 import QuizProgressBar from "../components/Quiz/QuizProgressBar";
 import QuizStatement from "../components/Quiz/QuizStatement";
 import QuizQuestion from "../components/Quiz/QuizQuestion";
 import QuizButtons from "../components/Quiz/QuizButtons";
-
 import CoinHeader from "../components/Header/CoinHeader.js";
 import LogoHeader from "../components/Header/LogoHeader.js";
 
@@ -26,10 +19,8 @@ export default class QuizScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      points : 0,
       quiz: null,
       quizProgress: 0,
-      score: 0,
       submitted: false
     };
   }
@@ -82,17 +73,16 @@ export default class QuizScreen extends React.Component {
       // presumably also need metrics for each question
       if(level < availabilities[categoryIndex].length) {
         availabilities[categoryIndex][level] = 1;
-      }
-      else if (availabilities[categoryIndex][level-1] == 1) {
+      } else if (availabilities[categoryIndex][level-1] == 1) {
         crushedIt = true;
       }
+
       availabilities[categoryIndex][level-1] = 2;
 
-      if(availabilities[categoryIndex][0] === 2 && availabilities[categoryIndex][1] === 1){
+      if (availabilities[categoryIndex][0] === 2 && availabilities[categoryIndex][1] === 1) {
         dailyGoalMet = true;
       }
       this.props.navigation.navigate("Results", {
-        score: this.state.score + 100,
         maxScore: this.state.quiz.questions.length,
         points: points + 100,
         availabilities: availabilities,
@@ -114,15 +104,7 @@ export default class QuizScreen extends React.Component {
     this.myScroll.scrollTo({ x: 0, y: 0, animated: false });
   }
 
-  handleScoring(answerText) {
-    let answerCorrect = this.isAnswerCorrect(answerText);
-    let newScore = answerCorrect ? this.state.score + 1 : this.state.score;
-    this.setState({ score: newScore });
-  }
-
   handleAnswerButtonPress(answerText) {
-    let answerCorrect = this.isAnswerCorrect(answerText);
-    this.handleScoring(answerText);
     this.setState({
       submitted: answerText
     });
@@ -136,14 +118,10 @@ export default class QuizScreen extends React.Component {
         this.nextQuestion();
       }, 2000);
     }
-
   }
 
   render() {
-    const { navigation } = this.props;
-    const level = navigation.getParam("level", 1);
     if (!this.state.quiz) return <Text />;
-
     return (
       <View style={styles.quizContainer}>
         <QuizProgressBar
