@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Button, TouchableOpacity, Text, View, Image, Animated, Easing } from 'react-native';
+import { ScrollView, StyleSheet, Button, TouchableOpacity, Text, View, Image, Animated, Easing } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
 import CardView from 'react-native-cardview';
 import Colors from '../constants/Colors';
@@ -26,6 +26,7 @@ export default class ResultsScreen extends React.Component {
   componentDidMount() {
     if (this._confettiView) {
       this._confettiView.startConfetti();
+      this.myScroll.scrollTo({ x: 0, y: 0, animated: false });
     }
 
     const crushedIt = this.props.navigation.getParam("crushedIt", false);
@@ -159,9 +160,8 @@ export default class ResultsScreen extends React.Component {
     }
 
     return (
-      <View
-        contentContainerStyle={styles.container}
-      >
+      <View style={styles.container}>
+      <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator ref={(ref) => this.myScroll = ref}>
         <Confetti
           confettiCount={200}
           ref={node => (this._confettiView = node)}
@@ -191,6 +191,7 @@ export default class ResultsScreen extends React.Component {
             <Text style={styles.listText}>RETURN HOME</Text>
           </TouchableOpacity>
         </View>
+        </ScrollView>
       </View>
     );
   }
@@ -200,11 +201,6 @@ export default class ResultsScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "white",
-    flexWrap: "wrap-reverse",
-    width: "100%"
   },
   titleView: {
     paddingTop: "10%",
