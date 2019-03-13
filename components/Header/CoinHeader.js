@@ -64,11 +64,7 @@ export default class CoinHeader extends React.Component {
           this.props.navigation.navigate("Partners", {
             points: this.props.navigation.getParam("points", 0),
             availabilities: this.props.navigation.getParam("availabilities", [
-              [true, false, false],
-              [false, false, false],
-              [false, false, false],
-              [false, false, false],
-              [false, false, false]
+              [1]
             ]),
             categoryIndex: this.props.navigation.getParam("categoryIndex", 0)
           })
