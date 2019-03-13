@@ -6,6 +6,7 @@ import {
   View, 
   Image, 
   Animated,
+  ScrollView
 } from 'react-native';
 
 import Colors from '../constants/Colors';
