@@ -51,7 +51,35 @@ export default class HomeScreen extends React.Component {
     let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
-      if (availabilities[index].indexOf(1) != -1 || availabilities[index].indexOf(2) != -1) {
+      if (availabilities[index].indexOf(0) == -1 && availabilities[index].indexOf(1) == -1) {
+        topicButtons.push(
+          <View style={styles.buttonRow}>
+            <TouchableOpacity
+              style={styles.buttonStyle}
+              key={index}
+              onPress={() =>
+                this.props.navigation.navigate("Levels", {
+                  availabilities: availabilities,
+                  categoryIndex: index,
+                  topicName: topic,
+                  numLevels: availabilities[index].length,
+                  points: points
+                })
+              }
+            >
+              <Text style={styles.listText}>{topic}</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.lockStyle} disabled={true}>
+              <Ionicons
+                name="md-checkmark-circle"
+                size={38}
+                color={Colors.greenCheck}
+              />
+            </TouchableOpacity>
+          </View>
+        );
+      }
+      else if (availabilities[index].indexOf(1) != -1 || availabilities[index].indexOf(2) != -1) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity
