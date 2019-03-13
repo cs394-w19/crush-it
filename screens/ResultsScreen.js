@@ -123,7 +123,7 @@ export default class ResultsScreen extends React.Component {
     const availabilities = navigation.getParam("availabilities", [[1]]);
     const categoryIndex = navigation.getParam("categoryIndex", 0);
 
-    let levelCompleteText = crushedIt ? "All Levels Complete" : dailyGoalMet ? "Daily Goal Met!": "Level Complete!";
+    let levelCompleteText = crushedIt ? "All levels complete" : dailyGoalMet ? "Daily goal met": "Level complete";
     let crushedItMessage = crushedIt ? <Text style={{ fontSize:50, fontWeight:"bold", textAlign: 'center' }}>YOU CRUSHED IT!</Text>
                                      : <Text />;
 
@@ -162,7 +162,7 @@ export default class ResultsScreen extends React.Component {
             <Image source={require("../assets/images/coin.png")} style={{width: 80, height: 80 }}/>
           </TouchableOpacity>
           <Text style={styles.title}>
-            You Earned 100 Coins!
+            You earned 100 coins!
           </Text>
           {this.state.crushedIt ? <Text /> : keepGoing}
           <TouchableOpacity
