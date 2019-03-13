@@ -1,11 +1,15 @@
 import React from 'react';
-import { ScrollView, StyleSheet, Button, TouchableOpacity, Text, View, Image, Animated, Easing } from 'react-native';
-import { ExpoLinksView } from '@expo/samples';
-import CardView from 'react-native-cardview';
+import { 
+  StyleSheet,
+  TouchableOpacity, 
+  Text, 
+  View, 
+  Image, 
+  Animated,
+} from 'react-native';
+
 import Colors from '../constants/Colors';
 import Confetti from 'react-native-confetti';
-import * as Progress from 'react-native-progress';
-import { Ionicons, FontAwesome } from '@expo/vector-icons';
 
 import CoinHeader from "../components/Header/CoinHeader.js";
 import LogoHeader from "../components/Header/LogoHeader.js";
@@ -14,8 +18,6 @@ export default class ResultsScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      score : this.props.navigation.getParam("score"),
-      maxScore : this.props.navigation.getParam("maxScore"),
       crushedIt: false,
       dailyGoalMet : false,
       splashAnimation: new Animated.Value(0),
@@ -28,28 +30,18 @@ export default class ResultsScreen extends React.Component {
       this._confettiView.startConfetti();
       this.myScroll.scrollTo({ x: 0, y: 0, animated: false });
     }
-
     const crushedIt = this.props.navigation.getParam("crushedIt", false);
-    // const dailyGoalMet = this.props.navigation.getParam("dailyGoalMet", false);
-
-    // if (dailyGoalMet){
-    //   this.setState({
-    //     dailyGoalMet : true
-    //   });
-    // }
-
     if (crushedIt) {
       this.setState({
         crushedIt: true,
-        crushedScreen: true
+        crushedScreen: true,
       });
 
       setTimeout(() => { this.setState({
-          crushedScreen: false
+          crushedScreen: false,
         });
       }, 1000);
     }
-
   }
 
   componentWillUnmount() {
@@ -57,7 +49,6 @@ export default class ResultsScreen extends React.Component {
   }
 
   renderCrushItImage = () => {
-
     return (
       <Animated.View
         style={{
@@ -85,14 +76,12 @@ export default class ResultsScreen extends React.Component {
             bottom: 0,
             right: 0,
             resizeMode: 'cover',
-            transform: [
-              {
+            transform: [{
                 scale: this.state.splashAnimation.interpolate({
                   inputRange: [0, 1],
                   outputRange: [1, 4],
-                }),
-              },
-            ],
+                })
+              }]
           }}
           onLoadEnd={this.animateOut}
         />
@@ -114,7 +103,6 @@ export default class ResultsScreen extends React.Component {
   };
 
   static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
     return {
       headerLeft: (
         <LogoHeader navigation={navigation} navigateTo="Home" />
@@ -137,9 +125,6 @@ export default class ResultsScreen extends React.Component {
     let levelCompleteText = crushedIt ? "All Levels Complete" : dailyGoalMet ? "Daily Goal Met!": "Level Complete!";
     let crushedItMessage = crushedIt ? <Text style={{ fontSize:50, fontWeight:"bold", textAlign: 'center' }}>YOU CRUSHED IT!</Text>
                                      : <Text />;
-
-
-
 
     let keepGoing = (
       <TouchableOpacity
@@ -190,7 +175,6 @@ export default class ResultsScreen extends React.Component {
     );
   }
 }
-
 
 const styles = StyleSheet.create({
   container: {

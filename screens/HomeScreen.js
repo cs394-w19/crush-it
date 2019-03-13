@@ -1,7 +1,5 @@
 import React from "react";
 import {
-  Image,
-  Platform,
   ScrollView,
   StyleSheet,
   Text,
@@ -31,7 +29,6 @@ export default class HomeScreen extends React.Component {
   }
 
   static navigationOptions = ({ navigation }) => {
-    const { params = {} } = navigation.state;
     return {
       headerLeft: <LogoHeader navigation={navigation} navigateTo="Home" />,
       headerRight: <CoinHeader navigation={navigation} />
@@ -68,6 +65,7 @@ export default class HomeScreen extends React.Component {
     let topicButtons = [];
 
     this.state.topics.forEach((topic, index) => {
+
       if (availabilities[index].length && availabilities[index].lastIndexOf(2) === availabilities[index].length-1) {
         topicButtons.push(
           <View style={styles.buttonRow}>
@@ -80,7 +78,7 @@ export default class HomeScreen extends React.Component {
                   categoryIndex: index,
                   topicName: topic,
                   numLevels: availabilities[index].length,
-                  points: points
+                  points: points,
                 })
               }
             >
@@ -95,8 +93,7 @@ export default class HomeScreen extends React.Component {
             </TouchableOpacity>
           </View>
         );
-      }
-      else if (availabilities[index].indexOf(1) != -1 || availabilities[index].indexOf(2) != -1) {
+      } else if (availabilities[index].indexOf(1) !== -1 || availabilities[index].indexOf(2) !== -1) {
         topicButtons.push(
           <View style={styles.buttonRow}>
             <TouchableOpacity
@@ -171,9 +168,7 @@ const styles = StyleSheet.create({
   lockStyle: {
     alignItems: "center",
     backgroundColor: "white",
-
     width: 50,
-
     margin: 10,
     justifyContent: "center"
   },
