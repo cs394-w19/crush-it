@@ -1,10 +1,10 @@
 import React from 'react';
-import { 
+import {
   StyleSheet,
-  TouchableOpacity, 
-  Text, 
-  View, 
-  Image, 
+  TouchableOpacity,
+  Text,
+  View,
+  Image,
   Animated,
   ScrollView
 } from 'react-native';
@@ -123,7 +123,7 @@ export default class ResultsScreen extends React.Component {
     const availabilities = navigation.getParam("availabilities", [[1]]);
     const categoryIndex = navigation.getParam("categoryIndex", 0);
 
-    let levelCompleteText = crushedIt ? "All levels complete" : dailyGoalMet ? "Daily goal met": "Level complete";
+    let levelCompleteText = crushedIt ? "All Levels Complete" : dailyGoalMet ? "Daily Goal Met!": "Level Complete!";
     let crushedItMessage = crushedIt ? <Text style={{ fontSize:50, fontWeight:"bold", textAlign: 'center' }}>YOU CRUSHED IT!</Text>
                                      : <Text />;
 
@@ -131,7 +131,7 @@ export default class ResultsScreen extends React.Component {
       <TouchableOpacity
         onPress={() => this.props.navigation.navigate("Levels", {points: points, availabilites: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
         style={styles.buttonStyle}>
-        <Text style={styles.listText}> KEEP GOING</Text>
+        <Text style={styles.buttonText}> KEEP GOING</Text>
       </TouchableOpacity>
     );
 
@@ -141,36 +141,36 @@ export default class ResultsScreen extends React.Component {
 
     return (
       <View style={styles.container}>
-      <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator ref={(ref) => this.myScroll = ref}>
-        <Confetti
-          confettiCount={200}
-          ref={node => (this._confettiView = node)}
-        />
-        <View style={styles.titleView}>
-          <Text style={styles.title}>
-            {levelCompleteText}
-          </Text>
-          {crushedItMessage}
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Partners",
-            {
-              points: points,
-              availabilities: availabilities,
-              categoryIndex: categoryIndex
-            })}
-          >
-            <Image source={require("../assets/images/coin.png")} style={{width: 80, height: 80 }}/>
-          </TouchableOpacity>
-          <Text style={styles.title}>
-            You earned 100 coins!
-          </Text>
-          {this.state.crushedIt ? <Text /> : keepGoing}
-          <TouchableOpacity
-            onPress={() => this.props.navigation.navigate("Home", {points: points, availabilities: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
-            style={styles.buttonStyle}>
-            <Text style={styles.listText}>RETURN HOME</Text>
-          </TouchableOpacity>
-        </View>
+        <ScrollView contentContainerStyle={{flexGrow: 1}} showsVerticalScrollIndicator ref={(ref) => this.myScroll = ref}>
+          <Confetti
+            confettiCount={200}
+            ref={node => (this._confettiView = node)}
+          />
+          <View style={styles.titleView}>
+            <Text style={styles.title}>
+              {levelCompleteText}
+            </Text>
+            {crushedItMessage}
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Partners",
+              {
+                points: points,
+                availabilities: availabilities,
+                categoryIndex: categoryIndex
+              })}
+            >
+              <Image source={require("../assets/images/coin.png")} style={{width: 80, height: 80 }}/>
+            </TouchableOpacity>
+            <Text style={styles.title}>
+              You Earned 100 Coins!
+            </Text>
+            {this.state.crushedIt ? <Text /> : keepGoing}
+            <TouchableOpacity
+              onPress={() => this.props.navigation.navigate("Home", {points: points, availabilities: availabilities, categoryIndex: categoryIndex})} // what should this be called/go back to
+              style={styles.buttonStyle}>
+              <Text style={styles.buttonText}>RETURN HOME</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </View>
     );
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     margin: 10,
   },
-  listText: {
+  buttonText: {
     fontSize: 24,
     margin: 15,
     textAlign: "center",
