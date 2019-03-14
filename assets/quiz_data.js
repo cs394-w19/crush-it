@@ -51,7 +51,7 @@ export default (quiz_data = [
       {
         statement: 'Now... what do you think "APR" is?',
         question:
-          "A.  Absolute Perfect Rate\n\nB.  My credit rating\n\nC.  Basically interest\n\nD.  Average Price Range",
+          "A.  Absolute Perfect Rate\nB.  My credit rating\nC.  Basically interest\nD.  Average Price Range",
         answerChoices: [
           {
             buttonOrder: "1",
@@ -259,7 +259,7 @@ export default (quiz_data = [
       },
       {
         statement: "How long would it take to pay off $1,000 with 30% APR?",
-        question: "A.  < 12 months\n\nB.  40 months\n\nC.  > 80 months",
+        question: "A.  < 12 months\nB.  40 months\nC.  > 80 months",
         answerChoices: [
           {
             buttonOrder: "1",
@@ -355,7 +355,7 @@ export default (quiz_data = [
         statement:
           "Your credit card (CC) has a balance of $100 and 17% APR.\n\nWhat should you do?",
         question:
-          "A.  Pay off the card\n\nB.  Keep the $ in savings\n\nC.  IDK",
+          "A.  Pay off the card\nB.  Keep the $ in savings\nC.  IDK",
         answerChoices: [
           {
             buttonOrder: "0",
@@ -415,7 +415,7 @@ export default (quiz_data = [
       {
         statement: "How much are you liable for?",
         question:
-          "A.  Nothing!\n\nB.  $50 until card reported stolen\n\nC.  The full $10,000\n\nD.  A & B",
+          "A.  Nothing!\nB.  $50 until card reported stolen\nC.  The full $10,000\nD.  A & B",
         answerChoices: [
           {
             buttonOrder: "1",
@@ -535,7 +535,7 @@ export default (quiz_data = [
         statement:
           "Speaking of fine print…\n\nIf you’re an authorized user on your parents’ account, who is liable if you can’t pay your charges?",
         question:
-          "A.  You are\n\nB.  Your parents\n\nC.  No one if you're under 21",
+          "A.  You are\nB.  Your parents\nC.  No one if you're under 21",
         answerChoices: [
           {
             buttonOrder: "1",
