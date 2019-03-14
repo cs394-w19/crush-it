@@ -124,7 +124,7 @@ export default class App extends React.Component {
         require("./assets/images/partners/lyft.png"),
         require("./assets/images/partners/starbucks.jpg"),
         require("./assets/images/partners/target.jpg"),
-        require("./assets/images/partners/urban.jpg"),
+        require("./assets/images/partners/urban.png"),
         require("./assets/images/credit-card-debt/im-watching-you.gif"),
         require("./assets/images/credit-card-debt/cap.png"),
         require("./assets/images/credit-card-debt/shit.png"),

@@ -25,7 +25,7 @@ export default class PartnerScreen extends React.Component {
                     require("../assets/images/partners/lyft.png"),
                     require("../assets/images/partners/starbucks.jpg"),
                     require("../assets/images/partners/target.jpg"),
-                    require("../assets/images/partners/urban.jpg")
+                    require("../assets/images/partners/urban.png")
                   ];
       this.setState({ items });
   }
