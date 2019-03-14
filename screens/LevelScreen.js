@@ -3,11 +3,7 @@ import {
   ScrollView,
   StyleSheet,
   Text,
-  View,
-  TouchableOpacity
 } from "react-native";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import { Tooltip } from "react-native-elements";
 
 import Colors from "../constants/Colors";
 import CoinHeader from "../components/Header/CoinHeader.js";

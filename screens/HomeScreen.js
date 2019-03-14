@@ -8,8 +8,6 @@ import {
 } from "react-native";
 
 import Colors from "../constants/Colors";
-import { Ionicons, FontAwesome } from "@expo/vector-icons";
-import { Tooltip } from "react-native-elements";
 
 import CoinHeader from "../components/Header/CoinHeader.js";
 import LogoHeader from "../components/Header/LogoHeader.js";

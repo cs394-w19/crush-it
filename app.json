@@ -25,7 +25,7 @@
     "ios": {
       "supportsTablet": true
     },
-    "description": "Demo application for Team Gold",
+    "description": "A financial literacy quiz, developed for Northwestern University EECS 394/MPD 405 - Winter 2019 Team Yellow/Gold",
     "githubUrl": "https://github.com/cs394-w19/crush-it"
   }
 }
